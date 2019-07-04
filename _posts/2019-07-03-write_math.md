@@ -51,5 +51,5 @@ $$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
 
 [$$\LaTeX$$]: https://www.latex-project.org/
 [MathJax]:https://www.mathjax.org/
-[LaTex/Mathematics]:https://en.wikibooks.org/wiki/LaTeX/Mathematics) is wildly used to write equations on the website, such as [rmarkdown](http://rmarkdown.rstudio.com/authoring_basics.html
+[LaTex/Mathematics]:https://en.wikibooks.org/wiki/LaTeX/Mathematics
 [rmarkdown]:http://rmarkdown.rstudio.com/authoring_basics.html
