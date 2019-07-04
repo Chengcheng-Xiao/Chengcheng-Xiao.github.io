@@ -1,0 +1,30 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Chengcheng Xiao
+subtitle: 'Personal Blog'
+email: iconxicon@me.com
+description: > # this means to ignore newlines until "baseurl:"
+  Quasi-proper student doing semi-rigorous sciency stuff.
+baseurl: "" # the subpath of your site, e.g. /blog
+url:  # the base hostname & protocol for your site
+twitter_username: iconxicon
+github_username: Chengcheng-Xiao 
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Third-party services
+# just leave someone empty to disable it
+# google_analytics: 
+disqus_shortname:
+
+# used this for post_excerpt at index_page
+excerpt_separator: <!--description-->

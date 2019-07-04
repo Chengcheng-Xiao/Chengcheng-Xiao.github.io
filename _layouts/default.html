@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <div class="page-content">
+      <div class="container">
+        <div class="three columns">
+          {% include header.html %}
+        </div>
+
+        <div class="nine columns" style="z-index:100;">
+          <div class="wrapper">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+      {% include footer.html %} 
+    </div>
+  </body>
+</html>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
