@@ -3,7 +3,7 @@ layout: post
 title: Little math side-quest [No.1]
 date: 2019-07-04
 tags: ["Math"]
-categories: Side projects
+categories: Side_projects
 description: A geomotry problem that's seemingly easy to solve, yet cannot be solved without some "advanced" tools. Solved with integration and trigonometry.
 ---
 
