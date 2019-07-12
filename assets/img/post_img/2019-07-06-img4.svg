@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+<!-- Page 1 -->
+<svg x="0" y="0" width="918" height="459" viewBox="0 0 918 459" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+style="display: block;margin-left: auto;margin-right: auto;">
+<defs>
+<clipPath id="c_1"><path d="M0,0H918V459H0Z" /></clipPath>
+<clipPath id="c0_1"><path d="M12,451.2V15.8H905.7V451.2Z" /></clipPath>
+
+<style type="text/css"><![CDATA[
+text { white-space: pre; }
+path, image { pointer-events: none; }
+
+.s1_1{
+font-size: 18.33px;
+font-family: Calibri_8;
+fill: #000000;
+}
+
+.g0_1{
+fill: #ED7D31;
+}
+.g1_1{
+fill: #E7E6E6;
+}
+.g2_1{
+fill: #4472C4;
+}
+.g3_1{
+fill: #FF0000;
+}
+
+]]></style>
+
+</defs>
+<g clip-path="url(#c_1)">
+<path d="M0,0
+L0,459
+L918,459
+L918,0 Z " 
+fill="#FFFFFF" stroke="none" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,14.3H111.3V38.7H10.4Z" class="g0_1" />
+<path d="M109.7,14.3h796V38.7h-796Z" class="g1_1" />
+<path d="M10.4,37.2H111.3V61.6H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,37.2H210.6V61.6H109.7Z" class="g2_1" />
+<path d="M209,37.2H409.2V61.6H209Z" class="g3_1" />
+<path d="M507,37.2H607.8V61.6H507Z" class="g3_1" />
+<path d="M804.9,37.2H905.7V61.6H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,60.1H111.3V84.5H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,60.1H210.6V84.5H109.7Z" class="g3_1" />
+<path d="M209,60.1H309.9V84.5H209Z" class="g2_1" />
+<path d="M407.7,60.1H508.5V84.5H407.7Z" class="g3_1" />
+<path d="M606.3,60.1H806.4V84.5H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,83H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,83H210.6v24.5H109.7Z" class="g3_1" />
+<path d="M308.3,83H409.2v24.5H308.3Z" class="g2_1" />
+<path d="M407.7,83H508.5v24.5H407.7Z" class="g3_1" />
+<path d="M606.3,83H806.4v24.5H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,105.9H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M209,105.9H409.2v24.5H209Z" class="g3_1" />
+<path d="M407.7,105.9H508.5v24.5H407.7Z" class="g2_1" />
+<path d="M507,105.9H607.8v24.5H507Z" class="g3_1" />
+<path d="M804.9,105.9H905.7v24.5H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,128.8H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,128.8H210.6v24.5H109.7Z" class="g3_1" />
+<path d="M407.7,128.8H508.5v24.5H407.7Z" class="g3_1" />
+<path d="M507,128.8H607.8v24.5H507Z" class="g2_1" />
+<path d="M606.3,128.8H806.4v24.5H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,151.8H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M209,151.8H409.2v24.4H209Z" class="g3_1" />
+<path d="M507,151.8H607.8v24.4H507Z" class="g3_1" />
+<path d="M606.3,151.8H707.1v24.4H606.3Z" class="g2_1" />
+<path d="M804.9,151.8H905.7v24.4H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,174.7H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M209,174.7H409.2v24.4H209Z" class="g3_1" />
+<path d="M507,174.7H607.8v24.4H507Z" class="g3_1" />
+<path d="M705.6,174.7H806.4v24.4H705.6Z" class="g2_1" />
+<path d="M804.9,174.7H905.7v24.4H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,197.6H111.3V222H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,197.6H210.6V222H109.7Z" class="g3_1" />
+<path d="M407.7,197.6H508.5V222H407.7Z" class="g3_1" />
+<path d="M606.3,197.6H806.4V222H606.3Z" class="g3_1" />
+<path d="M804.9,197.6H905.7V222H804.9Z" class="g2_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,243.4H111.3v24.5H10.4Z" class="g0_1" />
+<path d="M109.7,243.4h796v24.5h-796Z" class="g1_1" />
+<path d="M10.4,266.3H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,266.3H210.6v24.5H109.7Z" class="g2_1" />
+<path d="M209,266.3H409.2v24.5H209Z" class="g3_1" />
+<path d="M507,266.3H607.8v24.5H507Z" class="g3_1" />
+<path d="M804.9,266.3H905.7v24.5H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,289.3H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,289.3H210.6v24.4H109.7Z" class="g3_1" />
+<path d="M209,289.3H309.9v24.4H209Z" class="g2_1" />
+<path d="M407.7,289.3H508.5v24.4H407.7Z" class="g3_1" />
+<path d="M606.3,289.3H806.4v24.4H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,312.2H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,312.2H210.6v24.4H109.7Z" class="g3_1" />
+<path d="M308.3,312.2H409.2v24.4H308.3Z" class="g2_1" />
+<path d="M407.7,312.2H508.5v24.4H407.7Z" class="g3_1" />
+<path d="M606.3,312.2H806.4v24.4H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,335.1H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M209,335.1H409.2v24.4H209Z" class="g3_1" />
+<path d="M407.7,335.1H508.5v24.4H407.7Z" class="g2_1" />
+<path d="M507,335.1H607.8v24.4H507Z" class="g3_1" />
+<path d="M804.9,335.1H905.7v24.4H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,358H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,358H210.6v24.5H109.7Z" class="g3_1" />
+<path d="M407.7,358H508.5v24.5H407.7Z" class="g3_1" />
+<path d="M507,358H607.8v24.5H507Z" class="g2_1" />
+<path d="M606.3,358H806.4v24.5H606.3Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,380.9H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M209,380.9H409.2v24.5H209Z" class="g3_1" />
+<path d="M507,380.9H607.8v24.5H507Z" class="g3_1" />
+<path d="M606.3,380.9H707.1v24.5H606.3Z" class="g2_1" />
+<path d="M804.9,380.9H905.7v24.5H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,403.8H111.3v24.5H10.4Z" class="g1_1" />
+</g>
+<path d="M209,403.8H409.2v24.5H209Z" class="g3_1" />
+<path d="M507,403.8H607.8v24.5H507Z" class="g3_1" />
+<path d="M705.6,403.8H806.4v24.5H705.6Z" class="g2_1" />
+<path d="M804.9,403.8H905.7v24.5H804.9Z" class="g3_1" />
+<g clip-path="url(#c0_1)">
+<path d="M10.4,426.8H111.3v24.4H10.4Z" class="g1_1" />
+</g>
+<path d="M109.7,426.8H210.6v24.4H109.7Z" class="g3_1" />
+<path d="M407.7,426.8H508.5v24.4H407.7Z" class="g3_1" />
+<path d="M606.3,426.8H806.4v24.4H606.3Z" class="g3_1" />
+<path d="M804.9,426.8H905.7v24.4H804.9Z" class="g2_1" />
+<text x="15" y="32" dx="0,0.7,0.4,-0.3" class="s1_1">Bare</text>
+<text x="196" y="32" class="s1_1">1</text>
+<text x="296" y="32" class="s1_1">2</text>
+<text x="395" y="32" class="s1_1">3</text>
+<text x="494" y="32" class="s1_1">4</text>
+<text x="594" y="32" class="s1_1">5</text>
+<text x="693" y="32" class="s1_1">6</text>
+<text x="792" y="32" class="s1_1">7</text>
+<text x="891" y="32" class="s1_1">8</text>
+<text x="97" y="55" class="s1_1">1</text>
+<text x="149" y="55" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="254" y="55" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="354" y="55" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="462" y="55" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="552" y="55" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="661" y="55" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="751" y="55" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="850" y="55" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="97" y="78" class="s1_1">2</text>
+<text x="155" y="78" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="248" y="78" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="363" y="78" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="453" y="78" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="561" y="78" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="652" y="78" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="751" y="78" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="850" y="78" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="97" y="101" class="s1_1">3</text>
+<text x="155" y="101" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="264" y="101" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="348" y="101" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="453" y="101" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="552" y="101" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="652" y="101" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="751" y="101" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="859" y="101" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="97" y="124" class="s1_1">4</text>
+<text x="164" y="124" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="254" y="124" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="354" y="124" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="447" y="124" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="552" y="124" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="652" y="124" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="760" y="124" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="850" y="124" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="97" y="147" class="s1_1">5</text>
+<text x="155" y="147" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="264" y="147" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="354" y="147" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="453" y="147" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="546" y="147" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="652" y="147" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="751" y="147" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="859" y="147" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="97" y="170" class="s1_1">6</text>
+<text x="164" y="170" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="254" y="170" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="354" y="170" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="453" y="170" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="552" y="170" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="645" y="170" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="760" y="170" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="850" y="170" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="97" y="193" class="s1_1">7</text>
+<text x="155" y="193" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="254" y="193" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="354" y="193" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="462" y="193" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="552" y="193" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="661" y="193" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="745" y="193" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="850" y="193" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="97" y="215" class="s1_1">8</text>
+<text x="155" y="215" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1608</text>
+<text x="254" y="215" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1441</text>
+<text x="363" y="215" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="453" y="215" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1419</text>
+<text x="561" y="215" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.128</text>
+<text x="652" y="215" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1392</text>
+<text x="751" y="215" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.1462</text>
+<text x="844" y="215" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-1.2118</text>
+<text x="15" y="261" dx="0,0,-0.5,0,0,-0.3,0.4,-0.1,0,0.4,-0.6" class="s1_1">Interactive</text>
+<text x="196" y="261" class="s1_1">1</text>
+<text x="296" y="261" class="s1_1">2</text>
+<text x="395" y="261" class="s1_1">3</text>
+<text x="494" y="261" class="s1_1">4</text>
+<text x="594" y="261" class="s1_1">5</text>
+<text x="693" y="261" class="s1_1">6</text>
+<text x="792" y="261" class="s1_1">7</text>
+<text x="891" y="261" class="s1_1">8</text>
+<text x="97" y="284" class="s1_1">1</text>
+<text x="149" y="284" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="264" y="284" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="354" y="284" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="453" y="284" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="561" y="284" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="661" y="284" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="751" y="284" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="850" y="284" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="97" y="307" class="s1_1">2</text>
+<text x="164" y="307" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="248" y="307" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="354" y="307" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="453" y="307" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="561" y="307" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="661" y="307" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="751" y="307" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="850" y="307" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="97" y="330" class="s1_1">3</text>
+<text x="155" y="330" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="254" y="330" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="348" y="330" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="462" y="330" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="552" y="330" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="652" y="330" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="760" y="330" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="859" y="330" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="97" y="353" class="s1_1">4</text>
+<text x="155" y="353" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="254" y="353" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="363" y="353" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="447" y="353" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="552" y="353" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="652" y="353" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="760" y="353" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="859" y="353" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="97" y="376" class="s1_1">5</text>
+<text x="164" y="376" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="264" y="376" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="354" y="376" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="453" y="376" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="546" y="376" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="661" y="376" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="751" y="376" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="850" y="376" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="97" y="399" class="s1_1">6</text>
+<text x="164" y="399" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="264" y="399" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="354" y="399" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="453" y="399" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="561" y="399" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="645" y="399" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="751" y="399" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="850" y="399" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="97" y="422" class="s1_1">7</text>
+<text x="155" y="422" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="254" y="422" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="363" y="422" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="462" y="422" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="552" y="422" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="652" y="422" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="745" y="422" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+<text x="859" y="422" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="97" y="445" class="s1_1">8</text>
+<text x="155" y="445" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0059</text>
+<text x="254" y="445" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0054</text>
+<text x="363" y="445" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.008</text>
+<text x="462" y="445" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="552" y="445" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0091</text>
+<text x="652" y="445" dx="0,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">0.0081</text>
+<text x="760" y="445" dx="0,-0.1,0,-0.1,-0.1" class="s1_1">0.007</text>
+<text x="844" y="445" dx="0,0.5,-0.1,0,-0.1,-0.1,-0.1" class="s1_1">-0.2172</text>
+
+</g>
+
+<!-- Any embedded fonts defined here -->
+<style type="text/css" ><![CDATA[
+
+@font-face {
+	font-family: Calibri_8;
+	src: url("fonts/Calibri_8.woff") format("woff");
+}
+
+]]></style>
+
+</svg>
