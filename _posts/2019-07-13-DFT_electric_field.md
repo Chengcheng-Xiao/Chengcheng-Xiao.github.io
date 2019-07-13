@@ -1,0 +1,76 @@
+---
+layout: post
+title: Puzzling effects of saw-tooth electric field in DFT code
+date: 2019-07-13
+tags: ["Electric_field"]
+categories: DFT
+description: Applying a saw-tooth electric field in VASP and QE seems to lower the total energy which is unphysical and puzzling.
+---
+
+## Background
+
+In VASP wiki:
+> It is possible to apply an external electrostatic field in slab, or molecular calculations. Presently only a single value can be supplied and the field is applied in the direction selected by IDIPOL=1-3. The electric force field is supplied in units of eV/Å. Dipole corrections to the potential (LDIPOL=.TRUE.) can and should be turned on to avoid interactions between the periodically repeated images.
+
+So the proper procedure to add electric field to a slab or molecular is adding:
+```
+EFIELD = 0.2            # Field strength - > 0.2eV/$$\Angstrom$$
+LDIPOL = .TRUE.         # Add dipole correction
+IDIPOL = 3              # Electric field direction is z(c) axis
+DIPOL  = 0.5 0.5 0.5    # dipole origin
+```
+__Caveats__:
+
+1. The symmetry should be switched off if the system is centro-symmetric (or at least mirror symmetric in the added field direction)
+
+2. `DIPOL`  should be set to the weight center of the structure. After countless tests, it seems this setting is most likely to help with the convergence during electronic minimization.
+
+## Result
+
+Using these tags and a 2D graphene layer (made into orthorhombic), I calculated the ion-clamped electric field response focusing on the charge and dipole properties.
+
+The electric field effect can be clearly seen from the integrated local potential profile. Note that the potential shift from higher at the bottom of the cell to lower at the top of the cell, vice versa.
+
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img1.svg)
+{: .center}
+
+The dipole moment induced by the potential shift can be seen from the differential charge calculated by:
+
+$$\rho_{diff}=\rho_{without field}-\rho_{with field}$$
+
+The result are show below:
+
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img2.png)
+{: .center}
+
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img3.png)
+{: .center}
+
+The yellow region indicates charge accumulation while the blue part suggests charge depletion.
+
+Clearly, the "up-ward" electric field induces a "up-ward" dipole moment and the "down-ward" electric field induces a "down-ward" dipole moment. (note that the direction of the dipole moment is opposite to the electric field direction)
+
+## Problem
+
+The total energy drops with respect to the field strength (in both direction). Since electric field is an external perturbation, this result is unphysical.
+
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img4.svg)
+{: .center}
+
+In [this post](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7366), the "admin" of the VASP forum suggest that:
+
+> the energy is correct and the first derivative of the energy w.r.t. a field should be the dipole.
+
+Which seems to be faulty since the direction of the dipole moment are opposite to the actual one in my calculation.
+
+Other's probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+
+A potential [solve](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)
+
+__NOTE__: QE also have this problem. Am I missing something?
+
+## Input
+
+I've put all input file in a zip file for download: [VASP].
+
+[VASP]:{{site.baseurl}}/assets/other/2019-07-13-Efield_problem.zip
