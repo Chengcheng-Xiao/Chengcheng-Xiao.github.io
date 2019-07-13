@@ -4,7 +4,7 @@ title: Puzzling effects of saw-tooth electric field in DFT code
 date: 2019-07-13
 tags: ["Electric_field"]
 categories: DFT
-description: Applying a saw-tooth electric field in VASP and QE seems to lower the total energy which is unphysical and puzzling.
+description: Applying a saw-tooth electric field in VASP seems yield a lower total energy which is unphysical and puzzling.
 ---
 
 ## Background
@@ -14,14 +14,14 @@ In VASP wiki:
 
 So the proper procedure to add electric field to a slab or molecular is adding:
 ```
-EFIELD = 0.2            # Field strength - > 0.2eV/$$\Angstrom$$
+EFIELD = 0.2            # Field strength
 LDIPOL = .TRUE.         # Add dipole correction
-IDIPOL = 3              # Electric field direction is z(c) axis
+IDIPOL = 3              # Electric field direction
 DIPOL  = 0.5 0.5 0.5    # dipole origin
 ```
 __Caveats__:
 
-1. The symmetry should be switched off if the system is centro-symmetric (or at least mirror symmetric in the added field direction)
+1. The symmetry should be switched off if the system is centro-symmetric (or at least mirror symmetric in the electric field direction)
 
 2. `DIPOL`  should be set to the weight center of the structure. After countless tests, it seems this setting is most likely to help with the convergence during electronic minimization.
 
@@ -33,6 +33,8 @@ The electric field effect can be clearly seen from the integrated local potentia
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img1.svg)
 {: .center}
+
+Notice the slope of the local potential in the vacuum region equals to the field strength `EFIELD`. Here I excluded the exchange part and only included the Hartree part of the local potential.
 
 The dipole moment induced by the potential shift can be seen from the differential charge calculated by:
 
@@ -61,13 +63,97 @@ In [this post](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7366)
 
 > the energy is correct and the first derivative of the energy w.r.t. a field should be the dipole.
 
-Which seems to be faulty since the direction of the dipole moment are opposite to the actual one in my calculation.
+Which seems to be faulty since the direction of the dipole moment calculated this way are opposite to the actual one in my calculation.
 
-Other's probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+The energy difference are listed below:
 
-A potential [solve](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)
+$\require{mediawiki-texvc}$
+ __$$E_{field}=0.0/\AA$$__:
 
-__NOTE__: QE also have this problem. Am I missing something?
+```
+DIPCOR: dipole corrections for dipol
+direction  3 min pos     1,
+dipolmoment           0.000000      0.000000     -0.000000 electrons x Angstroem
+Tr[quadrupol]       -30.699335
+
+energy correction for charged system         0.000000 eV
+dipol+quadrupol energy correction           -0.000000 eV
+added-field ion interaction          0.000000 eV  (added to PSCEN)
+
+
+Free energy of the ion-electron system (eV)
+ ---------------------------------------------------
+ alpha Z        PSCENC =         6.24865773
+ Ewald energy   TEWEN  =      2594.25031041
+ -Hartree energ DENC   =     -3088.11025622
+ -exchange      EXHF   =         0.00000000
+ -V(xc)+E(xc)   XCENC  =        55.11388191
+ PAW double counting   =      1719.67695615    -1722.38329519
+ entropy T*S    EENTRO =         0.00000000
+ eigenvalues    EBANDS =      -190.21985361
+ atomic energy  EATOM  =       588.50889549
+ Solvation  Ediel_sol  =         0.00000000
+ ---------------------------------------------------
+ free energy    TOTEN  =       -36.91470334 eV
+
+ energy without entropy =      -36.91470334  energy(sigma->0) =      -36.91470334
+ ```
+
+$\require{mediawiki-texvc}$
+ __$$E_{field}=0.2/\AA$$__:
+
+```
+DIPCOR: dipole corrections for dipol
+direction  3 min pos     1,
+dipolmoment           0.000000      0.000000      0.024143 electrons x Angstroem
+Tr[quadrupol]       -30.698904
+
+energy correction for charged system         0.000000 eV
+dipol+quadrupol energy correction           -0.000251 eV
+added-field ion interaction          0.000000 eV  (added to PSCEN)
+
+
+Free energy of the ion-electron system (eV)
+ ---------------------------------------------------
+ alpha Z        PSCENC =         6.24840700
+ Ewald energy   TEWEN  =      2594.25031041
+ -Hartree energ DENC   =     -3088.09457596
+ -exchange      EXHF   =         0.00000000
+ -V(xc)+E(xc)   XCENC  =        55.11360264
+ PAW double counting   =      1719.64714009    -1722.35346620
+ entropy T*S    EENTRO =         0.00000000
+ eigenvalues    EBANDS =      -190.23743061
+ atomic energy  EATOM  =       588.50889549
+ Solvation  Ediel_sol  =         0.00000000
+ ---------------------------------------------------
+ free energy    TOTEN  =       -36.91711714 eV
+
+ energy without entropy =      -36.91711714  energy(sigma->0) =      -36.91711714
+ ```
+
+ __Difference ($$E_{no-field}-E_{add-field}$$):__
+
+ ```
+ ---------------------------------------------------
+ alpha Z        PSCENC =     0.00025073
+ Ewald energy   TEWEN  =     0.00000000
+ -Hartree energ DENC   =    -0.01568026
+ -exchange      EXHF   =     0.00000000
+ -V(xc)+E(xc)   XCENC  =     0.00027927
+ PAW double counting   =     0.02981606	-0.02982899
+ entropy T*S    EENTRO =     0.00000000
+ eigenvalues    EBANDS =     0.01757700
+ atomic energy  EATOM  =     0.00000000
+ Solvation  Ediel_sol  =     0.00000000
+ ---------------------------------------------------
+ free energy    TOTEN  =       0.00241381 eV
+ ```
+The difference majorly arise from the `double counting Hartree energy`(See [🔗LINK](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
+
+__A potential [SOLVE](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)?__
+Others probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+
+__NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
 
 ## Input
 
