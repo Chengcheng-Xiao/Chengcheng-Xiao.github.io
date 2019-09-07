@@ -4,7 +4,9 @@ title: About
 permalink: /about/
 ---
 
-My name is Chengcheng Xiao, a graduate student majoring computational materials simulations. Currently a PhD candidate @ Imperal College London
+I am an electron wandering in the field of computational materials simulations. 
+
+Seriously, name's Chengcheng Xiao. currently a PhD candidate @ Imperal College London
 
 ### Research Area
 
