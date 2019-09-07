@@ -6,7 +6,7 @@ tags: ["Berryphase"]
 categories: DFT
 description:
 ---
-The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical $$PbTiO_{3}$$ system was tested using the same routine.
+The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical $$BaTiO_{3}$$ system was tested using the same routine.
 
 Before diving into things, let review some basic concepts that are of paramount importance to later calculations.
 
@@ -52,7 +52,7 @@ __Answer:__ *Calculate optimum transition route and extract the local maxima as 
 ## Implementation
 
 
-## System
+## 2D System
 2D-NbN, as an out of plane ferroelectric system suggested by Anuja et al, have exotic switchable out-of-plane (OOP) polarization which can happen without switching of ionic positions. I choose this to show how Berry phase method can, sometimes, be cumbersome and have boundaries in certain systems.
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img4.png)
@@ -119,11 +119,58 @@ Think about it, if we can define the origin of the cell using `DIPOL` and the el
 
 As of now, I don't know how to use VASP's berry phase  routine to calculate electronic polarization on the non-periodical direction (OOP).
 
-*_So, what about polarization on the periodical?_*
 
-Now lets consider a prototypical $$PbTiO_{3}$$ unitcell:
+----
 
-(*to be continued*)
+_**So, what about polarization on the periodical directions?**_
+
+----
+
+## 3D system
+Now lets consider a prototypical $$BaTiO_{3}$$ unitcell:
+
+
+By varying the atomic displacement from the centrosymmetric phase (CENT) to ferroelectric one (FE). VASP produce a series of ionic and electronic contribution to the total dipole moment.
+
+| Image | Ion (elect*A) | Electron (elect*A) |
+|-------|---------------|--------------------|
+| 0 (CENT)    | 0             | 0                  |
+| 1     | -12.01278     | -0.29138           |
+| 2     | -11.92507     | -0.58047           |
+| 3     | -11.83735     | -0.86532           |
+| 4     | -11.74963     | -1.14461           |
+| 5     | -11.66192     | -1.41757           |
+| 6 (FE) | -11.5742      | -1.68399           |
+
+It is clear that the centrosymmetric one has a wrong ionic contribution to the total polarziation.
+
+At first, I thought this is due to the imposed symmtry constraint. However, after switch off symmetry entirely (ISYM=-1), VASP still produce this abnormal value of 0.0 elect*A for centrosymmetric phase.
+
+After figure out which value is clearly wrong, we can now proceed to calculate total polarization
+```
+Total ionic contribution = 0.5258 elect*A
+Total electronic contribution = -1.68399 elect*A
+Total dipole moment = -1.15819
+Volume = 64.35864801 A^3
+
+Total polarization = -0.288293871 C/m^2
+```
+
+Exactly the same with [LINK](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
+
+By far, every thing works fine for the periodical system in VASP. The only problem is that the centrosymmetric phase's ionic part cannot be automatically calculated (or the output cannot be trusted).
+
+There are two way of solving this:
+
+  #1.calculate a series of structure points, linear fitting to make sure the "correctness" of the ionic part.
+
+  #2. manually calculate ionic contribution by:
+
+$$\mathbf{Dipole} = - \sum_j Z_j^{ion}\tau_j$$
+
+where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is its positions (relative to `DIPOL`). And substract the centrosymmetric one to the ferroelectric one. The minus sign is to count the charge sign of ions and electrons.
+
+_**So far so good.**_ I am now confident that at least, VASP's berryphase routine works correctly on periodical directions.
 
 
 ## QE berryphase
