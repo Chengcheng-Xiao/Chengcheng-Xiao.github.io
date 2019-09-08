@@ -4,7 +4,7 @@ title: Testing Berry phase method in VASP and QE for 2D system
 date: 2019-08-10
 tags: ["Berryphase"]
 categories: DFT
-description:
+description: The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical BaTiO3 system was tested using the same routine.
 ---
 The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical $$BaTiO_{3}$$ system was tested using the same routine.
 
@@ -49,8 +49,8 @@ __Side Note:__  *how to define a centrosymmetric phase?*
 __Answer:__ *Calculate optimum transition route and extract the local maxima as centrosymmetric phase.*
 
 
-## Implementation
-
+----
+----
 
 ## 2D System
 2D-NbN, as an out of plane ferroelectric system suggested by Anuja et al, have exotic switchable out-of-plane (OOP) polarization which can happen without switching of ionic positions. I choose this to show how Berry phase method can, sometimes, be cumbersome and have boundaries in certain systems.
@@ -69,7 +69,7 @@ The vacuum region is chosen as around 30 so that imaging counterpart does minimu
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img5.png)
 {: .center}
 
-## Charge Center method
+## VASP Charge Center method
 The charge center method is performed using this tool ([LINK](https://raw.githubusercontent.com/Chengcheng-Xiao/Tools/master/VASP/chgcent.py)). The final polarization obtained for intrinsic NbN monolayer is:
 
 $$Polarization=3.28 pC/m$$
@@ -122,25 +122,26 @@ As of now, I don't know how to use VASP's berry phase  routine to calculate elec
 
 ----
 
-_**So, what about polarization on the periodical directions?**_
+_**So, what about periodical directions?**_
 
 ----
 
-## 3D system
+## VASP 3D system
 Now lets consider a prototypical $$BaTiO_{3}$$ unitcell:
 
 
 By varying the atomic displacement from the centrosymmetric phase (CENT) to ferroelectric one (FE). VASP produce a series of ionic and electronic contribution to the total dipole moment.
 
-| Image | Ion (elect*A) | Electron (elect*A) |
-|-------|---------------|--------------------|
-| 0 (CENT)    | 0             | 0                  |
-| 1     | -12.01278     | -0.29138           |
-| 2     | -11.92507     | -0.58047           |
-| 3     | -11.83735     | -0.86532           |
-| 4     | -11.74963     | -1.14461           |
-| 5     | -11.66192     | -1.41757           |
-| 6 (FE) | -11.5742      | -1.68399           |
+|   Image  | Ion (elect*A) | Electron (elect*A) |
+|----------|---------------|--------------------|
+| 0 (CENT) | 0             | 0                  |
+| 1        | -12.01278     | -0.29138           |
+| 2        | -11.92507     | -0.58047           |
+| 3        | -11.83735     | -0.86532           |
+| 4        | -11.74963     | -1.14461           |
+| 5        | -11.66192     | -1.41757           |
+| 6 (FE)   | -11.5742      | -1.68399           |
+{: .center}
 
 It is clear that the centrosymmetric one has a wrong ionic contribution to the total polarziation.
 
@@ -172,7 +173,87 @@ where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is i
 
 _**So far so good.**_ I am now confident that at least, VASP's berryphase routine works correctly on periodical directions.
 
-
+----
+----
 ## QE berryphase
 
-(*to be continued*)
+### QE 2D systems
+
+QE uses three tag for berryphase calculations.
+
+```
+lberry        = .true.  #switch on berryphase routine
+gdir          = 3       #z axis
+nppstr        = 7       #number of kpoint
+```
+
+For 2D system, I choose the `nppstr` to be 1. This resulting in some error (FFT related). However, counterintuitively, changing `nppstr` to a larger number gives out correct answer.
+
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img7.png)
+{: .center}
+
+Note that the centrosymmetric phase does not have a polarization value of ZERO. Despite the overall trend of the graph is correct, this still puzzles me.
+
+### QE 3D system
+
+QE's example04 strangely did not calculate the polarization of the centrosymmetric phase.
+
+Here, using prototypical BaTiO3 as an example, the total polarization is calculated.
+
+**centrosymmetric phase**
+```
+VALUES OF POLARIZATION
+~~~~~~~~~~~~~~~~~~~~~~
+
+The calculation of phases done along the direction of vector 3
+of the reciprocal lattice gives the following contribution to
+the polarization vector (in different units, and being Omega
+the volume of the unit cell):
+
+P =   0.3069997  (mod  15.2444207)  (e/Omega).bohr
+
+P =   0.0007069  (mod   0.0351000)  e/bohr^2
+
+P =   0.0404125  (mod   2.0067288)  C/m^2
+
+The polarization direction is:  ( 0.00000 , 0.00000 , 1.00000 )
+```
+
+**Ferroelectric phase**
+```
+VALUES OF POLARIZATION
+~~~~~~~~~~~~~~~~~~~~~~
+
+The calculation of phases done along the direction of vector 3
+of the reciprocal lattice gives the following contribution to
+the polarization vector (in different units, and being Omega
+the volume of the unit cell):
+
+P =   2.4138432  (mod  15.2444207)  (e/Omega).bohr
+
+P =   0.0055578  (mod   0.0351000)  e/bohr^2
+
+P =   0.3177509  (mod   2.0067288)  C/m^2
+
+The polarization direction is:  ( 0.00000 , 0.00000 , 1.00000 )
+```
+
+Total polairzation  =  0.3177509-0.0404125 = 0.277 C/m2
+(Note that I forgot to add dipole correction to the QE calculations, but it did not hurt the final result much.)
+
+Almost identical to the VASP and experimental value.
+
+**Result**: QE can be used to calculate total polarization on both periodical and non-periodical directions.
+
+----
+
+## Input
+
+I've put all input file in a zip file for download: [Excel data],[VASP], [QE].
+
+[Excel data]:{{site.baseurl}}/assets/other/2019-08-05-2019-08-05-Berryphase_NbN.zip
+
+
+[VASP]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_VASP.zip
+
+[QE]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_QE.zip
