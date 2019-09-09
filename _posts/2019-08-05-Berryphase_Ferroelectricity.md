@@ -50,7 +50,6 @@ __Answer:__ *Calculate optimum transition route and extract the local maxima as 
 
 
 ----
-----
 
 ## 2D System
 2D-NbN, as an out of plane ferroelectric system suggested by Anuja et al, have exotic switchable out-of-plane (OOP) polarization which can happen without switching of ionic positions. I choose this to show how Berry phase method can, sometimes, be cumbersome and have boundaries in certain systems.
@@ -174,7 +173,6 @@ where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is i
 _**So far so good.**_ I am now confident that at least, VASP's berryphase routine works correctly on periodical directions.
 
 ----
-----
 ## QE berryphase
 
 ### QE 2D systems
@@ -244,6 +242,22 @@ Total polairzation  =  0.3177509-0.0404125 = 0.277 C/m2
 Almost identical to the VASP and experimental value.
 
 **Result**: QE can be used to calculate total polarization on both periodical and non-periodical directions.
+
+----
+
+_**2019-09-09 update**_
+
+I've figured out a way to mimic QE's `occupations = fixed` in VASP.
+
+First, do a scf calculation with default number of bands to obtain correct charge density.
+
+Then, using the previous charge density, do an nscf calculatin with fixed occupations (`ISMEAR = -2` and `FERWE` tags) to obtain berryphase polarization. Note that, we need to excluded any empty bands by fixing the number of bands (`NBAND`) and occupations.
+
+The results of this procedure are not pretty comparing to the QE and charge center method. Nevertheless, it works.
+
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img8.png)
+{: .center}
+
 
 ----
 
