@@ -4,24 +4,26 @@ title: Testing Berry phase method in VASP and QE for 2D system
 date: 2019-08-10
 tags: ["Berryphase"]
 categories: DFT
-description: The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical BaTiO3 system was tested using the same routine.
+description: The VASP and QE both have berry phase module that calculate the electronic polarization "automagically". However, their results always seem to be puzzling, especially for low dimensional systems. In order to get a clear picture of how to these routine perform in 2D systems and to show how to use them correctly, a 2D NbN system and a 3D BaTiO3 structure are employed here as an example.
 ---
-The VASP and QE both have berry phase module that calculate the electronic polarization automagically. However, their results always seem to be puzzling, especially for low dimensional systems. To get a clear picture of how to these routine performs in 2D systems, I used monolayer NbN sheet as an example, calculating dipole moment using both charge center method and berryphase one. Also, in order to compare with polarization lies within the periodical directions, an prototypical $$BaTiO_{3}$$ system was tested using the same routine.
+
+The VASP and QE both have berry phase module that calculate the electronic polarization "automagically". However, their results always seem to be puzzling, especially for low dimensional systems. In order to get a clear picture of how to these routine perform in 2D systems and to show how to use them correctly, a 2D NbN system and a 3D BaTiO3 structure were employed here as an example. To confirm their results, a charge-center method was also employed.
+
 
 Before diving into things, let review some basic concepts that are of paramount importance to later calculations.
 
 ## Background
 
-According to the modern theory of polarization, the electrical polarization depends on the difference of dipole moment between centro-symmetric system and non-centro-symmetric stucture. The reason behind is that the polairzation cannot be uniquely determined due to periodical boundary conditions.(That is, translation of unitcell vector can yield unphysical movements in the charge centers.)
+According to the modern theory of polarization, the electrical polarization depends on the difference of dipole moment between centro-symmetric structure and non-centro-symmetric stucture. The reason behind is that the polairzation cannot be uniquely determined due to periodical boundary conditions.(That is, translation of unitcell vector can yield unphysical movements in the charge centers.)
 
-Toillustrate this, first, consider a imaginary one dimensional atomic chain that have two differenc atoms: a anion and a cation.
+To illustrate this, first, consider a imaginary one dimensional atomic chain that have two differenc atoms: a anion and a cation.
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img1.png)
 {: .center}
 
 We can easily determine the dipole moment pointing from the anion to the cation.
 
-However, the physical world does not work in such simple way. If we take a step deeper, differentiate the electrons and ions, the problem become much harder to solve:
+However, the physical world does not work in such simple way. If we take a step further, differentiate the electrons and ions, the problem becomes much harder to solve:
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img2.png)
 {: .center}
@@ -35,14 +37,14 @@ And the positive charge center can be found:
 $$\langle R_{ion} \rangle = \Sigma_{i=A,B} R*Q_{i} /Q_{total}$$
 
 
-These expressions seem to be very easy to solve, but it actually depends on the choice of unicell. For example, if we translate the unitcell a litte to the right:
+These expressions are easy to solve, but the charge-center varies with the choice of unicell. For example, if we translate the unitcell by a fraction to the right:
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img3.png)
 {: .center}
 
-Taking a closer look at the picture, some charge "jumped" from the left end to the right end due to periodical conditions. And even though the structrure is unchanged, this translation changes the charge center of electrons while left the ion center unaffected.
+Taking a closer look at the charge distribution, some of which "jumped" from the left end to the right end due to periodical conditions. And even though the structure is unchanged, this translation motion changes the charge center of electrons while left the ion center unaffected.
 
-To eliminate this ambiguity, Vanderbile and others found out that it is not the dipole moment for non-centrosymmetric phase that matters, the actual polarization depends on the change of polarization from the non-centrosymmetric phase to the centro-symmetric phase.
+To eliminate this ambiguity, Vanderbilt and others found out that it is not the dipole moment for non-centrosymmetric phase that matters, the actual polarization depends on the change of polarization from the non-centrosymmetric phase to the centro-symmetric phase.
 
 __Side Note:__  *how to define a centrosymmetric phase?*
 
@@ -51,7 +53,7 @@ __Answer:__ *Calculate optimum transition route and extract the local maxima as 
 
 ----
 
-## 2D System
+## VASP 2D System
 2D-NbN, as an out of plane ferroelectric system suggested by Anuja et al, have exotic switchable out-of-plane (OOP) polarization which can happen without switching of ionic positions. I choose this to show how Berry phase method can, sometimes, be cumbersome and have boundaries in certain systems.
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img4.png)
@@ -63,12 +65,12 @@ $$\Delta=Z_{Nb}-Z_{N}$$
 
 Due to the fact that this structure possess OOP polarization in which the periodical conditions are broken, the charge center can be uniquely defined since the charge density reverts to zero at the vacuum region.
 
-The vacuum region is chosen as around 30 so that imaging counterpart does minimum effects on each other.
+The vacuum region is chosen as around 30 Angstrom with an atrifical dipole layer so that imaging counterpart has no effects.
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img5.png)
 {: .center}
 
-## VASP Charge Center method
+### Charge Center method
 The charge center method is performed using this tool ([LINK](https://raw.githubusercontent.com/Chengcheng-Xiao/Tools/master/VASP/chgcent.py)). The final polarization obtained for intrinsic NbN monolayer is:
 
 $$Polarization=3.28 pC/m$$
@@ -78,7 +80,9 @@ And the transition curve is obtained almost identical to the published result:
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img6.png)
 {: .center}
 
-## VASP berryphase
+This confirms the "correctness" of my charge center method even though in paper they used the berryphase method.
+
+### berryphase
 To avoid error as mentioned in [LINK](https://www.sciencedirect.com/science/article/pii/S0022459612003234), I performed both automatic and manual berryphase calculation using the tag:
 ```
 LDIPOL = .TRUE.
@@ -114,18 +118,19 @@ ionic dipole moment: p[ion]=(    -6.30632    12.74335     0.00000 ) e*Angst
 No matter how I tried: a different K-points, a different DIPOL value ... the `p[elc]` does not change and stays at around 30 e*Angst.
 One thing that I notice: changing DIPOL tag greatly affects the convergence (mostly due to add in dipole corrections) and `p[ion]` value. But it does absolutely nothing to `p[elc]` which is puzzling.
 
-Think about it, if we can define the origin of the cell using `DIPOL` and the electronic polarization does not change with this tag, how can we confidently say adding the electronic part to the ionic part is the right way to obtain the total  polarization?
+Think of it this way, if we can define the origin of the cell using `DIPOL` and the electronic polarization does not change with this tag, how can we confidently say adding the electronic part to the ionic part is the right way to obtain the total  polarization?
 
-As of now, I don't know how to use VASP's berry phase  routine to calculate electronic polarization on the non-periodical direction (OOP).
+As of now, I don't know how to use VASP's berry phase routine to calculate electronic polarization on the non-periodical direction (OOP).
 
 
-----
+&nbsp;
 
 _**So, what about periodical directions?**_
 
-----
+&nbsp;
 
 ## VASP 3D system
+### Berryphase
 Now lets consider a prototypical $$BaTiO_{3}$$ unitcell:
 
 
@@ -170,12 +175,11 @@ $$\mathbf{Dipole} = - \sum_j Z_j^{ion}\tau_j$$
 
 where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is its positions (relative to `DIPOL`). And substract the centrosymmetric one to the ferroelectric one. The minus sign is to count the charge sign of ions and electrons.
 
-_**So far so good.**_ I am now confident that at least, VASP's berryphase routine works correctly on periodical directions.
+_**So far so good.**_ I am now confident that, at least, VASP's berryphase routine works correctly on periodical directions.
 
 ----
-## QE berryphase
-
-### QE 2D systems
+## QE 2D system
+### Berryphase
 
 QE uses three tag for berryphase calculations.
 
@@ -192,7 +196,7 @@ For 2D system, I choose the `nppstr` to be 1. This resulting in some error (FFT 
 
 Note that the centrosymmetric phase does not have a polarization value of ZERO. Despite the overall trend of the graph is correct, this still puzzles me.
 
-### QE 3D system
+## QE 3D system
 
 QE's example04 strangely did not calculate the polarization of the centrosymmetric phase.
 
@@ -249,11 +253,19 @@ _**2019-09-09 update**_
 
 I've figured out a way to mimic QE's `occupations = fixed` in VASP.
 
-First, do a scf calculation with default number of bands to obtain correct charge density.
+First, do an `scf` calculation with default number of bands to obtain correct charge density.
 
-Then, using the previous charge density, do an nscf calculatin with fixed occupations (`ISMEAR = -2` and `FERWE` tags) to obtain berryphase polarization. Note that, we need to excluded any empty bands by fixing the number of bands (`NBAND`) and occupations.
+Then, using the previous charge density, do an `nscf` calculatin to obtain berryphase polarization. Note that, we need to excluded any empty bands by fixing the number of bands (`NBAND`) and occupations.
 
-The results of this procedure are not pretty comparing to the QE and charge center method. Nevertheless, it works.
+__OR__
+
+If the conduction band have minimum overlap with the valence band, simply just change the number of bands to assume a insulator. This usually work for most of the 2D cases if the calculation can be successfully converged.
+
+&nbsp;
+
+The results of this procedure are not pretty comparing to the QE and charge center method.
+
+Nevertheless, it works.
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img8.png)
 {: .center}
@@ -266,7 +278,6 @@ The results of this procedure are not pretty comparing to the QE and charge cent
 I've put all input file in a zip file for download: [Excel data],[VASP], [QE].
 
 [Excel data]:{{site.baseurl}}/assets/other/2019-08-05-2019-08-05-Berryphase_NbN.zip
-
 
 [VASP]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_VASP.zip
 
