@@ -155,6 +155,18 @@ Others probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.
 
 __NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
 
+__*UPDATE-2019-01-02*__
+After discussion with Arash, I was told that the normal SCF step does not take electric field-dipole interaction into consideration. To fix this, we have to convert the total energy into an enthalpy function by adding the electric field-dipole interaction term:
+
+$$E_{total}=E_{scf}-dipole*E_{field}$$
+
+Using a [convient script](https://github.com/Chengcheng-Xiao/Tools/blob/master/VASP/chgcent.py) , I obtained the result below.
+
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img5.png)
+{: .center}
+
+All is well now. Phew.
+
 ## Input
 
 I've put all input file in a zip file for download: [VASP].
