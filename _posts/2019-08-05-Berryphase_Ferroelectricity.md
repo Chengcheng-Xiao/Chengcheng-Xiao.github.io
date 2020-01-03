@@ -138,7 +138,7 @@ By varying the atomic displacement from the centrosymmetric phase (CENT) to ferr
 
 |   Image  | Ion (elect*A) | Electron (elect*A) |
 |----------|---------------|--------------------|
-| 0 (CENT) | 0             | 0                  |
+| 0 (CENT) | +00.00000     | +0.00000           |
 | 1        | -12.01278     | -0.29138           |
 | 2        | -11.92507     | -0.58047           |
 | 3        | -11.83735     | -0.86532           |
@@ -150,6 +150,24 @@ By varying the atomic displacement from the centrosymmetric phase (CENT) to ferr
 It is clear that the centrosymmetric one has a wrong ionic contribution to the total polarziation.
 
 At first, I thought this is due to the imposed symmtry constraint. However, after switch off symmetry entirely (ISYM=-1), VASP still produce this abnormal value of 0.0 elect*A for centrosymmetric phase.
+
+--------
+
+_**2019-12-25 update start**_
+
+This abnormal value of 0.0 corresponds to the jump of Ti atom located at the boundary of the unit cell. Specifically:
+```
+(Fractioanl coordinates)
+
+O[1] @ CENT : 0.5  0.5  0.0
+
+O[1] @ FE   : 0.5  0.5  0.975
+```
+since Ti pseudopotential contains 6 valence electrons, we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect*A. Remember, here I've set the reference zero of the dipole moment to be at the center of the cell (0.5 0.5 0.5).
+
+It appears that the electronic part does not need any fixing.
+
+--------
 
 After figure out which value is clearly wrong, we can now proceed to calculate total polarization
 ```

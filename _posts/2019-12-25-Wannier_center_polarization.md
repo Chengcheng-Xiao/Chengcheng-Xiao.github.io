@@ -43,7 +43,7 @@ For the __result__, I refer back to one of my previous [post]({% post_url 2019-0
 
 |   Image  | Ion (elect*A) | Electron (elect*A) |
 |----------|---------------|--------------------|
-| 0 (CENT) |  +0.00000     | +0.00000           |
+| 0 (CENT) | +00.00000     | +0.00000           |
 | 1        | -12.01278     | -0.29138           |
 | 2        | -11.92507     | -0.58047           |
 | 3        | -11.83735     | -0.86532           |
@@ -51,8 +51,9 @@ For the __result__, I refer back to one of my previous [post]({% post_url 2019-0
 | 5        | -11.66192     | -1.41757           |
 | 6 (FE)   | -11.5742      | -1.68399           |
 {: .center}
+>we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect*A.
 
->After figure out which value is clearly wrong, we can now proceed to calculate total polarization
+>After figure out which value is clearly wrong, we can now proceed to calculate total polarization:
 
 ```
 Total ionic contribution = 0.5258 elect*A
@@ -69,7 +70,7 @@ In this section, I will introduce the usage of VASP2WANNIER interface as well as
 
 - Wannier functions are a set of localized functions generated using Fourier transformation of periodic bloch functions.
 - We only use valence bands to generate Wannier functions so that the square of it can represent the charge density.
-- Each Wannier function "corresponds" to a energy band, hence, each Wannier function should be occupied by 2 electrons (or 1 if we treat each spin channel separately).
+- Each Wannier function "corresponds" to an energy band, hence, each Wannier function is occupied by 2 electrons (or 1 if we treat each spin channel separately).
 
 ### Fat band analysis
 We need fat band analysis in order to get a sense of how our valence band are composed.
