@@ -163,7 +163,7 @@ O[1] @ CENT : 0.5  0.5  0.0
 
 O[1] @ FE   : 0.5  0.5  0.975
 ```
-since Ti pseudopotential contains 6 valence electrons, we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect*A. Remember, here I've set the reference zero of the dipole moment to be at the center of the cell (0.5 0.5 0.5).
+since Ti pseudopotential contains 6 valence electrons, we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect * Ang. Since VASP output unit in elect * Ang, we have to account for electrons negative sign, so the ionic polarization @ CENT = -12.9 elect * A
 
 It appears that the electronic part does not need any fixing.
 
@@ -173,11 +173,12 @@ After figure out which value is clearly wrong, we can now proceed to calculate t
 ```
 Total ionic contribution = 0.5258 elect*A
 Total electronic contribution = -1.68399 elect*A
-Total dipole moment = -1.15819
+Total dipole moment = -1.15819 elect*A
 Volume = 64.35864801 A^3
 
-Total polarization = -0.288293871 C/m^2
+Total polarization = 0.288293871 C/m^2
 ```
+Note we have to account for the negative sign of electron here. To do so, I added the negative sign to the final result.
 
 Exactly the same with [LINK](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
 
@@ -191,7 +192,9 @@ There are two way of solving this:
 
 $$\mathbf{Dipole} = - \sum_j Z_j^{ion}\tau_j$$
 
-where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is its positions (relative to `DIPOL`). And substract the centrosymmetric one to the ferroelectric one. The minus sign is to count the charge sign of ions and electrons.
+where $$Z_j^{ion}$$ is the valence electron number of atom j and $$\tau_j$$ is its positions (relative to `DIPOL`). And substract the centrosymmetric one to the ferroelectric one. The minus sign is to count for the charge sign of electron so that the final ionic contribution is in elect * A.
+
+>_**WARNING**_ The sign convention for the ionic part is very important. If you decided to do the ionic part yourself, please, for the love of god, remember change dot the dipole moment of each structure's result with a minus sign and **ADD** it to VASP's electronic part (so that they are both in elect * A). And remember to flip the sign of the final result (in C/M^2).
 
 _**So far so good.**_ I am now confident that, at least, VASP's berryphase routine works correctly on periodical directions.
 

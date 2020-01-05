@@ -51,17 +51,17 @@ For the __result__, I refer back to one of my previous [post]({% post_url 2019-0
 | 5        | -11.66192     | -1.41757           |
 | 6 (FE)   | -11.5742      | -1.68399           |
 {: .center}
->we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect*A.
+>we can easily calculate its ionic dipole moment at centrosymmetric phase should be -12.09 elect*A.
 
 >After figure out which value is clearly wrong, we can now proceed to calculate total polarization:
 
 ```
 Total ionic contribution = 0.5258 elect*A
 Total electronic contribution = -1.68399 elect*A
-Total dipole moment = -1.15819
+Total dipole moment = -1.15819 elect*A
 Volume = 64.35864801 A^3
 
-Total polarization = -0.288293871 C/m^2
+Total polarization = 0.288293871 C/m^2
 ```
 
 ## Wannier result
@@ -172,14 +172,14 @@ To calculate the ionic contribution to the polarization, first find each ions co
 
 $$\mathbf{P}_{ion}=\Sigma_{I} C_{I}  \mathbf{R}_{I} $$
 
-sincd r and R are vectors, in order to get the total polarization, we have to do this on three axis and then add them up using vector summation. Here, I only care the polarization at Z axis, so I ignored the other axis's contribution. My result follows:
+sincd r and R are vectors, in order to get the total polarization, we have to do this on three axis and then add them up using vector summation. Here, I only care the polarization at Z axis, so I ignored the other axis's contribution. My result follows [note the minus sign in Ionic part is due to electrons negative charge sign]:
 
 ```
-Ionic dipolemoment(elect*A):     72.0767  
-electric dipolemoment(elect*A):  78.9870
-Total dipolemoment(elect*A):     6.91031
-Volume(A^3):                     64.3586
-Total polarization(C/M^2):       1.72001
+Ionic dipolemoment(elect*A):     -72.0767  
+electric dipolemoment(elect*A):   78.9870
+Total dipolemoment(elect*A):      06.9103
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):       -01.7200
 ```
 
 This value is drastically large than the one we get using Berryphase method. There must be something wrong here!
@@ -192,30 +192,33 @@ Where N equals to some integer number that represent the number of electron get 
 
 Taking a closer look at our structure, the FE one have one oxygen at ~3A while it goes to 0A in the centrosymmetric phase. An atom moving 3A durinng phase transition is not ideal! Intuitively, one may think "OK, thats alright, we have periodic boundary, so we only have to move this atom up-wards to the boundary." Yes, this is indeed the case, but our method cannot deal with this, that why the __polarization quantum__ is always linked with the lattice parameters and the polarization curve (displacement vs polarization) is multi-valued.
 
-To solve this, simply substract one lattice parameter Z from the atomic position as well as the corresponding __Wannier Charge Centers__, we get:
+To solve this, simply substract one lattice parameter Z from the atomic position as well as the corresponding __Wannier Charge Centers__, we get [note the minus sign in Ionic part is due to electrons negative charge sign]:
 
 ```
-Ionic dipolemoment(elect*A):     48.8757  
-electric dipolemoment(elect*A):  46.7191
-Total dipolemoment(elect*A):     -1.1567
-Volume(A^3):                     64.3586
-Total polarization(C/M^2):       -0.2879
+Ionic dipolemoment(elect*A):     -48.8757  
+electric dipolemoment(elect*A):   46.7191
+Total dipolemoment(elect*A):     -01.1567
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):        00.2879
 ```
 This way, our polarization calculated via Wannier functions is almost identical to the Berry phase result.
 
 ### calculate polarization __with__ centrosymmetric phases
 If we stick with the method described above, finding where went wrong can be tedious for a different, say, larger system, especially when you are confused of which wannier function belongs to which atom. And yes, there is another way of dealing with the __polarization quantum__, that is to subtract the centrosymmetric's dipolemoment from the Ferroelectric one.
 
-Sill , we need to move the atom position to the same brach, here I move the centrosymmetric phase's Oxygen from 0A to 4.0335A which is one lattice constant on the Z axis. Resulting data are:
+Sill , we need to move the atom position to the same brach, here I move the centrosymmetric phase's Oxygen from 0A to 4.0335A which is one lattice constant on the Z axis. Resulting data are [note the minus sign in Ionic part is due to electrons negative charge sign]:
 ```
-Ionic dipolemoment(elect*A):     72.6030
-electric dipolemoment(elect*A):  80.6700
-Total dipolemoment(elect*A):     -8.0670
-Volume(A^3):                     64.3586
-Total polarization(C/M^2):       -2.0080
+Ionic dipolemoment(elect*A):     -72.6030
+electric dipolemoment(elect*A):   80.6700
+Total dipolemoment(elect*A):      08.0670
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):       -02.0080
 ```
 
-substracting this from the FE's result, we get -0.2879C/M^2, exactly the same as our previous method yields.
+substracting this from the FE's result, we get 0.2879C/M^2, exactly the same as our previous method yields.
+
+>_**WARNING**_ The sign convention for the ionic part is very important. Please, for the love of god, remember change dot the dipole moment of each structure's result with a minus sign and **ADD** it to the electronic part (so that they are both in elect * A). And remember to flip the sign of the final result (in C/M^2).
+
 
 ## Conclusion
 The calculation of the macroscopic electric polarizations can have many pitfalls, and almost all of them are related to the __polarization quantum__. Check your structures and make sure they are on the same brach can have many beneficial effect!
