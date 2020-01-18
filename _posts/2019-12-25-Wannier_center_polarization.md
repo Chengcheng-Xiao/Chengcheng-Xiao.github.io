@@ -9,7 +9,7 @@ description: A brief guide for calculating macroscopic polarization using Wannei
 
 ## Background
 
-According to "the Modern theory of polarization", in a continous-k formulation, the polarizatin $$\mathbf{P}_{el}$$ value is $$ - f e / (2 \pi)^3$$ times teh sum of valence-band Berry phase. On another note, Wannier charge center can be convieniently linked to the Berryphase of valence band via a Fourier transformation. Thus, we should be able to calculate the ferroelectric polarization using Wannier interpolation of Bloch bands.
+According to "the Modern theory of polarization", in a continous-k formulation, the polarizatin $$\mathbf{P}_{el}$$ value is $$ - f e / (2 \pi)^3$$ times the sum of valence-band Berry phase. On another note, Wannier charge center can be convieniently linked to the Berryphase of valence band via a Fourier transformation. Thus, we should be able to calculate the ferroelectric polarization using Wannier interpolation of Bloch bands.
 
 ## Objectives
 
