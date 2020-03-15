@@ -155,17 +155,24 @@ Others probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.
 
 __NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
 
-__*UPDATE-2019-01-02*__
-After discussion with Arash, I was told that the normal SCF step does not take electric field-dipole interaction into consideration. To fix this, we have to convert the total energy into an enthalpy function by adding the electric field-dipole interaction term:
+~~__*UPDATE-2019-01-02*__~~
+~~After discussion with Arash, I was told that the normal SCF step does not take electric field-dipole interaction into consideration. To fix this, we have to convert the total energy into an enthalpy function by adding the electric field-dipole interaction term:~~
 
-$$E_{total}=E_{scf}-dipole*E_{field}$$
+~~$$E_{total}=E_{scf}-dipole*E_{field}$$~~
 
-Using a [convient script](https://github.com/Chengcheng-Xiao/Tools/blob/master/VASP/chgcent.py) , I obtained the result below.
+~~Using a [convient script](https://github.com/Chengcheng-Xiao/Tools/blob/master/VASP/chgcent.py) , I obtained the result below.~~
 
 ![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img5.png)
 {: .center}
 
-All is well now. Phew.
+~~All is well now. Phew.~~
+
+__*UPDATE-2020-03-15*__
+After some more digging:
+
+> The main difficulty is the nature of the scalar potential ‘-E*r’, which is nonperiodic and unbounded from below. The nonperiodicity of the potential means that methods based on Bloch’s theorem do not apply. As a result of its unboundedness, the energy can always be lowered by transferring charge from the valence states in one region to conduction states in a distant region.
+
+Ref: [10.1103/PhysRevLett.89.117602](http://doi.org/10.1103/PhysRevLett.89.117602)
 
 ## Input
 
