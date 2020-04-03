@@ -291,6 +291,21 @@ Nevertheless, it works.
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img8.png)
 {: .center}
 
+__*UPDATE-2020-03-15*__
+Q: What if we change the centro-symmetric phase for the NbN? Would this behavior (polarization changes sign without structural flip) be a route dependent??
+
+A: No, because the total polarization is smaller than the max opposite polarization, and the Born effective charge (or the slope of the polarization curve) for the flat structure and stable buckled structure are opposite.
+
+But, if the total polarization is larger than the max opposite polarization, qualitatively, this phenomena could change with different centro-symmetric reference structure. However, the polarization curve will still have two turning points.
+
+__*UPDATE-2020-04-01*__
+1. The position of the dipole layer in VASP is set by (DIPOL+0.5) in fractional coordinates.
+2. `LVTOT` and `LVHAR` should converge in vacuum. `LVTOT` converges slower than `LVHAR`.
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img9.png)
+{: .center}
+
+
+
 
 ----
 
