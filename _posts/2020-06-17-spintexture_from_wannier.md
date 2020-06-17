@@ -26,20 +26,29 @@ $$\textbf{H}_{soc} = \gamma \sigma \cdot L$$
 
 where $$S$$ and $$L$$ are the spin operator(Pauli matrix) and the angular momentum operator, $$\gamma$$ is the spin-orbital coupling strength constant.
 
+The Goal of this tutorial is to show you how to plot the spin texture directly from DFT and how to calculate it from diagonalising the Wanneir Hamiltonian and calculating the spin eigenvalues your self.
+
+You may ask: If we can already get those directly from DFT then why do we need to do it again with Wannier functions?
+Well, I can only say it's a fun thing to do. And it can be generalised if you want to, say, calculate the spin eigenvalues at specific K-point and Band number for an expended TB Wannier/TB Hamiltonian. (Which is an important thing for the topological people🤓)
+
+In the following sections, I'll use monolayer $$\mathrm{In}_{2}\mathrm{Se}_3$$ as an example to calculate spin texture. Note that because this is a 2D system, I'm plotting a 2D spin texture. For 3D systems, You can also plot them in 3D. Or you can still use 2D plot by slicing the Brillouin zone.
+
 ## VASP
-### implementation
+### Implementation
 VASP only consider the SOC effect in "the immediate vicinity of the nuclei" which they uses the PAW spheres as the boundary.
 This means they have to use the all-electron partial waves to calculate the spin orbital matrix element and subsequently the total add-on energy.
-If you take a close look at the source code, you will find the overlap is calculated by sandwiching the overlap operator
+If you take a close look at the source code, you will find the overlap is calculated by sandwiching the overlap operator:
 
 $$\textbf{S} = \textbf{1}+\sum_{ij} Q_{ij} |\beta_{i}><\beta_{j}|$$
 
+As long as we have the overlap operator, we can dot what ever we like to the Bloch functions!
+
 ### How to?
-VASP already provide the projected spin expectation value for each orbital (in x,y,z direction) in `PROCAR` file.
+VASP already provide the projected spin expectation value for each orbital (in x,y,z order) in the `PROCAR` file.
 
-we can use [pyprocar](https://github.com/romerogroup/pyprocar) to plot it.
+we can use [__pyprocar__](https://github.com/romerogroup/pyprocar) to plot it.
 
-```
+```python
 import pyprocar
 pyprocar.repair('PROCAR') # usually needed.
 pyprocar.fermi2D('PROCAR-repaired', outcar='OUTCAR', st=True, energy=-0.14, noarrow=False, spin=1, code='vasp')
@@ -50,31 +59,38 @@ __Now, results!__
 ![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img1.png)
 {: .center}
 
-This is a 2D plot of the spin texture. the x and y axis are the rec. space vectors (well, not exactly. Since we have a hex cell, but you konw the gist). The cut energy is set 0.14eV below fermi level, and we have 2 black circle-shape thingy.
-They correspond to two different bands, and judging by the arrows (they are the spin expectation vectors in x-y plane), we can safely say they correspond to the opposite spin of a single orbital (in "collinear" sense, up and down).
+This is a 2D plot of the spin texture. The x and y axis are the rec. space vectors (well, not exactly. Since we have a hex cell, but you get the gist) and the arrows are the spin expectation vectors in the x-y plane, and the colour of those arrows correspond to the expectation values on the out of plane z direction.
+The cut energy is set to 0.14eV below the fermi level.
+As you can clearly see, we have 2 black circle-shaped thingy on the plot.
+They correspond to two different bands, and judging by the arrows, we can safely say they correspond to the opposite spin of a single orbital (in "collinear" sense, spin up and spin down).
 
 ## Wannier90
-### implementation
-In the projection routine, VASP project the Bloch function onto a set of pure guiding functions with only one spinor component (this is not necessarily true since I've changed it in my fix, allowing one to specify spin quantisation axis but thats different).
-In the mean time, VASP doesn't support writing spin matrix element for each k-point and band (yet, I'll try to implement it [here](https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix)).
-So if the projection is skewed and we need to mix everything together by doing iterative minimisation (e.g. random projection and a large `num_iter`), then we cannot guarantee the spinor components are well separated and cannot get the right spin-texture.
-However, if our initial guess is pretty good (e.g. we can get perfect band interpolation without iterative minimisation), it is usually safe to assume we will get the right spin-texture. On a side note, I found that even with some mixing, if the initial guess is good, we can still get good result.
+### Implementation
+In the projection routine, VASP projects the Bloch functions onto a set of pure guiding functions with only one spinor component (this is not necessarily true, I've changed this behaviour in my [__fix__](https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix), allowing one to specify spin quantisation axis, but I guess thats different).
+In the mean time, VASP doesn't support writing spin matrix element for each k-point and band (yet, I'll try to implement it in the future).
+So if the projection is skewed and we need to mix everything together by doing iterative minimisation (e.g. random projection and a large `num_iter`), then, we cannot guarantee the spinor components are well separated and our spin-textures are right.
+However, if our initial guess is pretty 'on-the-spot' (e.g. we can get perfect band interpolation without iterative minimisation).
+We are usually safe to assume that the end results are correct.
+
+On a side note, I found that if the initial guess is good enough, even with some mixing, we can still get good results.
 
 ### How to?
-We need:
+You need:
   - `hr.dat` file
   - `.win` file
   - `\_band*` file
 
-If you dont know how to calculate Wannier functions, go [here](https://github.com/Chengcheng-Xiao/TB_play)!
+If you don't know how to calculate Wannier functions, click [__here__](https://github.com/Chengcheng-Xiao/TB_play)!
 
-I've decided to use [pythtb](https://www.physics.rutgers.edu/pythtb/) as my diagonalisation tool (I'm lazy and I use python 2. Yeah, I know what you thinking...)
+I've decided to use [__pythtb__](https://www.physics.rutgers.edu/pythtb/) as my diagonalisation tool (I'm lazy and I use python 2. Yeah, I know, I will port everything to python 3 tomorrow, I promise...)
 
-Since the Hamiltonian and the Pauli matrix commutes. After we obtained the eigenvectors from diagonalising the Hamiltonian, we can apply the coefficients to the Pauli matrix and obtain the expectation value. Since we are in linear territory, we can add the up/down components' coefficients and apply the Pauli matrix or apply Pauli matrix to each set of spinors (for each orbital) and added them up.
-Choose you flavour.
+Since the Hamiltonian and the Pauli matrix commute. After obtained the eigenvectors from diagonalising the Hamiltonian, we can apply the coefficients to the Pauli matrix and obtain the spin expectation value.
+As we are still in linear realm, we can sum up every orbitals' coefficients (with the same spinor component) and apply the Pauli matrix to that big 'all-in-one' spinor wavefunction or apply Pauli matrix to each set of spinors for each orbital and added them up.
+__Choose you warrior!__
 
-It's coding time! (I use [Atom](https://atom.io/) and [hydrogen](https://atom.io/packages/hydrogen) so `#%%` has special meaning, check it out!)
-```
+It's coding time! (I use [__Atom__](https://atom.io/) and [__Hydrogen__](https://atom.io/packages/hydrogen) so `#%%` has special meaning, check it out!)
+
+```python
 #!/usr/bin/env python
 
 from pythtb import * # import TB model class
@@ -163,7 +179,7 @@ ax.plot([x1, x2, x2, x1, x1], [y1, y1, y2, y2, y1], "-",
 ax.set_title("band# "+str(nband))
 plt.savefig("fermi_surface_band_"+str(nband)+".png", dpi=300)
 ```
-__And now, some tasters:__
+__Result time!__
 
 ![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img2.png)
 {: .center}
@@ -171,12 +187,15 @@ __And now, some tasters:__
 ![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img3.png)
 {: .center}
 
-Here, I'm plotting the spin textrue for two band (No. 17 and No. 18).
-I did not use the cut plane method (contrary to the 'direct from DFT' method), instead, I'm showing the eigenvalue of each band with different colour. `Yellow -> higher in energy`, `Black -> lower in energy`.
+Here, I'm plotting the spin textrue for two band (No. 16 and No. 17).
+I'm using the cut plane method here (contrary to the 'direct from DFT' method).
+Instead, I'm showing the eigenvalue of each band with different colour.
+`Yellow -> higher in energy`, `Black -> lower in energy`.
 
 Well, to me, they look __pretty good__ and __similar to the DFT result__.
+
 ## Caveats
-for Wanneir90 v2.1.0+, I've changed the spinor order in the VASP2wannier90 interface.
+for Wanneir90 v2.1.0+, I've changed the default spinor order in the VASP2WANNIER90 interface.
 The new spinor orbital order (example):
 ```
 site 1 projection s  (spin_1)
@@ -196,6 +215,7 @@ site 1 projection s  (spin_2)
 site 1 projection px (spin_2)
 site 1 projection py (spin_2)
 ```
+And you can always specify which component you want to project! Pretty neat huh?!
 
 ## Input
 
