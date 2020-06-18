@@ -32,7 +32,7 @@
 }
 
 .box {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 /* Grid
@@ -313,9 +313,9 @@ label > .label-body {
 
 
 /* Lists
-–––––––––––––––––––––––––––––––––––––––––––––––––– 
+––––––––––––––––––––––––––––––––––––––––––––––––––
 ul {
-  list-style: circle inside; 
+  list-style: circle inside;
 }
 ol {
   list-style: decimal inside; }
@@ -343,6 +343,8 @@ code {
   white-space: nowrap;
   background: #F1F1F1;
   border: 1px solid #E1E1E1;
+  overflow: auto;
+  overflow-y: hidden;
   border-radius: 4px; }
 pre > code {
   display: block;
@@ -366,7 +368,7 @@ td:last-child {
 
 
 /* Spacing
-–––––––––––––––––––––––––––––––––––––––––––––––––– 
+––––––––––––––––––––––––––––––––––––––––––––––––––
 button,
 .button {
   margin-bottom: 1rem; }
@@ -428,8 +430,8 @@ hr {
   display: table;
   clear: both; }
 
-  
-/* Images 
+
+/* Images
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 img {
@@ -437,7 +439,7 @@ img {
     vertical-align: middle;
 }
 
-/* blockquote */ 
+/* blockquote */
 
 blockquote {
   margin: 1.5rem 0;
@@ -447,4 +449,4 @@ blockquote {
   line-height: 1.8rem;
   border-left: 3px solid #D0E5F2;
   font-size: 1.3rem;
-} 
+}
