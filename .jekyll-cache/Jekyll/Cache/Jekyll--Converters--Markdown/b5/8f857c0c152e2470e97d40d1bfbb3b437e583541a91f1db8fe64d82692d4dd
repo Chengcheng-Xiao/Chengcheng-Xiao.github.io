@@ -1,0 +1,112 @@
+I"¹<p>Simple is a beautiful but functional jekyll theme. The font-type setting looks really good when writers use CJK mixed with English.</p>
+
+<p>First of all, letâ€™s have a glance at the basic styles: <a href="http://github.com/wild-flame/jekyll-simple">link</a>, <strong>strong</strong>, <em>italic</em>, <del>deletion</del>, <ins>insertion</ins>.</p>
+
+<!--description-->
+
+<h3 id="headers">Headers:</h3>
+
+<h1 id="header-1">Header 1</h1>
+
+<h2 id="header-2">Header 2</h2>
+
+<h3 id="header-3">Header 3</h3>
+
+<h4 id="header-4">Header 4</h4>
+
+<h5 id="header-5">Header 5</h5>
+
+<h6 id="header-6">Header 6</h6>
+
+<h3 id="lists">Lists:</h3>
+
+<ul>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li>list item 3</li>
+</ul>
+
+<ol>
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li>list item 3</li>
+</ol>
+
+<h3 id="blockquote">Blockquote:</h3>
+
+<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</blockquote>
+
+<h3 id="basscss-colors"><a href="http://www.basscss.com/">BASSCSS</a> colors:</h3>
+
+<ul>
+  <li><span class="black">black</span></li>
+  <li><span class="gray">gray</span></li>
+  <li><span class="silver">silver</span></li>
+  <li><span class="white">white</span></li>
+  <li><span class="aqua">aqua</span></li>
+  <li><span class="blue">blue</span></li>
+  <li><span class="navy">navy</span></li>
+  <li><span class="teal">teal</span></li>
+  <li><span class="green">green</span></li>
+  <li><span class="olive">olive</span></li>
+  <li><span class="lime">lime</span></li>
+  <li><span class="yellow">yellow</span></li>
+  <li><span class="orange">orange</span></li>
+  <li><span class="red">red</span></li>
+  <li><span class="fuchsia">fuchsia</span></li>
+  <li><span class="purple">purple</span></li>
+  <li><span class="maroon">maroon</span></li>
+</ul>
+
+<h3 id="horizontal-rule">Horizontal rule:</h3>
+
+<hr />
+
+<h3 id="image">Image:</h3>
+
+<p><img src="/assets/img/image.jpg" alt="" /></p>
+
+<h3 id="table">Table:</h3>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Fruit</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Alex</td>
+			<td>22</td>
+			<td>Apple</td>
+		</tr>
+		<tr>
+			<td>Bran</td>
+			<td>20</td>
+			<td>Orange</td>
+		</tr>
+		<tr>
+			<td>Mike</td>
+			<td>21</td>
+			<td>Waltermelon</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="code-snippet">Code snippet</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// index.js</span>
+<span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span> <span class="o">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">x</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(){</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">foo</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+:ET

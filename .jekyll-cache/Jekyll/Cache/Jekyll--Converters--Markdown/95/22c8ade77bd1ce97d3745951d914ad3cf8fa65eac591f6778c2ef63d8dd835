@@ -1,0 +1,279 @@
+I"�:<h2 id="background">Background</h2>
+
+<p>According to “the Modern theory of polarization”, in a continous-k formulation, the polarizatin \(\mathbf{P}_{el}\) value is \(- f e / (2 \pi)^3\) times the sum of valence-band Berry phase. On another note, Wannier charge center can be convieniently linked to the Berryphase of valence band via a Fourier transformation. Thus, we should be able to calculate the ferroelectric polarization using Wannier interpolation of Bloch bands.</p>
+
+<h2 id="objectives">Objectives</h2>
+
+<ul>
+  <li>To calculate the polarization value of \(BaTiO_{3}\), compare it with the Berryphase one.</li>
+  <li>To give a rough idea of how periodicity affect the calculation of the ferroelectric polarization.</li>
+  <li>To get familiar with VASP2WANNIER interface</li>
+</ul>
+
+<h2 id="structures">Structure(s)</h2>
+<p>We need both centro symmetric and non-centro Ferroelectric structure.</p>
+
+<p class="center"><img src="/assets/img/post_img/2019-12-25-img1.png" alt="" /></p>
+
+<h2 id="berryphase-method-result">Berryphase method result</h2>
+<p>To get polarization value using VASP, just add the following line to your SCF(static) calculation’s  <code class="language-plaintext highlighter-rouge">INCAR</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LCALCPOL=.T.
+</code></pre></div></div>
+<p>In the <code class="language-plaintext highlighter-rouge">OUTCAR</code> file, you will find a block like the following:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     CALCP:  cpu time   11.0656: real time   11.0798
+
+            Ionic dipole moment: p[ion]=(     0.00000     0.00000   -11.57420 ) electrons Angst
+
+ Total electronic dipole moment: p[elc]=(    -0.00000    -0.00000    -1.68410 ) electrons Angst
+</code></pre></div></div>
+
+<p>For the <strong>result</strong>, I refer back to one of my previous <a href="/dft/2019/08/10/Berryphase_Ferroelectricity.html">post</a>:</p>
+<blockquote>
+  <p>By varying the atomic displacement from the centrosymmetric phase (CENT) to ferroelectric one (FE). VASP produce a series of ionic and electronic contribution to the total dipole moment.</p>
+</blockquote>
+
+<table class="center">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Ion (elect*A)</th>
+      <th>Electron (elect*A)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 (CENT)</td>
+      <td>+00.00000</td>
+      <td>+0.00000</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>-12.01278</td>
+      <td>-0.29138</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>-11.92507</td>
+      <td>-0.58047</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>-11.83735</td>
+      <td>-0.86532</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>-11.74963</td>
+      <td>-1.14461</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>-11.66192</td>
+      <td>-1.41757</td>
+    </tr>
+    <tr>
+      <td>6 (FE)</td>
+      <td>-11.5742</td>
+      <td>-1.68399</td>
+    </tr>
+  </tbody>
+</table>
+<blockquote>
+  <p>we can easily calculate its ionic dipole moment at centrosymmetric phase should be -12.09 elect*A.</p>
+</blockquote>
+
+<blockquote>
+  <p>After figure out which value is clearly wrong, we can now proceed to calculate total polarization:</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Total ionic contribution = 0.5258 elect*A
+Total electronic contribution = -1.68399 elect*A
+Total dipole moment = -1.15819 elect*A
+Volume = 64.35864801 A^3
+
+Total polarization = 0.288293871 C/m^2
+</code></pre></div></div>
+
+<h2 id="wannier-result">Wannier result</h2>
+
+<p>In this section, I will introduce the usage of VASP2WANNIER interface as well as a general method to construct the valence band’s Wannier functions.</p>
+
+<ul>
+  <li>Wannier functions are a set of localized functions generated using Fourier transformation of periodic bloch functions.</li>
+  <li>We only use valence bands to generate Wannier functions so that the square of it can represent the charge density.</li>
+  <li>Each Wannier function “corresponds” to an energy band, hence, each Wannier function is occupied by 2 electrons (or 1 if we treat each spin channel separately).</li>
+</ul>
+
+<h3 id="fat-band-analysis">Fat band analysis</h3>
+<p>We need fat band analysis in order to get a sense of how our valence band are composed.</p>
+
+<p>[!image]</p>
+
+<p>This result coincide with our chemical intuition. From the electron configurations, we can see that:</p>
+
+<table class="center">
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Electron configuration</th>
+      <th>Valency</th>
+      <th>Number in the unitcell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ti</td>
+      <td>3s(2) 4s(1) 3p(6) 3d(3)</td>
+      <td>+4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Ba</td>
+      <td>5s(2) 6s(2) 5p(6)</td>
+      <td>+2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>O</td>
+      <td>2s(2) 3p(4)</td>
+      <td>-2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>which means, our valence bands are composed by:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ti         : 3s(2) 3p(6)
+Ba         : 5s(2) 5p(6)
+O          : 2s(2) 3p(6)
+</code></pre></div></div>
+<p>This can also be clearly seen on the projected band structure or projected density of states plot.</p>
+
+<h3 id="setting-up-wannier90win">Setting up <code class="language-plaintext highlighter-rouge">Wannier90.win</code></h3>
+<p>VASP2WANNIER90 interface requires following parameters to run(at minimum):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num_wann        =  20
+
+begin projections
+Ba:s,p
+Ti:s,p
+O:s,p
+end projections
+</code></pre></div></div>
+<p>Here, I use Ba’s s and p orbitals, Ti’s s and p orbitals and O’s s and p orbitals a initial projection as discussed above.</p>
+
+<p>Since we have a set of isolated valence bands, we can exclude the conduction bands by adding:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num_bands = 20
+exclude_bands = 21-24
+</code></pre></div></div>
+<p>Other information such as unitcell information, atom’s positions, k-point info’s can be written automatically by VASP.</p>
+
+<p>Furthermore, I added <code class="language-plaintext highlighter-rouge">num_iter        = 0</code> to use projection only scheme.</p>
+
+<p>After written <code class="language-plaintext highlighter-rouge">wannier90.win</code> file, add the following line:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LWANNIER90 = .T.
+</code></pre></div></div>
+<p>to your <code class="language-plaintext highlighter-rouge">INCAR</code> and run it. VASP will produce <code class="language-plaintext highlighter-rouge">wannier90.mmn</code>, <code class="language-plaintext highlighter-rouge">wannier90.amn</code>, <code class="language-plaintext highlighter-rouge">wannier90.eig</code> files.</p>
+
+<p>Then run WANNIER90 by:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wannier90.x wannier90
+</code></pre></div></div>
+<p>and it will generate wannier90.out file. Near the end of that file, there should be a block look like the following:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Final State
+  WF centre and spread    1  (  0.000000,  0.000000, -0.000000 )     1.21037767
+  WF centre and spread    2  ( -0.000000,  0.000000, -0.000000 )     1.28161513
+  WF centre and spread    3  ( -0.000000, -0.000000, -0.000000 )     1.28337360
+  WF centre and spread    4  ( -0.000000, -0.000000,  0.000000 )     1.28337360
+  WF centre and spread    5  (  1.997250,  1.997250,  2.016750 )     0.79906780
+  WF centre and spread    6  (  1.997250,  1.997250,  2.016750 )     0.50984278
+  WF centre and spread    7  (  1.997250,  1.997250,  2.016750 )     0.51118782
+  WF centre and spread    8  (  1.997250,  1.997250,  2.016750 )     0.51118782
+  WF centre and spread    9  (  1.997250,  1.997250, -0.000000 )     0.80333011
+  WF centre and spread   10  (  1.997250,  1.997250,  0.000000 )     1.41881817
+  WF centre and spread   11  (  1.997250,  1.997250, -0.000000 )     1.35842712
+  WF centre and spread   12  (  1.997250,  1.997250,  0.000000 )     1.35842711
+  WF centre and spread   13  (  1.997250,  0.000000,  2.016750 )     0.80396422
+  WF centre and spread   14  (  1.997250,  0.000000,  2.016750 )     1.35724005
+  WF centre and spread   15  (  1.997250, -0.000000,  2.016750 )     1.35167690
+  WF centre and spread   16  (  1.997250,  0.000000,  2.016750 )     1.40712275
+  WF centre and spread   17  (  0.000000,  1.997250,  2.016750 )     0.80396421
+  WF centre and spread   18  (  0.000000,  1.997250,  2.016750 )     1.35723996
+  WF centre and spread   19  (  0.000000,  1.997250,  2.016750 )     1.40712272
+  WF centre and spread   20  (  0.000000,  1.997250,  2.016750 )     1.35167681
+  Sum of centres and spreads ( 23.967000, 23.967000, 24.201000 )    22.16903637
+</code></pre></div></div>
+<p>those three data between parentheses are the <strong>Wannier Charge Centers</strong>:</p>
+
+\[\mathbf{R}_{i} = \langle \psi_{i} | \mathbf{r} | \psi_{i} \rangle\]
+
+<p>Now we can proceed to calculate the macroscopic polarizations.</p>
+
+<h3 id="calculating-polarization">Calculating polarization</h3>
+<p>According to “the modern theory of polarization”, the macroscopic polarization can only be obtained by substracting the centrosymmetric phase’s dipolemoment from the Ferroelectric one. Here, I’ll do a little trick to circumvent this and eventually show you how everything fits.</p>
+
+<h3 id="calculate-polarization-without-centrosymmetric-phases">calculate polarization <strong>without</strong> centrosymmetric phases</h3>
+<p>The centrosymmetric phase can be safely ignored when its polarization equals to <strong>ZERO</strong>, which is, as a matter of fact, true in our case, so we can safely ignore it if we are careful enough.</p>
+
+<p>To calculate the electronic contribution to the polarization, just sum each <strong>Wannier Charge Centers</strong> and then multiply if by a spin-degenerate factor 2:</p>
+
+\[\mathbf{P}_{elect}=2 * \Sigma_{i} \mathbf{R}_{i}\]
+
+<p>To calculate the ionic contribution to the polarization, first find each ions core chareges (positive), then multiply it to the atomic position and sum it up:</p>
+
+\[\mathbf{P}_{ion}=\Sigma_{I} C_{I}  \mathbf{R}_{I}\]
+
+<p>sincd r and R are vectors, in order to get the total polarization, we have to do this on three axis and then add them up using vector summation. Here, I only care the polarization at Z axis, so I ignored the other axis’s contribution. My result follows [note the minus sign in Ionic part is due to electrons negative charge sign]:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ionic dipolemoment(elect*A):     -72.0767  
+electric dipolemoment(elect*A):   78.9870
+Total dipolemoment(elect*A):      06.9103
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):       -01.7200
+</code></pre></div></div>
+
+<p>This value is drastically large than the one we get using Berryphase method. There must be something wrong here!</p>
+
+<p>And indeed, here, we encountered the so-called <strong>polarization quantum</strong>.</p>
+
+\[\mathbf{P}_{quantum}=N * Lattice\_parameters\]
+
+<p>Where N equals to some integer number that represent the number of electron get involved.</p>
+
+<p>Taking a closer look at our structure, the FE one have one oxygen at ~3A while it goes to 0A in the centrosymmetric phase. An atom moving 3A durinng phase transition is not ideal! Intuitively, one may think “OK, thats alright, we have periodic boundary, so we only have to move this atom up-wards to the boundary.” Yes, this is indeed the case, but our method cannot deal with this, that why the <strong>polarization quantum</strong> is always linked with the lattice parameters and the polarization curve (displacement vs polarization) is multi-valued.</p>
+
+<p>To solve this, simply substract one lattice parameter Z from the atomic position as well as the corresponding <strong>Wannier Charge Centers</strong>, we get [note the minus sign in Ionic part is due to electrons negative charge sign]:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ionic dipolemoment(elect*A):     -48.8757  
+electric dipolemoment(elect*A):   46.7191
+Total dipolemoment(elect*A):     -01.1567
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):        00.2879
+</code></pre></div></div>
+<p>This way, our polarization calculated via Wannier functions is almost identical to the Berry phase result.</p>
+
+<h3 id="calculate-polarization-with-centrosymmetric-phases">calculate polarization <strong>with</strong> centrosymmetric phases</h3>
+<p>If we stick with the method described above, finding where went wrong can be tedious for a different, say, larger system, especially when you are confused of which wannier function belongs to which atom. And yes, there is another way of dealing with the <strong>polarization quantum</strong>, that is to subtract the centrosymmetric’s dipolemoment from the Ferroelectric one.</p>
+
+<p>Sill , we need to move the atom position to the same brach, here I move the centrosymmetric phase’s Oxygen from 0A to 4.0335A which is one lattice constant on the Z axis. Resulting data are [note the minus sign in Ionic part is due to electrons negative charge sign]:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ionic dipolemoment(elect*A):     -72.6030
+electric dipolemoment(elect*A):   80.6700
+Total dipolemoment(elect*A):      08.0670
+Volume(A^3):                      64.3586
+Total polarization(C/M^2):       -02.0080
+</code></pre></div></div>
+
+<p>substracting this from the FE’s result, we get 0.2879C/M^2, exactly the same as our previous method yields.</p>
+
+<blockquote>
+  <p><em><strong>WARNING</strong></em> The sign convention for the ionic part is very important. Please, for the love of god, remember change dot the dipole moment of each structure’s result with a minus sign and <strong>ADD</strong> it to the electronic part (so that they are both in elect * A). And remember to flip the sign of the final result (in C/M^2).</p>
+</blockquote>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>The calculation of the macroscopic electric polarizations can have many pitfalls, and almost all of them are related to the <strong>polarization quantum</strong>. Check your structures and make sure they are on the same brach can have many beneficial effect!</p>
+
+<h2 id="input">Input</h2>
+
+<p>I’ve put all input file in a zip file for download: <a href="/assets/other/2019-12-25-Wannier_polarization.zip">VASP</a>.</p>
+
+:ET

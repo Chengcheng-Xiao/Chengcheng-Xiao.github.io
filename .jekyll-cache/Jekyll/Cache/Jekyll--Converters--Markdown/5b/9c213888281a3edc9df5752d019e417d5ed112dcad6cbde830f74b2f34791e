@@ -1,0 +1,192 @@
+I"�#<h2 id="background">Background</h2>
+
+<p>The Hubbard model is a revised tihgt-binding model suited to describe solid-state systems with prominent correlation effects (i.e. narrow band transition metal oxides - Mott Transition). Traditional tight-binding model does not consider the coulomb energy originated from the overlap between orbitals, in that sense, they treat electrons as isolated particles. However, in some systems, the overlap between atomic orbitals is large enough so that the Coulomb interaction energy cannot be ignored. To solve this, the Hubbard model adds a on-site repulsion term to represent the on-site electron-electron Coulomb repulsion (Other inter-site energy terms can also be added, they are usually called Vs and Js). The Hamiltonian can be written as:</p>
+
+<div class="center">\[\hat{H}=-t\sum_{\langle i,j \rangle,\sigma} \hat{c}_{i,\sigma}^{\dagger} \hat{c}_{i,\sigma} + U \sum_{i=1}^N \hat{n}_{i,\uparrow} \hat{n}_{i,\downarrow}\]
+</div>
+
+<p>The first term is the traditional transfer integral identical to the tight-binding model, where in the second term, the Hubbard U parameters describe the on-site Coulomb repulsion strength.</p>
+
+<p>The so called “DFT+U” method can be used to give a more accurate description to the band gap and even recover the insulation nature of some systems. One thing to point out, this method is based on the a projection weight penalty term added to the Kohn-Sham Hamiltonian which means the charge density and the total energy are fully self-consistent.</p>
+
+\[E_{LDA+U}[n(\textbf{r})] = E_{LDA}[n(\textbf{r})] + E_{Hub}[{n^{I \sigma}_{m}}] - E_{DC}[{n^{I \sigma}_{m}}]\]
+
+<p>Where the Hubbard term direct counts the coulomb energy with a specific orbital electron occupation. And the last term is for the double-counting correction since both exchange-correlation and the Hubbard terms have exchange contribution.</p>
+
+<p>Although this method can be somehow sufficient for the description of strongly correlated materials, the U parameter are typically chosen arbitrarily or fitted to the experimental result. To obtain this value from first-principles (or “in a self-consistent fashion”), several methods like linear response, Density functioanl pertubation theory (DFPT) and constrained Random Phase Approximation (cRPA) have been proposed. Here, I’ll only give a technical description to the first one as proposed by Matteo Cococcioni[1].</p>
+
+<h2 id="calculation-procedure">Calculation procedure</h2>
+
+<p>Taking the BCC iron as example, the calculation will be conducted using VASP (v5.4.4) and Quantum-espresso (v6.4.1):</p>
+
+<h3 id="vasp-procedure">VASP procedure</h3>
+
+<p>The on-site potential shift \(\alpha\) control is a hidden feature of VASP(v5.4+) and is not documented in the official documentation. The documentations I found online was not very through:
+ <a href="http://grandcentral.apam.columbia.edu:5555/tutorials/dft_procedures/linear_response_u/index.html">Marianetti Group</a>
+ <a href="https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&amp;t=16400">VASP forum</a></p>
+
+<p>To invoke this hidden feature:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LDAU = .TRUE.       # invoke DFT+U procedure
+LDAUTYPE = 3        # potential shift mode
+LDAUPRINT = 2       # print occupation and potential matrix
+LDAUU = 0.0 0.0     # energy shift of spin-up electrons
+LDAUJ = 0.0 0.0     # energy shift of spin-down electrons
+LDAUL = 2 -1        # which orbital to perform procedure
+</code></pre></div></div>
+
+<p>Procedure outline:</p>
+
+<ol>
+  <li>Make a supercell large enough (Since the effect of onsite potential shift can also affect its neighboring atoms, under the periodic boundary conditions, we have to make a supercell large enough to eliminate interaction between changed site). Here I made a \(2\times2\times2\) supercell of BCC iron with 8 iron atoms.</li>
+  <li>We only want to shift the potential on one iron site, the <code class="language-plaintext highlighter-rouge">POTCAR</code> file should contain the two identical pseudopotential information for iron.</li>
+  <li>At first, we do a <strong>self consistent</strong> calculation <strong>WITHOUT</strong> potential shift, and save the charge density in <code class="language-plaintext highlighter-rouge">CHGCAR</code> file.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LCHARG=.TRUE.
+LDAU = .TRUE.
+LDAUTYPE = 3
+LDAUPRINT = 2
+LDAUU = 0.0 0.0
+LDAUJ = 0.0 0.0
+LDAUL = 2 -1
+... + other scf tags
+</code></pre></div></div>
+
+<ol>
+  <li>Then, a “bare run” <strong>non-self consistent</strong> calculation <strong>WITH</strong> potential shift should be carried out using previous saved <code class="language-plaintext highlighter-rouge">CHGCAR</code>.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ICHARG=11
+LDAU = .TRUE.
+LDAUTYPE = 3
+LDAUPRINT = 2
+LDAUU = 0.02 0.0
+LDAUJ = 0.02 0.0
+LDAUL = 2 -1
+... + other scf tags
+</code></pre></div></div>
+
+<ol>
+  <li>Similarly, a “interactive run” <strong>self consistent</strong> calculation <strong>WITH</strong> potential shift to calculate the charge change with screening.(Here, I choose to read in the charge density since it can sped up the process.)</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ICHARG=1
+LDAU = .TRUE.
+LDAUTYPE = 3
+LDAUPRINT = 2
+LDAUU = 0.02 0.0
+LDAUJ = 0.02 0.0
+LDAUL = 2 -1
+... + other scf tags
+</code></pre></div></div>
+
+<ol>
+  <li>Repeat step <code class="language-plaintext highlighter-rouge">4-5</code> with different potential shift (typically, I use <code class="language-plaintext highlighter-rouge">-0.08 to 0.08 eV</code> as potential shift magnitude)</li>
+  <li>
+    <p>Check projected charge on atomic site, and plot it against the potential shift magnitude. Linear fitting will give the so-called \(\chi\) value for “bare run” and “interactive run”.</p>
+
+\[\chi=\frac{\partial Q}{\partial \alpha}\]
+
+    <p>Where \(Q\) is the projected charge number (here d-orbital), \(\alpha\) is the potential shift used.</p>
+  </li>
+  <li>
+    <p>Finally, depend on accuracy requirement, either reconstruct the whole response matrix or use only on-site \(\chi\) to calculate the \(U\) value.</p>
+
+\[U=\chi_0^{-1}-\chi^{-1}\]
+
+    <p>where \(\chi_0\) is the bare run result, and \(\chi\) is the interactive run result.</p>
+  </li>
+</ol>
+
+<p>Results:</p>
+
+<ul>
+  <li>PBE result:</li>
+</ul>
+
+<p class="center"><img src="/assets/img/post_img/2019-07-06-img1.svg" alt="" /></p>
+
+\[\chi_0=-1.1995\]
+
+\[\chi=-0.1618\]
+
+\[U=3.779 eV\]
+
+<ul>
+  <li>LDA result:</li>
+</ul>
+
+<p class="center"><img src="/assets/img/post_img/2019-07-06-img2.svg" alt="" /></p>
+
+\[\chi_0=-1.237\]
+
+\[\chi=-0.204\]
+
+\[U=4.098 eV\]
+
+<p>We can see this value is significantly higher than the published value.</p>
+
+<ul>
+  <li>PBE with \(3\times3\times3\) supercell:</li>
+</ul>
+
+<p class="center"><img src="/assets/img/post_img/2019-07-06-img3.svg" alt="" /></p>
+
+\[\chi_0=-1.1113\]
+
+\[\chi=-0.2\]
+
+\[U=4.100 eV\]
+
+<p>The size of supercell does not affects the final result significantly, so a supercell of \(2\times2\times2\) should be enough for this system.</p>
+
+<p><strong>Response Matrix generation:</strong></p>
+
+<p class="center"><img src="/assets/img/post_img/2019-07-06-img4.svg" alt="" /></p>
+
+<p>There are 4 nearest neighbor (labeled red) and 3 second-near neighbor (white) in the \(2\times2\times2\) supercell. The diagonal terms are the onsite charge number (blue).</p>
+
+<p>From the response matrix, we can see that the symmetry is broken a little especially for atom 8 and atom 7.</p>
+
+<h3 id="qe-procedure">QE procedure</h3>
+<p>Similar procedure can also be performed by quantum espresso. To enable this feature, following tags are needed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lda_plus_U=.true.
+Hubbard_U(1)=1D-40,Hubbard_alpha(1)=-0.05
+</code></pre></div></div>
+<p>The output of this method contains 3 blocks of projected charge information.</p>
+
+<ol>
+  <li>initial charge (zero potential shift)</li>
+  <li>Bare response</li>
+  <li>SCF (interactive) response.</li>
+</ol>
+
+<p>So one only need to do one calculation to extract all projected charge number needed for the calculation.</p>
+
+<p>In addition, QE also allows to shift potential \(\alpha\) with U applied. Simply apply:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lda_plus_U=.true.
+Hubbard_U(1)="Your U parameter",Hubbard_alpha(1)=-0.05
+</code></pre></div></div>
+
+<p>Results:</p>
+
+<p class="center"><img src="/assets/img/post_img/2019-07-06-img5.svg" alt="" /></p>
+
+<p>Final result using only onsite response:</p>
+
+\[U=3.29 eV\]
+
+<p>Final result using full matrix:</p>
+
+\[U=2.94 eV\]
+
+<hr />
+
+<h2 id="input">Input</h2>
+
+<p>I’ve put all input file in a zip file for download: <a href="/assets/other/2019-07-06-Hubbard_U_VASP.zip">VASP</a>, <a href="/assets/other/2019-07-06-Hubbard_U_QE.zip">QE</a>.</p>
+
+:ET

@@ -4,7 +4,7 @@ title: Calculating spin texture from DFT and Wannier Hamiltonian.
 date: 2020-06-17
 tags: ["Wannier functions"]
 categories: DFT
-description: A brief tutorial on calculating (plotting) spin texture from Wannier Hamiltonian
+description: A brief tutorial on calculating (plotting) spin-texture from Wannier Hamiltonian.
 ---
 
 ## Background
@@ -222,3 +222,106 @@ And you can always specify which component you want to project! Pretty neat huh?
 I've put all input file in a zip file for download: [VASP]. Have fun computing!
 
 [VASP]:{{site.baseurl}}/assets/other/2020-06-17-W90_spintexture.zip
+
+## 2020-06-29 update
+I've now implemented the `.spn` file output. The  `.spn` file contains the spin matrix elements:
+
+$$<\psi_{n,k} | \sigma_{x,y,z} | \psi_{m,k} >$$
+
+By rotating this matrix with the U matrix we got from W90, we can calculate the spin expectation value @ each band and k point.
+
+Again, since the Pauli matrix commutes with the Hamiltonian, they share a same set fo eigenvectors. We can use the eigenvectors from diagonalizing the Hamiltonian to get the same stuff.
+
+Here, just to confirm my implementation of `.spn` file is correct, I'll compute the same spin projected bandstructure with Hamiltonian diagonalization and rotating the `.spn` file.
+
+### directly from rotating spn matrix
+Just follow the Wannier90's example17 and [my example](https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix/tree/dev/example/example2), you will get:
+
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img4.png)
+{: .center}
+
+
+### diagonalization method
+For this to work, we need:
+- wannier90.win         
+- wannier90_centres.xyz
+- wannier90_band.dat    
+- wannier90_band.kpt    
+- wannier90_hr.dat
+
+Code to generate plottable file:
+```python
+#!/usr/bin/env python
+
+from pythtb import * # import TB model class
+import matplotlib.pyplot as plt
+
+Fe=w90(r"output/",r"wannier90")
+
+# get tight-binding model without hopping terms above 0.01 eV
+my_model=Fe.model()
+
+#%%
+# solve model on a path and plot it
+path=[[0.0000, 0.0000, 0.0000],
+      [0.500, -0.5000, -0.5000],
+      [0.7500, 0.2500, -0.2500],
+      [0.5000, 0.0000, -0.5000],
+      [0.0, 0.0, 0.0],
+      [0.500, 0.5000, 0.5000],
+      [0.5, 0.0, 0.0],
+      [0.0000, 0.0000, 0.0000],
+      [0.75, 0.25, -0.25],
+      [0.5, 0.0, 0.0]]
+# labels of the nodes
+k_label=(r'$\Gamma$',r'$H$', r'$P$', r'$N$', r'$\Gamma$',r'$H$', r'$N$', r'$\Gamma$',r'$P$')
+# call function k_path to construct the actual path
+(k_vec,k_dist,k_node)=my_model.k_path(path,500)
+
+(evals,evacs)=my_model.solve_all(k_vec,eig_vectors=True)
+# #%% get me spin expectatin value, see pauli matrix... duh.
+exp = np.empty([18,500,3],dtype=np.complex)
+for i in range(500):
+    for b in range(18):
+        exp[b,i,0] = np.dot(np.conjugate(evacs[b,i,0::2]),complex(+1,0)*evacs[b,i,1::2])\
+                   + np.dot(np.conjugate(evacs[b,i,1::2]),complex(+1,0)*evacs[b,i,0::2])
+        exp[b,i,1] = np.dot(np.conjugate(evacs[b,i,0::2]),complex(0,-1)*evacs[b,i,1::2])\
+                   + np.dot(np.conjugate(evacs[b,i,1::2]),complex(0,+1)*evacs[b,i,0::2])
+        exp[b,i,2] = np.dot(np.conjugate(evacs[b,i,0::2]),complex(+1,0)*evacs[b,i,0::2])\
+                   + np.dot(np.conjugate(evacs[b,i,1::2]),complex(-1,0)*evacs[b,i,1::2])
+#%% write everything to data
+f= open("spinexp_band.dat","w+")
+for i in range(18):
+   for k in range(500):
+        f.write('%s %s %s\n' % (k_dist[k], evals[i,k], np.real(exp[i,k,2])))
+   f.write("\n")
+
+f.close()
+```
+then plot with `gnuplot`:
+
+```gnuplot
+set arrow from      0.34843,     -3.77527557 to       0.34843,     39.45894970 nohead
+set arrow from      0.65018,     -3.77527557 to       0.65018,     39.45894970 nohead
+set arrow from      0.8244,     -3.77527557 to       0.8244,     39.45894970 nohead
+set arrow from      1.07078,     -3.77527557 to       1.07078,     39.45894970 nohead
+set arrow from      1.41921,     -3.77527557 to       1.41921,     39.45894970 nohead
+set arrow from      1.66559,     -3.77527557 to      1.66559,     39.45894970 nohead
+set arrow from      1.91197,     -3.77527557 to      1.91197,     39.45894970 nohead
+set arrow from      2.21372,     -3.77527557 to      2.21372,     39.45894970 nohead
+unset key
+set xrange [0: 2.38794]
+set yrange [     -3.77527557 :     39.45894970]
+ set xtics (" G "  0.00000," H "  0.34843," P "  0.65018," N "  0.8244," G "  1.07078," H
+ "  1.41921," N " 1.66559," G " 1.91197," P " 2.21372," N "  2.38794)
+ set palette defined (-1 "blue", 0 "green", 1 "red")
+ set pm3d map
+ set zrange [-1:1]
+ splot "spinexp_band.dat" with dots palette
+```
+And we get:
+
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img5.png)
+{: .center}
+
+And again, this plot looks exactly like the one we obtained by directly rotating the spn matrix.
