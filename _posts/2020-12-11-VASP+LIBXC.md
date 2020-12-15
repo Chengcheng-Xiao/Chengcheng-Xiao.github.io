@@ -15,7 +15,7 @@ I cannot find any information on how to compile VASP with libxc on the VASP wiki
 
 ## Compile libxc
 First, compile libxc[v4.3.4]:
-1. Download the source code from [here](https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.gz).
+1. Download the source code from [HERE](https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.gz).
 2. untar the tarball with:
 ```
 tar zxvf libxc-4.3.4.tar.gz
@@ -47,8 +47,9 @@ LLIBS      = $(SCALAPACK) $(LAPACK) $(BLAS) /PATH/TO/LIBXC/lib/libxcf90.a /PATH/
 4. compile as usual.
 
 ## Usage
-To use libxc with VASP[v6.1.2], add the following to your INCAR file (if I'm not mistaken):
-1. `LIBXC1`: id of the exchange part
-2. `LIBCX2`: id of the correlation part
+To use libxc with VASP[v6.1.2], add the following to your INCAR file:
+1. `LIBXC1`: id/name of the exchange part
+2. `LIBCX2`: id/name of the correlation part
 
-Where the `id`s can be found [HERE]((https://www.tddft.org/programs/libxc/functionals/)).
+The definition of the id/name for `LIBXC1` and `LIBXC2` can be found [HERE](https://www.tddft.org/programs/libxc/functionals/).
+And yes, you can use either the name or the id of your desired xc functional. 
