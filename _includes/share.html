@@ -1,11 +1,11 @@
 <section class="share">
-  <a class="share-link" href="https://twitter.com/iconxicon" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    Twitter
+  <a class="share-link" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}{% if page.description %}&text={{ page.description | url_escape }}{% else %}{{ page.title | url_escape }}{% endif %}{% if site.twitter %}&via={{ site.twitter }}{% endif %}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    Share on Twitter 🐦
   </a>
-  <a class="share-link" href="https://github.com/Chengcheng-Xiao" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+<!--  <a class="share-link" href="https://github.com/Chengcheng-Xiao" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     Github
   </a>
-<!--  <a class="share-link" href="" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530'); return false;"> 
+  <a class="share-link" href="" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530'); return false;">
     Google+
   </a> -->
 </section>
