@@ -20,7 +20,11 @@ My research area include (subject to expand at any moment):
 - 💻 Density functional theory methods.
 
 ### Contact Me 
-📧 [iconxicon@me.com](mailto:iconxicon@me.com)
+📧 Email: [iconxicon@me.com](mailto:iconxicon@me.com)
+
+⌨️ Github: [Chengcheng Xiao](https://github.com/Chengcheng-Xiao)
+
+🐦 Twitter: [@iconxicon](https://twitter.com/iconxicon)
 
 ### Published Papers
 
