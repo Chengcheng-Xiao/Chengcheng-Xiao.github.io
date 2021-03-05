@@ -1,4 +1,5 @@
-/* layout */
+/* layout 
+ ——————————————————————————————————————————————————*/
 html,.container {
   position:relative;
   min-height:100%;
@@ -39,6 +40,28 @@ body {
   }
 }
 
+// add dark mode
+//——————————————————————————————————————————————————
+@media (prefers-color-scheme: dark) {
+  // background
+  .page-content {background-color: #191919;}
+  // footer
+  .site-footer {background-color: #0a0a0a;}
+  // body font color
+  body {color: #c7c7cc}
+  // link font color
+  a {color: #c7c7cc}
+  // invert image color
+  img {filter: invert(90%);}
+  // use dark syntax-highlighting
+  @import "syntax-highlighting_dark"
+}
+
+//use light syntax-highlighting
+@media (prefers-color-scheme: light) {
+  //should be in main.css, but not working there.
+  @import "syntax-highlighting"
+}
 
 /* Effects
 —————————————————————————————————————————————————— */

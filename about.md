@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="{{site.baseurl}}/assets/img/Profile_pic.png" width="70">
+<img style='filter: invert(0%);' src="{{site.baseurl}}/assets/img/Profile_pic.png" width="70">
 
 I am an electron wandering in the field of computational materials simulations.
 
