@@ -8,8 +8,6 @@ description: Want to learn how to display molecule in posts using JSmol/Jmol? Yo
 
 Before we dive in, let's take a look at the end result:
 
-<!-- <script src="https://chemapps.stolaf.edu/jmol/jmol.php?source={{site.baseurl}}/assets/other/test/test.cif&script=set bondingVersion 1;set minBondDistance (3);set bondTolerance (0.2);load '' {3 3  1}&inline=1&id=001&isfirst=true&width=650&height=400"></script> -->
-
 - Bulk silicon [structure stored in repo]:
 <script src="https://chemapps.stolaf.edu/jmol/jmol.php?source={{site.baseurl}}/assets/other/2021-01-04-jekyll_jsmol/Si_mp-149_computed.cif&script=load '' {2 2 2 };set frank off&inline=1&id=001&isfirst=true&width=650&height=400"></script>
 
@@ -81,6 +79,90 @@ width=650&height=400
 
 Okay, that's cool! Want to see something cooler? Try right click the plot, you'll see much more option to control the plot! Also, hover your mouse on one of the atom, you'll see the element label and number of that specific atom. Double click one atom and move you mouse to another atom and double click again, a bond length indicator will pop up. Double click one atom and move you mouse to another atom and click one and move to another atom and double click, a bond angle indicator will popup!
 
-Here's a structure of the SARS-CoV-2 main protease in complex with inhibitor MPI4, enjoy! (BTW, fuck 2020.)
+<!-- Here's a structure of the SARS-CoV-2 main protease in complex with inhibitor MPI4, enjoy! (BTW, fuck 2020.)
 
-<script src="https://chemapps.stolaf.edu/jmol/jmol.php?pdbid=7DCC&script=load '';set frank off&inline=1&id=003&isfirst=false&width=650&height=400"></script>
+<script src="https://chemapps.stolaf.edu/jmol/jmol.php?pdbid=7DCC&script=load '';set frank off&inline=1&id=003&isfirst=false&width=650&height=400"></script> -->
+
+##Update 2021-03-07
+
+I found the old implementation is not food for mobile viewing, specifically, the width of the window is too large to be shown in mobile devices.
+To overcome this, we can use `iframe` to embed it.
+
+For example:
+<iframe src="https://chengcheng-xiao.github.io/jsmol-models/embeddable.html#
+molecule={{site.baseurl}}/assets/other/2021-01-04-jekyll_jsmol/Si_mp-149_computed.cif
+&generic=set,bondTolerance,0.1
+&supercell=3,3,3
+&generic=set,frank,off
+&generic=set,antialiasDisplay,true
+&generic=set,background,white
+&generic=set,displayCellParameters,FALSE
+&generic=select,La;color,atoms,green;select,off
+&generic=set,pickingStyle,SELECT,DRAG"
+style="width: 100%; height: 400px"
+scrolling="no"
+marginwidth="0"
+marginheight="0"
+frameborder="0"
+vspace="0"
+hspace="0">
+</iframe>
+
+The whole script I used here is:
+
+```html
+<iframe src="https://chengcheng-xiao.github.io/jsmol-models/embeddable.html#
+molecule={{site.baseurl}}/assets/other/2021-01-04-jekyll_jsmol/Si_mp-149_computed.cif
+&generic=set,bondTolerance,0.1
+&supercell=3,3,3
+&generic=set,frank,off
+&generic=set,antialiasDisplay,true
+&generic=set,background,white
+&generic=set,displayCellParameters,FALSE
+&generic=select,La;color,atoms,green;select,off
+&generic=set,pickingStyle,SELECT,DRAG"
+style="width: 100%; height: 400px"
+scrolling="no"
+marginwidth="0"
+marginheight="0"
+frameborder="0"
+vspace="0"
+hspace="0">
+</iframe>
+```
+
+the old `https://chemapps.stolaf.edu/jmol/jmol.php` cannot be used since its rejected automatically be the iframe protocal.
+Instead, I'm using a embeddable version from [my repo deployed using Github page](https://chengcheng-xiao.github.io/jsmol-models/embeddable.html)
+
+This implementation has different behaviour than the old one.
+Full details about this implementation can be found [HERE](https://github.com/Chengcheng-Xiao/jsmol-models/blob/gh-pages/embeddable.html#).
+
+Here, I'll do a simple line-by-line explanation:
+
+1. all source code is wrapped in the string called `src`.
+2. control parameters are behind `#` and linked by `&`.
+3. the style of the ifram can be controled using:
+
+```html
+style="width: 100%; height: 400px"
+scrolling="no"
+marginwidth="0"
+marginheight="0"
+frameborder="0"
+vspace="0"
+hspace="0"
+```
+
+4. the previous [structure from online database] method cannot be used in this implementation,
+and we have to always use the whole URL:
+
+```html
+molecule=FULL_URL
+```
+
+5. generic script can be called using `generic=`.
+6. supercell creation is a specific command (it needs brakets `{}`) so I made a specific command for this:
+
+```html
+supercell=3,3,3
+```
