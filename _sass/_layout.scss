@@ -1,4 +1,4 @@
-/* layout 
+/* layout
  ——————————————————————————————————————————————————*/
 html,.container {
   position:relative;
@@ -8,6 +8,7 @@ html,.container {
 body {
   min-height:100%;
   height:auto;
+  overscroll-behavior-y: none;
 }
 
 .page-content {
@@ -23,7 +24,7 @@ body {
   padding-bottom: 0rem;
   width:100%;
 
-  /* footer style */    
+  /* footer style */
   color: #99999a;
   background-color: #FAFAFB;
 
@@ -38,29 +39,6 @@ body {
       border-bottom:1px dotted;
     }
   }
-}
-
-// add dark mode
-//——————————————————————————————————————————————————
-@media (prefers-color-scheme: dark) {
-  // background
-  .page-content {background-color: #191919;}
-  // footer
-  .site-footer {background-color: #0a0a0a;}
-  // body font color
-  body {color: #c7c7cc}
-  // link font color
-  a {color: #c7c7cc}
-  // invert image color
-  img {filter: invert(90%);}
-  // use dark syntax-highlighting
-  @import "syntax-highlighting_dark"
-}
-
-//use light syntax-highlighting
-@media (prefers-color-scheme: light) {
-  //should be in main.css, but not working there.
-  @import "syntax-highlighting"
 }
 
 /* Effects
@@ -142,7 +120,7 @@ body {
       border-bottom:1px solid #ddd;
     }
   }
-  
+
   #menu-toggle:checked+.site-nav {
     opacity: 1;
     height: auto;
@@ -204,7 +182,7 @@ input#menu-toggle {
 }
 
 .post-list {
-  
+
 }
 
 .post_header {
@@ -352,7 +330,7 @@ body.custom-background {
 
 /* Archive page */
 
-.archive_list { 
+.archive_list {
   margin-left:5%;
   width:90%;
   margin-bottom:3rem;
@@ -378,7 +356,7 @@ div.post_title span.date {
 
 .pagination {
   width:50%;
-}  
+}
 
 .pagination.older-post{
   float: right;
@@ -421,6 +399,50 @@ there.
 
 /* Smaller than tablet */
 @media (max-width: 550px) {}
+
+/* add dark mode
+——————————————————————————————————————————————————*/
+@media (prefers-color-scheme: dark) {
+  // background
+  .page-content {background-color: #191919;}
+  // footer
+  .site-footer {background-color: #0a0a0a;}
+  // body font color
+  body {color: #c7c7cc}
+  // link font color
+  a {color: #c7c7cc}
+  // invert image color
+  img {filter: invert(90%);}
+  .article-footer {
+    padding:2rem 0;
+    border-top:1px solid #787878;
+    border-bottom:1px solid #787878;
+  }
+  hr {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    border-width: 0;
+    border-top: 1px solid #787878;
+  }
+  .category-name {
+    padding-top:20px;
+    text-transform:lowercase;
+    font-variant:small-caps;
+    h2 {
+     letter-spacing:0;
+     border-bottom: 1px solid #787878;
+    }
+  }
+
+  // use dark syntax-highlighting
+  @import "syntax-highlighting_dark"
+}
+
+//use light syntax-highlighting
+@media (prefers-color-scheme: light) {
+  //should be in main.css, but not working there.
+  @import "syntax-highlighting"
+}
 
 
 /* ------------------------------------
