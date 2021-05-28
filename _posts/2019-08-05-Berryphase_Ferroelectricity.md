@@ -151,11 +151,11 @@ It is clear that the centrosymmetric one has a wrong ionic contribution to the t
 
 At first, I thought this is due to the imposed symmtry constraint. However, after switch off symmetry entirely (ISYM=-1), VASP still produce this abnormal value of 0.0 elect*A for centrosymmetric phase.
 
---------
+---
 
-_**2019-12-25 update start**_
+_**2019-12-25 update**_
 
-This abnormal value of 0.0 corresponds to the jump of Ti atom located at the boundary of the unit cell. Specifically:
+This abnormal value of 0.0 corresponds to the jump of oxygen atom located at the boundary of the unit cell. Specifically:
 ```
 (Fractioanl coordinates)
 
@@ -163,11 +163,17 @@ O[1] @ CENT : 0.5  0.5  0.0
 
 O[1] @ FE   : 0.5  0.5  0.975
 ```
-since Ti pseudopotential contains 6 valence electrons, we can easily calculate its ionic dipole moment at centrosymmetric phase should be 12.09 elect * Ang. Since VASP output unit in elect * Ang, we have to account for electrons negative sign, so the ionic polarization @ CENT = -12.9 elect * A
+since oxygen pseudopotential contains 6 valence electrons, we can easily calculate its ionic dipole moment at centrosymmetric phase should be 24.2 elect * Ang. Since VASP output unit in elect * Ang, we have to account for electrons negative sign, so the ionic polarization @ CENT = -24.2 elect * A
 
-It appears that the electronic part does not need any fixing.
+This sill doesn't solve the mystery.
 
---------
+---
+
+_**2021-05-28 update**_
+
+This is actually a but in VASP, see [this post](../../../2021/05/28/ionic-polarization.html).
+
+---
 
 After figure out which value is clearly wrong, we can now proceed to calculate total polarization
 ```
@@ -305,15 +311,13 @@ __*UPDATE-2020-04-01*__
 {: .center}
 
 
-
-
 ----
 
 ## Input
 
 I've put all input file in a zip file for download: [Excel data],[VASP], [QE].
 
-[Excel data]:{{site.baseurl}}/assets/other/2019-08-05-2019-08-05-Berryphase_NbN.zip
+[Excel data]:{{site.baseurl}}/assets/other/2019-08-05-2019-08-05-Berryphase_NbN.xlsx
 
 [VASP]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_VASP.zip
 
