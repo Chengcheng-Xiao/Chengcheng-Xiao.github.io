@@ -164,7 +164,19 @@ grep -oRl "POINT_CHARGE_DIPOL" ./
 
 `POINT_CHARGE_DIPOL` is in `dipol.F`.
 
-In `POINT_CHARGE_DIPOL` subroutine, the code first loops over all element types (`T_INFO%NTYP`), then loops over atoms that belong to that specific type.
+In `POINT_CHARGE_DIPOL` subroutine:
+
+```
+NIS=1
+typ: DO NT=1,T_INFO%NTYP
+   DO NI=NIS,NIS+T_INFO%NITYP(NT)-1
+      X= MOD( T_INFO%POSION(1,NI)-POSCEN(1)+10.5_q,1._q)-0.5_q
+      Y= MOD( T_INFO%POSION(2,NI)-POSCEN(2)+10.5_q,1._q)-0.5_q
+      Z= MOD( T_INFO%POSION(3,NI)-POSCEN(3)+10.5_q,1._q)-0.5_q
+```
+
+the code first loops over all element types (`T_INFO%NTYP`), then loops over atoms that belong to that specific type.
+
 Then, it calculates the fractional coordinates of atoms relative to the dipole center (`POSCEN`): +0.5 or -0.5 means the atom is at the boundary of the periodic boundary (now defined by putting `POSCEN` aka `DIPOL` at the center (0.0).
 
 The next few lines of comments are the culprit of our problem:
