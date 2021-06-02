@@ -28,3 +28,5 @@ disqus_shortname:
 
 # used this for post_excerpt at index_page
 excerpt_separator: <!--description-->
+
+cusdis_app_id: 918045a4-01b4-4cd3-b486-957df3a146ca
