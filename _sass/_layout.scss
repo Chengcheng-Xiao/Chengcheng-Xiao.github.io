@@ -8,7 +8,18 @@ html,.container {
 body {
   min-height:100%;
   height:auto;
-  overscroll-behavior-y: none;
+  // overscroll-behavior-y: none;
+}
+
+// Hide scrollbar
+body::-webkit-scrollbar {
+display: none;
+}
+
+// Hide scrollbar for IE, Edge and Firefox
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .page-content {
@@ -403,6 +414,9 @@ there.
 /* add dark mode
 ——————————————————————————————————————————————————*/
 @media (prefers-color-scheme: dark) {
+  html {
+  background-color: #191919;
+  }
   // background
   .page-content {background-color: #191919;}
   // footer
@@ -433,6 +447,29 @@ there.
      border-bottom: 1px solid #787878;
     }
   }
+
+  // // scroll bar stuff
+  // // remember to open scroll bar, line 14-23
+  // // also remember to do the same for white mode
+  // html {
+  //   --scrollbarBG: #787878;
+  //   --thumbBG: #191919;
+  // }
+  // body::-webkit-scrollbar {
+  //   width: 5px;
+  // }
+  // body {
+  //   scrollbar-width: thin;
+  //   scrollbar-color: auto;
+  // }
+  // body::-webkit-scrollbar-track {
+  //   background: var(--thumbBG);
+  // }
+  // body::-webkit-scrollbar-thumb {
+  //   background-color: var(--scrollbarBG);
+  //   border-radius: 6px;
+  //   border: 3px solid var(--scrollbarBG);
+  // }
 
   // use dark syntax-highlighting
   @import "syntax-highlighting_dark"
