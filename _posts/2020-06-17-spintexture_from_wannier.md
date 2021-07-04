@@ -325,3 +325,177 @@ And we get:
 {: .center}
 
 And again, this plot looks exactly like the one we obtained by directly rotating the spn matrix.
+
+## 2021-07-04 update
+
+I've finally updated the script to calculate spin expectation colored band using python3 (and now I'm using pybinding instead of pythtb) which gives me a huge speed bump.
+
+To do the same thing as I did in 2020-06-29 update:
+
+As a first step, we need to convert the Hamiltonian into a format that can be read by pybinding, using [wanPB](https://github.com/Chengcheng-Xiao/wanPB), we need:
+
+- wannier90_centres.xyz (add `write_xyz=.true.` to `wannier90.win`)
+- wannier90_tb.dat (add `write_tb = .true.` to `wannier90.win`)
+
+
+simply use the following command in the same directory as the those two files resides in.
+```
+wanpb.x
+```
+
+Then, using the following script, we can generate the `spinexp_band.dat` data file:
+
+```python
+import numpy as np
+import pybinding as pb
+pb.pltutils.use_style()
+import matplotlib.pyplot as plt
+import time
+import sys
+
+
+def progressbar(it, prefix="", size=60, file=sys.stdout):
+    '''
+    progress bar function from https://stackoverflow.com/a/34482761/12660859
+    '''
+    count = len(it)
+    def show(j):
+        x = int(size*j/count)
+        file.write("%s[%s%s] %i/%i\r" % (prefix, "#"*x, "."*(size-x), j, count))
+        file.flush()
+    show(0)
+    for i, item in enumerate(it):
+        yield item
+        show(i+1)
+    file.write("\n")
+    file.flush()
+
+def get_node(kpts_scaled, rvec):
+    '''
+    convert scaled k points to absolute k points.
+    '''
+    kpts = []
+    for kpt_scaled in kpts_scaled:
+        kpts.append(kpt_scaled[0]*rvec[0]+
+                    kpt_scaled[1]*rvec[1]+
+                    kpt_scaled[2]*rvec[2])
+
+    kpts = np.asarray(kpts)
+    return kpts
+
+
+def kpt_line_mode(kpts, nkpt=40):
+    '''
+    generate k paths using nodes
+    '''
+    segments = []
+    segments_line = []
+    node_line = []
+    node_line_start = 0
+    for seg in range(kpts.shape[0]-1):
+        segment = np.linspace(kpts[seg],kpts[seg+1],nkpt)
+        segments.append(segment)
+
+        d_seg = np.linalg.norm(segment[1]-segment[0])
+        node_line.append([node_line_start,node_line_start+d_seg*(nkpt-1)])
+        node_line_start = node_line_start+d_seg*(nkpt-1)
+        segments_line.append(np.linspace(node_line[seg][0],node_line[seg][1],nkpt))
+
+    segments = np.concatenate(segments,0)
+    segments_line = np.concatenate(segments_line,0)
+
+    nkpt_tot = segments.shape[0]
+    return segments, segments_line, node_line, nkpt_tot
+
+# READ
+#-----------------
+# read-in lattice
+lat = pb.load("wannier90.pbz")
+
+# construct model
+model = pb.Model(lat, pb.translational_symmetry())
+
+# use lapack solver
+solver = pb.solver.lapack(model)
+
+# get me recripocal vectors
+rvec = np.array(lat.reciprocal_vectors())
+
+# INPUT
+#-----------------
+# construct high symmetry points.
+#Gamma = [0,0,0]
+#K1    = [0.5,-0.5,-0.5]
+#M     = [0.7500, 0.2500, -0.2500]
+
+path=[[0.0000, 0.0000, 0.0000],
+      [0.5000,-0.5000,-0.5000],
+      [0.7500, 0.2500,-0.2500],
+      [0.5000, 0.0000,-0.5000],
+      [0.0000, 0.0000, 0.0000],
+      [0.5000, 0.5000, 0.5000],
+      [0.5000, 0.0000, 0.0000],
+      [0.0000, 0.0000, 0.0000],
+      [0.7500, 0.2500,-0.2500],
+      [0.5000, 0.0000, 0.0000]]
+
+
+# RUN
+#-----------------
+# process k-points
+#kpts_scaled = np.asarray([Gamma, K1, M])
+kpts_scaled = np.asarray(path)
+kpts = get_node(kpts_scaled,rvec)
+segments, segments_line, node_line, nkpt_tot = kpt_line_mode(kpts, nkpt=40)
+
+#%% diagonalize
+bands=[]
+eigvecs=[]
+for kpoint in progressbar(segments, "K-points calculated: ", 20):
+    solver.set_wave_vector(kpoint)
+    bands.append(solver.eigenvalues)
+    eigvecs.append(solver.eigenvectors)
+
+#%% plot bands
+nbnd = len(bands[0])
+result = pb.results.Bands(segments_line, bands)
+result.plot()
+
+#%% convert to numpy array
+evacs = np.asarray(eigvecs, dtype=complex)
+
+#%% calculate spin expectation
+exp = np.empty([nbnd,nkpt_tot,3],dtype=complex)
+
+pauli = np.array([[[complex( 0, 0),complex( 1, 0)],[complex( 1, 0),complex( 0, 0)]],
+                  [[complex( 0, 0),complex( 0,-1)],[complex( 0, 1),complex( 0, 0)]],
+                  [[complex( 1, 0),complex( 0, 0)],[complex( 0, 0),complex(-1, 0)]]])
+
+for i in range(nkpt_tot):
+    for b in range(nbnd):
+        evac = np.array([evacs[i,0::2,b],evacs[i,1::2,b]])
+
+        exp[b,i,0] = np.dot(evac.conj()[0], np.dot(pauli[0], evac)[0])+np.dot(evac.conj()[1], np.dot(pauli[0], evac)[1])
+        exp[b,i,1] = np.dot(evac.conj()[0], np.dot(pauli[1], evac)[0])+np.dot(evac.conj()[1], np.dot(pauli[1], evac)[1])
+        exp[b,i,2] = np.dot(evac.conj()[0], np.dot(pauli[2], evac)[0])+np.dot(evac.conj()[1], np.dot(pauli[2], evac)[1])
+
+#%% write to data
+f= open("spinexp_band.dat","w+")
+for i in range(nbnd):
+   for k in range(nkpt_tot):
+        # only write spin-z components to file (exp[i,k,2])
+        f.write('%s %s %s\n' % (segments_line[k], bands[k][i], np.real(exp[i,k,2])))
+   f.write("\n")
+
+f.close()
+```
+
+Finally, using the same script, we can get the same spin expectation colored bandstructure.
+
+__NOTE-1__: pybinding uses different notation as pythtb so the wavefunctions are bit different (with a phase), but that doesn't affect our spin expectation calculations. However, if berryphase-like object is to be used, we need to be more careful with this.
+
+__NOTE-2__: pythtb only read part (Rlatt>0 and some at the boundary) of the Wannier Hamiltonian whereas in parsing the `wannier90_tb.dat` file to pybinding, I simply used error handling to ignore all duplicates. This may incur some discrepencies between the two since the Wannier Hamiltonian may not be hermitian (which is weird). I need to doulbe check this.
+
+__NOTE-3__: diagonalizing this Hamiltonian takes several minutes so I've added a progress bar. Simply decrease the k-mesh can significantly reduce the amunt of time needed to finish this plot.
+
+__NOTE-4__: This script can be used as on general cases. Simply modify the K-nodes to whatever you want.
