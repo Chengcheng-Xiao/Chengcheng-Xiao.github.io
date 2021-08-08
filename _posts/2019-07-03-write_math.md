@@ -53,3 +53,36 @@ $$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
 [MathJax]:https://www.mathjax.org/
 [LaTex/Mathematics]:https://en.wikibooks.org/wiki/LaTeX/Mathematics
 [rmarkdown]:http://rmarkdown.rstudio.com/authoring_basics.html
+
+## 2021-08-08 update
+
+Apparently, mathjax v3 is now available [🔗link](https://www.mathjax.org/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library#gettingstarted).
+To use it, simply change:
+
+```html
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+```
+
+to
+
+```html
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEscapes: true
+  }
+};
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+```
+However, I find the new version doesn't automatically render horizontal scroll bar for long equations. So, update postponed. 
