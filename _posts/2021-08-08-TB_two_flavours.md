@@ -3,7 +3,7 @@ layout: post
 title: Tight-binding, two flavours🍦
 date: 2021-08-08
 categories: DFT
-description:
+description: two flavours of calculating tight-binding band structures.
 ---
 Read [🔗this](https://cpb-us-w2.wpmucdn.com/u.osu.edu/dist/3/67057/files/2018/09/tight-binding_model_in_the_second_quantization_formalism-1egl8n3.pdf) for introduction to TB method in a solid state physics perspective.
 
@@ -84,7 +84,9 @@ $$
 where $\Delta$ is the cell length.
 
 and it looks like:
+
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img1.jpg)
+{: .center}
 
 Since this is a `1X1` matrix, the basis it self is the eigenvector, we can revert it back to real-space by inverse FT:
 
@@ -152,7 +154,7 @@ $$
 which looks like:
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img2.jpg)
-
+{: .center}
 
 we see that the BZ is now halved, this is actually due to band folding. Still, every bit of information is preserved here, for example, at $\Gamma$ point. the upper band corresponds to the states at the edge of the primitive BZ.
 
