@@ -73,7 +73,7 @@ $on-laptop:        780px;
   white-space: nowrap;
   max-width: 100%;
   overflow-x: scroll;
-  overflow-y: visible;
+  overflow-y: hidden;
   text-align: initial;
 }
 //.katex {
@@ -82,3 +82,9 @@ $on-laptop:        780px;
 //  white-space: normal;
 //  text-indent: 0;
 //}
+
+.center
+{
+    margin: 0 auto;
+    display: block;
+}

@@ -85,8 +85,7 @@ where $\Delta$ is the cell length.
 
 and it looks like:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img1.jpg)
-{: .center}
+![test]({{site.baseurl}}/assets/img/post_img/2021-08-08-img1.jpg){:height="320px" width="426px" .center}
 
 Since this is a `1X1` matrix, the basis it self is the eigenvector, we can revert it back to real-space by inverse FT:
 
@@ -153,8 +152,7 @@ $$
 
 which looks like:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img2.jpg)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img2.jpg){:height="320px" width="426px" .center}
 
 we see that the BZ is now halved, this is actually due to band folding. Still, every bit of information is preserved here, for example, at $\Gamma$ point. the upper band corresponds to the states at the edge of the primitive BZ.
 
