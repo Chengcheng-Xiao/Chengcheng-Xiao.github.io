@@ -20,6 +20,7 @@ github_username: Chengcheng-Xiao
 markdown: kramdown
 kramdown:
   input: GFM
+  math_engine: katex
 
 # Third-party services
 # just leave someone empty to disable it

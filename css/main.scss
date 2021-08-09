@@ -67,3 +67,18 @@ $on-laptop:        780px;
         "color"
 //        "syntax-highlighting"
 ;
+
+.katex-display > .katex {
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: visible;
+  text-align: initial;
+}
+//.katex {
+//  font: normal 1.21em KaTeX_Main, Times New Roman, serif;
+//  line-height: 1.2;
+//  white-space: normal;
+//  text-indent: 0;
+//}
