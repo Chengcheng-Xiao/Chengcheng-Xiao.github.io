@@ -217,7 +217,7 @@ $$
 Now, the Hamiltonian elements (in reciprocal space) can be calculated by sandwiching it in between two Bloch functions. i.e.:
 
 $$
-H_{\alpha \beta} = < \psi^{\alpha}_{\vec k}(\vec r)| \hat H |\psi^{\beta}_{\vec k}(\vec r)>
+H_{\alpha \beta} = \bra{\psi^{\alpha}_{\vec k}(\vec r)} \hat H \ket{\psi^{\beta}_{\vec k}(\vec r)}
 \tag{18}
 $$
 
@@ -232,11 +232,11 @@ Now, if we plug in Eq. 1 to Eq. 3, we get:
 
 $$
 \begin{align}
-H_{\alpha,\beta} &= \sum_{\vec k, \vec k'} <\psi^{\alpha}_{\vec k}(\vec r)| \hat H |\psi^{\beta}_{\vec k'}(\vec r)>\\
-&=\frac{1}{N}  \sum_{\vec k, \vec k'} \sum_{\vec R_{\alpha}} \exp(-i \vec k \vec R_{\alpha}) <\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)| \hat H \sum_{\vec R_{\beta}} \exp(i \vec k' \vec R_{\beta}) |\phi^{\beta}_{\vec R_{\beta}}(\vec r)> \\
-&=\sum_{\vec k, \vec k'}  \sum_{\vec R_{\alpha}} \frac{1}{N}  \exp(i\vec R_{\alpha} (\vec k' - \vec k)) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) <\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)| \hat H |\phi^{\beta}_{\vec R_{\beta}}(\vec r)> \\
-&= \sum_{\vec k, \vec k'} \delta(\vec k' - \vec k) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) <\phi^{\alpha}_{\vec R_{0}}(\vec r)| \hat H |\phi^{\beta}_{\vec R_{\beta}}(\vec r)> \\
-&=  \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) <\phi^{\alpha}_{\vec R_{0}}(\vec r)| \hat H |\phi^{\beta}_{\vec R_{\beta}}(\vec r)> \\
+H_{\alpha,\beta} &= \sum_{\vec k, \vec k'} \bra{\psi^{\alpha}_{\vec k}(\vec r)} \hat H \ket{\psi^{\beta}_{\vec k'}(\vec r)}\\
+&=\frac{1}{N}  \sum_{\vec k, \vec k'} \sum_{\vec R_{\alpha}} \exp(-i \vec k \vec R_{\alpha}) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \sum_{\vec R_{\beta}} \exp(i \vec k' \vec R_{\beta}) \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+&=\sum_{\vec k, \vec k'}  \sum_{\vec R_{\alpha}} \frac{1}{N}  \exp(i\vec R_{\alpha} (\vec k' - \vec k)) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+&= \sum_{\vec k, \vec k'} \delta(\vec k' - \vec k) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+&=  \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
 &= \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) \cdot (-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}) = H_{\alpha, \beta}(\vec k)
 \end{align}
 \tag{20}
@@ -245,13 +245,13 @@ $$
 here, we've taken advantage of the fact that we are summing over a huge amount of real-space cells ($\vec R_{\alpha}$ and $\vec R_{\beta}$),
 
 $$
-\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) <\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)| \hat H |\phi^{\beta}_{\vec R_{\beta}}(\vec r)>
+\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}
 $$
 
 can be replaced with:
 
 $$
-\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) <\phi^{\alpha}_{\vec R_{0}}(\vec r)| \hat H |\phi^{\beta}_{\vec R_{\beta}}(\vec r)>.
+\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \bra{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}.
 $$
 
 In the last step, since the Hamiltonian is still in real space, we can calculate the integral directly in real space and the resulting energy ($-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}$) is the so-called hopping energy.
