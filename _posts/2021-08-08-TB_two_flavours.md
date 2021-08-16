@@ -249,7 +249,7 @@ $$
 can be replaced with:
 
 $$
-\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \bra{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}.
+\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}.
 $$
 
 In the last step, since the Hamiltonian is still in real space, we can calculate the integral directly in real space and the resulting energy ($-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}$) is the so-called hopping energy.
