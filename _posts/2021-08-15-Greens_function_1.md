@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Green's function (part 1️⃣)
+title: Green's function (part I)
 date: 2021-08-15
 categories: DFT
 description: Classical green's function, revisited.
@@ -10,9 +10,9 @@ Green's function method is a way to decompose a complex inhomogenous source usin
 
 ## Preconditions
 
-Green's function is a solution to a _linear_ differential equation with a _Dirac delta function as the inhomogeneous source_ and the additional requirement of the _boundary condition being homogenous_.
+Green's function is a solution to a <span class="yellow">linear</span> differential equation with a <span class="yellow">Dirac delta function as the inhomogeneous source</span> and the additional requirement of the <span class="yellow">boundary condition being homogenous</span>.
 
-To clarify, by _homogenous/inhomogeneous_, we mean $\textit{something}=0$ . For example, a differential equation is said to be inhomogeneous if $g(x)$ in the following equation does not equals to $0$, homogeneous otherwise:
+To clarify, by <span class="yellow">homogenous/inhomogeneous</span>, we mean $\textit{something}=0$ . For example, a differential equation is said to be inhomogeneous if $g(x)$ in the following equation does not equals to $0$, homogeneous otherwise:
 
 $$
 \hat{D} f(x) = g(x)
@@ -24,7 +24,7 @@ $$
 f(x=L) = 0 \text{ or } f'(x=L) = 0
 $$
 
-On the other hand, by _linear_, we mean no coupling between operators with different derivative order. i.e. no product of function and its derivatives, such as $f(x) \cdot f'(x)$.
+On the other hand, by <span class="yellow">linear</span>, we mean no coupling between operators with different derivative order. i.e. no product of function and its derivatives, such as $f(x) \cdot f'(x)$.
 
 Overall, the differential equation should look like:
 
@@ -45,9 +45,9 @@ where $\hat{D} = a_1(x)+a_2(x)\frac{d}{dx} + \cdots + a_n(x)(\frac{d}{dx})^n$. S
 ## Deriving of Green's function method
 
 Now, how do we apply this particular solution of a particular differential equation to solve all those general questions?
-More importantly, what kinds of _general_ differential equations can be solved using this method?
+More importantly, what kinds of <span class="yellow">general</span> differential equations can be solved using this method?
 Like I said in the beginning, the essence of this method is that it breaks down the complex inhomogeneous source using Dirac delta functions.
-This means that we can have any continuous complex inhomogeneous source in our _general_ differential equations, but we still need the operator to be linear.
+This means that we can have any continuous complex inhomogeneous source in our <span class="yellow">general</span> differential equations, but we still need the operator to be linear.
 i.e.:
 
 $$
@@ -57,31 +57,31 @@ $$
 
 where, $g(x)$ is a general continuous function.
 
-$g(x)$ can be expressed (decomposed) using a infinite set of Dirac delta functions as:
+$g(x)$ can be expressed (decomposed) using a infinite set of Dirac delta functions with weights as:
 
 $$
 g(x) = \int_{-\infty}^{\infty} \delta (x'-x) g(x') dx'
-\tag{4}
+\tag{4},
 $$
 
-Where, each Dirac delta function (more appropriately, unit pulse) takes one value from $g(x)$.
+where, each Dirac delta function (more appropriately, unit pulse) takes one value from $g(x')$. Or this can be interpreted as each unit pulse (located at $x$) has a weight of $g(x)$.
+
 By plugging Eq. 4 into Eq. 3, we get:
 
 $$
-\hat{D} f(x) = \int_{-\infty}^{\infty} \delta (x'-x) g(x') dx'.
+\hat{D} f(x) = g(x) = \int_{-\infty}^{\infty} \delta (x'-x) g(x') dx'.
 \tag{5}
 $$
 
-Note that Green's function is solution to the equation:
+Note that Green's function is the solution to the equation:
 
 $$
 \begin{aligned}
-\hat{D} f(x) &= \delta (x-x')\\
 \hat{D} G(x) &= \delta (x-x') \tag{6}\\
-\end{aligned}
+\end{aligned}.
 $$
 
-Here we rewrite $f(x)$ as $G(x)$ to differentiate Green's function to the final solution of our general differential equations.
+<!-- Here we rewrite $f(x)$ as $G(x)$ to differentiate Green's function to the final solution of our general differential equations. -->
 Plug Eq. 6 to Eq. 5 (note that we've swapped $x$ and $x'$), we get:
 
 $$
@@ -89,7 +89,7 @@ $$
 \tag{7}
 $$
 
-and since $\hat{D}$ is a linear operator, the final solution:
+and since $\hat{D}$ is a linear operator, the final solution to Eq. 3 is:
 
 $$
 f(x) = \int_{-\infty}^{\infty}G(x') g(x') dx'.
@@ -102,7 +102,7 @@ $$
 \hat{D} f(x) = 0
 $$
 
-to Eq. 8.
+to the solution in Eq. 8.
 
 Now, things are much clearer: The green's function is to be viewed as the building block of the particular solution since it decomposes the inhomogeneous source using Dirac functions.
 
@@ -136,7 +136,7 @@ $$
 \tag{11}
 $$
 
-To solve this Green's function, first, we set $\vec r' = 0$ since the delta function only cares about the difference between $\vec r$ and $\vec r'$. This yields $G(\vec r)$ and $\delta(\vec r)$
+To solve this equation and get the Greens function needed to solve Eq. 9, first, we set $\vec r' = 0$ since the delta function only cares about the difference between $\vec r$ and $\vec r'$. This yields $G(\vec r)$ and $\delta(\vec r)$
 Then we Fourier transform the Green's function and the delta function:
 
 - Green's function:
@@ -225,7 +225,7 @@ G(\vec r) &= \frac{1}{\epsilon_0} \frac{1}{(2\pi)^{2}} \int_{0}^{\infty} \frac{1
 \end{aligned}
 $$
 
-substituting $k$ with $(k \mid \vec r \mid)$:
+substituting $v$ with $(k \mid \vec r \mid)$:
 
 $$
 \begin{aligned}
@@ -238,7 +238,7 @@ $$
 
 which, is exactly the potential generated by a single point charge located at the origin point.
 
-if we don't specify $\vec r' = 0$, then:
+If we don't specify $\vec r' = 0$, then:
 
 $$
 \begin{aligned}
@@ -256,12 +256,11 @@ $$
 
 Which, is exactly the solution to our Possion equation.
 
-
-Quantum version, coming soon... 🦾
-
-
 For more information:
 
 - This article if based on [🔗this paper](https://www.scielo.br/j/rbef/a/yvDhk5GVrC5fTtmT9JQMFWb/?lang=en)
 
 - Watch [🔗this video](https://www.youtube.com/watch?v=Ld1u7bew6wc) from Andrew Dotson for a more "matrix" like explanation 😉.
+
+
+Next up, [🔗the quantum version](../16/Greens_function_2).
