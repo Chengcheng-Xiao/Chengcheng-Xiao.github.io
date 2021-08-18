@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Little math side-quest [No.1]
+title:  Mathematical side-quest 🐉
 date: 2019-07-04
 tags: ["Math"]
 categories: Side_projects
