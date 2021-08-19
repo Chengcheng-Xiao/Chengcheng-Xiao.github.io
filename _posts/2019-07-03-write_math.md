@@ -3,7 +3,7 @@ layout: post
 title: Writing equations in Jeklly
 date: 2019-07-04
 tags: ["web","code"]
-categories: jekyll_tutorial
+categories: jekyll
 ---
 
 Writing [$$\LaTeX$$] on Jeklly is not hard, but it can be tricky. After some light surfing on the internet, I found what works for me.
@@ -54,6 +54,8 @@ $$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
 [LaTex/Mathematics]:https://en.wikibooks.org/wiki/LaTeX/Mathematics
 [rmarkdown]:http://rmarkdown.rstudio.com/authoring_basics.html
 
+---
+
 ## 2021-08-08 update
 
 Apparently, mathjax v3 is now available [🔗link](https://www.mathjax.org/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library#gettingstarted).
@@ -71,7 +73,7 @@ MathJax.Hub.Config({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 ```
 
-to
+to：
 
 ```html
 <script type="text/javascript">
@@ -89,7 +91,7 @@ However, I find the new version doesn't automatically render horizontal scroll b
 
 ---
 
-$\KaTeX$, as an alternative to [MathJax], can render equations with HTML format and it's much faster. Following [🔗this](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/) blog post, I was able to add it to my blog.
+$\KaTeX$, as an alternative to MathJax, can render equations with HTML format and it's much faster. Following [🔗this](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/) blog post, I was able to add it to my blog.
 
 To use $\KaTeX$, add the following to `_config.yml`:
 ```
@@ -133,4 +135,11 @@ and put the following to `css/main.scss` file to add scroll bar to long equation
   overflow-y: visible;
   text-align: initial;
 }
+```
+
+Note that inorder to use $jekyll serve$ on local machines, extra package called `kramdown-math-katex` is needed.
+To install it:
+
+```
+gem install kramdown-math-katex --user-install
 ```

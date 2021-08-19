@@ -3,7 +3,7 @@ layout: post
 title: Puzzling effects of saw-tooth electric field in DFT code
 date: 2019-07-13
 tags: ["Electric_field"]
-categories: DFT
+categories: Post
 description: Applying a saw-tooth electric field in VASP seems yield a lower total energy which is unphysical and puzzling.
 ---
 

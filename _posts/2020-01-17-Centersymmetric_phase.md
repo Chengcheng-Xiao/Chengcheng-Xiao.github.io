@@ -3,7 +3,7 @@ layout: post
 title: Is it really necessary to have a centrosymmetric structure to calculate the macroscopic polarization?
 date: 2020-01-17
 tags: ["Polarization","Berryphase"]
-categories: DFT
+categories: Post
 description: No, it is actually not necessary. But in order to calculate this, one needs to be extra careful.
 ---
 
@@ -81,6 +81,6 @@ Or, if you are savy enough, you can use Wannier90's disentanglement to solve the
 
 ## Input
 
-I've put all input file in a zip file for download: [VASP]. I've also included a 2D inplane ferroelectric structure with two usable centrosymmetric phases to play with. enjoy! 
+I've put all input file in a zip file for download: [VASP]. I've also included a 2D inplane ferroelectric structure with two usable centrosymmetric phases to play with. enjoy!
 
 [VASP]:{{site.baseurl}}/assets/other/2020-01-17-centrosymmetric_phase.zip

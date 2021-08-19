@@ -2,7 +2,7 @@
 layout: post
 title: Green's function (part I)
 date: 2021-08-15
-categories: DFT
+categories: Post
 description: Classical green's function, revisited.
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: Some thoughts on periodicity and charge understanding of the polarization Quantum
 date: 2020-12-25
 tags: ["polarization"]
-categories: DFT
+categories: Post
 description: A simple demonstration of how definition of cell can affect the polarization.
 ---
 

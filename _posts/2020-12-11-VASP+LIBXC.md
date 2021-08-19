@@ -3,7 +3,7 @@ layout: post
 title: Compile VASP[v6.1.2] with libxc[v4.3.4]
 date: 2020-12-11
 tags: ["VASP compilation"]
-categories: Side_projects
+categories: Other
 description: A tutorial on how to compile VASP[v6.1.2] with libxc[v4.3.4].
 ---
 
@@ -52,4 +52,4 @@ To use libxc with VASP[v6.1.2], add the following to your INCAR file:
 2. `LIBCX2`: id/name of the correlation part
 
 The definition of the id/name for `LIBXC1` and `LIBXC2` can be found [HERE](https://www.tddft.org/programs/libxc/functionals/).
-And yes, you can use either the name or the id of your desired xc functional. 
+And yes, you can use either the name or the id of your desired xc functional.
