@@ -2,7 +2,7 @@
 layout: post
 title: JSmol + Jekyll = Awesome
 date: 2021-01-4
-categories: jekyll_tutorial
+categories: jekyll
 description: Want to learn how to display molecule in posts using JSmol/Jmol? You've come to the right place.
 ---
 
