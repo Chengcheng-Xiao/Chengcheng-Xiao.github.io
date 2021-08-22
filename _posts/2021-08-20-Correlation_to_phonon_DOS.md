@@ -102,20 +102,27 @@ For this reason, the following integral diverges:
 <!-- Finally, the velocity autocorrelation function, which tells us how the velocity is changing over time, can be written as: -->
 
 $$
-C_{v}(t) = \int_{-\infty}^{\infty} \vec v(t+t')\cdot \vec v(t')dt'
+\int_{-\infty}^{\infty} \vec v(t+t')\cdot \vec v(t')dt'
 $$
 
-To overcome this, we have to use the discrete Fourier transform in Eq. 1.
-Assuming we have N time points, we can write:
+Noting that the DOS function is a Dirac delta function, at $\omega = \omega_s$, the the DOS should indeed diverge.
+However, since we only care about the difference of the $\rho$ with different $\omega$s in our final plots, instead of using the Fourier transform, we can re-write the integral as:
+
+<!-- we have to use the discrete Fourier transform in Eq. 1.
+Assuming we have N time points, we can write: -->
 
 $$
-C_{v}(t) = \frac{1}{N} \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t'),
+\frac{1}{N_{t'}} \sum_{t'=0}^{N_{t'}} \vec v(t+t')\cdot \vec v(t'),
 $$
 
-which, can be defined as the averaged velocity autocorrelation function, so we can re-write $C_v(t)$ as:
+where, $N_{t\prime}$ is the number of time points we have.
+This expression can also be directly linked as an averaged velocity autocorrelation function:
 
 $$
-C_{v}(t) = \braket{\vec v(t)\cdot \vec v(0)}.
+\begin{aligned}
+C_{v}(t) &= \frac{1}{N} \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t')\\
+&= \braket{\vec v(t)\cdot \vec v(0)}
+\end{aligned}
 \tag{7}
 $$
 
@@ -141,7 +148,7 @@ $$
 \tag{9}
 $$
 
-and $\omega$ can only be integer times of $\frac{2\pi}{N_{t^{\prime \prime}}}$.
+<!-- and $\omega$ can only be integer times of $\frac{2\pi}{N_{t^{\prime \prime}}}$. -->
 
 
 ---
@@ -179,5 +186,29 @@ $$
 $$
 
 ---
-I have wrote a piece of [🔗Code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this
+
+## Physical explanation
+
+Okay, the derivation is nice and easy, but what's the physics behind?
+
+Let's consider a single atom that's vibrating at its equilibrium position.
+Its velocity vs time is plotted:
+
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img2.svg){:height="320px" width="488px" .center}
+
+The autocorrelation function $v(t+t\prime)v(t\prime)$ of this velocity signal at different $t$ is:
+
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img3.svg){:height="320px" width="488px" .center}
+
+where the color indicates different $t$.
+
+If we do an average of the autocorrelation like we did in Eq. 7, we get:
+
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="320px" width="488px" .center}
+
+It can be clearly seen that after exactly one period, the correlation is back at it's maximum.
+Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
+
+---
+I have wrote a piece of [🔗 code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this
 but I have ran out of vacation time and it's not working... hopefully I'll get time to finish this soon.
