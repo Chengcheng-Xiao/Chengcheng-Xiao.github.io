@@ -250,7 +250,7 @@ $$
 Finally, substituting Eq. 14 to Eq. 10, we get:
 
 $$
-\psi(\vec r) = \frac{1}{4 \pi \epsilon_0} \frac{\rho(\vec r')}{|\vec r - \vec r'|} d \vec r'
+\psi(\vec r) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vec r')}{|\vec r - \vec r'|} d \vec r'
 \tag{15}
 $$
 

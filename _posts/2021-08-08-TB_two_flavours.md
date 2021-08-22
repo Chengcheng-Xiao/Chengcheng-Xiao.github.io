@@ -197,7 +197,7 @@ In this flavour, we act directly the Bloch wavefunctions on to the Hamiltonian.
 
 For in this method, we don't need a specific real-space Hamiltonian, I'll write it directly:
 
-First, we have the Fourier relation (discrete FT with respect to the lattice, this is basically what anti-Wannierization):
+First, we have the Fourier relation (discrete FT with respect to the lattice, this is basically an anti-Wannierization process):
 
 $$
 \psi^{\alpha}_{\vec k}(\vec r) = \frac{1}{\sqrt{N}} \sum_{R_{\alpha}} \exp(i \vec k R_{\alpha})\phi^{\alpha}_{R_{\alpha}}(\vec r)
