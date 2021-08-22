@@ -11,7 +11,7 @@ The autocorrelation function is a cross-correlation function that tell's the cor
 To derive the relation between velocity autocorrelation function and the phonon density of states, let us first start with the Fourier transforming the velocity of an atom $i$, $v_i(t)$.
 
 $$
-\mathcal{F}[v_i(t)](\omega) = \int_{\infty}^{\infty}v_i(t)e^{i\omega t} dt
+\mathcal{F}[v_i(t)](\omega) = \int_{-\infty}^{\infty}v_i(t)e^{i\omega t} dt
 \tag{1}
 $$
 
@@ -63,7 +63,7 @@ noting that, due to [🔗 equipartition theorem](https://en.wikipedia.org/wiki/E
 Since we can express the total energy as pure kinetic energy at the equilibrium position, we get:
 
 $$
-E_{tot} = E_{kin} = \frac{1}{2} m v^2 = Q^2 \omega^2  = k_BT.
+E_{\text{tot}} = E_{\text{kin}} = \frac{1}{2} m v^2 = Q^2 \omega^2  = k_BT.
 $$
 
 Substituting
@@ -93,37 +93,56 @@ $$
 by the knowledge of Fourier transform of the time-dependent velocity function in Eq. 3, we get:
 
 $$
-\rho(-\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty} v^*_j(t''+t') v_j(t') e^{-i\omega(t'')} dt'' dt'
+\rho(-\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty}  \int_{-\infty}^{\infty} v^*_j(t''+t') v_j(t') e^{-i\omega(t'')} dt'' dt'.
 \tag{6}
 $$
 
-Finally, the velocity autocorrelation function, which tells us how the velocity is changing over time, can be written as:
+Remembering that the system is at its equilibrium state and the velocity signal is more or less periodic.
+For this reason, the following integral diverges:
+<!-- Finally, the velocity autocorrelation function, which tells us how the velocity is changing over time, can be written as: -->
 
 $$
-C_{v}(t) = \int_{-\infty}^{\infty} \vec v(t'+t)\cdot \vec v(t')dt'
+C_{v}(t) = \int_{-\infty}^{\infty} \vec v(t+t')\cdot \vec v(t')dt'
 $$
 
-or, in a more compact way:
+To overcome this, we have to use the discrete Fourier transform in Eq. 1.
+Assuming we have N time points, we can write:
 
 $$
-C_{v}(t) = \braket{\vec v(t'+t)\cdot \vec v(t')}.
+C_{v}(t) = \frac{1}{N} \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t'),
+$$
+
+which, can be defined as the averaged velocity autocorrelation function, so we can re-write $C_v(t)$ as:
+
+$$
+C_{v}(t) = \braket{\vec v(t)\cdot \vec v(0)}.
 \tag{7}
 $$
 
 Inserting Eq. 7 into Eq. 6, we get:
 
-$$
+<!-- $$
 \rho(-\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty} \braket{v_j(t''+t')\cdot v_j(t')} e^{-i\omega(t'')} dt''.
 $$
 
-For convenience, we can set $t'=0$ since the starting time of a MD calculation is arbitrary and we can always set $t'$ as the "median" of the time period that we run:
+For convenience, we can set $t'=0$ since the starting time of a MD calculation is arbitrary and we can always set $t'$ as the "median" of the time period that we run: -->
 
 $$
-\rho(-\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty} \braket{v_j(t'')\cdot v_j(0)} e^{-i\omega(t'')} dt''.
+\rho(\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty} \braket{v_j(t'')\cdot v_j(0)} e^{i\omega(t'')} dt''.
 \tag{8}
 $$
 
 With Eq. 8, noting the decreasing nature of the velocity autocorrelation function so that the integral always converges, we see that if we have the knowledge of the velocity of each atom across a period of time (since we cannot do infinity, a we need to have a cut-off time for the integral), we can calculate the phonon density of states.
+
+In practice, Eq. 8 should be rewrite in a discrete form as:
+
+$$
+\rho(\omega) = \frac{1}{3Nk_BT}\ \sum_j \frac{1}{N_{t''}} \sum_{t''=0}^{N_{t''}} \braket{v_j(t'')\cdot v_j(0)} e^{i\omega(t'')}.
+\tag{9}
+$$
+
+and $\omega$ can only be integer times of $\frac{2\pi}{N_{t^{\prime \prime}}}$.
+
 
 ---
 
@@ -137,7 +156,7 @@ Here, we label the atoms in each cell with $j$ (again a composite label with thr
 
 $$
 v_{j}(\vec R, t).
-\tag{9}
+\tag{10}
 $$
 
 Fourier transform (discrete) Eq. 9 with respect to $\vec R$, we get:
@@ -146,7 +165,7 @@ $$
 \begin{aligned}
 \mathcal{F}[v_{j}(\vec R, t)](\vec k,t) = \frac{1}{\sqrt{N}} \sum_{\vec R} v_j(\vec R,t) e^{i\vec k \vec R} = v_{j}(\vec k, t),
 \end{aligned}
-\tag{10}
+\tag{11}
 $$
 
 where we have $N$ unit cell in the supercell
@@ -156,8 +175,9 @@ Using Eq. 10, we can express the phonon DOS at each $\vec k$ point as:
 
 $$
 \rho(\vec k, -\omega) = \frac{1}{3Nk_BT}\ \sum_j \int_{-\infty}^{\infty} \braket{v_{j}(\vec k, t'')\cdot v_{j}(\vec k, 0)} e^{-i\omega(t'')} dt''.
-\tag{11}
+\tag{12}
 $$
 
-
-Code, Coming soon...
+---
+I have wrote a piece of [🔗Code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this
+but I have ran out of vacation time and it's not working... hopefully I'll get time to finish this soon.
