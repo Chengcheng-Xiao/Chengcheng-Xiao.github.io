@@ -11,9 +11,10 @@ The autocorrelation function is a cross-correlation function that tell's the cor
 To derive the relation between velocity autocorrelation function and the phonon density of states, let us first start with the Fourier transforming the velocity of an atom $i$, $v_i(t)$.
 
 $$
-\mathcal{F}[v_i(t)](\omega) = \int_{-\infty}^{\infty}v_i(t)e^{i\omega t} dt
+\mathcal{F}[v_i(t)](\omega) = \int_{-\infty}^{\infty}v_i(t)e^{i\omega t} dt,
 \tag{1}
 $$
+
 
 The power spectrum (which tells us how the energy is distributed over the frequency) of this velocity function is:
 
@@ -31,7 +32,14 @@ $$
 \tag{3}
 $$
 
-Before moving on, lets assume that harmonic approximation is valid (so that we have zero-width phonon branches), the atomic displacement with respect to time can be written as:
+Note that the exponential $e^{i\omega t}$ in Eq. 1 doesn't contain a minus sign.
+This is just a difference in convention, if we put in the minus sign, then
+$$v^*_i(t''+t')$$
+in Eq. 3 would become 
+$$v^*_i(-t''+t')$$.
+However, this does not affect any of the following analysis.
+
+Before moving on, let's assume that harmonic approximation is valid (which, in theory, we should have zero-width phonon branches), the atomic displacement with respect to time can be written as:
 
 $$
 r_j(t) = \sum_s Q_{s,j} e^{-i\omega_s t},
@@ -47,7 +55,7 @@ v_j(t) = \frac{d}{dt} r_j(t) = \sum_s Q_{s,j} (-i\omega_s) e^{-i\omega_s t}.
 \tag{4}
 $$
 
-Inserting Eq. 4 to Eq.3, and notice we are now using $j$ instead of $i$ to incorporate three spacial dimensions, we get:
+Inserting Eq. 4 to Eq. 3, and notice we are now using $j$ instead of $i$ to incorporate three spacial dimensions, we get:
 
 $$
 \begin{aligned}
@@ -115,8 +123,8 @@ $$
 \frac{1}{N_{t'}} \sum_{t'=0}^{N_{t'}} \vec v(t+t')\cdot \vec v(t'),
 $$
 
-where, $N_{t\prime}$ is the number of time points we have.
-This expression can also be directly linked as an averaged velocity autocorrelation function:
+where, $N_{t^{\prime}}$ is the number of time points we have.
+This expression can also be seen as an averaged velocity autocorrelation function:
 
 $$
 \begin{aligned}
@@ -125,6 +133,15 @@ C_{v}(t) &= \frac{1}{N} \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t')\\
 \end{aligned}
 \tag{7}
 $$
+
+Alternatively, we can re-normalize this autocorrelation function by doing something like:
+
+$$
+C_{v}(t) = \frac{\braket{\vec v(t)\cdot \vec v(0)}}{\braket{\vec v(0)\cdot \vec v(0)}},
+$$
+
+Which, normalizes the maximum correlation to $1$.
+This is what you see in, e.g. [🔗 10.1016/j.cpc.2011.04.019](https://www.sciencedirect.com/science/article/pii/S0010465511001500) or, [🔗 10.1039/c8nr07373b](https://pubs.rsc.org/en/content/articlelanding/2018/nr/c8nr07373b).
 
 Inserting Eq. 7 into Eq. 6, we get:
 
@@ -155,7 +172,7 @@ $$
 
 For periodic systems, the phonon bandstructure can also be interpreted as phonon DOS at each $k$ point.
 To obtain this "spectrum" function. we need to Fourier transform the velocity function with respect to the unit cell vectors.
-For example, lets say we have a $\sqrt[3]{N}\times\sqrt[3]{N}\times\sqrt[3]{N}$ supercell (so that we have a total of N unit cells) and have a MD trajectory file calculated using it (so we have the time-evolution of the velocity of each atom):
+For example, lets say we have calculated a $\sqrt[3]{N}\times\sqrt[3]{N}\times\sqrt[3]{N}$ supercell (so that we have a total of $N$ unit cells):
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img1.png){:height="320px" width="488px" .center}
 
@@ -166,7 +183,7 @@ v_{j}(\vec R, t).
 \tag{10}
 $$
 
-Fourier transform (discrete) Eq. 9 with respect to $\vec R$, we get:
+Fourier (discrete) transform Eq. 9 with respect to $\vec R$, we get:
 
 $$
 \begin{aligned}
@@ -175,7 +192,7 @@ $$
 \tag{11}
 $$
 
-where we have $N$ unit cell in the supercell
+where we have $N$ unit cell in the supercell.
 
 
 Using Eq. 10, we can express the phonon DOS at each $\vec k$ point as:
@@ -192,17 +209,15 @@ $$
 Okay, the derivation is nice and easy, but what's the physics behind?
 
 Let's consider a single atom that's vibrating at its equilibrium position.
-Its velocity vs time is plotted:
+Its velocity vs time can be plotted as:
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img2.svg){:height="320px" width="488px" .center}
 
-The autocorrelation function $v(t+t\prime)v(t\prime)$ of this velocity signal at different $t$ is:
+The autocorrelation function $v(t+t^{\prime})v(t^{\prime})$ of this velocity signal at different $t$ is (different colors indicate different $t$s):
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img3.svg){:height="320px" width="488px" .center}
 
-where the color indicates different $t$.
-
-If we do an average of the autocorrelation like we did in Eq. 7, we get:
+If we do an average of the autocorrelation by integrating from $0$ to $2\pi$ in time, likewhat we did in Eq. 7, we get:
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="320px" width="488px" .center}
 
@@ -210,5 +225,6 @@ It can be clearly seen that after exactly one period, the correlation is back at
 Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
 
 ---
-I have wrote a piece of [🔗 code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this
-but I have ran out of vacation time and it's not working... hopefully I'll get time to finish this soon.
+I have wrote a piece of [🔗 code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
+but I have ran out of vacation time and the code is not working... 
+hopefully I'll get time to finish in the future.
