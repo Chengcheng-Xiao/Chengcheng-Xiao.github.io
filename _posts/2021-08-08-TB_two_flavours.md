@@ -195,7 +195,7 @@ In this flavour, we act directly the Bloch wavefunctions on to the Hamiltonian.
 3. use the definition of Dirac delta function: $\delta(k,k') = \frac{1}{N} \sum_j e^{i(k-k')r_i}$.
 4. do the same thing with all atoms and construct the full Hamiltonian using the elements we got.
 
-For in this method, we don't need a specific real-space Hamiltonian, I'll write it directly:
+<!--For this method, we don't need a specific real-space Hamiltonian (by specific, I mean, be able to write out it'), I'll write it directly:-->
 
 First, we have the Fourier relation (discrete FT with respect to the lattice, this is basically an anti-Wannierization process):
 
@@ -204,7 +204,8 @@ $$
 \tag{16}
 $$
 
-where $\alpha$ label the orbital inside one unitcell which is labeled by $\vec R_{\alpha}$, assume we have $N$ unitcell to consider (summation goes up to $N$), the $\frac{1}{\sqrt{N}}$ is the normalization factor.
+where $\alpha$ labels the orbital inside one unitcell and the unitcell is labeled by $\vec R_{\alpha}$. 
+We have $N$ unitcell to consider (summation goes up to $N$), the $\frac{1}{\sqrt{N}}$ is used to normalization the result.
 
 In reverse (we are not going to use this relation in this note but just for the sake of completeness):
 
