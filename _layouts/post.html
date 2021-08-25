@@ -3,12 +3,25 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
+
   <header class="artilce_header">
     <h1 class="artilce_title" itemprop="name headline">{{ page.title }}</h1>
     <p class="artilce_meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
   </header>
 
   <div class="article-content" itemprop="articleBody">
+       <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+       <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script> 
+       <!--       <script src="{{ site.url }}/assets/global/jquery-3.6.0.min.js"></script> -->
+       <!--       <script src="{{ site.url }}/assets/global/anchor.min.js"></script> -->
+       
+       <script>
+       	$(function() {
+       		anchors.options.visible = 'hover'; 
+		anchors.options.icon = '¶';
+       		anchors.add('.post-content > h1, h2, h3, h4, h5, h6');
+       	});
+       </script>
     {{ page.content }}
   </div>
 
