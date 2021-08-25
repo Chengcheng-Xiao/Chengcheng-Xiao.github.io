@@ -6,7 +6,7 @@ categories: Post
 description: Derivation of how to calculate phonon DOS from autocorrelation functions.
 ---
 
-The autocorrelation function is a cross-correlation function that tell's the correlation of one signal (function) with a delayed version of it self.
+The autocorrelation function is a cross-correlation function that shows the correlation of one signal (function) with a delayed version of it self.
 
 To derive the relation between velocity autocorrelation function and the phonon density of states, let us first start with the Fourier transforming the velocity of an atom $i$, $v_i(t)$.
 
