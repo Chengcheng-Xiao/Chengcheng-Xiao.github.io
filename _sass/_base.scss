@@ -352,6 +352,11 @@ pre > code {
   padding: 1rem 1.5rem;
   white-space: pre; }
 
+pre.highlight {
+    word-wrap: normal;
+    overflow-x: auto;
+    white-space: pre;
+}
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
