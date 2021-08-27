@@ -258,9 +258,9 @@ Which, is exactly the solution to our Possion equation.
 
 For more information:
 
-- This article if based on [🔗this paper](https://www.scielo.br/j/rbef/a/yvDhk5GVrC5fTtmT9JQMFWb/?lang=en)
+- This article if based on [:link: this paper](https://www.scielo.br/j/rbef/a/yvDhk5GVrC5fTtmT9JQMFWb/?lang=en)
 
-- Watch [🔗this video](https://www.youtube.com/watch?v=Ld1u7bew6wc) from Andrew Dotson for a more "matrix" like explanation 😉.
+- Watch [:link: this video](https://www.youtube.com/watch?v=Ld1u7bew6wc) from Andrew Dotson for a more "matrix" like explanation 😉.
 
 
-Next up, [🔗the quantum version](../16/Greens_function_2).
+Next up, [:link: the quantum version](../16/Greens_function_2).

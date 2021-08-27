@@ -30,4 +30,7 @@ disqus_shortname:
 # used this for post_excerpt at index_page
 excerpt_separator: <!--description-->
 
+plugins:
+  - jemoji
+
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6

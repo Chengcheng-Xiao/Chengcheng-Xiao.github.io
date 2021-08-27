@@ -66,7 +66,7 @@ The vacuum region is chosen as around 30 Angstrom with an atrifical dipole layer
 ![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img5.png){:height="70%" width="70%" .center}
 
 ### Charge Center method
-The charge center method is performed using this tool ([LINK](https://raw.githubusercontent.com/Chengcheng-Xiao/Tools/master/VASP/chgcent.py)). The final polarization obtained for intrinsic NbN monolayer is:
+The charge center method is performed using this tool ([:link: link](https://raw.githubusercontent.com/Chengcheng-Xiao/Tools/master/VASP/chgcent.py)). The final polarization obtained for intrinsic NbN monolayer is:
 
 $$Polarization=3.28 pC/m$$
 
@@ -77,7 +77,7 @@ And the transition curve is obtained almost identical to the published result:
 This confirms the "correctness" of my charge center method even though in paper they used the berryphase method.
 
 ### berryphase
-To avoid error as mentioned in [🔗 LINK](https://www.sciencedirect.com/science/article/pii/S0022459612003234), I performed both automatic and manual berryphase calculation using the tag:
+To avoid error as mentioned in [:link: link](https://www.sciencedirect.com/science/article/pii/S0022459612003234), I performed both automatic and manual berryphase calculation using the tag:
 ```
 LDIPOL = .TRUE.
 IDIPOL = 3
@@ -180,7 +180,7 @@ Total polarization = 0.288293871 C/m^2
 ```
 Note we have to account for the negative sign of electron here. To do so, I added the negative sign to the final result.
 
-Exactly the same with [🔗 LINK](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
+Exactly the same with [:link: link](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
 
 By far, every thing works fine for the periodical system in VASP. The only problem is that the centrosymmetric phase's ionic part cannot be automatically calculated (or the output cannot be trusted).
 

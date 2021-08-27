@@ -58,7 +58,7 @@ $$k_{n+1} = n^2 + k_n^2 - k_{n-1}$$
 
 ## 2021-08-08 update
 
-Apparently, mathjax v3 is now available [🔗link](https://www.mathjax.org/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library#gettingstarted).
+Apparently, mathjax v3 is now available [:link: link](https://www.mathjax.org/?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library#gettingstarted).
 To use it, simply change:
 
 ```html
@@ -91,7 +91,7 @@ However, I find the new version doesn't automatically render horizontal scroll b
 
 ---
 
-$\KaTeX$, as an alternative to MathJax, can render equations with HTML format and it's much faster. Following [🔗this](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/) blog post, I was able to add it to my blog.
+$\KaTeX$, as an alternative to MathJax, can render equations with HTML format and it's much faster. Following [:link: this](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/) blog post, I was able to add it to my blog.
 
 To use $\KaTeX$, add the following to `_config.yml`:
 ```

@@ -5,7 +5,7 @@ date: 2021-08-16
 categories: Post
 description: Quantum version of Green's function, explained.
 ---
-Like I have said in [🔗my post](../15/Greens_function_1) about the classical Green's function:
+Like I have said in [:link: my post](../15/Greens_function_1) about the classical Green's function:
 
 > Green's function method is a way to decompose a complex inhomogenous source using Dirac delta functions and then combine individually solutions to obtain the true answer.
 

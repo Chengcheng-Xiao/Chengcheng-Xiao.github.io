@@ -143,10 +143,10 @@ Free energy of the ion-electron system (eV)
  ---------------------------------------------------
  free energy    TOTEN  =       0.00241381 eV
  ```
-The difference majorly arise from the `double counting Hartree energy`(See [🔗LINK](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
+The difference majorly arise from the `double counting Hartree energy`(See [:link: link](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
 
 __A potential [SOLVE](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)?__
-Others probably have the same problem as I do: [🔗 LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+Others probably have the same problem as I do: [:link: link](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
 
 __NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
 

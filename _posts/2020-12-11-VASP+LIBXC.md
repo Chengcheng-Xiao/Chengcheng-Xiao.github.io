@@ -15,7 +15,7 @@ I cannot find any information on how to compile VASP with libxc on the VASP wiki
 
 ## Compile libxc
 First, compile libxc[v4.3.4]:
-1. Download the source code from [🔗 HERE](https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.gz).
+1. Download the source code from [:link: HERE](https://gitlab.com/libxc/libxc/-/archive/4.3.4/libxc-4.3.4.tar.gz).
 2. untar the tarball with:
 ```
 tar zxvf libxc-4.3.4.tar.gz

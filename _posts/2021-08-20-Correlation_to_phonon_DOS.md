@@ -67,7 +67,7 @@ $$
 \tag{5}
 $$
 
-noting that, due to [🔗 equipartition theorem](https://en.wikipedia.org/wiki/Equipartition_theorem), the total energy of an oscillator is $k_BT$ where $k_B$ is the Boltzmann constant and $T$ is temperature.
+noting that, due to [:link: equipartition theorem](https://en.wikipedia.org/wiki/Equipartition_theorem), the total energy of an oscillator is $k_BT$ where $k_B$ is the Boltzmann constant and $T$ is temperature.
 Since we can express the total energy as pure kinetic energy at the equilibrium position, we get:
 
 $$
@@ -141,7 +141,7 @@ C_{v}(t) = \frac{\braket{\vec v(t)\cdot \vec v(0)}}{\braket{\vec v(0)\cdot \vec 
 $$
 
 Which, normalizes the maximum correlation to $1$.
-This is what you see in, e.g. [🔗 10.1016/j.cpc.2011.04.019](https://www.sciencedirect.com/science/article/pii/S0010465511001500) or, [🔗 10.1039/c8nr07373b](https://pubs.rsc.org/en/content/articlelanding/2018/nr/c8nr07373b).
+This is what you see in, e.g. [:link: 10.1016/j.cpc.2011.04.019](https://www.sciencedirect.com/science/article/pii/S0010465511001500) or, [:link: 10.1039/c8nr07373b](https://pubs.rsc.org/en/content/articlelanding/2018/nr/c8nr07373b).
 
 Inserting Eq. 7 into Eq. 6, we get:
 
@@ -225,6 +225,6 @@ It can be clearly seen that after exactly one period, the correlation is back at
 Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
 
 ---
-I have wrote a piece of [🔗 code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
+I have wrote a piece of [:link: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
 but I have ran out of vacation time and the code is not working...
 hopefully I'll get time to finish in the future.
