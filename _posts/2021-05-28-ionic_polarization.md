@@ -219,13 +219,3 @@ Notice that the ionic dipole moment is now exactly the same as what we got from 
 All solved!
 
 (Okay maybe not, I still haven't figured out why the electronic part of the polarization does not depend on `IDIPOL`, but that's another adventure, see ya later!)
-
----
-```
-██╗
-██╗     ╚██╗
-╚═╝█████╗██║
-██╗╚════╝██║
-╚═╝     ██╔╝
-╚═╝
-```

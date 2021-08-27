@@ -35,7 +35,7 @@ $$
 Note that the exponential $e^{i\omega t}$ in Eq. 1 doesn't contain a minus sign.
 This is just a difference in convention, if we put in the minus sign, then
 $$v^*_i(t''+t')$$
-in Eq. 3 would become 
+in Eq. 3 would become
 $$v^*_i(-t''+t')$$.
 However, this does not affect any of the following analysis.
 
@@ -174,7 +174,7 @@ For periodic systems, the phonon bandstructure can also be interpreted as phonon
 To obtain this "spectrum" function. we need to Fourier transform the velocity function with respect to the unit cell vectors.
 For example, lets say we have calculated a $\sqrt[3]{N}\times\sqrt[3]{N}\times\sqrt[3]{N}$ supercell (so that we have a total of $N$ unit cells):
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img1.png){:height="320px" width="488px" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img1.png){:height="70%" width="70%" .center}
 
 Here, we label the atoms in each cell with $j$ (again a composite label with three direction added) and the unit cell position is expressed as $\vec R$ so that the velocity of atom $j$ at cell $\vec R$ (in three direction) is:
 
@@ -211,20 +211,20 @@ Okay, the derivation is nice and easy, but what's the physics behind?
 Let's consider a single atom that's vibrating at its equilibrium position.
 Its velocity vs time can be plotted as:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img2.svg){:height="320px" width="488px" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img2.svg){:height="70%" width="70%" .center}
 
 The autocorrelation function $v(t+t^{\prime})v(t^{\prime})$ of this velocity signal at different $t$ is (different colors indicate different $t$s):
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img3.svg){:height="320px" width="488px" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img3.svg){:height="70%" width="70%" .center}
 
 If we do an average of the autocorrelation by integrating from $0$ to $2\pi$ in time, likewhat we did in Eq. 7, we get:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="320px" width="488px" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="70%" width="70%" .center}
 
 It can be clearly seen that after exactly one period, the correlation is back at it's maximum.
 Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
 
 ---
 I have wrote a piece of [🔗 code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
-but I have ran out of vacation time and the code is not working... 
+but I have ran out of vacation time and the code is not working...
 hopefully I'll get time to finish in the future.

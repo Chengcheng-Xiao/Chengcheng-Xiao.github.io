@@ -32,8 +32,7 @@ Also, yes, band crossing does mess up the result. But if we are careful enough t
 I'll try to explain this with a simple BTO structure.
 Here, different from the last time, I've constrained my structure to only allow Ti atom to move:
 
-![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img1.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img1.png){:height="70%" width="70%" .center}
 
 The result:
 ```
@@ -47,8 +46,7 @@ Total polarization = 0.102912491 C/m^2
 
 What if, I construct an simple antiferroelectric structure and say that is the centrosymmetric phase I take as referencing structure?
 
-![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img2.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img2.png){:height="70%" width="70%" .center}
 
 Recall there are acatually no more constraints other than our reference structure to be centrosymmetric, so, this actually does not contradict any rules.
 
@@ -67,8 +65,7 @@ Let's slow down and think about why this is the case. In oue switching route, we
 
 Now, Lets go one step further...
 
-![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img3.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img3.png){:height="70%" width="70%" .center}
 
 Here, we can actually see this giant AFE structure as two FE grain with one boundary sandwiched in between. Similar to our two-cell AFE case, this can still be used to calculate the total polarization. This tells us that we can even construct a centrosymmetric macroscopic structrue with grain boundary in it. As long as it has centrosymmetry and can be smoothly transformed form the positive FE phase to the negative FE phase, our reulst will __always remains the same!__
 

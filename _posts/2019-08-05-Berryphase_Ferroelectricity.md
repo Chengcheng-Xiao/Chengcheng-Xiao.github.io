@@ -18,15 +18,13 @@ According to the modern theory of polarization, the electrical polarization depe
 
 To illustrate this, first, consider a imaginary one dimensional atomic chain that have two differenc atoms: a anion and a cation.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img1.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img1.png){:height="70%" width="70%" .center}
 
 We can easily determine the dipole moment pointing from the anion to the cation.
 
 However, the physical world does not work in such simple way. If we take a step further, differentiate the electrons and ions, the problem becomes much harder to solve:
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img2.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img2.png){:height="70%" width="70%" .center}
 
 Here, the electrons are represented as charge density and are spread out between two ions. To get the charge center for electrons, we have to integrate the charge density in the unitcell:
 
@@ -39,8 +37,7 @@ $$\langle R_{ion} \rangle = \Sigma_{i=A,B} R*Q_{i} /Q_{total}$$
 
 These expressions are easy to solve, but the charge-center varies with the choice of unicell. For example, if we translate the unitcell by a fraction to the right:
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img3.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img3.png){:height="70%" width="70%" .center}
 
 Taking a closer look at the charge distribution, some of which "jumped" from the left end to the right end due to periodical conditions. And even though the structure is unchanged, this translation motion changes the charge center of electrons while left the ion center unaffected.
 
@@ -56,8 +53,7 @@ __Answer:__ *Calculate optimum transition route and extract the local maxima as 
 ## VASP 2D System
 2D-NbN, as an out of plane ferroelectric system suggested by Anuja et al, have exotic switchable out-of-plane (OOP) polarization which can happen without switching of ionic positions. I choose this to show how Berry phase method can, sometimes, be cumbersome and have boundaries in certain systems.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img4.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img4.png){:height="70%" width="70%" .center}
 
 The system consist of one Nb and one N atom that forms a Boron Nitride like structure. The polarization can be switched by switching the $$\Delta$$ in the z axis:
 
@@ -67,8 +63,7 @@ Due to the fact that this structure possess OOP polarization in which the period
 
 The vacuum region is chosen as around 30 Angstrom with an atrifical dipole layer so that imaging counterpart has no effects.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img5.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img5.png){:height="70%" width="70%" .center}
 
 ### Charge Center method
 The charge center method is performed using this tool ([LINK](https://raw.githubusercontent.com/Chengcheng-Xiao/Tools/master/VASP/chgcent.py)). The final polarization obtained for intrinsic NbN monolayer is:
@@ -77,13 +72,12 @@ $$Polarization=3.28 pC/m$$
 
 And the transition curve is obtained almost identical to the published result:
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img6.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img6.png){:height="70%" width="70%" .center}
 
 This confirms the "correctness" of my charge center method even though in paper they used the berryphase method.
 
 ### berryphase
-To avoid error as mentioned in [LINK](https://www.sciencedirect.com/science/article/pii/S0022459612003234), I performed both automatic and manual berryphase calculation using the tag:
+To avoid error as mentioned in [🔗 LINK](https://www.sciencedirect.com/science/article/pii/S0022459612003234), I performed both automatic and manual berryphase calculation using the tag:
 ```
 LDIPOL = .TRUE.
 IDIPOL = 3
@@ -145,7 +139,7 @@ By varying the atomic displacement from the centrosymmetric phase (CENT) to ferr
 | 4        | -11.74963     | -1.14461           |
 | 5        | -11.66192     | -1.41757           |
 | 6 (FE)   | -11.5742      | -1.68399           |
-{: .center}
+
 
 It is clear that the centrosymmetric one has a wrong ionic contribution to the total polarziation.
 
@@ -186,7 +180,7 @@ Total polarization = 0.288293871 C/m^2
 ```
 Note we have to account for the negative sign of electron here. To do so, I added the negative sign to the final result.
 
-Exactly the same with [LINK](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
+Exactly the same with [🔗 LINK](https://docs.quantumwise.com/tutorials/polarization/polarization.html) and [experimental value](https://journals.aps.org/pr/abstract/10.1103/PhysRev.99.1161) of 0.26 C/m^2.
 
 By far, every thing works fine for the periodical system in VASP. The only problem is that the centrosymmetric phase's ionic part cannot be automatically calculated (or the output cannot be trusted).
 
@@ -218,8 +212,7 @@ nppstr        = 7       #number of kpoint
 
 For 2D system, I choose the `nppstr` to be 1. This resulting in some error (FFT related). However, counterintuitively, changing `nppstr` to a larger number gives out correct answer.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img7.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img7.png){:height="70%" width="70%" .center}
 
 Note that the centrosymmetric phase does not have a polarization value of ZERO. Despite the overall trend of the graph is correct, this still puzzles me.
 
@@ -294,8 +287,7 @@ The results of this procedure are not pretty comparing to the QE and charge cent
 
 Nevertheless, it works.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img8.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img8.png){:height="70%" width="70%" .center}
 
 __*UPDATE-2020-03-15*__
 Q: What if we change the centro-symmetric phase for the NbN? Would this behavior (polarization changes sign without structural flip) be a route dependent??
@@ -307,8 +299,7 @@ But, if the total polarization is larger than the max opposite polarization, qua
 __*UPDATE-2020-04-01*__
 1. The position of the dipole layer in VASP is set by (DIPOL+0.5) in fractional coordinates.
 2. `LVTOT` and `LVHAR` should converge in vacuum. `LVTOT` converges slower than `LVHAR`.
-![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img9.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-08-10-img9.png){:height="70%" width="70%" .center}
 
 
 ----

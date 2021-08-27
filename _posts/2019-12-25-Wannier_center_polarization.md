@@ -21,8 +21,7 @@ On another note, Wannier charge center can be conveniently linked to the Berryph
 ## Structure(s)
 We need both centro symmetric and non-centro Ferroelectric structure.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-12-25-img1.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-12-25-img1.png){:height="70%" width="70%" .center}
 
 ## Berryphase method
 To get polarization value using VASP, just add the following line to your SCF(static) calculation's  `INCAR`:
@@ -51,7 +50,7 @@ For the __result__, I refer back to one of my previous [post]({% post_url 2019-0
 | 4        | -11.74963     | -1.14461           |
 | 5        | -11.66192     | -1.41757           |
 | 6 (FE)   | -11.5742      | -1.68399           |
-{: .center}
+
 >we can easily calculate its ionic dipole moment at centrosymmetric phase should be -12.09 elect*A.<br>
 >After figuring out which value is clearly wrong, we can now proceed to calculate total polarization:
 

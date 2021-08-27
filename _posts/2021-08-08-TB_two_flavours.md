@@ -86,7 +86,7 @@ where $\Delta$ is the cell length.
 
 and it looks like:
 
-![test]({{site.baseurl}}/assets/img/post_img/2021-08-08-img1.jpg){:height="320px" width="426px" .center}
+![test]({{site.baseurl}}/assets/img/post_img/2021-08-08-img1.jpg){:height="70%" width="70%" .center}
 
 Since this is a `1X1` matrix, the basis it self is the eigenvector, we can revert it back to real-space by inverse FT:
 
@@ -153,7 +153,7 @@ $$
 
 which looks like:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img2.jpg){:height="320px" width="426px" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-08-img2.jpg){:height="70%" width="70%" .center}
 
 we see that the BZ is now halved, this is actually due to band folding. Still, every bit of information is preserved here, for example, at $\Gamma$ point. the upper band corresponds to the states at the edge of the primitive BZ.
 
@@ -204,7 +204,7 @@ $$
 \tag{16}
 $$
 
-where $\alpha$ labels the orbital inside one unitcell and the unitcell is labeled by $\vec R_{\alpha}$. 
+where $\alpha$ labels the orbital inside one unitcell and the unitcell is labeled by $\vec R_{\alpha}$.
 We have $N$ unitcell to consider (summation goes up to $N$), the $\frac{1}{\sqrt{N}}$ is used to normalization the result.
 
 In reverse (we are not going to use this relation in this note but just for the sake of completeness):

@@ -31,8 +31,7 @@ Using these tags and a 2D graphene layer (made into orthorhombic), I calculated 
 
 The electric field effect can be clearly seen from the integrated local potential profile. Note that the potential shift from higher at the bottom of the cell to lower at the top of the cell, vice versa.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img1.svg)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img1.svg){:height="70%" width="70%" .center}
 
 Notice the slope of the local potential in the vacuum region equals to the field strength `EFIELD`. Here I excluded the exchange part and only included the Hartree part of the local potential.
 
@@ -42,11 +41,9 @@ $$\rho_{diff}=\rho_{without field}-\rho_{with field}$$
 
 The result are show below:
 
-![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img2.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img2.png){:height="70%" width="70%" .center}
 
-![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img3.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img3.png){:height="70%" width="70%" .center}
 
 The yellow region indicates charge accumulation while the blue part suggests charge depletion.
 
@@ -56,8 +53,7 @@ Clearly, the "up-ward" electric field induces a "up-ward" dipole moment and the 
 
 The total energy drops with respect to the field strength (in both direction). Since electric field is an external perturbation, this result is unphysical.
 
-![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img4.svg)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img4.svg){:height="70%" width="70%" .center}
 
 In [this post](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7366), the "admin" of the VASP forum suggest that:
 
@@ -67,8 +63,8 @@ Which seems to be faulty since the direction of the dipole moment calculated thi
 
 The energy difference are listed below:
 
-$\require{mediawiki-texvc}$
- __$$E_{field}=0.0/\AA$$__:
+
+$E_{field}=0.0/\text{Å}$:
 
 ```
 DIPCOR: dipole corrections for dipol
@@ -99,8 +95,7 @@ Free energy of the ion-electron system (eV)
  energy without entropy =      -36.91470334  energy(sigma->0) =      -36.91470334
  ```
 
-$\require{mediawiki-texvc}$
- __$$E_{field}=0.2/\AA$$__:
+ $E_{field}=0.2/\text{Å}$:
 
 ```
 DIPCOR: dipole corrections for dipol
@@ -151,7 +146,7 @@ Free energy of the ion-electron system (eV)
 The difference majorly arise from the `double counting Hartree energy`(See [🔗LINK](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
 
 __A potential [SOLVE](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)?__
-Others probably have the same problem as I do: [LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+Others probably have the same problem as I do: [🔗 LINK](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
 
 __NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
 
@@ -162,8 +157,7 @@ __NOTE__: QE also have this problem. Am I missing something? Since this method d
 
 ~~Using a [convient script](https://github.com/Chengcheng-Xiao/Tools/blob/master/VASP/chgcent.py) , I obtained the result below.~~
 
-![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img5.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img5.png){:height="70%" width="70%" .center}
 
 ~~All is well now. Phew.~~
 

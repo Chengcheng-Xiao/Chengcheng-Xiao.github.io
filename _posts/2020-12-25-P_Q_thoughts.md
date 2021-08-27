@@ -13,8 +13,7 @@ Electrical polarization, defined as "dipole moments per unit volume", can heuris
 $$\textbf{P}_{cell} = \frac{1}{V_{cell}} \int_{cell} d\textbf{r} \textbf{r} \rho(\textbf{r}),$$
 where the integration is carried out over one unit cell. Note that for DFT results, this formula only applies to electron density and the point charge ionic contribution can be later on added.
 
-![]({{site.baseurl}}/assets/img/post_img/2020-12-25-img1.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-12-25-img1.png){:height="70%" width="70%" .center}
 
 As shown on the top panel, one can see that if the we can somehow treat the charge density as a point-like charge distribution, the integration can be discretized into summation:
 

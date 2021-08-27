@@ -56,8 +56,7 @@ pyprocar.fermi2D('PROCAR-repaired', outcar='OUTCAR', st=True, energy=-0.14, noar
 
 __Now, results!__
 
-![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img1.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img1.png){:height="400px" width="453px" .center}
 
 This is a 2D plot of the spin texture. The x and y axis are the rec. space vectors (well, not exactly. Since we have a hex cell, but you get the gist) and the arrows are the spin expectation vectors in the x-y plane, and the colour of those arrows correspond to the expectation values on the out of plane z direction.
 The cut energy is set to 0.14eV below the fermi level.
@@ -181,13 +180,11 @@ plt.savefig("fermi_surface_band_"+str(nband)+".png", dpi=300)
 ```
 __Result time!__
 
-![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img2.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img2.png){:height="400px" width="484px" .center}
 
-![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img3.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img3.png){:height="400px" width="484px" .center}
 
-Here, I'm plotting the spin textrue for two band (No. 16 and No. 17).
+Here, I'm plotting the spin texture for two band (No. 16 and No. 17).
 I'm using the cut plane method here (contrary to the 'direct from DFT' method).
 Instead, I'm showing the eigenvalue of each band with different colour.
 `Yellow -> higher in energy`, `Black -> lower in energy`.
@@ -237,8 +234,7 @@ Here, just to confirm my implementation of `.spn` file is correct, I'll compute 
 ### directly from rotating spn matrix
 Just follow the Wannier90's example17 and [my example](https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix/tree/dev/example/example2), you will get:
 
-![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img4.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img4.png){:height="500px" width="833px" .center}
 
 
 ### diagonalization method
@@ -300,7 +296,7 @@ f.close()
 ```
 then plot with `gnuplot`:
 
-```gnuplot
+```
 set arrow from      0.34843,     -3.77527557 to       0.34843,     39.45894970 nohead
 set arrow from      0.65018,     -3.77527557 to       0.65018,     39.45894970 nohead
 set arrow from      0.8244,     -3.77527557 to       0.8244,     39.45894970 nohead
@@ -321,8 +317,7 @@ set yrange [     -3.77527557 :     39.45894970]
 ```
 And we get:
 
-![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img5.png)
-{: .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-06-17-img5.png){: .center}
 
 And again, this plot looks exactly like the one we obtained by directly rotating the spn matrix.
 
