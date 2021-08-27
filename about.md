@@ -4,13 +4,15 @@ title: About
 permalink: /about/
 ---
 
-<img style='filter: invert(0%);' src="{{site.baseurl}}/assets/img/Profile_pic.png" width="70">
+<img style='filter: invert(0%);' src="{{site.baseurl}}/assets/img/Profile_pic.png" width="20%">
 
 I am an electron wandering in a computer generated field.
 
 Okay, seriously, my name's Chengcheng Xiao. I'm currently a PhD candidate @ Imperal College London.
 
 👋 Nice to meet you!
+
+---
 
 ### Research Interests
 
@@ -19,6 +21,8 @@ My research area include (subject to expand at any moment):
 - 🧱 2D materials.
 - 💻 Density functional theory methods.
 
+---
+
 ### Contact Me
 📧 Email: [iconxicon@me.com](mailto:iconxicon@me.com)
 
@@ -26,7 +30,9 @@ My research area include (subject to expand at any moment):
 
 🐦 Twitter: [@iconxicon](https://twitter.com/iconxicon)
 
-### Published Papers
+---
+
+### Publications
 
  - [2019] Room-temperature ferroelectricity in MoTe2 down to the atomic monolayer limit [**Nature Communications**] [_DOI: 10.1038/s41467-019-09669-x_](https://doi.org/10.1038/s41467-019-09669-x)
 

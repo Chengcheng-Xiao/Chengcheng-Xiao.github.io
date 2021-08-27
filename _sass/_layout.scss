@@ -34,6 +34,7 @@ body {
   bottom: 0;
   padding-bottom: 0rem;
   width:100%;
+  height: 183px;
 
   /* footer style */
   color: #99999a;
@@ -68,7 +69,8 @@ body {
   font-weight:$font-weight-bold;
   font-size: 2.2rem; line-height: 1.2;  letter-spacing: 0rem;
 }
-.logo a {
+
+/*.logo a {
   -webkit-transition:.4s;
   transition:.4s;
 }
@@ -81,7 +83,7 @@ body {
   background-repeat:repeat-x;
   background-size:2px 2px;
   background-position:0 96%
-}
+}*/
 
 .nav {
   line-height: $base-line-height;
@@ -313,17 +315,21 @@ p.readmore {
 
 .left {
   text-align:center;
+  line-height: 160%;
 
   @media (min-width: $on-laptop) {
     text-align:left;
+    line-height: 160%;
   }
 }
 
 .right {
   text-align:center;
+  line-height: 200%;
 
   @media (min-width: $on-laptop) {
     text-align:right;
+    line-height: 200%;
   }
 
 }
