@@ -91,6 +91,8 @@ However, I find the new version doesn't automatically render horizontal scroll b
 
 ---
 
+## 2021-08-09 update
+
 $\KaTeX$, as an alternative to MathJax, can render equations with HTML format and it's much faster. Following [:link: this](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/) blog post, I was able to add it to my blog.
 
 To use $\KaTeX$, add the following to `_config.yml`:
