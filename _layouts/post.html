@@ -6,6 +6,12 @@ layout: default
 
   <header class="artilce_header">
     <h1 class="artilce_title" itemprop="name headline">{{ page.title }}</h1>
+    <p> <span>
+      {% for tag in page.tags %}
+        {% capture tag_name %}{{ tag }}{% endcapture %}
+        <a href="/tag/{{ tag_name }}"><code class="highligher-rouge" style="color:#969595;border-color:hsla(0, 0%, 59%,0.6)"><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+      {% endfor %}
+    </span> </p>
     <p class="artilce_meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
   </header>
 
