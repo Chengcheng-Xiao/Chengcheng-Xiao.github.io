@@ -4,6 +4,7 @@ title: Green's function (part I)
 date: 2021-08-15
 categories: Post
 description: Classical green's function, revisited.
+tags: Math
 ---
 
 Green's function method is a way to decompose a complex inhomogenous source using Dirac delta functions and then combine individually solutions to obtain the true answer.

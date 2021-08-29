@@ -2,7 +2,7 @@
 layout: post
 title: Writing equations in Jeklly
 date: 2019-07-04
-tags: ["web","code"]
+tags: Blog
 categories: jekyll
 ---
 

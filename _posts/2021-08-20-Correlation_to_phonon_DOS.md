@@ -4,6 +4,7 @@ title: From velocity autocorrelation function to phonon DOS
 date: 2021-08-20
 categories: Post
 description: Derivation of how to calculate phonon DOS from autocorrelation functions.
+tags: MD Phonon
 ---
 
 The autocorrelation function is a cross-correlation function that shows the correlation of one signal (function) with a delayed version of it self.

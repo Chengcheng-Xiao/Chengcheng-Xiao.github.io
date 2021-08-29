@@ -4,6 +4,7 @@ title: Tight-binding, two flavours🍦
 date: 2021-08-08
 categories: Post
 description: two flavours of calculating tight-binding band structures.
+tags: Tight-binding
 ---
 Read [:link: this](https://cpb-us-w2.wpmucdn.com/u.osu.edu/dist/3/67057/files/2018/09/tight-binding_model_in_the_second_quantization_formalism-1egl8n3.pdf) for introduction to TB method in a QFT perspective.
 

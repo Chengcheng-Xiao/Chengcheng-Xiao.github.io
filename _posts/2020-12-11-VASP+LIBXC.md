@@ -2,7 +2,7 @@
 layout: post
 title: Compile VASP[v6.1.2] with libxc[v4.3.4]
 date: 2020-12-11
-tags: ["VASP compilation"]
+tags: VASP
 categories: Other
 description: A tutorial on how to compile VASP[v6.1.2] with libxc[v4.3.4].
 ---

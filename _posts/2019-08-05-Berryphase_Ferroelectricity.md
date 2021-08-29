@@ -2,7 +2,7 @@
 layout: post
 title: Testing Berry phase method in VASP and QE for 2D system
 date: 2019-08-10
-tags: ["Berryphase"]
+tags: Polarization VASP
 categories: Post
 description: The VASP and QE both have berry phase module that calculate the electronic polarization "automagically". However, their results always seem to be puzzling, especially for low dimensional systems. In order to get a clear picture of how to these routine perform in 2D systems and to show how to use them correctly, a 2D NbN system and a 3D BaTiO3 structure are employed here as an example.
 ---

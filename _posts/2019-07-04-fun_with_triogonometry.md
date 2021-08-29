@@ -2,9 +2,9 @@
 layout: post
 title:  Side-quest 🐉
 date: 2019-07-04
-tags: ["Math"]
 categories: Other
 description: A geomotry problem that's seemingly easy to solve, yet cannot be solved without some "advanced" tools. Solved with integration and trigonometry.
+tag: Math
 ---
 
 ## Problem

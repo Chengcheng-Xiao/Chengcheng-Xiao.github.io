@@ -2,7 +2,7 @@
 layout: post
 title: Using Wannier Charge center to calculate Ferroelectric polarization
 date: 2019-12-25
-tags: ["Polarization"]
+tags: VASP Polarization Wannier
 categories: Post
 description: A brief guide for calculating macroscopic polarization using Wanneir functions and how to avoid it many pitfalls.
 ---

@@ -4,6 +4,7 @@ title: Green's function (part II)
 date: 2021-08-16
 categories: Post
 description: Quantum version of Green's function, explained.
+tags: Math
 ---
 Like I have said in [:link: my post](../15/Greens_function_1) about the classical Green's function:
 

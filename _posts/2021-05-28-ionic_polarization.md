@@ -4,6 +4,7 @@ title: Fixing the ionic part of the polarization in VASP
 date: 2021-05-28
 categories: Other
 description: Debugging VASP is way more fun than using it! Let me show you how I fixed the Ionic part of the polarization step by step! :-J
+tags: Blog
 ---
 
 VASP has a fantastical easy-to-use method to calculate the macroscopic polarization using Berryphase. However, there's been an long standing issue: __The ionic part of the polarization coming out of the `OUTCAR` does not match that calculated by hand.__
