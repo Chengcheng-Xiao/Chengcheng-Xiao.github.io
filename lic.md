@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Licensw
-permalink: /license/
+title: License
+permalink: /lic/
 ---
 
 <img style='filter: invert(0%);' src="{{site.baseurl}}/assets/img/by-nc-sa.svg" width="20%">
@@ -15,4 +15,4 @@ This website's entire contents, including the examples, problems and codes in po
 - If you do make a project that uses the contents provided by this website, it must be released under this same license or a looser one.
 
 
-If you have any problems, please [get in touch](email:iconxicon@me.com).
+If you have any problems, please [get in touch](mailto:iconxicon@me.com).
