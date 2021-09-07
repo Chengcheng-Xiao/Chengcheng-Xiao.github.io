@@ -233,12 +233,13 @@ p.readmore {
 }
 
 .article-content a {
-  border-bottom:1px dotted red;
+  border-bottom:1px solid hsla(0, 100%, 50%, 0.6);
+//  color:hsla(0, 100%, 50%, 0.6);
   text-decoration:none;
 }
 .article-content a:hover {
   color:red;
-  border-bottom:1px dotted red;
+  border-bottom:1px solid hsla(0, 100%, 50%, 0.6);
 }
 
 .article-footer {
