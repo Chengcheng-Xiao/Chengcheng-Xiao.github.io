@@ -8,6 +8,7 @@ tags: Tight-binding
 ---
 
 Density matrix, or density operator, is a very useful tool in quantum mechanics as it incorporates all the essential information of a set of wavefunctions.
+In spin-degenerate case, the density matrix has duodempotency which means the $n^{th}$ power of it is equal to multiplying a prefactor of $2^{n-1}$ to it.
 
 Let's first derive the density matrix.
 
@@ -19,10 +20,10 @@ $$
 \tag{1}
 $$
 
-note that this is a quantum _and_ statistical average.
+note that this is a quantum _and_ statistical average ($\omega$ can be fractional).
 
-If only one state of ${\ket{\psi_i}}$ is occupied (i.e. if $\omega_i \neq 0$ then all $\omega_j=0$ if $j \neq i$), the system is in a "pure" state and the statistical average part disappear.
-In our case, for a system with multiple electrons, we have a set of occupied states.
+If states are singly(in spin-degenerate case, doubly) occupied (i.e. if $\omega_i0$ are integers of $1(2)$ or $0$), we say the system is in a collection of "pure" states and the statistical average disappears.
+<!-- In our case, for a system with multiple electrons, ignoring thermal excitations, we have a set of occupied states. -->
 
 The density operator is defined as:
 
@@ -31,15 +32,14 @@ $$
 \tag{2}
 $$
 
-and if we expand our eigenstates set $\ket{\psi_i}$ with a set of basis states $\ket{\phi_i}$:
+and we expand our eigenstates set $\ket{\psi_i}$ with a set of basis states $\ket{\phi_i}$:
 
 $$
 \ket{\psi_i} = \sum_j c_j^{(i)} \ket{\phi_j}.
 \tag{3}
 $$
 
-Plugging in this expansion to Eq. 1, we get:
-
+Using Eq. 3 and Eq. 2, we can write Eq. 1 as:
 
 $$
 \begin{aligned}
@@ -50,19 +50,20 @@ $$
 \tag{4}
 $$
 
-We see that in Eq. 4, we can easily use the density matrix to obtain the expectation value of an operator.
-Also, when the operator we are considering is the identity matrix (operator), we get the total number of electrons in the system.
+In Eq. 4, we can easily use the density matrix to obtain the expectation value of an operator.
+Also, when the operator we are calculating is the identity matrix (operator), we get the total number of electrons $N$ in the system.
+i.e. $\mathrm{Tr}[\rho]=N$.
 
 The matrix element of the density matrix $\rho$ can be expressed as:
 
 $$
-\rho_{k j}=\sum_{i} c_{k}^{(i)} w_{i} c_{j}^{(i)*}=\braket{\phi_{k}\vert\hat{\rho}\vert \phi_{j}}
+\rho_{k j}=\sum_{i}  w_{i} c_{k}^{(i)}c_{j}^{(i)*}=\braket{\phi_{k}\vert\hat{\rho}\vert \phi_{j}}
 \tag{5}
 $$
 
 ---
 
-Now, the matrix elements of the square of the density matrix can be written as:
+To show the duodempotency property, we need to calculate the square of the density matrix:
 
 $$
 \left(\rho ^2\right)_{lm} = \sum_k \rho_{lk} \rho_{km}.
@@ -78,7 +79,7 @@ $$
 \end{aligned}
 $$
 
-Since we only have occupied and unoccupied molecular (eigen) states, we can restrict the summation of $i$ and $j$ to those occupied space. Note that in our case, the occupied states are doubly occupied, i.e. $\omega = 2$:
+Since we only have occupied and unoccupied molecular (eigen) states $\ket{\psi_i}$, we can restrict the summation of $i$ and $j$ to those occupied space. Note that in our case, the occupied states are doubly occupied, i.e. $\omega = 2$:
 
 $$
 \begin{aligned}
@@ -103,7 +104,7 @@ with relation, the square of the density matrix reads:
 $$
 \begin{aligned}
 \left(\rho ^2\right)_{lm} &= 2 \sum_i^{occ} 2 \sum_j^{occ}   c_l^{(i)} c_m^{(j)*} \sum_k \left[ c_k^{(i)} c_k^{(j)*} \right] \\
-&= 2  \sum_i^{occ} 2 c_l^{(i)} c_m^{(i)*} \\
+&= 2 \sum_i^{occ} 2 c_l^{(i)} c_m^{(i)*} \\
 &= 2 \sum_i \omega_i c_l^{(i)} c_m^{(i)*} = 2 \rho_{lm}
 \end{aligned}
 \tag{8}
@@ -125,8 +126,8 @@ $$
 
 Where $N$ is the number of electrons in the system.
 
-Eq. 9 is called _duodempotency_ and it's directly related to the fact that for a Fermion system, we have two electrons occupying one state (like those from restricted Hartree-Fock calculations).
-If we can only have one electron occupying one state (again, not considering spin), then we would have _idempotency_ and if we can have $x$ electrons occupying one states we would have:
+Eq. 9 demonstrated that for spin-degenerated systems, the density matrix has _duodempotency_, and this property is directly related to the fact that for a Fermion system, we have two electrons occupying one state (like those from restricted Hartree-Fock calculations).
+If we can only have one electron occupying one state, then we would have _idempotency_ like we learned in our undergraduate quantum mechanics class and if we can have $x$ electrons occupying one states we would have:
 
 $$
 \left(\rho ^n\right)_{lm} = x^{n-1} \rho_{lm}
