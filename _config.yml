@@ -35,4 +35,10 @@ plugins:
   - jekyll-twitter-plugin
   - jekyll-seo-tag
 
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/jekyll-seo.svg
+
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6
