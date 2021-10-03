@@ -32,5 +32,7 @@ excerpt_separator: <!--description-->
 
 plugins:
   - jemoji
+  - jekyll-twitter-plugin
+  - jekyll-seo-tag
 
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6
