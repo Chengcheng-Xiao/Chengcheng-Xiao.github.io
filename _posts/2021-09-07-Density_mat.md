@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Duodempotency of the density matrix
+title: Duodempotency of density matrix
 date: 2021-09-07
 categories: Post
-description: Manually tagging all your glorious blogs with ease
+description: Deriving duodempotency of spin-degenerate density matrices
 tags: Tight-binding
 ---
 
