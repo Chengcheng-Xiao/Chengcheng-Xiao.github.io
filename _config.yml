@@ -39,6 +39,6 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/img/jekyll-seo.svg
+      image: /assets/img/jekyll-seo.png
 
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6
