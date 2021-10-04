@@ -63,8 +63,7 @@ align=center
 
 to center the tweet card:
 
-<div class="twitter-tweet twitter-tweet-rendered" style="width: 100%; margin: 10px auto; display: flex; max-width: 550px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="Twitter Tweet" src="https://platform.twitter.com/embed/Tweet.html?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdHdlZXRfZW1iZWRfOTU1NSI6eyJidWNrZXQiOiJodGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NwYWNlX2NhcmQiOnsiYnVja2V0Ijoib2ZmIiwidmVyc2lvbiI6bnVsbH19&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=518821243320287232&amp;lang=en&amp;origin=http%3A%2F%2F127.0.0.1%3A4000%2Fjekyll%2F2021%2F10%2F02%2Ftwitter_card.html&amp;sessionId=04baceefc9d70dceec68ddc8a31790a074301876&amp;theme=light&amp;widgetsVersion=fcb1942%3A1632982954711&amp;width=550px" data-tweet-id="518821243320287232" style="position: static; visibility: visible; width: 550px; height: 273px; display: block; flex-grow: 1;"></iframe></div>
-
+<blockquote class="twitter-tweet tw-align-center"><p lang="sv" dir="ltr">jekyll-twitter-plugin (1.0.0): A Liquid tag plugin for Jekyll that renders Tweets from Twitter API <a href="http://t.co/m4EIQPM9h4">http://t.co/m4EIQPM9h4</a></p>&mdash; RubyGems (@rubygems) <a href="https://twitter.com/rubygems/status/518821243320287232?ref_src=twsrc%5Etfw">October 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <!-- twitter https://twitter.com/rubygems/status/518821243320287232 align=center -->
 
 
@@ -103,5 +102,13 @@ Okay, that's actually not it... Github pages has it's own list of allowed jekyll
 
 
 ```html
-<div class="twitter-tweet twitter-tweet-rendered" style="width: 100%; margin: 10px auto; display: flex; max-width: 550px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="Twitter Tweet" src="https://platform.twitter.com/embed/Tweet.html?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdHdlZXRfZW1iZWRfOTU1NSI6eyJidWNrZXQiOiJodGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NwYWNlX2NhcmQiOnsiYnVja2V0Ijoib2ZmIiwidmVyc2lvbiI6bnVsbH19&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=518821243320287232&amp;lang=en&amp;origin=http%3A%2F%2F127.0.0.1%3A4000%2Fjekyll%2F2021%2F10%2F02%2Ftwitter_card.html&amp;sessionId=04baceefc9d70dceec68ddc8a31790a074301876&amp;theme=light&amp;widgetsVersion=fcb1942%3A1632982954711&amp;width=550px" data-tweet-id="518821243320287232" style="position: static; visibility: visible; width: 550px; height: 273px; display: block; flex-grow: 1;"></iframe></div>
+<blockquote class="twitter-tweet"><p lang="sv" dir="ltr">jekyll-twitter-plugin (1.0.0): A Liquid tag plugin for Jekyll that renders Tweets from Twitter API <a href="http://t.co/m4EIQPM9h4">http://t.co/m4EIQPM9h4</a></p>&mdash; RubyGems (@rubygems) <a href="https://twitter.com/rubygems/status/518821243320287232?ref_src=twsrc%5Etfw">October 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+The html code can be easily obtained by clicking the three little dots on the top right corner of a tweet and select "Embed Tweet".
+
+To [:link: center align the tweet](https://blog.hubspot.com/blog/tabid/6307/bid/34273/how-to-center-align-your-embedded-tweets-quick-tip.aspx), put `tw-align-center` after `twitter-tweet`:
+
+```html
+<blockquote class="twitter-tweet tw-align-center"><p lang="sv" dir="ltr">jekyll-twitter-plugin (1.0.0): A Liquid tag plugin for Jekyll that renders Tweets from Twitter API <a href="http://t.co/m4EIQPM9h4">http://t.co/m4EIQPM9h4</a></p>&mdash; RubyGems (@rubygems) <a href="https://twitter.com/rubygems/status/518821243320287232?ref_src=twsrc%5Etfw">October 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
