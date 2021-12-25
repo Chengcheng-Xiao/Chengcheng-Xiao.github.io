@@ -308,7 +308,7 @@ __*UPDATE-2020-04-01*__
 
 I've put all input file in a zip file for download: [Excel data],[VASP], [QE].
 
-[Excel data]:{{site.baseurl}}/assets/other/2019-08-05-2019-08-05-Berryphase_NbN.xlsx
+[Excel data]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_NbN.xlsx
 
 [VASP]:{{site.baseurl}}/assets/other/2019-08-05-Berryphase_VASP.zip
 
