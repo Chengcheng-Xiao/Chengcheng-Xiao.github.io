@@ -33,7 +33,7 @@ We can re-write Eq. 2 by assigning the orbitals to atoms:
 
 $$
 \begin{aligned}
-2N &= \sum_{\lambda \in A}^\text{all orbitals} \sum_{\sigma \in B}^\text{all orbitals} \rho_{\lambda \sigma} \rho_{\sigma \lambda}\\
+2N &= \sum_{\lambda}^\text{all orbitals} \sum_{\sigma}^\text{all orbitals} \rho_{\lambda \sigma} \rho_{\sigma \lambda}\\
 &= \sum_A^{\text{all atoms}} \sum_B^{\text{all atoms}} \left[ \sum_{\lambda \in A} \sum_{\sigma \in B} \rho_{\lambda \sigma} \rho_{\sigma \lambda} \right]\\
 &= \sum_A^{\text{all atoms}} \sum_B^{\text{all atoms}}  \text{BI}_{AB}.
 \end{aligned}
