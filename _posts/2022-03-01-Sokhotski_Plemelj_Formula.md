@@ -50,11 +50,11 @@ $$
 ---
 
 ## Derivation
-To prove the Sokhotski-Plemelj formula, we first need to consider contour integration over the following route:
+To prove the Sokhotski-Plemelj formula, we first need to consider contour integration of the integrand $f(x)/x$ over the following coutour:
 
 ![]({{site.baseurl}}/assets/img/post_img/2022-03-01-img1.png)
 
-of the trial function $f(x)$. The route $C$ is along the real axis from $-\infty$ to $-\delta$, then followed by a semicircle $C_\delta$ in the upper plane where $\delta > 0$ stands for the radius of semi circle, and followed by anoter straight contour along the real axis from $\delta$ to $\infty$.
+The contour $C$ is along the real axis from $-\infty$ to $-\delta$, followed by a semicircle $C_\delta$ in the upper plane with a radius of $\delta > 0$, and followed by anoter straight contour along the real axis from $\delta$ to $\infty$.
 
 This integration can be written as:
 
