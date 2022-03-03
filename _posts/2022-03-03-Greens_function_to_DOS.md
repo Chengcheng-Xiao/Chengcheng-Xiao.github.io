@@ -1,0 +1,62 @@
+---
+layout: post
+title: From Greens function to DOS
+date: 2022-03-03
+categories: Post
+description: Using Greens function to express DOS
+tags: Math
+---
+
+Remembering that in [:link: this post](../../../2021/08/16/Greens_function_2.html) we have derived that the greens function for non-interacting time-independent is (expressed in eigenvalue basis):
+
+$$
+G(E) = \sum_n i \frac{|n> <n|  }{(E-E_n+i\eta)}
+$$
+
+For historical reason (I'm not actually sure why but that's what everytext book says...), we ditch the imaginary sign:
+
+$$
+G(E) = \sum_n \frac{|n> <n|}{(E-E_n+i\eta)}.
+$$
+
+Now, if we sandwich it in between two basis eigenvectors and take the sum:
+
+$$
+\begin{aligned}
+\sum_j<j|G(E)|j> &= \sum_n \frac{<j|n> <n|j>|}{(E-E_n+i\eta)}\\
+&=\sum_j \frac{1}{(E-E_j+i\eta)}
+\end{aligned}
+$$
+
+Or, we can also write this in matrix representation of $G$:
+
+$$
+\mathrm{Tr}[G( E)_{kl}] = \sum_j \frac{1}{(E-E_j+i\eta)} \tag{1}
+$$
+
+Replacing $E-E_j$ with $\omega_j$, we get:
+
+$$
+\mathrm{Tr}[G( E)_{kl}] = \sum_j \frac{1}{(\omega_j+i\eta)} \tag{2}
+$$
+
+According to [:link: the Sokhotski-Plemelj formula](../01/Sokhotski_Plemelj_Formula.html):
+
+$$
+\mathrm{Tr}[G( E)_{kl}] = \sum_j \frac{1}{(\omega_j+i\eta)} = \sum_j \left [ \mathcal{P} \frac{1}{\omega_j} - i \pi \delta(\omega_j) \right ] \tag{3}
+$$
+
+
+Remembering that the definition of the density of state (DOS) is :
+
+$$
+\rho(E) = \sum_j \delta(E-E_j) = \sum_j \delta(\omega_j) \tag{4}
+$$
+
+and since we have $\delta(\omega_j)$ as the imaginary part of the Eq. 3, we can express it as:
+
+$$
+\mathrm{Im} \mathrm{Tr}[G(E)_{kl}] = \sum_j -\pi \delta(\omega_j) = -\pi \sum_j \delta(E-E_j) = - \pi \rho(E) \tag{5}
+$$
+
+$\eta$ acts as an smearing factor of the DOS.
