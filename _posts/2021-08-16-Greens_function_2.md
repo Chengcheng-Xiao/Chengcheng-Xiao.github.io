@@ -42,7 +42,7 @@ $$
 Assuming the potential is time-independent we can move it to the operator on the left hand side:
 
 $$
-\frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} \Psi (\vec r, t) = \Psi(\vec r, t)
+\frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} \Psi (\vec r, t) = \Psi(\vec r, t) \tag{3.1}
 $$
 
 
@@ -67,7 +67,16 @@ $$
 \tag{4}
 $$
 
-Then the original solution can be found by:
+If we multipy $\Psi(\vec r', t)$ to both side and integrate over $r'$, we would get:
+
+$$
+\begin{aligned}
+\int \frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} G(\vec r, t;\vec r',t') \Psi(\vec r', t) d \vec r' &= \int \delta(\vec r -\vec r')\delta(t - t') \Psi(\vec r', t) d \vec r'\\
+&= \Psi(\vec r, t). \tag{4.1}
+\end{aligned}
+$$
+
+Comparing Eq. 4.1 to Eq. 3.1, we see that $\Psi(\vec r, t)$ can be found by:
 
 $$
 \Psi(\vec r,t) = \int G(\vec r, t;\vec r',t') \Psi(\vec r',t')  d^3 r'.
@@ -84,7 +93,7 @@ To further clarify this _propagation_, recall that due to energy conservation, u
 Expanding the wavefunction in the position representation as: $\Psi(\vec r, t) = \braket{\vec r \vert \Psi(t)}$, we can re-express the wavefunction at position $\vec r$ and time $t$ as:
 
 $$
-\Psi(\vec r, t) = \bra{\vec r} e^{-\frac{i}{\hbar}H(t-t')} \ket{\Psi(t')}
+\Psi(\vec r, t) = \bra{\vec r} e^{-\frac{i}{\hbar}H(t-t')} \Psi(t')
 $$
 
 Inserting the closure relation of the position operator $\int \ket{\vec r'}\bra{\vec r'} d^3 r' = \mathcal{1}$:
@@ -143,7 +152,8 @@ $$
 \end{aligned}
 $$
 
-where $\textbf{t} = \frac{t-t'}{\hbar}$. Now, let't insert $e^{-\eta \textbf{t}}$ where $\eta$ is a positive infinitesimal quantity, we can do this as the value of $e^{-\eta \textbf{t}}$ goes to $1$ as $\eta \rightarrow 0^+$ (alternatively, check out [:link: this post](../../../2022/03/02/FT_Heaviside_function.html) of how to properly FT Heaviside step functions),
+where $\textbf{t} = \frac{t-t'}{\hbar}$. Now, let't insert $e^{-\eta \textbf{t}}$ where $\eta$ is a positive _infinitesimal_ quantity.
+We can do this because the value of $e^{-\eta \textbf{t}}$ goes to $1$ as $\eta \rightarrow 0^+$ (alternatively, check out [:link: this post](../../../2022/03/02/FT_Heaviside_function.html) of how to properly FT Heaviside step functions),
 
 $$
 \begin{aligned}
@@ -158,11 +168,13 @@ $$
 
 From Eq. 9, We see that when there are poles (divergences) when the energy matches the eigenvalue $E_n$.
 
-to write the whole thing in Dirac's bra-ket notation and expand this in eigenvector basis
+To write the whole thing in Dirac's bra-ket notation and expand this in eigenvector basis
 
 $$
 G(E)_{kl}=<k|G(E)|l> = \sum_n i \frac{<k|n> <n|l>}{E-E_n+i\eta}
 $$
+
+---
 
 Second quantization version, coming soon!
 
