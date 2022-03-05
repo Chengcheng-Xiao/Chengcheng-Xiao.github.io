@@ -4,7 +4,7 @@ title: From Greens function to DOS
 date: 2022-03-03
 categories: Post
 description: Using Greens function to express DOS
-tags: Math
+tags: Math DFT
 ---
 
 Remembering that in [:link: this post](../../../2021/08/16/Greens_function_2.html) we have derived that the greens function for non-interacting time-independent is (expressed in eigenvalue basis):

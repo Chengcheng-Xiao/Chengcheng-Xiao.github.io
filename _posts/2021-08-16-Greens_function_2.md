@@ -4,7 +4,7 @@ title: Green's function (part II)
 date: 2021-08-16
 categories: Post
 description: Quantum version of Green's function, explained.
-tags: Math
+tags: Math DFT
 ---
 Like I have said in [:link: my post](../15/Greens_function_1) about the classical Green's function:
 
@@ -28,6 +28,46 @@ $$
 i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 + V(\vec r, t)\right] \Psi(\vec r, t)
 \tag{2}.
 $$
+
+Let's first consider the free particle situation where $V=0$ and we know the total energy in this case is conserved:
+
+$$
+i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi(\vec r, t) = E \Psi(\vec r, t).
+$$
+
+After some rearranging, we get:
+
+$$
+\begin{aligned}
+\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r, t) &=  0 \\
+\left[ E - \hat H_0 (\vec r,t) \right] \Psi (\vec r, t) &=  0
+\end{aligned}
+$$
+
+and here, the differential equation is homogeneous, but, we can still define the associated Green's function as:
+
+$$
+\left[ E - \hat H_0 (\vec r,t) \right] g(\vec r, \vec r'; t, t') =  \delta(r-r') \delta(t-t')
+$$
+
+Now, let's add in the potential term (time-independent) as perturbation, we recover the original Schordinger equation:
+
+$$
+\begin{aligned}
+[\hat H_0+V(\vec r))\Psi(\vec r, t] &= E \Psi(\vec r, t)\\
+\left[ i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 - V(\vec r, t) \right] \Psi (\vec r, t) &= E \Psi(\vec r, t)\\
+\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
+\left[ E - \hat H_0 (\vec r, t) \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
+\end{aligned}
+$$
+
+Here, we are treating $V(\vec r, t) \Psi(\vec r, t)$ as the source of the "inhomogeneous".
+Since we alreay know the Green's function of the unperturbed operator $E - \hat H_0 (\vec r, t)$, we can express the solution to this equation as:
+
+$$
+\Psi (\vec r, t) = \Psi_0 (\vec r, t) + \int d \vec r' g(\vec r, \vec r'; t, t') V(\vec r', t') \Psi(\vec r', t')
+$$
+
 
 Now, this doesn't look like a linear inhomogeneous equation that we're used to in the classical Green's function formulation. However, we can re-write it to the following form:
 

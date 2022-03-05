@@ -4,7 +4,7 @@ title: Duodempotency of density matrix
 date: 2021-09-07
 categories: Post
 description: Deriving duodempotency of spin-degenerate density matrices
-tags: Tight-binding
+tags: Tight-binding DFT
 ---
 
 Density matrix, or density operator, is a very useful tool in quantum mechanics as it incorporates all the essential information of a set of wavefunctions.

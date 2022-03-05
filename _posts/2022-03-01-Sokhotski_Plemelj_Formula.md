@@ -14,7 +14,7 @@ $$
 $$
 
 where $\epsilon$ is an positive infinitesimal real number and $\mathcal{P}$ means the Cauchy principal value. Eq. 1 doesn't make any sense until we've plug a function ($f(x)$) in and integrating both sides. (That's why Eq. q is also called _distribution equilty_).
-Also, to make the integration convergent, we need $f(x) \rightarrow 0$ as $x \rightarrow \pm \infty$.
+Also, to make the integration convergent, we need $f(x) \rightarrow 0$ faster than $1/x \rightarrow 0$ as $x \rightarrow \pm \infty$.
 Doing that, gives us:
 
 $$
@@ -87,7 +87,7 @@ as long as $f(x)$ has no singularities in an infinitesimal neighborhood around t
 We can write:
 
 $$
-\lim _{\delta \rightarrow 0}\int_{C} \frac{f(x)}{x} d x=\lim_{\epsilon \rightarrow 0}\int_{-\infty+i \epsilon}^{\infty+i \epsilon} \frac{f(x)}{x} d x=\lim_{\epsilon \rightarrow 0}\int_{-\infty}^{\infty} \frac{f(y+i \epsilon)}{y+i \epsilon} d y. \tag{7}
+\lim _{\delta \rightarrow 0}\int_{C} \frac{f(x)}{x} d x= \lim _{\epsilon\rightarrow 0}\int_{C'} \frac{f(x)}{x} d x = \lim_{\epsilon \rightarrow 0}\int_{-\infty+i \epsilon}^{\infty+i \epsilon} \frac{f(x)}{x} d x=\lim_{\epsilon \rightarrow 0}\int_{-\infty}^{\infty} \frac{f(y+i \epsilon)}{y+i \epsilon} d y. \tag{7}
 $$
 
 Since $\epsilon$ is infinitesimal, we can approximate $f(y+i\epsilon) \approx f(y)$. Thus, Eq. 7 can be written as:
