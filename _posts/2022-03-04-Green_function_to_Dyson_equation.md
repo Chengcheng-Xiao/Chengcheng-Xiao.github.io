@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Green's function to Dyson equation
+title: From Green's function to Dyson equation
 date: 2022-03-04
 categories: Post
 description: From Green's function to Dyson equation
@@ -10,93 +10,132 @@ tags: Math DFT
 In its time-dependent form, the Schrodinger's equation reads:
 
 $$
-i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \hat H \Psi(\vec r, t)
+\hat H \Psi(\vec r) = E \Psi(\vec r)
 \tag{1},
 $$
 
-where the Hamiltonian operator $\hat H$ is $-\frac{\hbar^2}{2m} \nabla^2 + V(\vec r, t)$.
-
-Write the Schordinger's equation in full:
-
-$$
-i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 + V(\vec r, t)\right] \Psi(\vec r, t)
-\tag{2}.
-$$
+where the Hamiltonian operator $\hat H$ is $-\frac{\hbar^2}{2m} \nabla^2 + V(\vec r)$.
 
 Let's first consider the free particle situation where $V=0$ and we know the total energy in this case is conserved:
 
 $$
-i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi(\vec r, t) = E \Psi(\vec r, t).
+\left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi(\vec r) = E \Psi(\vec r). \tag{3}
 $$
 
 After some rearranging, we get:
 
 $$
 \begin{aligned}
-\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r, t) &=  0 \\
-\left[ E - \hat H_0 (\vec r,t) \right] \Psi (\vec r, t) &=  0
+\left[ E + \frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r) =\left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) =  0 \tag{4}
 \end{aligned}
 $$
 
-and here, the differential equation is homogeneous, but, we can still define the associated Green's function as:
+and here, the differential equation is homogeneous. However, we can still define the associated Green's function:
 
 $$
-\left[ E - \hat H_0 (\vec r,t) \right] g(\vec r, \vec r'; t, t') =  \delta(r-r') \delta(t-t')
+\left[ E - \hat H_0 (\vec r) \right] g(\vec r, \vec r' ) =  \delta(r-r') \tag{5}
 $$
 
 Now, let's add in the potential term (time-independent) as perturbation, we recover the original Schordinger equation:
 
 $$
 \begin{aligned}
-[\hat H_0+V(\vec r))\Psi(\vec r, t] &= E \Psi(\vec r, t)\\
-\left[ i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 - V(\vec r, t) \right] \Psi (\vec r, t) &= E \Psi(\vec r, t)\\
-\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
-\left[ E - \hat H_0 (\vec r, t) \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
-\end{aligned}
+[\hat H_0+V(\vec r)]\Psi(\vec r) &= E \Psi(\vec r)\\
+\left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) &= V(\vec r) \Psi(\vec r)\\
+\end{aligned} \tag{6}
 $$
 
-Here, we are treating $V(\vec r, t) \Psi(\vec r, t)$ as the source of the "inhomogeneous".
-Since we alreay know the Green's function of the unperturbed operator $E - \hat H_0 (\vec r, t)$, we can express the solution to this equation as:
+Here, we are treating $V(\vec r) \Psi(\vec r)$ as the source of the "inhomogeneous".
+Since we alreay know the Green's function of the unperturbed operator $E - \hat H_0 (\vec r)$, we can express the solution to this equation as:
 
 $$
-\Psi (\vec r, t) = \Psi_0 (\vec r, t) + \int d \vec r' g(\vec r, \vec r'; t, t') V(\vec r', t') \Psi(\vec r', t'),
+\Psi (\vec r) = \Psi_0 (\vec r) + \int d \vec r' g(\vec r, \vec r' ) V(\vec r') \Psi(\vec r'), \tag{7}
 $$
 
 where $\Psi_0 (\vec r, t)$ is the solution to the homogeneous equation.
 
-However, it is possible to express $\Psi (\vec r, t)$ more directly from the Green's function of the perturbed system.
-To define $G(\vec r, \vec r'; t,t')$:
+However, we can still express $\Psi (\vec r, t)$ more directly from the Green's function of the perturbed system with $G(\vec r, \vec r'; t,t')$:
 
 $$
-(E-\hat H) G(\vec r, \vec r'; t, t') = \delta(\vec r - \vec r') \delta(t-t')
+(E-\hat H) G(\vec r, \vec r' ) = \delta(\vec r - \vec r')  \tag{8}
 $$
 
-with $\hat H = \hat H_0 + V$. Using Eq. XX, we can write Eq. XX as:
+with $\hat H = \hat H_0 + V$. Using Eq. 5, we can write Eq. 8 as:
 
 $$
 \begin{aligned}
-G\left(\vec r, \vec r^{\prime}; t, t'\right) &=[E-\hat H]^{-1} \delta\left(\vec r-\vec r^{\prime}\right) \delta (t-t') \\
-&=[E-\hat H]^{-1}\left[ E-\hat H_{0}(\vec r) \right] g\left(\vec r, \vec r^{\prime}; t, t'\right) \\
-&=[E-\hat H]^{-1} [E-\hat H+V(\vec r)] g\left(\vec r, \vec r^{\prime}; t, t'\right) \\
-&=g\left(\vec r, \vec r^{\prime}; t, t'\right)+ [ E-\hat H ]^{-1} V(\vec r) g\left(\vec r, \vec r^{\prime}; t, t'\right)
+G\left(\vec r, \vec r^{\prime}\right) &=[E-\hat H]^{-1} \delta\left(\vec r-\vec r^{\prime}\right) \\
+&=[E-\hat H]^{-1}\left[ E-\hat H_{0}(\vec r) \right] g\left(\vec r, \vec r^{\prime} \right) \\
+&=[E-\hat H]^{-1} [E-\hat H+V(\vec r)] g\left(\vec r, \vec r^{\prime} \right) \\
+&=g\left(\vec r, \vec r^{\prime} \right)+ [ E-\hat H ]^{-1} V(\vec r) g\left(\vec r, \vec r^{\prime} \right) \tag{9}
 \end{aligned}
 $$
 
 and according to the inverse operator notation:
 
 $$
-\ldots(\lambda-\hat{L})^{-1}=\int \ldots G\left(x, x^{\prime}\right) d x^{\prime}
+\ldots(\lambda-\hat{L})^{-1}=\int \ldots G\left(x, x^{\prime}\right) d x^{\prime} \tag{10}
 $$
 
-we can express Eq. XX as:
+we can express Eq. 9 as:
 
 $$
-G\left(\vec r, \vec r^{\prime}; t, t'\right)=g\left(\vec r, \vec r^{\prime}; t, t'\right)+\int \int  G\left(\vec r, \vec r_{1}; t, t_1\right) V\left(\vec r_{1}; t_1\right) g\left(\vec r_{1}, \vec r^{\prime}; t_1, t'\right) d \vec r_{1} dt_1
+G\left(\vec r, \vec r^{\prime} \right)=g\left(\vec r, \vec r^{\prime} \right)+\int  G\left(\vec r, \vec r_{1}\right) V\left(\vec r_{1}\right) g\left(\vec r_{1}, \vec r^{\prime}\right) d \vec r_{1}  \tag{11}
 $$
 
 This result is called the Dyson equation, and it allows us to express the Green's function of the perturbed system in term of the unperturbed one.
 
-## inverse operator notation
+Similarly, we can find $\Psi(\vec r)$ from $G\left(\vec r, \vec r^{\prime} \right)$, to do this, we re-express the un-perturbed equation as:
+
+$$
+\begin{aligned}
+E\Psi_0(\vec r) - \hat H_0 \Psi_0(\vec r) &= 0\\
+E\Psi_0(\vec r) - (\hat H_0 + V) \Psi_0(\vec r) &= -V \Psi_0(\vec r)\\
+(E - \hat H )\Psi_0(\vec r) &= -V \Psi_0(\vec r)\\ \tag{12}
+\end{aligned}
+$$
+
+Using Eq. 8 and noting that V is treated as perturbation so that we can keep $E$, we get:
+
+$$
+\Psi_0(\vec r) =\Psi(\vec r) - \int G(\vec r, \vec r') V(\vec r') \Psi_0(\vec r') d \vec r' \tag{13}
+$$
+
+Note that the homogeneous solution to operator $(E - \hat H )$ in Eq. 12 is just $\Psi(\vec r)$.
+Rearranging Eq. 13, we get:
+
+$$
+\Psi(\vec r) =\Psi_0(\vec r) + \int G(\vec r, \vec r') V(\vec r') \Psi_0(\vec r') d \vec r' \tag{13}
+$$
+
+---
+
+Remembering Eq. 7, dropping the integration, with Eq. 13, we can re-write it as:
+
+$$
+\begin{aligned}
+\Psi &= \Psi_0 + gV\Psi\\
+&= \Psi_0 + gV (\Psi_0 + gV \Psi)\\
+&= \Psi_0 + gV\Psi_0 + gVgV(\Psi_0 + gV \Psi)\\
+&= \Psi_0 + (g + gVg + gVgVg+ \cdots)V\Psi_0\\
+\end{aligned} \tag{14}
+$$
+
+Comparing Eq. 13 with Eq. 13, we see that:
+
+$$
+G = g + gVG
+$$
+
+or symbolically:
+
+$$
+G^{-1} = g^{-1} -V
+$$
+
+Which, again, is the so-called Dyson equation.
+
+## Inverse operator notation
 
 Because:
 
@@ -106,16 +145,18 @@ $$
 \int (\lambda - \hat L) G(x,x') f(x') dx' &= \int \delta (x,x') f(x') dx'\\
 (\lambda - \hat L) \int  G(x,x') f(x') dx' &= f(x)\\
 \int  G(x,x') f(x') dx' &= (\lambda - \hat L)^{-1} f(x)\\
-\end{aligned}
+\end{aligned} \tag{A.1}
 $$
 
 we can infer:
 
 $$
-\ldots(\lambda-\hat{L})^{-1}=\int \ldots G\left(x, x^{\prime}\right) d x^{\prime}
+\ldots(\lambda-\hat{L})^{-1}=\int \ldots G\left(x, x^{\prime}\right) d x^{\prime} \tag{A.2}
 $$
 
 Where $\ldots$ can be any operator or functions.
 
 ---
 Reference: [Green's functions in quantum mechanics courses](https://arxiv.org/abs/2107.14104)
+
+Reference: [An introduction to Green’s function in many-body condensed-matter quantum systems](https://neel.cnrs.fr/wp-content/uploads/2020/12/GF1_Blase_Aussois.pdf)
