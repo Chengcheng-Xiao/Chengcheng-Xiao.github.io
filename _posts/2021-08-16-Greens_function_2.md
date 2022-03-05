@@ -29,61 +29,21 @@ i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} 
 \tag{2}.
 $$
 
-Let's first consider the free particle situation where $V=0$ and we know the total energy in this case is conserved:
-
-$$
-i\hbar \frac{\partial}{\partial t} \Psi (\vec r, t) = \left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi(\vec r, t) = E \Psi(\vec r, t).
-$$
-
-After some rearranging, we get:
-
-$$
-\begin{aligned}
-\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r, t) &=  0 \\
-\left[ E - \hat H_0 (\vec r,t) \right] \Psi (\vec r, t) &=  0
-\end{aligned}
-$$
-
-and here, the differential equation is homogeneous, but, we can still define the associated Green's function as:
-
-$$
-\left[ E - \hat H_0 (\vec r,t) \right] g(\vec r, \vec r'; t, t') =  \delta(r-r') \delta(t-t')
-$$
-
-Now, let's add in the potential term (time-independent) as perturbation, we recover the original Schordinger equation:
-
-$$
-\begin{aligned}
-[\hat H_0+V(\vec r))\Psi(\vec r, t] &= E \Psi(\vec r, t)\\
-\left[ i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 - V(\vec r, t) \right] \Psi (\vec r, t) &= E \Psi(\vec r, t)\\
-\left[ E - i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2 \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
-\left[ E - \hat H_0 (\vec r, t) \right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
-\end{aligned}
-$$
-
-Here, we are treating $V(\vec r, t) \Psi(\vec r, t)$ as the source of the "inhomogeneous".
-Since we alreay know the Green's function of the unperturbed operator $E - \hat H_0 (\vec r, t)$, we can express the solution to this equation as:
-
-$$
-\Psi (\vec r, t) = \Psi_0 (\vec r, t) + \int d \vec r' g(\vec r, \vec r'; t, t') V(\vec r', t') \Psi(\vec r', t')
-$$
-
-
 Now, this doesn't look like a linear inhomogeneous equation that we're used to in the classical Green's function formulation. However, we can re-write it to the following form:
 
 $$
 \begin{aligned}
 \left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r, t) &= V(\vec r, t) \Psi(\vec r, t)\\
-\hat{\mathcal{H}} \Psi (\vec r, t) &= g(\vec r, t).
+\hat H  \Psi (\vec r, t) &= g(\vec r, t).
 \end{aligned}
 \tag{3}
 $$
 
-Assuming the potential is time-independent we can move it to the operator on the left hand side:
+<!-- Assuming the potential is time-independent we can move it to the operator on the left hand side:
 
 $$
 \frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} \Psi (\vec r, t) = \Psi(\vec r, t) \tag{3.1}
-$$
+$$ -->
 
 
 which looks much like the linear inhomogeneous equation we are after.
@@ -94,29 +54,36 @@ Or, with Greens function, instead, we can solve the following inhomogeneous equa
 
 $$
 \begin{aligned}
-\frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} G(\vec r, t;\vec r',t') &= \delta(\vec r -\vec r')\delta(t - t').
+\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] G(\vec r, t;\vec r',t') &= \delta(\vec r -\vec r')\delta(t - t').
 \end{aligned}
 $$
 
-Because $V$ is time-independent, we have energy conservation, hence we can use the time-evolution operator instead of integrate over $\delta (t-t)$ to transform the inhomogenous source $\Psi(\vec r, t)$:
+Assuming $V$ is time-independent, we have energy conservation, hence the time-evolution operator $\mathcal{T} e^{-i/\hbar \int_{t'}^{t} \hat H \cdot t dt} = e^{-i/\hbar \hat H (t-t')}$, where $\mathcal{T}$ is the time ordering operator. We can use this time-evolution operator instead of integrate over $\delta (t-t)$ to transform the inhomogenous source $\Psi(\vec r, t)$,
 
 $$
 \begin{aligned}
-\frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} G(\vec r, t;\vec r',t') &= \delta(\vec r -\vec r') e^{-i\frac{\hat H}{\hbar} (t-t')}.
+\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] G(\vec r, t;\vec r',t') &= \delta(\vec r -\vec r') e^{-i\frac{\hat H}{\hbar} (t-t')},
 \end{aligned}
 \tag{4}
 $$
 
-If we multipy $\Psi(\vec r', t)$ to both side and integrate over $r'$, we would get:
+if we multiply $\Psi(\vec r', t')$ to both side and integrate over $r'$:
 
 $$
 \begin{aligned}
-\int \frac{\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right]}{V(\vec r)} G(\vec r, t;\vec r',t') \Psi(\vec r', t) d \vec r' &= \int \delta(\vec r -\vec r')\delta(t - t') \Psi(\vec r', t) d \vec r'\\
+\int \left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] G(\vec r, t;\vec r',t') \Psi(\vec r', t') d \vec r' &= \int \delta(\vec r -\vec r') e^{-i\frac{\hat H}{\hbar} (t-t')} \Psi(\vec r', t') d \vec r'\\
 &= \Psi(\vec r, t). \tag{4.1}
 \end{aligned}
 $$
 
-Comparing Eq. 4.1 to Eq. 3.1, we see that $\Psi(\vec r, t)$ can be found by:
+Eq. 4.1 solves the Eq. 3 when $V(\vec r, t) = 1$:
+
+$$
+\left[i\hbar \frac{\partial}{\partial t} +\frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r, t) =  \Psi(\vec r, t) \tag{4.2}
+$$
+
+
+Comparing Eq. 4.1 to Eq. 4.2, we see that $\Psi(\vec r, t)$ can be found by:
 
 $$
 \Psi(\vec r,t) = \int G(\vec r, t;\vec r',t') \Psi(\vec r',t')  d^3 r'.
@@ -127,7 +94,7 @@ Notice that in Eq. 5, the solution is also present in the integral which suggest
 
 
 Taking a good look at Eq. 5, we see that $G(\vec r, t;\vec r',t')$ links $\Psi (\vec r', t')$ to $\Psi (\vec r, t)$, effectively, _propagates_ the wavefunction from one state to another.
-Note that propagation implies $t > t'$, i.e. $t$ is a time later then $t'$.
+Note that propagation implies $t > t'$, i.e. $t$ is a time later then $t'$ and it is because of this $\mathcal{T}$ is dropped in Eq. 4.
 
 To further clarify this _propagation_, recall that due to energy conservation, using again the time evolution operator $U(t,t') = e^{-\frac{i}{\hbar}H(t-t')}$.
 Expanding the wavefunction in the position representation as: $\Psi(\vec r, t) = \braket{\vec r \vert \Psi(t)}$, we can re-express the wavefunction at position $\vec r$ and time $t$ as:
@@ -172,7 +139,7 @@ G(\vec r, t;\vec r',t') &= \sum_n \braket{\vec r \vert n}\braket{n\vert\vec r'} 
 \end{aligned}
 $$
 
-Remembering that we have implicitly set $t > t'$ for this relation and for this propagator, if $t<t'$ things should equals to $0$. To achieve this, we insert a Heaviside step function $\Theta$ into the expression:
+Remembering that we have implicitly set $t > t'$ for this relation and for this propagator, if $t<t'$ things should equals to $0$. If we don't constrain the time ordering, then we would arrived at a kernal function for both retarded and advanced Green's function [:link:](https://physics.stackexchange.com/questions/494134/single-particle-greens-function). To achieve time ordering, we insert a Heaviside step function $\Theta$ into the expression:
 
 $$
 \begin{aligned}
@@ -180,7 +147,7 @@ G(\vec r, t;\vec r',t') &= \Theta(t-t') \sum_n \psi_n(\vec r) \psi_n^*(\vec r') 
 \end{aligned}
 $$
 
-This Greens function satisfies Eq. 4 and can be used to construct our general solution to Eq. 1.
+This is called the retarded Green's function and it satisfies Eq. 4 and can be used to construct our general solution to Eq. 1 (again, assuming $\hat H$ is time-independent since we did so to derive this solution by assuming $V(\vec r, t) = 1$. However, we can generalize it to time-dependent situation by introducing time-dependence by changing the time-evolution operator to $e^{-i/\hbar \int_{t'}^{t} \hat H t dt}$ so that $E_n$ is time-dependence in the end).
 
 Fourier transforming this Green's function from time-domain to frequency domain, we get:
 
@@ -211,7 +178,7 @@ From Eq. 9, We see that when there are poles (divergences) when the energy match
 To write the whole thing in Dirac's bra-ket notation and expand this in eigenvector basis
 
 $$
-G(E)_{kl}=<k|G(E)|l> = \sum_n i \frac{<k|n> <n|l>}{E-E_n+i\eta}
+G(E)_{kl}=\braket{k | G(E) | l} = \sum_n i \frac{\braket{k \vert n} \braket{n \vert l}}{E-E_n+i\eta}
 $$
 
 ---
