@@ -16,51 +16,57 @@ $$
 
 where the Hamiltonian operator $\hat H$ is $-\frac{\hbar^2}{2m} \nabla^2 + V(\vec r)$.
 
-Let's first consider the free particle situation where $V=0$ and we know the total energy in this case is conserved:
+Let's first consider the free particle situation where $V=0$, we write the solution as $\Psi_0(\vec r)$:
 
 $$
-\left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi(\vec r) = E \Psi(\vec r). \tag{3}
+\left[-\frac{\hbar^2}{2m} \nabla^2 \right] \Psi_0(\vec r) = E \Psi_0(\vec r). \tag{3}
 $$
 
 After some rearranging, we get:
 
 $$
 \begin{aligned}
-\left[ E + \frac{\hbar^2}{2m} \nabla^2\right] \Psi (\vec r) =\left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) =  0 \tag{4}
+\left[ E + \frac{\hbar^2}{2m} \nabla^2\right] \Psi_0 (\vec r) =\left[ E - \hat H_0 (\vec r) \right] \Psi_0 (\vec r) =  0 \tag{4}
 \end{aligned}
 $$
 
-and here, the differential equation is homogeneous. However, we can still define the associated Green's function:
+and here, the differential equation is homogeneous. The Green's function for the operator $\left[ E - \hat H_0 (\vec r) \right]$ can be written as:
 
 $$
 \left[ E - \hat H_0 (\vec r) \right] g(\vec r, \vec r' ) =  \delta(r-r') \tag{5}
 $$
 
-Now, let's add in the potential term (time-independent) as perturbation, we recover the original Schordinger equation:
+Now, let's add back the potential term (time-independent) as perturbation, we write the solution to this Schrodinger equation as $\Psi(\vec r)$:
 
 $$
 \begin{aligned}
 [\hat H_0+V(\vec r)]\Psi(\vec r) &= E \Psi(\vec r)\\
-\left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) &= V(\vec r) \Psi(\vec r)\\
+\left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) &= V(\vec r) \Psi(\vec r).
 \end{aligned} \tag{6}
 $$
 
-Here, we are treating $V(\vec r) \Psi(\vec r)$ as the source of the "inhomogeneous".
+Here, we are treating $V(\vec r) \Psi(\vec r)$ as the source of the "inhomogeneous" and because $V$ is treated as perturbation, we have kept the energy constant as $E$.
 Since we alreay know the Green's function of the unperturbed operator $E - \hat H_0 (\vec r)$, we can express the solution to this equation as:
 
 $$
-\Psi (\vec r) = \Psi_0 (\vec r) + \int d \vec r' g(\vec r, \vec r' ) V(\vec r') \Psi(\vec r'), \tag{7}
+\Psi (\vec r) = \Psi_0 (\vec r) + \int d \vec r' g(\vec r, \vec r' ) V(\vec r') \Psi(\vec r'). \tag{7}
 $$
 
-where $\Psi_0 (\vec r, t)$ is the solution to the homogeneous equation.
+At this point, we have two ways to get the Dyson equation.
 
-However, we can still express $\Psi (\vec r, t)$ more directly from the Green's function of the perturbed system with $G(\vec r, \vec r'; t,t')$:
+---
+
+### Using operator
+
+Alternatively, we can still express $\Psi (\vec r, t)$ more directly from the Green's function of the perturbed system with $G(\vec r, \vec r')$:
 
 $$
 (E-\hat H) G(\vec r, \vec r' ) = \delta(\vec r - \vec r')  \tag{8}
 $$
 
-with $\hat H = \hat H_0 + V$. Using Eq. 5, we can write Eq. 8 as:
+with $\hat H = \hat H_0 + V$.
+
+Using Eq. 5, we can write Eq. 8 as:
 
 $$
 \begin{aligned}
@@ -71,7 +77,7 @@ G\left(\vec r, \vec r^{\prime}\right) &=[E-\hat H]^{-1} \delta\left(\vec r-\vec 
 \end{aligned}
 $$
 
-and according to the inverse operator notation:
+and according to the [inverse operator notation](#inverse-operator-notation):
 
 $$
 \ldots(\lambda-\hat{L})^{-1}=\int \ldots G\left(x, x^{\prime}\right) d x^{\prime} \tag{10}
@@ -80,10 +86,18 @@ $$
 we can express Eq. 9 as:
 
 $$
-G\left(\vec r, \vec r^{\prime} \right)=g\left(\vec r, \vec r^{\prime} \right)+\int  G\left(\vec r, \vec r_{1}\right) V\left(\vec r_{1}\right) g\left(\vec r_{1}, \vec r^{\prime}\right) d \vec r_{1}  \tag{11}
+G\left(\vec r, \vec r^{\prime} \right)=g\left(\vec r, \vec r^{\prime} \right)+\int  G\left(\vec r, \vec r_{1}\right) V\left(\vec r_{1}\right) g\left(\vec r_{1}, \vec r^{\prime}\right) d \vec r_{1}.  \tag{11}
+$$
+
+If we drop the integration symbols:
+
+$$
+G = g + gVG
 $$
 
 This result is called the Dyson equation, and it allows us to express the Green's function of the perturbed system in term of the unperturbed one.
+
+### Using wavefunctions
 
 Similarly, we can find $\Psi(\vec r)$ from $G\left(\vec r, \vec r^{\prime} \right)$, to do this, we re-express the un-perturbed equation as:
 
@@ -108,7 +122,6 @@ $$
 \Psi(\vec r) =\Psi_0(\vec r) + \int G(\vec r, \vec r') V(\vec r') \Psi_0(\vec r') d \vec r' \tag{13}
 $$
 
----
 
 Remembering Eq. 7, dropping the integration, with Eq. 13, we can re-write it as:
 
@@ -130,10 +143,13 @@ $$
 or symbolically:
 
 $$
-G^{-1} = g^{-1} -V
+G^{-1} = g^{-1} -V.
 $$
 
-Which, again, is the so-called Dyson equation.
+Which, again, gives us the so-called Dyson equation.
+
+---
+
 
 ## Inverse operator notation
 
