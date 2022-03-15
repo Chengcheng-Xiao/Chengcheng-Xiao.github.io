@@ -155,12 +155,14 @@ $$
 \begin{aligned}
 \mathcal{F}[G(\vec r, t;\vec r',t')](\vec r, \vec r', E) &= \int_{-\infty}^{\infty} \Theta(t-t') \sum_n \psi_n(\vec r) \psi_n^*(\vec r') e^{-i\frac{E_n}{\hbar}(t-t')} e^{i \frac{E}{\hbar}}(t-t') d(t-t')\\
 &= \int_{0}^{\infty} \sum_n \psi_n(\vec r) \psi_n^*(\vec r') e^{-i E_n\textbf{t}} e^{i E\textbf{t}} d\textbf{t}\\
-&= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') \int_{0}^{\infty} e^{i(E-E_n)\textbf{t}} d\textbf{t}
+&= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') \int_{0}^{\infty} e^{i(E-E_n)\textbf{t}} d\textbf{t} \tag{9}
 \end{aligned}
 $$
 
-where $\textbf{t} = \frac{t-t'}{\hbar}$. Now, let't insert $e^{-\eta \textbf{t}}$ where $\eta$ is a positive _infinitesimal_ quantity.
-We can do this because the value of $e^{-\eta \textbf{t}}$ goes to $1$ as $\eta \rightarrow 0^+$ (alternatively, check out [:link: this post](../../../2022/03/02/FT_Heaviside_function.html) of how to properly FT Heaviside step functions),
+where $\textbf{t} = \frac{t-t'}{\hbar}$.
+
+Now, let's insert $e^{-\eta \textbf{t}}$ in to Eq. 9 where $\eta$ is a positive _infinitesimal_ quantity.
+We can do this because the value of $e^{-\eta \textbf{t}}$ goes to $1$ as $\eta \rightarrow 0^+$ (alternatively, check out [:link: this post](../../../2022/03/02/FT_Heaviside_function.html) of how to properly Fourier transform Heaviside step functions). And then Fourier transform Eq. 9:
 
 $$
 \begin{aligned}
@@ -168,7 +170,7 @@ $$
 =G(\vec r, \vec r', E)&= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') \int_{0}^{\infty} e^{i(E-E_n+i\eta)\textbf{t}} d\textbf{t}\\
 &= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') \frac{e^{i(E-E_n)\textbf{t}} e^{-\eta \textbf{t}} |_{\textbf{t}=0}^{\textbf{t}=\infty}}{i(E-E_n+i\eta)}\\
 &= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') \frac{-1}{i(E-E_n+i\eta)}\\
-&= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') i\frac{1}{(E-E_n+i\eta)}\\
+&= \sum_n \psi_n(\vec r)  \psi_n^*(\vec r') i\frac{1}{(E-E_n+i\eta)} \tag{10}
 \end{aligned}
 $$
 
@@ -178,7 +180,7 @@ From Eq. 9, We see that when there are poles (divergences) when the energy match
 To write the whole thing in Dirac's bra-ket notation and expand this in eigenvector basis
 
 $$
-G(E)_{kl}=\braket{k | G(E) | l} = \sum_n i \frac{\braket{k \vert n} \braket{n \vert l}}{E-E_n+i\eta}
+G(E)_{kl}=\braket{k | G(E) | l} = \sum_n i \frac{\braket{k \vert n} \braket{n \vert l}}{E-E_n+i\eta} \tag{11}
 $$
 
 ---

@@ -11,9 +11,9 @@ Green's function method is a way to decompose a complex inhomogenous source usin
 
 ## Preconditions
 
-Green's function is a solution to a <span class="blue">linear</span> differential equation with a <span class="blue">Dirac delta function as the inhomogeneous source</span> and the additional requirement of the <span class="blue">boundary condition being homogenous</span>.
+Green's function is a solution to a __linear__ differential equation with a __Dirac delta function as the inhomogeneous source__ and the additional requirement of the __boundary condition being homogenous__.
 
-To clarify, by <span class="blue">homogenous/inhomogeneous</span>, we mean $\textit{something}=0$ . For example, a differential equation is said to be inhomogeneous if $g(x)$ in the following equation does not equals to $0$, homogeneous otherwise:
+To clarify, by __homogenous/inhomogeneous__, we mean $\textit{something}=0$ . For example, a differential equation is said to be inhomogeneous if $g(x)$ in the following equation does not equals to $0$, homogeneous otherwise:
 
 $$
 \hat{D} f(x) = g(x)
@@ -25,7 +25,7 @@ $$
 f(x=L) = 0 \text{ or } f'(x=L) = 0
 $$
 
-On the other hand, by <span class="blue">linear</span>, we mean no coupling between operators with different derivative order. i.e. no product of function and its derivatives, such as $f(x) \cdot f'(x)$.
+On the other hand, by __linear__, we mean no coupling between operators with different derivative order. i.e. no product of function and its derivatives, such as $f(x) \cdot f'(x)$.
 
 Overall, the differential equation should look like:
 
@@ -46,9 +46,10 @@ where $\hat{D} = a_1(x)+a_2(x)\frac{d}{dx} + \cdots + a_n(x)(\frac{d}{dx})^n$. S
 ## Deriving of Green's function method
 
 Now, how do we apply this particular solution of a particular differential equation to solve all those general questions?
-More importantly, what kinds of <span class="blue">general</span> differential equations can be solved using this method?
+More importantly, what kinds of _general_ differential equations can be solved using this method?
+
 Like I said in the beginning, the essence of this method is that it breaks down the complex inhomogeneous source using Dirac delta functions.
-This means that we can have any continuous complex inhomogeneous source in our <span class="blue">general</span> differential equations, but we still need the operator to be linear.
+This means that we can have any continuous complex inhomogeneous source in our general differential equations, but we still need the operator to be linear.
 i.e.:
 
 $$
