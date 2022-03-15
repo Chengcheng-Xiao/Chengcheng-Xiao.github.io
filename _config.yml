@@ -14,7 +14,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url:  # the base hostname & protocol for your site
 twitter_username: iconxicon
-github_username: Chengcheng-Xiao 
+github_username: Chengcheng-Xiao
 
 # Build settings
 markdown: kramdown
@@ -24,7 +24,7 @@ kramdown:
 
 # Third-party services
 # just leave someone empty to disable it
-# google_analytics: 
+# google_analytics:
 disqus_shortname:
 
 # used this for post_excerpt at index_page
@@ -42,3 +42,5 @@ defaults:
       image: /assets/img/jekyll-seo.png
 
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6
+
+google_analytics: UA-223042275-1
