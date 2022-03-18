@@ -143,6 +143,6 @@ $$
 Where $A_n^m = \frac{n!}{(n-m)!}$ and $A_k^k = k!$ gives the permuations of our k atoms, we need this prefactor becasue the bond index matrix remains invariant under any permutations (when using orthogonal basis set).
 However, under non-orthogonal basis, they only remain invariant under cyclic permutations and we need to some more work.
 
-Now this looks fin and dandy but use be warned: this derivation only works with spin-degenerate cases. i.e. restricted Hartree-Fork generated density matrix. For spin-polarized cases, see [:link: 10.1016/S0166-1280(99)00339-5](https://www.sciencedirect.com/science/article/pii/S0166128099003395?via%3Dihub).
+Now this looks fine and dandy but use be warned: this derivation only works with spin-degenerate cases. i.e. restricted Hartree-Fork generated density matrix. For spin-polarized cases, see [:link: 10.1016/S0166-1280(99)00339-5](https://www.sciencedirect.com/science/article/pii/S0166128099003395?via%3Dihub).
 <!-- If we have multiple occurrence of the same atom in the $N_{AAABCD...K}$, we have $A_k^k/how many occurrences$.
 For example, $N_{AAABCD} = 6!/3 * BI_{AAABCD}$. -->

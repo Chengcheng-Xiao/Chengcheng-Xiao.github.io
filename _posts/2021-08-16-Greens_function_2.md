@@ -139,7 +139,7 @@ G(\vec r, t;\vec r',t') &= \sum_n \braket{\vec r \vert n}\braket{n\vert\vec r'} 
 \end{aligned}
 $$
 
-Remembering that we have implicitly set $t > t'$ for this relation and for this propagator, if $t<t'$ things should equals to $0$. If we don't constrain the time ordering, then we would arrived at a kernal function for both retarded and advanced Green's function [:link:](https://physics.stackexchange.com/questions/494134/single-particle-greens-function). To achieve time ordering, we insert a Heaviside step function $\Theta$ into the expression:
+Remembering that we have implicitly set $t > t'$ for this relation and for this propagator, if $t<t'$ things should equals to $0$. If we don't constrain the time ordering, then we would arrived at [:link: a kernal function for both retarded and advanced Green's function](https://physics.stackexchange.com/questions/494134/single-particle-greens-function). To achieve time ordering, we insert a Heaviside step function $\Theta$ into the expression:
 
 $$
 \begin{aligned}

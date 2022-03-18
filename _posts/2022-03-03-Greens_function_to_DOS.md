@@ -9,21 +9,22 @@ tags: Math DFT
 
 Remembering that in [:link: this post](../../../2021/08/16/Greens_function_2.html) we have derived that the greens function for non-interacting time-independent is (expressed in eigenvalue basis):
 
+
 $$
-G(E) = \sum_n i \frac{|n> <n|  }{(E-E_n+i\eta)}
+G(E) = i \sum_n \frac{\ket{n} \bra{n}}{(E-E_n+i\eta)}
 $$
 
 For historical reason (I'm not actually sure why but that's what everytext book says...), we ditch the imaginary sign:
 
 $$
-G(E) = \sum_n \frac{|n> <n|}{(E-E_n+i\eta)}.
+G(E) = \sum_n \frac{\ket{n} \bra{n}}{(E-E_n+i\eta)}.
 $$
 
 Now, if we sandwich it in between two eigenvectors (of the Hamiltonian) and take the sum over these eigenvectors, we get:
 
 $$
 \begin{aligned}
-\sum_j<j|G(E)|j> &= \sum_j \sum_n \frac{<j|n> <n|j>}{(E-E_n+i\eta)}\\
+\sum_j<j|G(E)|j> &= \sum_j \sum_n \frac{\braket{j \vert n} \braket{n \vert j}}{(E-E_n+i\eta)}\\
 &=\sum_j \frac{1}{(E-E_j+i\eta)}
 \end{aligned}
 $$
@@ -59,4 +60,4 @@ $$
 \mathrm{Im} \mathrm{Tr}[G(E)_{kl}] = -\pi \sum_j \delta(E-E_j) = - \pi \rho(E) \tag{5}
 $$
 
-$\eta$ acts as an smearing factor of the DOS since Eq. 3 only works when $\eta \rightarrow 0^+$.
+$\eta$ acts as an smearing factor (because it is a manually added finite life time to the time evolution propagator of states. See Eq. 10 in [:link: this post](../../../2021/08/16/Greens_function_2.html)) of the DOS since Eq. 3 only works when $\eta \rightarrow 0^+$.
