@@ -47,7 +47,7 @@ $$
 \tag{4}
 $$
 
-This, is actually the so-called Wiberg bond index when $A\neq B$ (See the original paper [:link: 10.1016/0040-4020(68)88057-3](https://www.sciencedirect.com/science/article/pii/0040402068880573) and [:link: simple explanations](https://mattermodeling.stackexchange.com/a/1469/1804)).
+This, is actually the so-called [Wiberg bond index](../../../2022/03/20/Coulson_to_Wiberg_BO.html) when $A\neq B$ (See the original paper [:link: 10.1016/0040-4020(68)88057-3](https://www.sciencedirect.com/science/article/pii/0040402068880573) and [:link: simple explanations](https://mattermodeling.stackexchange.com/a/1469/1804)).
 
 For reasons that will become clear, let's move the prefix $2$ on the left-hand-side of Eq. 3 to the right-hand-side:
 
@@ -69,6 +69,8 @@ $$
 $$
 N_{AB} = 2^{-1} (\mathrm{BI}_{AB} + \mathrm{BI}_{BA})
 $$
+
+__Note__: If we consider a pure covalent bonding system, say, a $\sigma$ bond formed by two $p_x$ orbitals on two atoms. We'll still get a finite $N_{A}$ that's comparable to $N_{AB}$. I'm not sure how this could be addressed. 🥲
 
 ---
 
@@ -143,6 +145,8 @@ $$
 Where $A_n^m = \frac{n!}{(n-m)!}$ and $A_k^k = k!$ gives the permuations of our k atoms, we need this prefactor becasue the bond index matrix remains invariant under any permutations (when using orthogonal basis set).
 However, under non-orthogonal basis, they only remain invariant under cyclic permutations and we need to some more work.
 
-Now this looks fine and dandy but use be warned: this derivation only works with spin-degenerate cases. i.e. restricted Hartree-Fork generated density matrix. For spin-polarized cases, see [:link: 10.1016/S0166-1280(99)00339-5](https://www.sciencedirect.com/science/article/pii/S0166128099003395?via%3Dihub).
+Now this looks fine and dandy, but one has to remember that this derivation only works with spin-degenerate cases. i.e. restricted Hartree-Fork generated density matrix.
+
+For spin-polarized cases, we need to seperate the density matrix by the spin components, see [:link: 10.1016/S0166-1280(99)00339-5](https://www.sciencedirect.com/science/article/pii/S0166128099003395?via%3Dihub).
 <!-- If we have multiple occurrence of the same atom in the $N_{AAABCD...K}$, we have $A_k^k/how many occurrences$.
 For example, $N_{AAABCD} = 6!/3 * BI_{AAABCD}$. -->
