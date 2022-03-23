@@ -3,7 +3,7 @@ layout: post
 title: Fourier transform Heaviside step function
 date: 2022-03-02
 categories: Post
-description: Fourier transform Heaviside step function.
+description: The Heaviside step function is needed to constrain the causality of green's function propagator. The Fourier transformation of this step function turns out to be non-trivial task. This post provides a comprehensive description of the Fourier transformation of the Heaviside step function using the Sokhotski-Plemelj formula.
 tags: Math
 ---
 

@@ -2,9 +2,9 @@
 layout: post
 title: Is it really necessary to have a centrosymmetric structure to calculate the macroscopic polarization?
 date: 2020-01-17
-tags: VASP Polarization
 categories: Post
-description: No, it is actually not necessary. But in order to calculate this, one needs to be extra careful.
+description: The short answer to the question is, No, it is actually not necessary. But in order for this to be done, one needs to be extra careful.
+tags: VASP Polarization
 ---
 
 ## Background

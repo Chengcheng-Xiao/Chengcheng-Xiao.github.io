@@ -2,9 +2,9 @@
 layout: post
 title: Calculating spin texture from DFT and Wannier Hamiltonian.
 date: 2020-06-17
-tags: Wannier
 categories: Post
-description: A brief tutorial on calculating (plotting) spin-texture from Wannier Hamiltonian.
+description: The Hamiltonian of a system should contain all the information there is to know about the system, including the spin-expectation value. This post provides a short tutorial on calculating (plotting) spin-texture from Wannier Hamiltonian.
+tags: Wannier
 ---
 
 ## Background

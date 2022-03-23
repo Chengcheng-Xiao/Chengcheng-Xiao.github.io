@@ -3,7 +3,7 @@ layout: post
 title: The evolution of bond index
 date: 2022-03-20
 categories: Post
-description: A hitchhiker's guide to the evolution of bond index formulations.
+description: Bond index(BI) is a measurement of the "average number of electron pairs shared between atoms". It provides an intuitive description of the covalency between atoms. This post provides a birds-eye-view of the development of the bond index formalism.
 tags: DFT
 ---
 ## Review: Density matrix

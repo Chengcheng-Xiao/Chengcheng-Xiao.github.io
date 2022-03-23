@@ -3,7 +3,7 @@ layout: post
 title: Multicentered bond order index
 date: 2021-09-08
 categories: Post
-description: Deriving renormalized multicentered bond order index.
+description: The multicenetered bond index partitions the total number of electrons into one, two, three up to n-center bonds. This post provides a derivation of the electron number renormalized multicentered bond order index.
 tags: Tight-binding DFT
 ---
 

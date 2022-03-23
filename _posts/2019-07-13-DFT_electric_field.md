@@ -2,9 +2,9 @@
 layout: post
 title: Puzzling effects of saw-tooth electric field in DFT code
 date: 2019-07-13
-tags: Polarization VASP
 categories: Post
-description: Applying a saw-tooth electric field in VASP seems yield a lower total energy which is unphysical and puzzling.
+description: Applying a saw-tooth electric field in VASP seems yield a lower total energy which is unphysical and that doesn't seem to be natural. This post investigate this behavior demonstrate that it's actually understandable.
+tags: Polarization VASP
 ---
 
 ## Background

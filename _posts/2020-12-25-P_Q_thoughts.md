@@ -2,9 +2,9 @@
 layout: post
 title: Some thoughts on periodicity and charge understanding of the polarization Quantum
 date: 2020-12-25
-tags: Polarization VASP
 categories: Post
-description: A simple demonstration of how definition of cell can affect the polarization.
+description: The modern theory of polarization dictates that transtion of the cell should not affect the calculated polarization. However, this is exactly the opposite case in classical theory. This post provides a simple demonstration of how definition of cell can affect the polarization if we don't take the phase differences of the wavefunction into consideration.
+tags: Polarization VASP
 ---
 
 ## Heuristic definition of polarization

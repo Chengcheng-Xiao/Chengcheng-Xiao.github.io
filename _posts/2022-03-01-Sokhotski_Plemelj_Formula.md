@@ -3,7 +3,7 @@ layout: post
 title: The Sokhotski-Plemelj Formula
 date: 2022-03-01
 categories: Post
-description: Deriving the Sokhotski-Plemelj formula
+description: The Sokhotski-Plemelj formula links the 1/x function to delta function via complex contour integration. This post provides the full derivation of the formula. 
 tags: Math
 ---
 

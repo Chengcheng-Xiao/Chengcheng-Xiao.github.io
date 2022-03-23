@@ -3,7 +3,7 @@ layout: post
 title: Twitter Cards
 date: 2021-10-02
 categories: jekyll
-description: Adding a bit of flare to your blog posts when sharing on Twitter.
+description: Adding a bit of flare to your blog posts when sharing on Twitter by showing a customized twitter card with pictures.
 tags: Blog
 ---
 

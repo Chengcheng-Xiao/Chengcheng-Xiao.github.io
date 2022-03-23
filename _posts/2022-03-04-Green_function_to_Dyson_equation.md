@@ -3,11 +3,11 @@ layout: post
 title: From Green's function to Dyson equation
 date: 2022-03-04
 categories: Post
-description: From Green's function to Dyson equation
+description: Dyson equation provides a perturbative approach for solving the electron-electron correlation problems. It's intimately related to the one-particle green's function. This post provides an easy to understand derivation of the Dyson equation by considering the potential term as a perturbation to the Schrödinger quation.
 tags: Math DFT
 ---
 
-In its time-dependent form, the Schrodinger's equation reads:
+In its time-dependent form, the Schrödinger's equation reads:
 
 $$
 \hat H \Psi(\vec r) = E \Psi(\vec r)

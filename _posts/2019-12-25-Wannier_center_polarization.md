@@ -2,9 +2,9 @@
 layout: post
 title: Using Wannier Charge center to calculate Ferroelectric polarization
 date: 2019-12-25
-tags: VASP Polarization Wannier
 categories: Post
-description: A brief guide for calculating macroscopic polarization using Wanneir functions and how to avoid it many pitfalls.
+description: The Berryphase calculation of the polarization of the crystal can be convoluted and there can be lots of pitfalls waiting ahead for newbies. This post provides a brief guide for calculating macroscopic polarization using Wanneir functions and how to avoid it thos pitfalls.
+tags: VASP Polarization Wannier
 ---
 
 ## Background

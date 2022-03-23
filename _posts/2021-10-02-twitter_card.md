@@ -3,7 +3,7 @@ layout: post
 title: Tweet quotes
 date: 2021-10-02
 categories: jekyll
-description: Quoting Tweets elegantly with jekyll-twitter-plugin.
+description: Quoting Tweets elegantly with jekyll-twitter-plugin so that twitter quote will have a dedicated card in posts.
 tags: Blog
 ---
 

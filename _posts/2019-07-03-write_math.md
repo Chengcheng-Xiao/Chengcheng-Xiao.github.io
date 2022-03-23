@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Writing equations in Jeklly
+title: Writing equations in Jekyll
 date: 2019-07-04
-tags: Blog
 categories: jekyll
+description: From MathJax to KaTex, this post provides a hands-on tutorial to implement automatic equation generation for Jekyll.
+tags: Blog
 ---
 
 Writing [$$\LaTeX$$] on Jeklly is not hard, but it can be tricky. After some light surfing on the internet, I found what works for me.
