@@ -4,13 +4,37 @@ title: About
 permalink: /about/
 ---
 
-<img style='filter: invert(0%);' src="{{site.baseurl}}/assets/img/Profile_pic.png" width="20%">
+<style>
+.wave {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
+</style>
+
+
+<img align="left" style='filter: invert(0%);padding-right: 30px;' src="{{site.baseurl}}/assets/img/Profile_pic.png" width="20%">
+
+Hi there! Nice to meet you! <span class="wave">👋 </span>
 
 I am an electron wandering in a computer generated field.
 
 Okay, seriously, my name's Chengcheng Xiao. I'm currently a PhD candidate @ Imperal College London.
 
-👋 Nice to meet you!
+
 
 ---
 
@@ -33,6 +57,18 @@ My research area include (subject to expand at any moment):
 ---
 
 ### Publications
+
+ - [2022] Unraveling the Role of Architecture in Polymer-Based Glues for Hydrogels [**ACS Applied Materials & Interfaces**] [_DOI: 10.1021/acsami.1c10785_](https://doi.org/10.1021/acsami.1c10785)
+
+ - [2021] Enhancing Oxygen Evolution Reaction Activity by Using Switchable Polarization in Ferroelectric InSnO2N [**ACS Catalysis**] [_DOI: 10.1021/acscatal.1c03737_](https://doi.org/10.1021/acscatal.1c03737)
+
+ - [2021] Coexistence of Ferroelectricity and Ferromagnetism in One-Dimensional SbN and BiN Nanowires [**ACS Applied Materials & Interfaces**] [_DOI: 10.1021/acsami.0c20570_](https://doi.org/10.1021/acsami.0c20570)
+
+ - [2019] Spontaneous symmetry lowering of Si (001) towards two-dimensional ferro/antiferroelectric behavior [**Physical Review Materials**] [_DOI: 10.1103/PhysRevMaterials.3.044410_](https://doi.org/10.1103/PhysRevMaterials.3.044410)
+
+ - [2019] Superconducting phase diagram and nontrivial band topology of structurally modulated Sn1-xSbx [**Physical Review Materials**] [_DOI: 10.1103/PhysRevMaterials.3.084603_](https://doi.org/10.1103/PhysRevMaterials.3.084603)
+
+ - [2019] Electronic structures of ultra-thin tellurium nanoribbons [**Nanoscale**] [_DOI: 10.1039/c9nr04112e_](https://doi.org/10.1039/c9nr04112e_)
 
  - [2019] Room-temperature ferroelectricity in MoTe2 down to the atomic monolayer limit [**Nature Communications**] [_DOI: 10.1038/s41467-019-09669-x_](https://doi.org/10.1038/s41467-019-09669-x)
 
