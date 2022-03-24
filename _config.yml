@@ -35,11 +35,15 @@ plugins:
   - jekyll-twitter-plugin
   - jekyll-seo-tag
 
+twitter:
+  username: iconxicon
+  card: summary_large_image
+
 defaults:
   - scope:
       path: ""
     values:
-      image: /assets/img/jekyll-seo.png
+      image: /assets/img/jekyll-seo-2.png
 
 cusdis_app_id: a25898b4-be29-4c2c-8c10-b426a3436da6
 
