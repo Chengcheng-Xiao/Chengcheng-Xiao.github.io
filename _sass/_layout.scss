@@ -269,6 +269,20 @@ p.readmore {
     cursor: pointer;
   }  
 
+@media (prefers-color-scheme: dark) {
+  .button_footer {
+    background-color: #2e2e2e;
+    height: 38px;
+    padding: 0 30px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+}
+
 }
 
 .article_share {

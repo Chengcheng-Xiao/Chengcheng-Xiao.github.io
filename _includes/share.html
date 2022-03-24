@@ -1,6 +1,4 @@
 <section class="share">
-<!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Just found this fantastic post '{{ page.title | url_escape }}', check it out!" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-  <!-- <a class="share-link" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}{% if page.description %}&text={{ page.description | url_escape }}{% else %}{{ page.title | url_escape }}{% endif %}{% if site.twitter %}&via={{ site.twitter }}{% endif %}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"> -->
   <a class="share-link"href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text=Just found this fantastic post '{{ page.title | url_escape }}' {% if site.twitter_username %} by @{{ site.twitter_username }}{% endif %}, check it out!" onclick="window.open(this.href, 'twitter-share', 'width=550,height=300');return false;">
     <button class="button_footer">
     <svg width="22" height="18" style="position: relative;top: 2px" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="none" class="twtr-color-fill--blue-logo">
@@ -9,10 +7,21 @@
     Share on Twitter
   </button>
   </a>
+
+<!-- official twitter share button: https://publish.twitter.com/?buttonType=TweetButton&widget=Button -->
+<!-- --------------------------- -->
+<!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Just found this fantastic post '{{ page.title | url_escape }}', check it out!" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+<!-- unofficial <a> method: -->
+<!-- --------------------------- -->
+<!-- <a class="share-link" href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}{% if page.description %}&text={{ page.description | url_escape }}{% else %}{{ page.title | url_escape }}{% endif %}{% if site.twitter %}&via={{ site.twitter }}{% endif %}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    Twitter
+  </a> -->
 <!--  <a class="share-link" href="https://github.com/Chengcheng-Xiao" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     Github
   </a>
   <a class="share-link" href="" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530'); return false;">
     Google+
   </a> -->
+
 </section>
