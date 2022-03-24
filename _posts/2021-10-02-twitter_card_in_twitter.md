@@ -9,9 +9,9 @@ tags: Blog
 
 Twitter supports showing custom metadata for websites in a form of "cards". To take full advantage of this feature with jekyll, we are going to use `jekyll-seo-tag` plugin.
 
-Before diving in, the final twitter card should look like:
+<!-- Before diving in, the final twitter card should look like:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Twitter card, testing 1 2 3.<a href="https://t.co/6ewYiXLhDb">https://t.co/6ewYiXLhDb</a></p>&mdash; Chengcheng (@iconxicon) <a href="https://twitter.com/iconxicon/status/1444647398794539010?ref_src=twsrc%5Etfw">October 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Twitter card, testing 1 2 3.<a href="https://t.co/6ewYiXLhDb">https://t.co/6ewYiXLhDb</a></p>&mdash; Chengcheng (@iconxicon) <a href="https://twitter.com/iconxicon/status/1444647398794539010?ref_src=twsrc%5Etfw">October 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
 
 ## 1. Install
@@ -46,6 +46,10 @@ Then, we need to add an image (needs to be in `png`, `jpeg` format, and 1200:600
 Then, all we need to do is to set the default card image as the image we just uploaded. To do this, simply add the following to your `_config.yml`:
 
 ```
+twitter:
+  username: iconxicon
+  card: summary_large_image
+
 defaults:
   - scope:
       path: ""
@@ -62,3 +66,5 @@ image: "/assets/img/jekyll-seo.png"
 To test the card before you sending our your twitter, use [:link: the card validator](https://cards-dev.twitter.com/validator).
 
 And that's it! Enjoy!
+
+Note: This only works if you are sharing your posts. Homepage won't have an image attached!
