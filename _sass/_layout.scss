@@ -253,9 +253,21 @@ p.readmore {
   }
 
   .share-link {
-    text-decoration:underline;
+    /*text-decoration:underline;*/
     margin-left:8px;
   }
+  
+  .button_footer {
+    background-color: #e7e7e7;
+    height: 38px;
+    padding: 0 30px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }  
 
 }
 
