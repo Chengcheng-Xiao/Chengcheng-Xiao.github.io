@@ -35,24 +35,36 @@ I am an electron wandering in a computer generated field.
 Okay, seriously, my name's Chengcheng Xiao. I'm currently a PhD candidate @ Imperal College London.
 
 
-
 ---
 
 ### Research Interests
 
 My research area include (subject to expand at any moment):
 
-- 🧱 2D materials.
+- 🫧 Electride materials
+- 🧱 2D materials
+- ⚡️ Ferroic materials
 - 💻 Density functional theory methods.
+- 🚂 Building models (both abstract and real).
+
+
+<!-- ---
+
+### Free time activities (if you find this section and want to have some fun with me, drop me an email!)
+
+- 🥾 Hiking
+- 🏃 Jogging
+- 🏛 Museum-ing
+- 📚 Reading XKCD -->
 
 ---
 
 ### Contact Me
-📧 Email: [iconxicon@me.com](mailto:iconxicon@me.com)
+- <img align="left" style='padding-left: 0px; padding-right: 10px;filter: invert(0%);position: relative;top: 2px' src="{{site.baseurl}}/assets/img/icon-email.svg" width="20px"> Email: [iconxicon@me.com](mailto:iconxicon@me.com)
 
-⌨️ Github: [Chengcheng Xiao](https://github.com/Chengcheng-Xiao)
+- <img align="left" style='padding-left: 0px;padding-right: 10px;filter: invert(0%);position: relative;top: 2px' src="{{site.baseurl}}/assets/img/icon-github.svg" width="20px"> Github: [Chengcheng Xiao](https://github.com/Chengcheng-Xiao)
 
-🐦 Twitter: [@iconxicon](https://twitter.com/iconxicon)
+- <img align="left" style='padding-left: 0px;padding-right: 10px;filter: invert(0%);position: relative;top: 2px' src="{{site.baseurl}}/assets/img/icon-twitter.svg" width="20px"> Twitter: [@iconxicon](https://twitter.com/iconxicon)
 
 ---
 
