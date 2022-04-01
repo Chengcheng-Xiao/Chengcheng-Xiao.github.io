@@ -3,11 +3,11 @@ layout: post
 title: From velocity autocorrelation function to phonon DOS
 date: 2021-08-20
 categories: Post
-description: Density of state (DOS) is intimately related to the auto autocorrelation functions as in static limit (or harmonic limit) the autocorrelation functions provides exactly the information of the "intrinsic vibration" energy of a state. This post gives an easy to understand derivation of the DOS from a set of autocorrelation functions (in terms of phonons in crystal).
+description: Density of state (DOS) is intimately related to the auto autocorrelation functions as in static limit (or harmonic limit) the autocorrelation functions provides exactly the information of the "intrinsic vibration" energy of a state as harmonic ocsillation gives perfect correlation. This post gives an easy to understand derivation of the DOS from a set of autocorrelation functions (in terms of phonons in crystal).
 tags: MD Phonon
 ---
 
-The autocorrelation function is a cross-correlation function that shows the correlation of one signal (function) with a delayed version of it self.
+The autocorrelation function is a cross-correlation function that shows the correlation of one signal (function) with a delayed version of it self. Essentially, It's the phonoic analogue of the diagonal part of the Green's function (for more details of quantum Green's function, see [:link: this post](../../../2022/03/03/Greens_function_to_DOS.html) and Eq. 11 of [:link: this post](../../../2021/08/16/Greens_function_2.html)).
 
 To derive the relation between velocity autocorrelation function and the phonon density of states, let us first start with the Fourier transforming the velocity of an atom $i$, $v_i(t)$.
 
