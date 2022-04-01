@@ -36,11 +36,11 @@ $$
 \left[ E - \hat H_0 (\vec r) \right] g(\vec r, \vec r' ) =  \delta(r-r') \tag{5}
 $$
 
-Now, let's add back the potential term (time-independent) as perturbation, we write the solution to this Schrodinger equation as $\Psi(\vec r)$:
+Now, let's add back the potential term (time-independent) as perturbation, we write the solution to this Schrödinger equation as $\Psi(\vec r)$:
 
 $$
 \begin{aligned}
-[\hat H_0+V(\vec r)]\Psi(\vec r) &= E \Psi(\vec r)\\
+\left[\hat H_0+V(\vec r)\right]\Psi(\vec r) &= E \Psi(\vec r)\\
 \left[ E - \hat H_0 (\vec r) \right] \Psi (\vec r) &= V(\vec r) \Psi(\vec r).
 \end{aligned} \tag{6}
 $$
@@ -71,7 +71,7 @@ Using Eq. 5, we can write Eq. 8 as:
 $$
 \begin{aligned}
 G\left(\vec r, \vec r^{\prime}\right) &=[E-\hat H]^{-1} \delta\left(\vec r-\vec r^{\prime}\right) \\
-&=[E-\hat H]^{-1}\left[ E-\hat H_{0}(\vec r) \right] g\left(\vec r, \vec r^{\prime} \right) \\
+&=[E-\hat H]^{-1}[ E-\hat H_{0}(\vec r) ] g\left(\vec r, \vec r^{\prime} \right) \\
 &=[E-\hat H]^{-1} [E-\hat H+V(\vec r)] g\left(\vec r, \vec r^{\prime} \right) \\
 &=g\left(\vec r, \vec r^{\prime} \right)+ [ E-\hat H ]^{-1} V(\vec r) g\left(\vec r, \vec r^{\prime} \right) \tag{9}
 \end{aligned}
