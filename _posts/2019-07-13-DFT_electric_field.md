@@ -25,6 +25,8 @@ __Caveats__:
 
 2. `DIPOL`  should be set to the weight center of the structure. After countless tests, it seems this setting is most likely to help with the convergence during electronic minimization.
 
+3. `EFIELD` describes the force acted on electrons so it points to the opposite direction of the derivative of the elecostatic potential (data stored in `LOCPOT`). It's the opposite of the direction of the commonly defined "electric field" (the direction of the force a positive charge feels. i.e. pointing from a positive charge towards an negative charge).
+
 ## Result
 
 Using these tags and a 2D graphene layer (made into orthorhombic), I calculated the ion-clamped electric field response focusing on the charge and dipole properties.
@@ -37,7 +39,7 @@ Notice the slope of the local potential in the vacuum region equals to the field
 
 The dipole moment induced by the potential shift can be seen from the differential charge calculated by:
 
-$$\rho_{diff}=\rho_{without field}-\rho_{with field}$$
+$$\rho_\text{diff}=\rho_\text{without field}-\rho_\text{with field}$$
 
 The result are show below:
 
@@ -47,7 +49,7 @@ The result are show below:
 
 The yellow region indicates charge accumulation while the blue part suggests charge depletion.
 
-Clearly, the "up-ward" electric field induces a "up-ward" dipole moment and the "down-ward" electric field induces a "down-ward" dipole moment. (note that the direction of the dipole moment is opposite to the electric field direction)
+Clearly, the "up-ward" electric field (an negative `EFIELD`) induces electrons to accumulate at the lower region and hence creates an "up-ward" dipole moment (the direction of the dipole moment is defined as pointing from negative charge towards positive charge). Similarly, a "down-ward" electric field (a positive `EFIELD`) induces a "down-ward" dipole moment.
 
 ## Problem
 
