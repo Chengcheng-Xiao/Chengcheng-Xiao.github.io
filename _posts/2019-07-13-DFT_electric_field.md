@@ -66,7 +66,7 @@ Which seems to be faulty since the direction of the dipole moment calculated thi
 The energy difference are listed below:
 
 
-$E_{field}=0.0/\text{Å}$:
+Electric field $\mathscr{E}_\text{field}=0.0/\text{Å}$:
 
 ```
 DIPCOR: dipole corrections for dipol
@@ -97,7 +97,7 @@ Free energy of the ion-electron system (eV)
  energy without entropy =      -36.91470334  energy(sigma->0) =      -36.91470334
  ```
 
- $E_{field}=0.2/\text{Å}$:
+Electric field $\mathscr{E}_\text{field}=0.2/\text{Å}$:
 
 ```
 DIPCOR: dipole corrections for dipol
@@ -128,7 +128,7 @@ Free energy of the ion-electron system (eV)
  energy without entropy =      -36.91711714  energy(sigma->0) =      -36.91711714
  ```
 
- __Difference ($$E_{no-field}-E_{add-field}$$):__
+Difference in energy ($$E_\text{no-field}-E_\text{add-field}$$):
 
  ```
  ---------------------------------------------------
@@ -145,12 +145,14 @@ Free energy of the ion-electron system (eV)
  ---------------------------------------------------
  free energy    TOTEN  =       0.00241381 eV
  ```
-The difference majorly arise from the `double counting Hartree energy`(See [:link: link](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
+The difference mainly arises from the `double counting Hartree energy`(See [:link: link](https://cms.mpi.univie.ac.at/vasp-workshop/slides/dft_introd.pdf)) and the `Kohn-Sham eigenvalues`.
 
-__A potential [SOLVE](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?f=4&t=7716)?__
-Others probably have the same problem as I do: [:link: link](https://cms.mpi.univie.ac.at/vasp-forum/viewtopic.php?t=8986)
+__A potential [SOLVE](https://www.vasp.at/forum/viewtopic.php?viewtopic.php?f=4&t=7716)?__
+Others probably have the same problem as I do: [:link: link](https://www.vasp.at/forum/viewtopic.php?t=8986)
 
 __NOTE__: QE also have this problem. Am I missing something? Since this method directly changed the local potential, am now even not sure if these energy are comparable...
+
+---
 
 ~~__*UPDATE-2019-01-02*__~~
 ~~After discussion with Arash, I was told that the normal SCF step does not take electric field-dipole interaction into consideration. To fix this, we have to convert the total energy into an enthalpy function by adding the electric field-dipole interaction term:~~
@@ -162,6 +164,8 @@ __NOTE__: QE also have this problem. Am I missing something? Since this method d
 ![]({{site.baseurl}}/assets/img/post_img/2019-07-13-img5.png){:height="70%" width="70%" .center}
 
 ~~All is well now. Phew.~~
+
+---
 
 __*UPDATE-2020-03-15*__
 After some more digging:
