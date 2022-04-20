@@ -1,0 +1,23 @@
+diff --color -ruN src/elpol.F ../../vasp.6.3.0/src/elpol.F
+--- src/elpol.F	2022-01-20 15:10:06.000000000 +0000
++++ ../../vasp.6.3.0/src/elpol.F	2022-04-20 17:58:59.021206594 +0100
+@@ -1122,8 +1122,8 @@
+       IF (LBERRY) THEN
+ ! overwrite user defaults for ISMEAR and SIGMA
+ ! this should be save in all cases
+-         ISMEAR  = 0
+-         SIGMA   = 0.0001
++!         ISMEAR  = 0
++!         SIGMA   = 0.0001
+ ! If Berry-Phase should be calculated, find G_parallel
+          CALL PROCESS_INCAR(LOPEN, IU0, IU5, 'IGPAR', IGPAR, IERR, WRITEXMLINCAR)
+          IF ((IGPAR.LT.1).OR.(IGPAR.GT.3)) THEN
+@@ -1136,7 +1136,7 @@
+ 
+          CALL PROCESS_INCAR(LOPEN, IU0, IU5, 'NPPSTR', NPPSTR, IERR, WRITEXMLINCAR)
+ ! When not doing a single point Berry-Phase calculation override user default for ICHARG
+-         IF (NPPSTR/=1) ICHARG=11
++!         IF (NPPSTR/=1) ICHARG=11
+       ENDIF
+       
+       CALL CLOSE_INCAR_IF_FOUND(IU5)
