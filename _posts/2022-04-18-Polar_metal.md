@@ -232,13 +232,13 @@ Once we've obtained the WCCs for each subset of the BZ, we can weight them by th
 
 For systems that are non-conductive along one direction, it is possible calculate the polarization by doing a planar average of the __conduction__ charge density (one can obtains this using [:link: band decomposed charge densities](https://www.vasp.at/wiki/index.php/Band_decomposed_charge_densities)) along the non-conductive direction. However, this only works if there's a clear "near zero" point cutting the planes apart so that the charge density center is well defined.
 
-For example, the conduction charge density of $\mathrm{Bi_5Ti_5O_{17}}$ goes down to around zero as seen in [the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211):
+For example, the conduction charge density of $\mathrm{Bi_5Ti_5O_{17}}$ goes down to around zero as seen in [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211):
 
-![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img4.png){:height="300px" .center}
+![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img4.png){:height="70%" width="70%" .center}
 
-Pankaj Sharma and co-workers also used this method on $\mathrm{WTe_2}$ systems and they find that the electron pocket is more or less centro-symmetric so even though they have significant value on all points along $c$ axis, electron conduction channel doesn't contribute to the polarization and only hole channel contributes:
+[:link: Pankaj Sharma and co-workers](https://www.science.org/doi/10.1126/sciadv.aax5080) also used this method on $\mathrm{WTe_2}$ systems and they find that the electron pocket is more or less centro-symmetric so even though they have significant value on all points along $c$ axis, electron conduction channel doesn't contribute to the polarization and only hole channel contributes:
 
-![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img5.png){:height="200px" .center}
+![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img5.png){:height="45%" width="45%" .center}
 
 This result is not that surprising. To understand it, we need to first consider Maximally Localized Wannier function (MLWF). What MLWF does is essentially finding the optimum band connections so that we can regroup the bands, get rid of the band crossing and obtain a set of   wavefunctions that give rises to a well localized Wannier functions.
 
