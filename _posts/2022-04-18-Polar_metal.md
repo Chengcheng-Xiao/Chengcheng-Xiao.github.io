@@ -15,7 +15,7 @@ The explaination of such behavior currently relies on the so-called “decoupled
 
 The usual Berryphase calculations are conducted by setting a string of k-points along a particular k direction ($k_z$) while sampling the other two k directions ($k_x$ and $k_y$). After obtaining the WCC along each string, average the results with respect to the k-point weight along $k_x$ and $k_y$.
 
-![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img1.png){: .center}
+![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img1.png){:height="35%" width="35%" .center}
 
 For polar metals that are conducting at one direction and insulating at another direction, people argues that one can calculate the polarization because the Berryphase (Wannier charge center) is still well defined in the out-of-plane direction $k_z$.
 
@@ -27,7 +27,7 @@ However, I don't think this should work, even theoretically. As long as there ar
 
 To illustrate this point, imagine we have a band crossing the Fermi level as:
 
-![img2]({{site.baseurl}}/assets/img/post_img/2022-04-18-img2.png){: .center}
+![img2]({{site.baseurl}}/assets/img/post_img/2022-04-18-img2.png){:height="80%" width="80%" .center}
 
 And near the Fermi crossing point, along $k_c$, we have a downward dispersion, then we can choose a k-point where the band energy is slightly above the Fermi level, so that the dispersion along $k_c$ will get cut by the Fermi level.
 
@@ -206,7 +206,7 @@ $$
 \end{aligned} \tag{3}
 $$
 
-In Eq. 3, we have only Wannier transformed one direction $k_c$ and left the other two directions $k_a$ and $k_b$ as individual parameters. This means we'll get different "Wannier centers" along $c$ direction when choosing different $k_a$ and $k_b$.
+In Eq. 3, we have only Wannier transformed one direction $k_c$ and left the other two directions $k_a$ and $k_b$ as individual parameters. This means we'll get different WCCs along $c$ direction when choosing different $k_a$ and $k_b$.
 
 We can also get this definition from a set of "fully transformed" Wannier functions $\phi_{\vec R,n}$:
 
@@ -220,17 +220,17 @@ $$
 
 Note that in Eq. 4, we no longer need $U^{\vec k *}_{nm'}$ like in Eq. 2, this is because we are going to keep using $n$ instead of switching to $m'$.
 
-Eq. 4 also tells us that once we have the fully transformed Wannier functions, reverting to the hybrid form will not affect the Wannier charge center along the direction that hasn't been inverse transformed (here $c$ direction).
+Eq. 4 also tells us that once we have the fully transformed Wannier functions, reverting to the hybrid form will not affect the Wannier charge center along the direction that hasn't been inverse transformed (here $c$ direction). This is because mixing a Wannier function with its periodic images in cells that lie within $k_a$ and $k_b$ plane won't change affect the position of said Wannier functions along the polarization direction $k_c$.
 
 The good thing about $\ket{\phi_{R_c, k_a, k_b, n}}$ is that it depends on $k_a$ and $k_b$. This comes in handy for polar metals where bands crossover the Fermi level along $k_a$ and $k_b$ plane. For example, at $k_a$ and $k_b$ we have $n$ bands occupied, but at $k_a'$ and $k_b'$ we have $n+1$ bands occupied. If we want to calculate the polarization along $c$ axis, we need to calculate the WCCs along a string of k-points in $k_c$ direction at each set of $k_a$ and $k_b$ points.
 
 To actually calculate the total polarization along the "non-conductive" axis, we first needs to divide the $k_a$ and $k_b$ plane by the number of bands occupied at each point.
 
-![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img3.png){:height="400px" .center}
+![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img3.png){:height="60%" width="60%" .center}
 
-For each subset, the WCC can be obtained using Eq. 4. Specifically, we need to Wannierize the system with the number bands equal to the number of occupied bands in the subset. __Note that this Wannierization process should be done with all k points considered (including $k_c$) for each $k_a$ and $k_b$ set.__
+For each subset, the WCCs can be obtained using Eq. 4. Specifically, we need to Wannierize the system with the number bands equal to the number of occupied bands in the subset. __Note that this Wannierization process should be done with all k-points considered (including $k_c$) for each $k_a$ and $k_b$ set.__
 
-Specifically, for example, if I want to get the WCCs at the $k_a$ and $k_b$ where $n$ bands are occupied. I need to Wannierize the whole system by considering $n$ Wannier functions and get WCCs in three dimension, the $c$ component is the one that we are looking for. Then, moving to the next set of $k_a$ and $k_b$s where $n+1$ bands are occupied, I need to Wannierize the whole system again but with $n+1$ Wannier functions.
+Specifically, for example, if I want to get the WCCs at the $k_a$ and $k_b$ where $n$ bands are occupied. I need to Wannierize the whole system by considering $n$ Wannier functions and get WCCs in three dimension, the $c$ component is the one that we are looking for. Then, moving to the next set of $k_a$ and $k_b$s where $n+1$ bands are occupied, I need to Wannierize the whole system __again__ but with $n+1$ Wannier functions.
 
 Once we've obtained the WCCs for each subset of the BZ, we can weight them by the k-points' weight and obtain the finally WCCs along $c$ direction of the system.
 
@@ -238,16 +238,16 @@ Once we've obtained the WCCs for each subset of the BZ, we can weight them by th
 For systems that are conductive only in the non-polarization directions, [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211) suggested that the polarization can be decomposed into two components: the contributions from non-conductive bands and the contributions from the conductive electrons.
 
 $$
-P_\text{total} = P_\text{non-conductive} + P_\text{conductive}
+P_\text{total} = P_\text{non-conductive} + P_\text{conductive} \tag{5}
 $$
 
 The non-conductive bands can be calculated using the usual Berryphase method as one can find a subset of bands that are occupied and are well seperated from other bands. For example:
 
-![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img6.png){:height="60%" width="60%" .center}
+![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img6.png){:height="65%" width="65%" .center}
 
-The usual Berryphase method (as implemented by VASP) uses default occupation obtained by the single-point calculations. However, this cannot be used here. Instead, we need to constrain the occupation so that only only said subset of bands are occupied.
+The usual Berryphase method (as implemented by VASP) uses default occupation obtained by the single-point calculations. However, this cannot be used for polar metals for the reason I've described. Instead, we need to constrain the occupation so that only only said subset of bands are occupied.
 
-Pratically, in VASP, one can set `ISMEAR = -2` and `FERWE` to manually control the occupation of the bands. However, this is not natively allowed in `LCALCPOL` or `LBERRY`. Since `LBERRY` is more inline with what I've discussed here, I've modified `LBERRY`'s subroutine, (one can download the [:link: patch here]({{site.baseurl}}/assets/other/2022-04-18-bp_occ.patch)). Just drop it in the the VASP distro and type `patch -p0 < 2022-04-18-bp_occ.patch` and compile away!
+Practically, in VASP, one can set `ISMEAR = -2` and `FERWE` to manually control the occupation of the bands. However, this is not natively allowed in `LCALCPOL` or `LBERRY`. Since `LBERRY` is more inline with what I've discussed here, I've modified `LBERRY`'s subroutine, (one can download the [:link: patch here]({{site.baseurl}}/assets/other/2022-04-18-bp_occ.patch)). Just drop it in the the VASP distro and type `patch -p0 < 2022-04-18-bp_occ.patch` and compile away!
 
 To use this occupation controlled Berryphase method, one has to do two steps:
 
@@ -276,7 +276,7 @@ rec
 0.5 0.5 0.5
 ```
 
-Also, for the second step, since we don't want VASP to perform __any__ kinds of electronic energy minimization, we need to set `ALGO = None` and `NELM=5`.
+Also, for the second step, since we don't want VASP to perform __any__ kind of electronic energy minimization, we need to set `ALGO = None` and `NELM=5`.
 
 The occupation constrain is to be set in the second step by `ISMEAR` and `FERWE`. Once `ISMEAR=-2` is set, the occupation is read from either `WAVECAR` (if no `FERWE` is set) or `FERWE`. Since in our case we need all k-points to have a consistent occupation, we can use the following python script to generate the `FERWE`:
 
@@ -302,13 +302,13 @@ Total electronic dipole moment: p[elc]=(    -0.00000    -0.00000   -32.13061 ) e
 ionic dipole moment: p[ion]=(   191.36251   110.48320   245.99999 ) e*Angst
 ```
 
-Which is similar to the `LCALCPOL` results. To further obtain the polarization $P_\text{non-conductive}$, please refer to [:link: this post]({{site.baseurl}}/post/2019/08/05/Berryphase_Ferroelectricity.html)
+Which is similar to the `LCALCPOL` results. To further obtain the polarization $P_\text{non-conductive}$, please refer to [:link: this post]({{site.baseurl}}/post/2019/08/05/Berryphase_Ferroelectricity.html).
 
 ---
 
-Next, we want to calculate the polarization of the polarization of the conductive electrons $P_\text{conductive}$. [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211) suggested that it is possible to calculate the polarization by doing a planar average of the __conduction__ charge density (can be obtained by [:link: band decomposed charge densities](https://www.vasp.at/wiki/index.php/Band_decomposed_charge_densities)) along the non-conductive direction. However, this only works if there's a clear "near zero" point cutting the planes apart so that the __charge center is well defined__.
+Next, we want to calculate the polarization of the polarization of the conductive electrons $P_\text{conductive}$. [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211) suggested that it is possible to calculate the polarization by doing a planar average of the __conduction__ charge density (can be obtained by [:link: band decomposed charge densities](https://www.vasp.at/wiki/index.php/Band_decomposed_charge_densities)) along the non-conductive direction (or by taking the difference between charge densities calculated with different occupations). However, this only works if there are clear "near zero" points along the polarization direction that are more or less at the same place for both the polar and centro-symemtric phases, so that the __charge center is well defined__. Note that the existence of these "near zero" points is only coincidental and is not linked to the flatness of the bands along the polarization direction.
 
-For example, the conduction charge density of $\mathrm{Bi_5Ti_5O_{17}}$ goes down to around zero as seen in [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211):
+To give a concrete example, the conduction charge density of $\mathrm{Bi_5Ti_5O_{17}}$ goes down to around zero as seen in [:link: the work of Alessio Filippetti and co-workers](https://www.nature.com/articles/ncomms11211):
 
 ![img1]({{site.baseurl}}/assets/img/post_img/2022-04-18-img4.png){:height="70%" width="70%" .center}
 
@@ -320,7 +320,11 @@ The charge center can be calculated by integrating the charge density over the w
 
 This result is not that surprising. To understand it, we need to first consider Maximally Localized Wannier function (MLWF). What MLWF does is essentially finding the optimum band connections so that we can regroup the bands, get rid of the band crossing and obtain a set of   wavefunctions that give rises to a well localized Wannier functions.
 
-Now, not all Wannier functions contributes to the polarization (some of then have centers that don't move much), which means some of the (re-organized) bands does not contribute to the polarization either. If we can single out those bands, then combined with the knowledge of occupation in k-space we can obtain the polarization too.
+Now, not all Wannier functions contributes to the polarization (some of then have centers that don't move much), which means some of the (re-organized) bands does not contribute to the polarization either. This is exactly the case of the electron pocket of  $\mathrm{WTe_2}$.
+ <!-- If we can single out those bands, then combined with the knowledge of occupation in k-space we can obtain the polarization too. -->
 
-## Examples
-(Coming soon!)
+
+## Example
+I've tried to reproduced the result of [:link: Pankaj Sharma and co-workers](https://www.science.org/doi/10.1126/sciadv.aax5080) and the polarization I got is $ \sim 1.5 μC/cm^2$. I've put all the input files in a zip file for download: [WTe2].
+
+[WTe2]:{{site.baseurl}}/assets/other/2022-04-18-bp-WTe2.tar.gz
