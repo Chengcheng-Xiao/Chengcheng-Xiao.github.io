@@ -70,6 +70,8 @@ My research area include (subject to expand at any moment):
 
 ### Publications
 
+ - [2022] Rationalizing the Effect of Shape and Size in Nanoparticle-Based Glues [**The Journal of Physical Chemistry C**] [_DOI: 10.1021/acs.jpcc.2c00461_](https://doi.org/10.1021/acs.jpcc.2c00461)
+
  - [2022] Unraveling the Role of Architecture in Polymer-Based Glues for Hydrogels [**ACS Applied Materials & Interfaces**] [_DOI: 10.1021/acsami.1c10785_](https://doi.org/10.1021/acsami.1c10785)
 
  - [2021] Enhancing Oxygen Evolution Reaction Activity by Using Switchable Polarization in Ferroelectric InSnO2N [**ACS Catalysis**] [_DOI: 10.1021/acscatal.1c03737_](https://doi.org/10.1021/acscatal.1c03737)
