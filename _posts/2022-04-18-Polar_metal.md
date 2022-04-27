@@ -21,7 +21,7 @@ For polar metals that are conducting at one direction and insulating at another 
 
 For a review of polar metals, I recommend [the work of W. X. Zhou and A. Ariando](https://iopscience.iop.org/article/10.35848/1347-4065/ab8bbf/meta).
 
-## Polarization conundrum
+<!-- ## Polarization conundrum
 
 However, I don't think this should work, even theoretically. As long as there are hopping between atoms along the polarization direction (let's be real, there'll always hoppings in all directions😬), there is going to be band dispersion. And as long as there is band dispersion, we can always find a k-point (in conductive plane) that are close to the Fermi crossing so that the bands cross the Fermi level along the polarization direction.
 
@@ -37,7 +37,7 @@ This tells us that, as long as we have a perfect large crystal that's conductive
 
 However, the conductivity along the polarization direction is directly related to the number of k-points in $k_a$ and $k_b$ plane that have Fermi crossing along $k_c$ direction. This number is constrained by the number of unit cell in the crystal which, in turn, determines the number of electrons in the system. Thinking about this, the number of electrons that are actually there to screen the polarization along this axis can potentially be estimated by calculating the percentage of these conductive k-points of all k-points.
 
-The only situation where we can potentially calculate the polarization is that if the bands along the polarization direction is __accidentally__ so flat that within a finite crystal, there's no k-points in $k_a$ and $k_b$ plane that can cause conduction along the polarization direction. In case of such situation, we need to use a sparse k-sampling of the $k_a$ and $k_b$ plane and use method such as Hybrid Wannier functions or occupation controlled Berryphase method.
+The only situation where we can potentially calculate the polarization is that if the bands along the polarization direction is __accidentally__ so flat that within a finite crystal, there's no k-points in $k_a$ and $k_b$ plane that can cause conduction along the polarization direction. In case of such situation, we need to use a sparse k-sampling of the $k_a$ and $k_b$ plane and use method such as Hybrid Wannier functions or occupation controlled Berryphase method. -->
 
 
 <!-- ## Berryphase method
@@ -320,7 +320,7 @@ The charge center can be calculated by integrating the charge density over the w
 
 This result is not that surprising. To understand it, we need to first consider Maximally Localized Wannier function (MLWF). What MLWF does is essentially finding the optimum band connections so that we can regroup the bands, get rid of the band crossing and obtain a set of   wavefunctions that give rises to a well localized Wannier functions.
 
-Now, not all Wannier functions contributes to the polarization (some of then have centers that don't move much), which means some of the (re-organized) bands does not contribute to the polarization either. This is exactly the case of the electron pocket of  $\mathrm{WTe_2}$.
+Now, not all Wannier functions contribute to the polarization (some of then have centers that don't move much), which means some of the (re-organized) bands does not contribute to the polarization either. This is exactly the case of the electron pocket of  $\mathrm{WTe_2}$.
  <!-- If we can single out those bands, then combined with the knowledge of occupation in k-space we can obtain the polarization too. -->
 
 
