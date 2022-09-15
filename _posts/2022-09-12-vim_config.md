@@ -24,7 +24,7 @@ Four years later, it's all comes to an end 🥲.
 Atom has tons of fancy featrues by default, accompanied by a huge free software community where plugins like [Hydrogen](https://github.com/nteract/hydrogen), [platformio-IDE](https://github.com/platformio) thrive.
 Combined with a set of default color presets and themes, Atom is truely one of a kined.
 
-images
+![img1]({{site.baseurl}}/assets/img/post_img/2022-09-12-img1.png){:height="100%" width="100%" .center}
 
 Although the edior itself is opensource so it'll probably still live for many years to come, I have decided to start my transition now, to the legendary text/IDE/all-in-one code - Vim.
 
@@ -178,7 +178,7 @@ endif
 
 Fire up your vim, you should see it looks like this:
 
-image
+![img2]({{site.baseurl}}/assets/img/post_img/2022-09-12-img2.png){:height="100%" width="100%" .center}
 
 ---
 
@@ -502,3 +502,4 @@ Simply go to their homepage to see how each and everyone of these plugins works.
 (yes I'm lazy to document how to actually use them... maybe I'll do it later)
 
 > Atom is dead, long live Vim!
+
