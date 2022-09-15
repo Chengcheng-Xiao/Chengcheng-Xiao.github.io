@@ -1,94 +1,218 @@
-/* Solarized Light
-
-For use with Jekyll and Pygments
-
-http://ethanschoonover.com/solarized
-
-SOLARIZED HEX      ROLE
---------- -------- ------------------------------------------
-base01    #586e75  body text / default code / primary content
-base1     #93a1a1  comments / secondary content
-base3     #fdf6e3  background
-orange    #cb4b16  constants
-red       #dc322f  regex, special keywords
-blue      #268bd2  reserved keywords
-cyan      #2aa198  strings, numbers
-green     #859900  operators, other keywords
-*/
-
+/* from https://github.com/Kshitij09/OneLightJekyll */
+/* transcoded from  https://beautifytools.com/css-to-scss-converter.php */
+/* Generated from one-light-syntax colors */
 .highlight {
-    background-color: #eef;
-    color: #586e75;
-    .c { color: #93a1a1 } /* Comment */
-    .err{ color: #586e75 } /* Error */
-    .g{ color: #586e75 } /* Generic */
-    .k{ color: #859900 } /* Keyword */
-    .l{ color: #586e75 } /* Literal */
-    .n{ color: #586e75 } /* Name */
-    .o{ color: #859900 } /* Operator */
-    .x{ color: #cb4b16 } /* Other */
-    .p{ color: #586e75 } /* Punctuation */
-    .cm{ color: #93a1a1 } /* Comment.Multiline */
-    .cp{ color: #859900 } /* Comment.Preproc */
-    .c1{ color: #93a1a1 } /* Comment.Single */
-    .cs{ color: #859900 } /* Comment.Special */
-    .gd{ color: #2aa198 } /* Generic.Deleted */
-    .ge{ color: #586e75; font-style: italic } /* Generic.Emph */
-    .gr{ color: #dc322f } /* Generic.Error */
-    .gh{ color: #cb4b16 } /* Generic.Heading */
-    .gi{ color: #859900 } /* Generic.Inserted */
-    .go{ color: #586e75 } /* Generic.Output */
-    .gp{ color: #586e75 } /* Generic.Prompt */
-    .gs{ color: #586e75; font-weight: bold } /* Generic.Strong */
-    .gu{ color: #cb4b16 } /* Generic.Subheading */
-    .gt{ color: #586e75 } /* Generic.Traceback */
-    .kc{ color: #cb4b16 } /* Keyword.Constant */
-    .kd{ color: #268bd2 } /* Keyword.Declaration */
-    .kn{ color: #859900 } /* Keyword.Namespace */
-    .kp{ color: #859900 } /* Keyword.Pseudo */
-    .kr{ color: #268bd2 } /* Keyword.Reserved */
-    .kt{ color: #dc322f } /* Keyword.Type */
-    .ld{ color: #586e75 } /* Literal.Date */
-    .m{ color: #2aa198 } /* Literal.Number */
-    .s{ color: #2aa198 } /* Literal.String */
-    .na{ color: #586e75 } /* Name.Attribute */
-    .nb{ color: #B58900 } /* Name.Builtin */
-    .nc{ color: #268bd2 } /* Name.Class */
-    .no{ color: #cb4b16 } /* Name.Constant */
-    .nd{ color: #268bd2 } /* Name.Decorator */
-    .ni{ color: #cb4b16 } /* Name.Entity */
-    .ne{ color: #cb4b16 } /* Name.Exception */
-    .nf{ color: #268bd2 } /* Name.Function */
-    .nl{ color: #586e75 } /* Name.Label */
-    .nn{ color: #586e75 } /* Name.Namespace */
-    .nx{ color: #586e75 } /* Name.Other */
-    .py{ color: #586e75 } /* Name.Property */
-    .nt{ color: #268bd2 } /* Name.Tag */
-    .nv{ color: #268bd2 } /* Name.Variable */
-    .ow{ color: #859900 } /* Operator.Word */
-    .w{ color: #586e75 } /* Text.Whitespace */
-    .mf{ color: #2aa198 } /* Literal.Number.Float */
-    .mh{ color: #2aa198 } /* Literal.Number.Hex */
-    .mi{ color: #2aa198 } /* Literal.Number.Integer */
-    .mo{ color: #2aa198 } /* Literal.Number.Oct */
-    .sb{ color: #93a1a1 } /* Literal.String.Backtick */
-    .sc{ color: #2aa198 } /* Literal.String.Char */
-    .sd{ color: #586e75 } /* Literal.String.Doc */
-    .s2{ color: #2aa198 } /* Literal.String.Double */
-    .se{ color: #cb4b16 } /* Literal.String.Escape */
-    .sh{ color: #586e75 } /* Literal.String.Heredoc */
-    .si{ color: #2aa198 } /* Literal.String.Interpol */
-    .sx{ color: #2aa198 } /* Literal.String.Other */
-    .sr{ color: #dc322f } /* Literal.String.Regex */
-    .s1{ color: #2aa198 } /* Literal.String.Single */
-    .ss{ color: #2aa198 } /* Literal.String.Symbol */
-    .bp{ color: #268bd2 } /* Name.Builtin.Pseudo */
-    .vc{ color: #268bd2 } /* Name.Variable.Class */
-    .vg{ color: #268bd2 } /* Name.Variable.Global */
-    .vi{ color: #268bd2 } /* Name.Variable.Instance */
-    .il{ color: #2aa198 } /* Literal.Number.Integer.Long */
+	background: #f9f9f9;
+	color: #383942;
+	pre {
+		background: #f9f9f9;
+	}
+	.hll {
+		background: #f9f9f9;
+	}
+	.c {
+		color: #9fa0a6;
+		font-style: italic;
+	}
+	.err {
+		color: #fff;
+		background-color: #ff1414;
+	}
+	.k {
+		color: #a625a4;
+	}
+	.l {
+		color: #50a04f;
+	}
+	.n {
+		color: #383942;
+	}
+	.o {
+		color: #383942;
+	}
+	.p {
+		color: #383942;
+	}
+	.cm {
+		color: #9fa0a6;
+		font-style: italic;
+	}
+	.cp {
+		color: #9fa0a6;
+		font-style: italic;
+	}
+	.c1 {
+		color: #9fa0a6;
+		font-style: italic;
+	}
+	.cs {
+		color: #9fa0a6;
+		font-style: italic;
+	}
+	.ge {
+		font-style: italic;
+	}
+	.gs {
+		font-weight: 700;
+	}
+	.kc {
+		color: #a625a4;
+	}
+	.kd {
+		color: #a625a4;
+	}
+	.kn {
+		color: #a625a4;
+	}
+	.kp {
+		color: #a625a4;
+	}
+	.kr {
+		color: #a625a4;
+	}
+	.kt {
+		color: #a625a4;
+	}
+	.ld {
+		color: #50a04f;
+	}
+	.m {
+		color: #986800;
+	}
+	.s {
+		color: #50a04f;
+	}
+	.na {
+		color: #986800;
+	}
+	.nb {
+		color: #c08400;
+	}
+	.nc {
+		color: #c08400;
+	}
+	.no {
+		color: #c08400;
+	}
+	.nd {
+		color: #c08400;
+	}
+	.ni {
+		color: #c08400;
+	}
+	.ne {
+		color: #c08400;
+	}
+	.nf {
+		color: #383942;
+	}
+	.nl {
+		color: #c08400;
+	}
+	.nn {
+		color: #383942;
+	}
+	.nx {
+		color: #383942;
+	}
+	.py {
+		color: #c08400;
+	}
+	.nt {
+		color: #e35549;
+	}
+	.nv {
+		color: #c08400;
+	}
+	.ow {
+		font-weight: 700;
+	}
+	.w {
+		color: #f8f8f2;
+	}
+	.mf {
+		color: #986800;
+	}
+	.mh {
+		color: #986800;
+	}
+	.mi {
+		color: #986800;
+	}
+	.mo {
+		color: #986800;
+	}
+	.sb {
+		color: #50a04f;
+	}
+	.sc {
+		color: #50a04f;
+	}
+	.sd {
+		color: #50a04f;
+	}
+	.s2 {
+		color: #50a04f;
+	}
+	.se {
+		color: #50a04f;
+	}
+	.sh {
+		color: #50a04f;
+	}
+	.si {
+		color: #50a04f;
+	}
+	.sx {
+		color: #50a04f;
+	}
+	.sr {
+		color: #0083bb;
+	}
+	.s1 {
+		color: #50a04f;
+	}
+	.ss {
+		color: #0083bb;
+	}
+	.bp {
+		color: #c08400;
+	}
+	.vc {
+		color: #c08400;
+	}
+	.vg {
+		color: #c08400;
+	}
+	.vi {
+		color: #e35549;
+	}
+	.il {
+		color: #986800;
+	}
+	.gu {
+		color: #75715e;
+	}
+	.gd {
+		color: #ff1414;
+	}
+	.gi {
+		color: #2cb347;
+	}
+	&::selection {
+		background-color: #e5e5e5;
+	}
+	.language-json {
+		.w+.s2 {
+			color: #e35549;
+		}
+		.kc {
+			color: #0083bb;
+		}
+	}
+}
+pre.highlight {
+	background: #f9f9f9;
+	color: #383942;
 }
 
-.highlighter-rouge {
-    background-color: #eef;
-}

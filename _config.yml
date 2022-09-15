@@ -17,10 +17,12 @@ twitter_username: iconxicon
 github_username: Chengcheng-Xiao
 
 # Build settings
+highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
   math_engine: katex
+  syntax_highlighter: rouge
 
 # Third-party services
 # just leave someone empty to disable it
