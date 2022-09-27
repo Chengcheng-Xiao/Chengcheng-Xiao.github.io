@@ -460,6 +460,9 @@ there.
   a {color: #c7c7cc}
   // invert image color
   img {filter: invert(90%);}
+  // set grayscale: https://medium.com/dev-channel/re-colorization-for-dark-mode-19e2e17b584b
+  // img {filter: grayscale(50%)}
+  // img {filter:  invert(50%) grayscale(80%)}
   .emoji{filter: invert(0%);}
   .article-footer {
     padding:2rem 0;
