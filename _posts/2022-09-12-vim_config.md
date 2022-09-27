@@ -1,15 +1,18 @@
 ---
 layout: post
-title: Personal vim config (update 2022)
+title: Personal Vim config (update 2022)
 date: 2022-09-12
 categories: Post
-description: I've moved on from Atom text editor to vim. To make things smooth, here's my vim config.
+description: I've moved on from Atom text editor to vim. This post includes a step-by-step walk though of how I configured my vim. 
 tags: Configs 
 ---
 
-[__TL;DR:__](#vim-config)
-I've moved on from Atom text editor to vim. 
-This is a (step-by-step) documentation of vim config.
+__TL;DR:__
+I've moved on from Atom to Vim. 
+This is a (step-by-step) documentation of my Vim config.
+The target audience of this tutorial is people familar with basic Vim commands and want to make their Vim experience better.
+
+[:link: Jump to the guide :laughing:](#vim-config)
 
 ---
 
@@ -20,41 +23,43 @@ Eventhough the CEO of Microsoft, Nat Friedman, at that time specifically reassur
 
 <iframe id="reddit-embed" src="https://www.redditmedia.com/r/AMA/comments/8pc8mf/im_nat_friedman_future_ceo_of_github_ama/e0a2b2e/?depth=1&amp;showmore=false&amp;embed=true&amp;showmedia=false" sandbox="allow-scripts allow-same-origin allow-popups" style="border: none;" height="310" width="640" scrolling="no"></iframe>
 
-Four years later, it's all comes to an end 🥲.
-Atom has tons of fancy featrues by default, accompanied by a huge free software community where plugins like [Hydrogen](https://github.com/nteract/hydrogen), [platformio-IDE](https://github.com/platformio) thrive.
+Four years later, it's all comimg to an end :sob:.
+Atom has tons of awesome featrues that others don't have, accompanied by a huge free software community where plugins like [Hydrogen](https://github.com/nteract/hydrogen), [platformio-IDE](https://github.com/platformio) thrive.
 Combined with a set of default color presets and themes, Atom is truely one of a kined.
 
 ![img1]({{site.baseurl}}/assets/img/post_img/2022-09-12-img1.png){:height="100%" width="100%" .center}
 
-Although the edior itself is opensource so it'll probably still live for many years to come, I have decided to start my transition now, to the legendary text/IDE/all-in-one code - Vim.
+Although the edior itself is opensource which means it'll probably still live for many years to come, it will, eventually die.
+As a consequence of this, I have decided to start my transition now rather than later, to the legendary text/IDE/all-in-one code - Vim.
 
 ## Why Vim?
-I've actually been a "not-so-avid" vim user for aorund 6 years now. 
-I mainly use it on HPC because its usually preloaded and usually superfast to pull up.
+I've actually been a "not-so-avid" Vim user for aorund 6 years now. 
+I mainly use it on HPCs because it's usually preloaded and usually superfast to pull up.
 
-The reason I didn't bother learn nano or emacs is maybe [Anchoring bias](https://en.wikipedia.org/wiki/Anchoring_(cognitive_bias)) as vim is the first text editor that I came in contact with when I was familiarizing myself with the commond line interface. 
+The reason I didn't bother learn `nano` or `emacs` is maybe due to [anchoring bias](https://en.wikipedia.org/wiki/Anchoring_(cognitive_bias)) as Vim is the first text editor that I came in contact with when I was familiarizing myself with the commond line interface. 
 (yse, I'm old but not THAT old, my first computer did have a GUI...)
-But at the mean time, I think it's because I'm afread to loose another text editor.
-Vim has survived 31 years and doesn't really rely on any company to provide support its development, so, in a sense, it's one of the "real" free softwares out there.
+But another huge reason is, I think, because I'm way too afraid to loose another text editor.
+Vim has survived/shrived 31 years (as of now, 2022) and doesn't really rely on any company or entity to provide support to its development
+So, in a sense, it's one of the "real" free softwares out there.
 
-Comparing to your traditional text editors, vim is supposedly "keyboard-only" (eventhough some of its' feature only suuports mouse scrolling... popup scrollbar, I'm looking at you).
+Comparing to traditional text editors, Vim is supposedly "keyboard-only" (eventhough some of its' feature only suuports mouse scrolling... popup scrollbar, I'm looking at you:wink:).
 For example, one can navigate their cursor by pressing simply pressing "hjkl", jump from words to words by pressing "w" or "b".
 This provides a unparallel speed when you are really in the "zone"(if you have familiarized yourself with the control).
 
-<!-- I'm still a rookie in using vim for I've relied on Atom and other GUI based text editors for a long time. -->
+<!-- I'm still a rookie in using Vim for I've relied on Atom and other GUI based text editors for a long time. -->
 
 Now that I've babbling long enough, let me show you my config.
 
 ## Vim config
-The goal of this configuration is to make vim:
-1. have (python) autocompletetion that's async and fast.
-2. can run ipython directly (or not-so-directly) 
-3. look like Atom.
+The goal of this tutorial/walk-through is to make vim:
+1. to have (python) autocompletetion that's async (doesn't slow down your typing experience) and fast.
+2. can run ipython directly (by sending code snippets to ipython command line) 
+3. look like Atom (one-dark theme!).
 
 ---
 
-I've opted to ues vim version 9.0.65 (the latest and shineset) on my Mac. 
-I use Macports so installing it would require only one line of command:
+I've opted to ues Vim version 9.0.65 (the latest and shineset, again, in SEP/2022) on my Mac. 
+I use [Macports](https://www.macports.org) so installing it would require only one line of command:
 
 ```
 sudo port install vim +python39
@@ -118,11 +123,11 @@ then initialize it by:
 vim +PluginInstall +qall
 ```
 
-With Vundle, you can install any vim pakcage that's hosted on Gihub by simply adding the author/repo_name combo in a form of `Plugin 'author/repo_name'` in `.vimrc`
+With Vundle, you can install any Vim pakcage that's hosted on Gihub by simply adding the author/repo_name combo in a form of `Plugin 'author/repo_name'` in `.vimrc`
 
 ---
 
-Now, let's beautify our vim installation.
+Now, let's beautify our vim.
 
 First, install `vim-airline/vim-airline`, `vim-airline/vim-airline-themes` and `rakr/vim-one` by putting the following into yout `.vimrc`:
 
@@ -182,15 +187,15 @@ Fire up your vim, you should see it looks like this:
 
 ---
 
-To make the most of the autocompletetion, I use [coc.nvim](https://github.com/neoclide/coc.nvim).
+To enable autocompletetion, I use [`coc.nvim`](https://github.com/neoclide/coc.nvim).
 
-coc.nvim requires node.js (v14.14 and up) and npm, since I'm using port, it can be installed by:
+`coc.nvim` requires node.js (v14.14 and up) and npm, since I'm using port, it can be installed by:
 
 ```
 sudo port install nodejs18 npm8
 ```
 
-Now, to install coc.nvim, add the following to your `.vimrc`:
+Now, to install `coc.nvim`, add the following to your `.vimrc`:
 ```
 Plugin 'neoclide/coc.nvim'
 ```
@@ -199,7 +204,7 @@ and issue the following in your command line:
 vim +PluginInstall +qall
 ```
 
-The final step to activaet coc.nvim is to compile the necesseary files:
+The final step to activaet `coc.nvim` is to compile the necesseary files:
 ```
 cd /Users/chengcheng_xiao/.vim/bundle/coc.nvim
 npm install
@@ -208,7 +213,7 @@ npm audit fix
 
 ---
 
-Next up, we need to configure coc.nvim, simply add the following to your `.vimrc`:
+Next up, we need to configure `coc.nvim`, simply add the following to your `.vimrc`:
 ```
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -364,13 +369,12 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " https://stackoverflow.com/a/30008892/12660859
 highlight Pmenu ctermfg=15 ctermbg=8 guifg=#ffffff guibg=#0000ff
 ```
-
-As described in [its github repo](https://github.com/neoclide/coc.nvim), coc.nvim has lots of extension that can enabel language supports and other fancy functionalities, to install them, we need to fire up vim and use vim command (if you don't know what that is, you should probably try the vanilla vim first before jumping into this rabbit hole):
+As described in [its github repo](https://github.com/neoclide/coc.nvim), coc.nvim has lots of extensions that can enabel language support and other fancy functionalities, to install them, we need to fire up Vim and use Vim command (if you don't know what that is, you should probably try the vanilla Vim first before jumping into this rabbit hole):
 ```
 :CocInstal coc-pyright coc-json coc-pairs coc-word coc-snippets
 ```
 
-After installation, we need to add some customization to these extensions:
+After installation, I want to add some customization to these extensions so they suites my usage better:
 ```
 " -------------
 " set snippet
@@ -381,10 +385,10 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Use <C-j> for select text for visual placeholder of snippet.
 vmap <C-j> <Plug>(coc-snippets-select)
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+" Use <C-j> for jump to next placeholder, it's default of `coc.nvim`
 let g:coc_snippet_next = '<c-j>'
 
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+" Use <C-k> for jump to previous placeholder, it's default of `coc.nvim`
 let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
@@ -501,5 +505,5 @@ That's it! We've now installed:
 Simply go to their homepage to see how each and everyone of these plugins works.
 (yes I'm lazy to document how to actually use them... maybe I'll do it later)
 
-> Atom is dead, long live Vim!
+> Atom is dead, long live Vim!:smirk:
 
