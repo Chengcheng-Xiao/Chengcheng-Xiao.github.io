@@ -415,6 +415,9 @@ let g:coc_snippet_next = '<tab>'
 highlight Pmenu ctermfg=15 ctermbg=8 guifg=#ffffff guibg=#0000ff
 ```
 
+Pyright requires certain `stubs` files to lint codes better (to help with annotating pacages).
+For this, simply copy all folders from [python-type-stubs](https://github.com/microsoft/python-type-stubs) to `~/.config/coc/extensions/node_modules/coc-pyright/node_modules/pyright/dist/typings`.
+
 For `coc-snippets` to work, we need to install vim plugin `vim-snippets`, at the same time, let's add `sheerun/vim-polyglot`, `preservim/netdtree` and `preservim/nerdcommenter`:
 ```
 Plugin 'sheerun/vim-polyglot'
