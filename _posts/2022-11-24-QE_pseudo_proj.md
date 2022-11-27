@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Projection onto pseudo atom orbital using QE
+title: Pseudo-atom projected bandstructure with QE
 date: 2022-11-24
 categories: Post
-description: A short tutorial on how to do projected band structure on to pseudo-atom's using quantum espresso.
+description: A short tutorial on how to obtain projected band structure onto pseudo-atom's atomic orbitals using quantum espresso.
 tags: DFT
 ---
 Projected band structures are very useful tool that can help understanding the composition of the molecular orbitals.
