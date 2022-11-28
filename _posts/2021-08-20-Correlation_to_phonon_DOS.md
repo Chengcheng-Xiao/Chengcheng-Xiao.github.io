@@ -226,6 +226,6 @@ It can be clearly seen that after exactly one period, the correlation is back at
 Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
 
 ---
-I have wrote a piece of [:link: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
+I have wrote a piece of [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
 but I have ran out of vacation time and the code is not working...
 hopefully I'll get time to finish in the future.

@@ -327,4 +327,4 @@ Now, not all Wannier functions contribute to the polarization (some of then have
 ## Example
 I've tried to reproduced the result of [:link: Pankaj Sharma and co-workers](https://www.science.org/doi/10.1126/sciadv.aax5080) and the polarization I got is $ \sim 1.3 μC/cm^2$. I've put all the input files in a zip file for download: [WTe2].
 
-[WTe2]:{{site.baseurl}}/assets/other/2022-04-18-bp-WTe2.tar.gz
+[:file_folder: WTe2]:{{site.baseurl}}/assets/other/2022-04-18-bp-WTe2.tar.gz
