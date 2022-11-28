@@ -265,7 +265,7 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
   upf_ocw(1:upf_ntwfc)  = upf(1)%oc(1:upf_ntwfc)
   upf_elsw(1:upf_ntwfc) = upf(1)%els(1:upf_ntwfc)
   upf_lchiw(1:upf_ntwfc) = upf(1)%lchi(1:upf_ntwfc)
-  upf_zp    =  x * upf(1)%zp + (1.d0-1.d0) * upf(2)%zp
+  upf_zp    =  0 * upf(1)%zp + (1.d0-1.d0) * upf(2)%zp
   !
 
   !pp_mesh
@@ -298,11 +298,11 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
      aux2(1,1:upf(2)%mesh) = upf(2)%rho_atc(1:upf(2)%mesh)
      CALL dosplineint( upf(2)%r(1:upf(2)%mesh), aux2, upf_r(1:upf_mesh), aux1 )
      ! upf(2)%rho_atc(1:upf_mesh) = aux1(1,1:upf_mesh)
-     upf_rho_atc(1:upf_mesh) =    x     * upf(1)%rho_atc(1:upf_mesh) + &
+     upf_rho_atc(1:upf_mesh) =    0     * upf(1)%rho_atc(1:upf_mesh) + &
                             (1.d0-1.d0) * aux1(1,1:upf_mesh)
      WRITE (*,*) " done"
   ELSE
-     upf_rho_atc(1:upf_mesh) =    x     * upf(1)%rho_atc(1:upf_mesh) + &
+     upf_rho_atc(1:upf_mesh) =    0     * upf(1)%rho_atc(1:upf_mesh) + &
                             (1.d0-1.d0) * upf(2)%rho_atc(1:upf_mesh)
   ENDIF
   !
@@ -330,10 +330,10 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
            ! upf(2)%vloc(i) = -(2.0*upf(2)%zp)/upf(1)%r(i)
            aux1(1,i) = -(2.0*upf(2)%zp)/upf(1)%r(i)
      ENDDO
-     upf_vloc0(1:upf_mesh) =      x     * upf(1)%vloc(1:upf_mesh) + &
+     upf_vloc0(1:upf_mesh) =      0     * upf(1)%vloc(1:upf_mesh) + &
                                (1.d0-1.d0) * aux1(1,1:upf_mesh)
   ELSE
-     upf_vloc0(1:upf_mesh) =      x     * upf(1)%vloc(1:upf_mesh) + &
+     upf_vloc0(1:upf_mesh) =      0     * upf(1)%vloc(1:upf_mesh) + &
                                (1.d0-1.d0) * upf(2)%vloc(1:upf_mesh)
   ENDIF
   !
@@ -394,7 +394,7 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
 
   DO i=1,upf(1)%nbeta
      DO j=1,upf(1)%nbeta
-        upf_dion(i,j) = x * upf(1)%dion(i,j)
+        upf_dion(i,j) = 0 * upf(1)%dion(i,j)
      ENDDO
   ENDDO
 
@@ -448,17 +448,17 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
     DO i=1,upf(1)%nbeta
        DO j=i,upf(1)%nbeta
           ijv = j * (j-1)/2 + i
-          upf_qqq(i,j) = x * upf(1)%qqq(i,j)
+          upf_qqq(i,j) = 0 * upf(1)%qqq(i,j)
 
 
           IF( allocated(upf_qfuncl) ) THEN
              l1=upf(1)%lll(i)
              l2=upf(1)%lll(j)
              DO l=abs(l1-l2), l1+l2
-                upf_qfuncl(1:upf_mesh,ijv,l) = x * upf(1)%qfuncl(1:upf_mesh,ijv,l)
+                upf_qfuncl(1:upf_mesh,ijv,l) = 0 * upf(1)%qfuncl(1:upf_mesh,ijv,l)
              ENDDO
           ELSE
-             upf_qfunc(1:upf_mesh,ijv) = x * upf(1)%qfunc(1:upf_mesh,ijv)
+             upf_qfunc(1:upf_mesh,ijv) = 0 * upf(1)%qfunc(1:upf_mesh,ijv)
           ENDIF
 
        ENDDO
@@ -513,7 +513,7 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
        DO i=1,upf(1)%nbeta
           DO j=1,upf(1)%nbeta
              upf_qfcoef(1:upf_nqf,1:upf_nqlc,i,j) = &
-                 x * upf(1)%qfcoef(1:upf_nqf,1:upf_nqlc,i,j)
+                 0 * upf(1)%qfcoef(1:upf_nqf,1:upf_nqlc,i,j)
           ENDDO
        ENDDO
        DO i=1,upf(2)%nbeta
@@ -556,11 +556,11 @@ SUBROUTINE compute_virtual(x, filein, upf, upf_vca)
      aux2(1,1:upf(2)%mesh) = upf(2)%rho_at(1:upf(2)%mesh)
      CALL dosplineint( upf(2)%r(1:upf(2)%mesh), aux2, upf_r(1:upf_mesh), aux1 )
      ! rho_at(1:upf_mesh,2) = aux1(1,1:upf_mesh)
-     upf_rho_at(1:upf_mesh) =    x     * upf(1)%rho_at(1:upf_mesh) + &
+     upf_rho_at(1:upf_mesh) =    0     * upf(1)%rho_at(1:upf_mesh) + &
                               (1.d0-1.d0) * aux1(1,1:upf_mesh)
      WRITE (*,*) " done"
   ELSE
-     upf_rho_at(1:upf_mesh) =    x     * upf(1)%rho_at(1:upf_mesh) + &
+     upf_rho_at(1:upf_mesh) =    0     * upf(1)%rho_at(1:upf_mesh) + &
                               (1.d0-1.d0) * upf(2)%rho_at(1:upf_mesh)
   ENDIF
 

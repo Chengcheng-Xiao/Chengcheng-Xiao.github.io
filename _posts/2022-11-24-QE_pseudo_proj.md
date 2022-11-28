@@ -11,12 +11,14 @@ QE provides a program -- `projwfc.x` to obtain projection coefficient (squared a
 
 However, the atomic wavefunctions it uses to project the Bloch waves onto are obtained from the pseudopotential files, which, can sometimes missing certain orbitals that one may want to project on.
 Also, for systems that has electrons localized at interstitial regions, one may need to project onto orbitals that are located at the off-atomic positions.
-One way to achieve this is to use a pseudo atom with everything set to $\sim$0 except it's pseudo atomic wavefunctions (PS-WFC).
+One way to achieve this is to use a pseudo atom with everything set to $\sim 0$ except it's pseudo atomic wavefunctions (PS-WFC).
 
-As a demonstration, I've generated the pseudopotential of a pseudo hydrogen atom using the `virtual_v2.x` code. `virtual_v2.x` code allows generation of new PPs by combining PPs with different VCA weight. By default it can only blend two PPs together by setting the weight of one PP ($x$) and assuming the other to be ($1-x$).
-Here, however, we only need to scale down the PPs to $\sim 0$. To do that, we need to change the source so that the second weight is set to $0$ while keeping the original PS-WFC scaled with $x$. A modified `virtual_v2.f90` for QE vertion 6.5 can be found: [:link: virtual_v2.f90]({{site.baseurl}}/assets/other/2022-11-24-QE_pseudo_proj/virtual_v2.f90).
+As a demonstration, I've generated the pseudopotential of a pseudo hydrogen atom using the `virtual_v2.x` code. `virtual_v2.x` code allows generation of new PPs by combining PPs with different VCA weight. 
+By default it can only blend two PPs together by setting the weight of one PP ($x$) and assuming the other to be ($1-x$).
+Here, however, we only need to scale down the PPs to $\sim 0$, while keeping the PS-WFC intact. 
+I've modified the `virtual_v2.f90` so that everything except the PS-WFC are scaled down to $0$. The modified source file for QE vertion 6.5 can be found: [:link: virtual_v2.f90]({{site.baseurl}}/assets/other/2022-11-24-QE_pseudo_proj/virtual_v2.f90).
 
-After compiling, we can now generate a new a PP by assigning the weight of $0.0001$ with the [:link: H.pbe-rrkjus_psl.1.0.0.UPF]({{site.baseurl}}/assets/other/2022-11-24-QE_pseudo_proj/H.pbe-rrkjus_psl.1.0.0.UPF). This artificially generated pseudo H'sPP file is attached here:
+After compiling, we can now generate a new a PP by assigning the weight of $0$ with the USPP [:link: H.pbe-rrkjus_psl.1.0.0.UPF]({{site.baseurl}}/assets/other/2022-11-24-QE_pseudo_proj/H.pbe-rrkjus_psl.1.0.0.UPF). This artificially generated pseudo H'sPP file is attached here:
 [:link: H.UPF]({{site.baseurl}}/assets/other/2022-11-24-QE_pseudo_proj/H.UPF).
 
 Now, we are ready to run some calculations!
