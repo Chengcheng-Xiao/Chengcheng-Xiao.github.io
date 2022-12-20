@@ -115,7 +115,7 @@ $$
 $$
 
 Noting that the DOS function is a Dirac delta function, at $\omega = \omega_s$, the the DOS should indeed diverge.
-However, since we only care about the difference of the $\rho$ with different $\omega$s in our final plots, instead of using the Fourier transform, we can re-write the integral as:
+However, since we only care about the difference of the $\rho$ with different $\omega$s in our final plots, instead of using the integral above, we can re-write the integral as (replacing $dt'$ with $1/N_{t'}$ only scales the autocorrelation function):
 
 <!-- we have to use the discrete Fourier transform in Eq. 1.
 Assuming we have N time points, we can write: -->
@@ -168,8 +168,11 @@ $$
 
 <!-- and $\omega$ can only be integer times of $\frac{2\pi}{N_{t^{\prime \prime}}}$. -->
 
+In summary, the Phonon density of states can be expressed as the Fourier transformed velocity autocorrelation function
 
 ---
+
+## Extension to periodic systems
 
 For periodic systems, the phonon bandstructure can also be interpreted as phonon DOS at each $k$ point.
 To obtain this "spectrum" function. we need to Fourier transform the velocity function with respect to the unit cell vectors.
@@ -226,6 +229,21 @@ It can be clearly seen that after exactly one period, the correlation is back at
 Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
 
 ---
-I have wrote a piece of [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps,
-but I have ran out of vacation time and the code is not working...
-hopefully I'll get time to finish in the future.
+
+## See it in action
+
+[:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-water_molecule_MD_PHO.tar.gz) 
+
+Now it's time to try it out! Using water molecule as an example, we are going to compare the phonon frequencies calculated with DFT (DFPT) to the ones that we have obtained using our MD mtehod.
+
+The three Raman active mode from our DFT calculation have frequencies: 47 THz($a_1$), 111 THz($b_2$), 114 THz($a_1$), comparable to [the experiemental values](https://www.chem.purdue.edu/jmol/vibs/h2o.html).
+
+With a MD calculationthermalized at 300K, we get the following plot:
+
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img5.png){:height="80%" width="80%" .center}
+
+Okay, it works!!
+
+<!-- I have wrote a piece of [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps, -->
+<!-- but I have ran out of vacation time and the code is not working... -->
+<!-- hopefully I'll get time to finish in the future. -->
