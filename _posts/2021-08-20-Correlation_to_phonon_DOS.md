@@ -68,7 +68,7 @@ $$
 \tag{5}
 $$
 
-noting that, due to [:link: equipartition theorem](https://en.wikipedia.org/wiki/Equipartition_theorem), the total energy of an oscillator is $k_BT$ where $k_B$ is the Boltzmann constant and $T$ is temperature.
+noting that, due to [:link: equipartition theorem](https://en.wikipedia.org/wiki/Equipartition_theorem), the total energy of an oscillator is $k_BT$ where $k_B$ is the Boltzmann constant and $T$ is temperature (there might be a factor of 2 missing here, but again, this won't actually affect the final result as it merely acts as a scaling factor).
 Since we can express the total energy as pure kinetic energy at the equilibrium position, we get:
 
 $$
@@ -115,22 +115,21 @@ $$
 $$
 
 Noting that the DOS function is a Dirac delta function, at $\omega = \omega_s$, the the DOS should indeed diverge.
-However, since we only care about the difference of the $\rho$ with different $\omega$s in our final plots, instead of using the integral above, we can re-write the integral as (replacing $dt'$ with $1/N_{t'}$ only scales the autocorrelation function):
+However, since we only care about the difference of the $\rho$ with different $\omega$s in our final plots, instead of using the integral above, we can re-write the integral as:
 
 <!-- we have to use the discrete Fourier transform in Eq. 1.
 Assuming we have N time points, we can write: -->
 
 $$
-\frac{1}{N_{t'}} \sum_{t'=0}^{N_{t'}} \vec v(t+t')\cdot \vec v(t'),
+ \sum_{t'=0}^{N_{t'}} \vec v(t+t')\cdot \vec v(t') dt',
 $$
 
-where, $N_{t^{\prime}}$ is the number of time points we have.
-This expression can also be seen as an averaged velocity autocorrelation function:
+This expression can also be seen as a scaled velocity autocorrelation function:
 
 $$
 \begin{aligned}
-C_{v}(t) &= \frac{1}{N} \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t')\\
-&= \braket{\vec v(t)\cdot \vec v(0)}
+C_{v}(t) dt' &= dt' \sum_{t'=0}^N \vec v(t+t')\cdot \vec v(t')\\
+&= \braket{\vec v(t)\cdot \vec v(0)} dt'
 \end{aligned}
 \tag{7}
 $$
@@ -141,7 +140,7 @@ $$
 C_{v}(t) = \frac{\braket{\vec v(t)\cdot \vec v(0)}}{\braket{\vec v(0)\cdot \vec v(0)}},
 $$
 
-Which, normalizes the maximum correlation to $1$.
+Which, normalizes the maximum correlation to $1$ and we can get rid of the prefactor $dt'$.
 This is what you see in, e.g. [:link: 10.1016/j.cpc.2011.04.019](https://www.sciencedirect.com/science/article/pii/S0010465511001500) or, [:link: 10.1039/c8nr07373b](https://pubs.rsc.org/en/content/articlelanding/2018/nr/c8nr07373b).
 
 Inserting Eq. 7 into Eq. 6, we get:
@@ -168,11 +167,13 @@ $$
 
 <!-- and $\omega$ can only be integer times of $\frac{2\pi}{N_{t^{\prime \prime}}}$. -->
 
-In summary, the Phonon density of states can be expressed as the Fourier transformed velocity autocorrelation function
+In summary, the Phonon density of states can be expressed as the Fourier transformed velocity autocorrelation function.
+
+NOTE: I've ignored the $2\pi$ prefactor in all Fourier transformations.
 
 ---
 
-## Extension to periodic systems
+## Extension to periodic system
 
 For periodic systems, the phonon bandstructure can also be interpreted as phonon DOS at each $k$ point.
 To obtain this "spectrum" function. we need to Fourier transform the velocity function with respect to the unit cell vectors.
@@ -206,6 +207,8 @@ $$
 \tag{12}
 $$
 
+Here, the commensurate k-point can depends on supercell size. In other words, the larger your supercell is, the finner the k-points you can sample, and a better graph you'll be able to get.
+
 ---
 
 ## Physical explanation
@@ -215,35 +218,46 @@ Okay, the derivation is nice and easy, but what's the physics behind?
 Let's consider a single atom that's vibrating at its equilibrium position.
 Its velocity vs time can be plotted as:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img2.svg){:height="70%" width="70%" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img6.svg){:height="70%" width="70%" .center}
 
-The autocorrelation function $v(t+t^{\prime})v(t^{\prime})$ of this velocity signal at different $t$ is (different colors indicate different $t$s):
+The autocorrelation function $\int_{-\infty}^{\infty} v(t+t^{\prime})v(t^{\prime}) dt'$ of this velocity signal at different $t$ is:
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img3.svg){:height="70%" width="70%" .center}
+![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img7.svg){:height="70%" width="70%" .center}
 
-If we do an average of the autocorrelation by integrating from $0$ to $2\pi$ in time, likewhat we did in Eq. 7, we get:
+We see that the autocorrelation function retains the periodicity of the orignal function. Such behavior will be reflected as a sharp peak in the Fourier spectrum. 
 
-![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="70%" width="70%" .center}
+For a more comprehensive understanding of the autocorrelation function, see [:link: this](https://en.wikipedia.org/wiki/Autocorrelation) and [:link: this post](https://machinelearningmastery.com/gentle-introduction-autocorrelation-partial-autocorrelation/).
 
-It can be clearly seen that after exactly one period, the correlation is back at it's maximum.
-Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode.
+<!-- If we do an average of the autocorrelation by integrating from $0$ to $2\pi$ in time, likewhat we did in Eq. 7, we get: -->
+
+<!-- ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img4.svg){:height="70%" width="70%" .center} -->
+
+<!-- It can be clearly seen that after exactly one period, the correlation is back at it's maximum. -->
+<!-- Fourier transforming this averaged velocity autocorrelation function gives exactly the intrinsic vibrating frequency of this vibration mode. -->
 
 ---
 
 ## See it in action
 
-[:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-water_molecule_MD_PHO.tar.gz) 
+Download: [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-water_molecule_MD_PHO.tar.gz) 
 
-Now it's time to try it out! Using water molecule as an example, we are going to compare the phonon frequencies calculated with DFT (DFPT) to the ones that we have obtained using our MD mtehod.
+Now it's time to try it out! Using water molecule (so that I don't have to deal with the k-depenedence of periodic systems, which requries a huge super cell to achieve sufficient sampling) as an example, we are going to compare the phonon frequencies calculated with DFT (DFPT) to the ones that we have obtained using our MD mtehod.
 
-The three Raman active mode from our DFT calculation have frequencies: 47 THz($a_1$), 111 THz($b_2$), 114 THz($a_1$), comparable to [the experiemental values](https://www.chem.purdue.edu/jmol/vibs/h2o.html).
+The three Raman active mode from our DFT calculation have frequencies: 47 THz($a_1$), 111 THz($b_2$), 114 THz($a_1$), comparable to [:link: the experiemental values](https://www.chem.purdue.edu/jmol/vibs/h2o.html).
 
-With a MD calculationthermalized at 300K, we get the following plot:
+With a molecular dynamic calculation of a single water molecule thermalized at 300K, we get the following plot:
 
 ![]({{site.baseurl}}/assets/img/post_img/2021-08-20-img5.png){:height="80%" width="80%" .center}
 
-Okay, it works!!
+Okay, it works!! 
 
 <!-- I have wrote a piece of [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-MD_phonon.tar.gz) trying to implement this with velocity files produced by lammps, -->
 <!-- but I have ran out of vacation time and the code is not working... -->
 <!-- hopefully I'll get time to finish in the future. -->
+
+
+
+<!-- ############################################################################## -->
+<!-- Hey! you found me! Okay, I've actually done some periodic calculations using lammps and trid to get the phonon specturum. Here's the code: -->
+<!-- Download: [:file_folder: code]({{site.baseurl}}/assets/other/2021-08-20-Si_periodic_MD_PHO.tar.gz) -->
+<!-- ############################################################################## -->
