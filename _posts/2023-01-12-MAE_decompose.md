@@ -72,7 +72,9 @@ where:
 $$
 \begin{aligned}
 E_{--} = - \lambda^2 \sum_{o^-,u^-} \frac{\braket{o^-|\hat \sigma \cdot \hat L|u^-}}{\epsilon_{u^-}-\epsilon_{o^-}}\\
+E_{++} = - \lambda^2 \sum_{o^+,u^+} \frac{\braket{o^+|\hat \sigma \cdot \hat L|u^+}}{\epsilon_{u^+}-\epsilon_{o^+}}\\
 E_{+-} = - \lambda^2 \sum_{o^+,u^-} \frac{\braket{o^+|\hat \sigma \cdot \hat L|u^-}}{\epsilon_{u^-}-\epsilon_{o^+}}\\
+E_{-+} = - \lambda^2 \sum_{o^-,u^+} \frac{\braket{o^-|\hat \sigma \cdot \hat L|u^+}}{\epsilon_{u^+}-\epsilon_{o^-}}\\
 \end{aligned}
 $$
 
@@ -81,7 +83,7 @@ Depending on the magnetization axis, assuming that there are no mixing in the or
 - magnetization along x axis: $(1, -1)$
 - magnetization along z axis: $(0, 1)$
 
-Inserting these into $\braket{o\vert\hat{\sigma}\hat{L}\vert u}$, we have:
+For example, inserting these into $\braket{o^-\vert\hat{\sigma}\hat{L}\vert u^-}$, we have:
 
 $$
 \begin{aligned}
@@ -102,13 +104,13 @@ $$
 \mathrm{MAE}_{+-} = E_{+-}^x - E_{+-}^z = - \lambda^2 \sum_{o^+,u^-} \frac{|\braket{o^+|L_z|u^-}|^2-|\braket{o^+|L_x|u^-}|^2}{\epsilon_{u^-}-\epsilon_{o^+}}
 $$
 
-Combining all of these equations together we get the total MAE as:
+Combining up-up, up-down, down-down and down-up temrs together, we get the total MAE as:
 
 $$
 \mathrm{MAE} = \lambda^2 (2\delta_{\alpha,\beta}-1) \sum_{o^{\alpha},u^{\beta}} \frac{|\braket{o^{\alpha}|L_z|u^{\beta}}|^2-|\braket{o^{\alpha}|L_x|u^{\beta}}|^2}{\epsilon_{u^{\beta}}-\epsilon_{o^{\alpha}}}
 $$
 
-Note that, up to now, we are trating $\lambda$ as a parameter. However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which is different for different $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the AE partial waves in `relativistic.F`. If we really want to be percise, we can extract this info from VASP.
+Note that, up to now, we are trating $\lambda$ as a parameter. However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which is different for different $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the all-electron partial waves in `relativistic.F`. If we really want to be percise, we can extract the exact values from VASP.
 
 ---
 
@@ -116,7 +118,7 @@ Using [:link: wanSOC](https://github.com/Chengcheng-Xiao/wanSOC) package, I've r
 
 ![]({{site.baseurl}}/assets/img/post_img/2023-01-12-img1.png){:height="100%" width="100%" .center}
 
-Subtle differences are caused by VASP's periodic conditions that breaks the rotational invariancce of the dxy/dx^2-y^2 orbitals.
+Subtle differences are caused by VASP's periodic conditions that breaks the rotational invariancce of the $d_{xy}$/$d_{x^2-y^2}$ orbitals.
 
 The code that I wrote to do this can be downloaded from [:file_folder: 2023-01-12-MAE_decomposition.tar.gz]({{site.baseurl}}/assets/other/2023-01-12-MAE_decomposition.tar.gz). 
 
