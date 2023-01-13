@@ -13,11 +13,13 @@ $$
 H = H_0 + H_\mathrm{SO} = H_0 + \lambda(r) \hat \sigma \cdot \hat L
 $$
 
-where the SOC strength is:
+where the SOC strength $\lambda{r}$ is:
 
 $$
 \lambda(r) = \frac{1}{4c^2r} \frac{\partial V}{\partial r}
 $$
+
+and $r$ is the distance to the atomic core, $V$ is the all-electron potential near core region (in the PAW formalism).
 
 For 3d states, the integrated value of $\lambda(r)$ is about 30meV, comparing to the usual hoppin parameter, this energy is negliable and the SOC term could be treated as perturbation to $H_0$.
 
@@ -58,8 +60,8 @@ $$
 
 If we also include spin degrees of freedom, we could have two types of coupling:
 
-- The coupling between occupied down/up and unoccupied down/up states.
-- The coupling between occupied up and unoccupied down states.
+- The coupling between occupied down/up and unoccupied down/up states: $E_{--}$ and $E_{++}$.
+- The coupling between occupied up and unoccupied down states: $E_{+-}$ and $E_{-+}$.
 
 The total SOC energy is approximately (ignoring third order an up terms) equal to the sum of these two contributions:
 
@@ -92,37 +94,80 @@ $$
 \end{aligned}
 $$
 
-The energy difference bewteen these two terms is:
+As a result, the energy difference bewteen the spin polarized $E_{--}$ terms with spin aligned along x and z is:
 
 $$
 \mathrm{MAE}_{--} = E_{--}^x - E_{--}^z = \lambda^2 \sum_{o^-,u^-} \frac{|\braket{o^-|L_z|u^-}|^2-|\braket{o^-|L_x|u^-}|^2}{\epsilon_{u^-}-\epsilon_{o^-}}
 $$
 
-Similarly, we can calculate the up-down component as,
+Similarly, we can calculate the energy difference with $E_{+-}$ as,
 
 $$
 \mathrm{MAE}_{+-} = E_{+-}^x - E_{+-}^z = - \lambda^2 \sum_{o^+,u^-} \frac{|\braket{o^+|L_z|u^-}|^2-|\braket{o^+|L_x|u^-}|^2}{\epsilon_{u^-}-\epsilon_{o^+}}
 $$
 
-Combining up-up, up-down, down-down and down-up temrs together, we get the total MAE as:
+Combining the energy difference of up-up, up-down, down-down and down-up together, we get the total MAE as:
 
 $$
 \mathrm{MAE} = \lambda^2 (2\delta_{\alpha,\beta}-1) \sum_{o^{\alpha},u^{\beta}} \frac{|\braket{o^{\alpha}|L_z|u^{\beta}}|^2-|\braket{o^{\alpha}|L_x|u^{\beta}}|^2}{\epsilon_{u^{\beta}}-\epsilon_{o^{\alpha}}}
 $$
 
-Note that, up to now, we are trating $\lambda$ as a parameter. However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which is different for different $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the all-electron partial waves in `relativistic.F`. If we really want to be percise, we can extract the exact values from VASP.
 
 ---
 
-Using [:link: wanSOC](https://github.com/Chengcheng-Xiao/wanSOC) package, I've re-produced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf).
+The matrix elements of $L_z$, $L_x$ and $L_y$ can be easily generated using [:link: wanSOC](https://github.com/Chengcheng-Xiao/wanSOC) package.
+For example, the matrix elements of $L_x$ under the basis of $d$ orbitals can be generated using:
+
+```python
+from __future__ import print_function
+import numpy as np
+from wanSOC.basis import *
+from wanSOC.io import *
+from wanSOC.helper import *
+from wanSOC.hamiltonian import *
+
+basis = creat_basis_lm('d')
+
+Lz = MatLz(basis)
+Lp = MatLp(basis)
+Lm = MatLm(basis)
+# generate transformation matrix from complex to real spherical harmonics
+trans_L = trans_L_mat(orb)
+# apply transformation
+Lz = np.dot(np.dot(trans_L.H, Lz),trans_L)
+Lp = np.dot(np.dot(trans_L.H, Lp),trans_L)
+Lm = np.dot(np.dot(trans_L.H, Lm),trans_L)
+
+Lx = (Lp+Lm)/2
+
+print(np.array_repr(Lx, max_line_width=80, precision=6, suppress_small=True))
+```
+
+For real systems, each KS orbital can be decomposed onto linear combination of atomic orbitals. Hence, the contribution of these KS wavefunctions to the MAE can be easily decomposed into atomic contributions using projection coefficients. For example:
+
+```
+          dz2,    dxz,    dyz,dx2-dz2,    dxy
+|\psi> = [0.0,    0.5,    0.5,    0.0,    0.0] 
+```
+and then they can be applied to the $L$ matrices and so the MAE can be calculated.
+
+Using this procedure, I've re-produced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf).
 
 ![]({{site.baseurl}}/assets/img/post_img/2023-01-12-img1.png){:height="100%" width="100%" .center}
 
-Subtle differences are caused by VASP's periodic conditions that breaks the rotational invariancce of the $d_{xy}$/$d_{x^2-y^2}$ orbitals.
+Subtle differences (i.e. lost of degeneracy) are caused by VASP's periodic condition that breaks the rotational invariancce of the $d_{xy}$/$d_{x^2-y^2}$ orbitals.
 
 The code that I wrote to do this can be downloaded from [:file_folder: 2023-01-12-MAE_decomposition.tar.gz]({{site.baseurl}}/assets/other/2023-01-12-MAE_decomposition.tar.gz). 
 
+---
 
+Additional remarks:
+
+- Within the rigid band approximation (the band structure as well as the orbital components of corresponding wavefunctions are fixed). We can adjust the Fermi level so that the occupations are changed. This way, since the MAE heavily depends on the coupling between occupied and un-occupied states, we can estimate how the MAE will change under sufficiently small doping. This is what Fig. 3(c) and 3(d) in [PRL 110, 097202 (2013)](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.110.097202) show.
+
+- For periodic systems, this method can be generalized by adding k-dependence, and we can have a plot of the MAE contribution of each k-point. The total MAE should be averaged using k-point weight.
+
+- Up to now, we are trating $\lambda$ as a parameter (that, potentially, can be fitted to the MAE once the rest of the information has been obtained). However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which is different for different $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the all-electron partial waves in `relativistic.F`. If we really want to be percise, we can extract the exact values from VASP.
 
 
 
