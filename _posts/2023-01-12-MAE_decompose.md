@@ -7,7 +7,7 @@ description: The magnetic anisotropy energy can be decomposed into orbtial pair 
 tags: DFT
 ---
 
-The spin-orbital coupling term can be simply added to the hamiltonian so that the full Hamiltonian is:
+The full Hamiltonian including the spin-orbital coupling term can be written as:
 
 $$
 H = H_0 + H_\mathrm{SO} = H_0 + \lambda(r) \hat \sigma \cdot \hat L
@@ -21,7 +21,7 @@ $$
 
 and $r$ is the distance to the atomic core, $V$ is the all-electron potential near core region (in the PAW formalism).
 
-For 3d states, the integrated value of $\lambda(r)$ is about 30meV, comparing to the usual hoppin parameter, this energy is negliable and the SOC term could be treated as perturbation to $H_0$.
+For 3d states, the integrated value of $\lambda(r)$ is about 30 meV, comparing to the usual hoppin parameter, this energy is negliable and the SOC term could be treated as perturbation to $H_0$.
 
 Using perturbation theory, the first order energy correction is:
 
@@ -82,15 +82,61 @@ $$
 
 Depending on the magnetization axis, assuming that there are no mixing in the orbital part, we can write the spin part of the spinor wavefunction as:
 
-- magnetization along x axis: $(1, -1)$
-- magnetization along z axis: $(0, 1)$
+- magnetization along x axis: $\frac{1}{2}\begin{pmatrix} 1 & -1 \end{pmatrix}$
+- magnetization along z axis: $\begin{pmatrix} 0 & 1 \end{pmatrix}$
 
 For example, inserting these into $\braket{o^-\vert\hat{\sigma}\hat{L}\vert u^-}$, we have:
 
 $$
 \begin{aligned}
-|\braket{o^-|\hat \sigma \hat L|u^-}_x|^2 &= |\braket{o^-|L_x|u^-}|^2 \\
-|\braket{o^-|\hat \sigma \hat L|u^-}_z|^2 &= |\braket{o^-|L_z|u^-}|^2
+|\braket{o^-|\hat \sigma \hat L|u^-}_x|^2 &= 
+\left \vert \frac{1}{2}\begin{pmatrix} 1 & -1 \end{pmatrix} 
+\begin{pmatrix} 
+0 & L_x \\
+L_x & 0
+\end{pmatrix}  
+\begin{pmatrix} 1 \\ -1 \end{pmatrix} + 
+\frac{1}{2} \begin{pmatrix} 1 & -1 \end{pmatrix} 
+\begin{pmatrix} 
+0 & -iL_y \\
+-iL_y & 0
+\end{pmatrix}  
+\begin{pmatrix} 1 \\ -1 \end{pmatrix} + 
+\frac{1}{2} \begin{pmatrix} 1 & -1 \end{pmatrix} 
+\begin{pmatrix} 
+L_z & 0 \\
+0 & -L_z
+\end{pmatrix}  
+\begin{pmatrix} 1 \\ -1 \end{pmatrix} \right \vert^2
+\\
+&= |-L_x + 0 + 0|^2 \\
+&= |\braket{o^-|L_x|u^-}|^2 \\
+
+
+|\braket{o^-|\hat \sigma \hat L|u^-}_z|^2 &= 
+\left \vert \begin{pmatrix} 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 
+0 & L_x \\
+L_x & 0
+\end{pmatrix}  
+\begin{pmatrix} 0 \\ 1 \end{pmatrix} + 
+\begin{pmatrix} 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 
+0 & -iL_y \\
+-iL_y & 0
+\end{pmatrix}  
+\begin{pmatrix} 0 \\ 1 \end{pmatrix} + 
+\begin{pmatrix} 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 
+L_z & 0 \\
+0 & -L_z
+\end{pmatrix}  
+\begin{pmatrix} 0 \\ 1 \end{pmatrix} \right \vert^2
+\\
+&= |0 + 0 + -L_z|^2 \\
+&= |\braket{o^-|L_z|u^-}|^2 \\
+
+
 \end{aligned}
 $$
 
@@ -143,21 +189,23 @@ Lx = (Lp+Lm)/2
 print(np.array_repr(Lx, max_line_width=80, precision=6, suppress_small=True))
 ```
 
-For real systems, each KS orbital can be decomposed onto linear combination of atomic orbitals. Hence, the contribution of these KS wavefunctions to the MAE can be easily decomposed into atomic contributions using projection coefficients. For example:
+For real systems, each Kohn-Sham orbital can be described using a linear combination of atomic orbitals. Hence, the contribution of these Kohn-Sham wavefunctions to the MAE can be easily decomposed into atomic contributions using projection coefficients. For example:
 
 ```
           dz2,    dxz,    dyz,dx2-dz2,    dxy
 |\psi> = [0.0,    0.5,    0.5,    0.0,    0.0] 
 ```
-and then they can be applied to the $L$ matrices and so the MAE can be calculated.
+And $\braket{\psi\vert L\vert\psi}$ can be easily calculated. The MAE can then be decomposed into the contributions from the molecular orbtial.
 
-Using this procedure, I've re-produced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf).
+Using this procedure, I've reproduced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf) which shows the $\barkce{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
 
 ![]({{site.baseurl}}/assets/img/post_img/2023-01-12-img1.png){:height="100%" width="100%" .center}
 
+In this figure, the horizontal lines represent occupied (below the dashed line) MO while the lines above the dashed line are the unoccupied orbtials. Vertical lines represent non-vanishing $L$ components while the linewidth indicates the strength.
+
 Subtle differences (i.e. lost of degeneracy) are caused by VASP's periodic condition that breaks the rotational invariancce of the $d_{xy}$/$d_{x^2-y^2}$ orbitals.
 
-The code that I wrote to do this can be downloaded from [:file_folder: 2023-01-12-MAE_decomposition.tar.gz]({{site.baseurl}}/assets/other/2023-01-12-MAE_decomposition.tar.gz). 
+The code used to generate these figures: [:file_folder: 2023-01-12-MAE_decomposition.tar.gz]({{site.baseurl}}/assets/other/2023-01-12-MAE_decomposition.tar.gz). 
 
 ---
 
