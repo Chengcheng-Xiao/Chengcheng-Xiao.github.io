@@ -13,7 +13,7 @@ $$
 H = H_0 + H_\mathrm{SO} = H_0 + \lambda(r) \hat \sigma \cdot \hat L
 $$
 
-where the SOC strength $\lambda{r}$ is:
+where the SOC strength $\lambda(r)$ is:
 
 $$
 \lambda(r) = \frac{1}{4c^2r} \frac{\partial V}{\partial r}
@@ -29,7 +29,8 @@ $$
 E^{(1)}_\mathrm{SO} = \sum_n \braket{n|H_\mathrm{SO}|n}
 $$
 
-where $\ket{n}$ are the wavefunctions (eigenvectors) to the original Hamiltonian $H_0$. Due to time reversal symmetry, this term is evaluated to zero.
+where $\ket{n}$ are the wavefunctions (eigenvectors) to the original Hamiltonian $H_0$. 
+Since the diagonal part of $H_\mathrm{SO}$ is zero (due to time reversal symmetry?), $E^{(1)}_\mathrm{SO}$ is evaluated to be zero.
 
 The second order energy correction is:
 
