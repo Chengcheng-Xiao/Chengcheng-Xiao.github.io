@@ -198,7 +198,7 @@ For real systems, each Kohn-Sham orbital can be described using a linear combina
 ```
 And $\braket{\psi\vert L\vert\psi}$ can be easily calculated. The MAE can then be decomposed into the contributions from the molecular orbtial.
 
-Using this procedure, I've reproduced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf) which shows the $\barkce{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
+Using this procedure, I've reproduced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf) which shows the $\braket{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
 
 ![]({{site.baseurl}}/assets/img/post_img/2023-01-12-img1.png){:height="100%" width="100%" .center}
 
