@@ -30,7 +30,7 @@ E^{(1)}_\mathrm{SO} = \sum_n \braket{n|H_\mathrm{SO}|n}
 $$
 
 where $\ket{n}$ are the wavefunctions (eigenvectors) to the original Hamiltonian $H_0$. 
-Since the diagonal part of $H_\mathrm{SO}$ is zero (due to time reversal symmetry?), $E^{(1)}_\mathrm{SO}$ is evaluated to be zero.
+Since the diagonal part of $H_\mathrm{SO}$ is zero (you can check this using the [:link: wanSOC](https://github.com/Chengcheng-Xiao/wanSOC) pakcage), $E^{(1)}_\mathrm{SO}$ is evaluated to be zero.
 
 The second order energy correction is:
 
@@ -198,7 +198,7 @@ For real systems, each Kohn-Sham orbital can be described using a linear combina
 ```
 And $\braket{\psi\vert L\vert\psi}$ can be easily calculated. The MAE can then be decomposed into the contributions from the molecular orbtial.
 
-Using this procedure, I've reproduced Fig. 2(b) of [10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4.pdf) which shows the $\braket{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
+Using this procedure, I've reproduced Fig. 2(b) of [:link: 10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4) which shows the $\braket{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
 
 ![]({{site.baseurl}}/assets/img/post_img/2023-01-12-img1.png){:height="100%" width="100%" .center}
 
@@ -212,7 +212,7 @@ The code used to generate these figures: [:file_folder: 2023-01-12-MAE_decomposi
 
 Additional remarks:
 
-- Within the rigid band approximation (the band structure as well as the orbital components of corresponding wavefunctions are fixed). We can adjust the Fermi level so that the occupations are changed. This way, since the MAE heavily depends on the coupling between occupied and un-occupied states, we can estimate how the MAE will change under sufficiently small doping. This is what Fig. 3(c) and 3(d) in [PRL 110, 097202 (2013)](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.110.097202) show.
+- Within the rigid band approximation (the band structure as well as the orbital components of corresponding wavefunctions are fixed). We can adjust the Fermi level so that the occupations are changed. This way, since the MAE heavily depends on the coupling between occupied and un-occupied states, we can estimate how the MAE will change under sufficiently small doping. This is what Fig. 3(c) and 3(d) in [:link: PRL 110, 097202 (2013)](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.110.097202) show.
 
 - For periodic systems, this method can be generalized by adding k-dependence, and we can have a plot of the MAE contribution of each k-point. The total MAE should be averaged using k-point weight.
 

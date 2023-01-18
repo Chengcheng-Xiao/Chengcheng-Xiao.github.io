@@ -48,20 +48,20 @@ $$
 \tag{3}
 $$
 
-next, we replace $e^{ik'r_{i+1}}$ ($e^{ik'r_i}$) with $e^{ik'(r_{i+1}-r_i)}\cdot e^{ik'(r_i)}$ ($e^{ik'(r_i-r_{i+1})}\cdot e^{ik'(r_{i+1})}$),
+next, we replace $e^{ik'r_{i+1}}$ and $e^{ik'r_i}$ with $e^{ik'(r_{i+1}-r_i)}\cdot e^{ik'(r_i)}$ and $e^{ik'(r_i-r_{i+1})}\cdot e^{ik'(r_{i+1})}$, respectively.
 
 $$
 \begin{align*}
 \hat{H} &= -\frac{t}{N} \sum_i (\sum_k e^{-ikr_i} a_k^\dagger \sum_{k'} e^{ik'r_{i+1}}a_k + \sum_k e^{-ikr_{i+1}} a_k^\dagger \sum_{k'} e^{ik'r_{i}}a_k) \\
 &\begin{aligned}
-= -\frac{t}{N} & \sum_i (\sum_k e^{-ikr_i} a_k^\dagger \sum_{k'} e^{ik'(r_{i+1}-r_i)}\cdot e^{ik'(r_i)} a_k \\
-&+ \sum_k e^{-ikr_{i+1}} a_k^\dagger \sum_{k'} e^{ik'(r_{i}-r_{i+1})} e^{ik'r_{i+1}} a_k)
+= -\frac{t}{N} & \sum_i [ \sum_k e^{-ikr_i} a_k^\dagger \sum_{k'} e^{ik'(r_{i+1}-r_i)}\cdot e^{ik'(r_i)} a_k \\
+&+ \sum_k e^{-ikr_{i+1}} a_k^\dagger \sum_{k'} e^{ik'(r_{i}-r_{i+1})} e^{ik'r_{i+1}} a_k ]
 \end{aligned}\\
-&= -\frac{t}{N} \sum_i (\sum_{kk'} e^{i(k'-k)r_i}  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} e^{i(k'-k)r_i} e^{ik'(r_{i}-r_{i+1})} a_k^\dagger a_k) \\
-&= -\frac{t}{N} (\sum_{kk'} (\sum_i e^{i(k'-k)r_i})  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} (\sum_i e^{i(k'-k)r_i}) e^{-ik'(r_{i+1}-r_{i})} a_k^\dagger a_k) \\
-&= -\frac{t}{N} (\sum_{kk'} N\delta(k,k')  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} N\delta(k,k') e^{-ik'(r_{i+1}-r_{i})} a_k^\dagger a_k) \\
-&= -t (\sum_{k} e^{ik(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_k e^{-ik(r_{i+1}-r_{i})} a_k^\dagger a_k) \\
-&= -t (\sum_{k} e^{ik(r_{i+1}-r_i)} + \sum_k e^{-ik(r_{i+1}-r_{i})}) a_k^\dagger a_k \\
+&= -\frac{t}{N} \sum_i [\sum_{kk'} e^{i(k'-k)r_i}  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} e^{i(k'-k)r_i} e^{ik'(r_{i}-r_{i+1})} a_k^\dagger a_k] \\
+&= -\frac{t}{N} \{ \sum_{kk'} [\sum_i e^{i(k'-k)r_i}]  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} [\sum_i e^{i(k'-k)r_i}] e^{-ik'(r_{i+1}-r_{i})} a_k^\dagger a_k \} \\
+&= -\frac{t}{N} [ \sum_{kk'} N\delta(k,k')  e^{ik'(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_{kk'} N\delta(k,k') e^{-ik'(r_{i+1}-r_{i})} a_k^\dagger a_k] \\
+&= -t [\sum_{k} e^{ik(r_{i+1}-r_i)}  a_k^\dagger a_k + \sum_k e^{-ik(r_{i+1}-r_{i})} a_k^\dagger a_k] \\
+&= -t [\sum_{k} e^{ik(r_{i+1}-r_i)} + \sum_k e^{-ik(r_{i+1}-r_{i})}] a_k^\dagger a_k \\
 \end{align*}
 \tag{4}
 $$
@@ -70,7 +70,7 @@ For each k point:
 
 $$
 \begin{aligned}
-\hat{H} &= -t(e^{ik(r_{i+1}-r_i)}+e^{-ik(r_{i+1}-r_{i})})) a_k^\dagger a_k\\
+\hat{H} &= -t[e^{ik(r_{i+1}-r_i)}+e^{-ik(r_{i+1}-r_{i})}] a_k^\dagger a_k\\
 &= -2t\cos(k[r_{i+1}-r_i]) a_k^\dagger a_k
 \end{aligned}
 \tag{5}
@@ -118,10 +118,10 @@ $$
 \end{aligned}\\
 
 &\begin{aligned}
-= -t (&\sum_k e^{ik(r^b_i - r^a_i)} a^\dagger_k b_k + \sum_k e^{-ik(r^b_i - r^a_i)} b^\dagger_k a_k \\
-&+ \sum_k e^{ik(r^a_{i} - r^b_{i-1})} b^\dagger_k a_k + \sum_k e^{-ik(r^a_{i} - r^b_{i-1})} a^\dagger_k b_k)
+= -t [ &\sum_k e^{ik(r^b_i - r^a_i)} a^\dagger_k b_k + \sum_k e^{-ik(r^b_i - r^a_i)} b^\dagger_k a_k \\
+&+ \sum_k e^{ik(r^a_{i} - r^b_{i-1})} b^\dagger_k a_k + \sum_k e^{-ik(r^a_{i} - r^b_{i-1})} a^\dagger_k b_k]
 \end{aligned}\\
-&= -t(\sum_k e^{ik(r^a_{i} - r^b_{i-1})}+e^{-ik(r^b_i - r^a_i)})b^\dagger_k a_k -t(\sum_k e^{ik(r^b_i - r^a_i)}+e^{-ik(r^a_{i} - r^b_{i-1})})a^\dagger_k b_k \\
+&= -t[\sum_k e^{ik(r^a_{i} - r^b_{i-1})}+e^{-ik(r^b_i - r^a_i)}]b^\dagger_k a_k -t[\sum_k e^{ik(r^b_i - r^a_i)}+e^{-ik(r^a_{i} - r^b_{i-1})}]a^\dagger_k b_k \\
 &= \sum_k 2\cos(k\Delta) b^\dagger_k a_k + \sum_k 2\cos(k\Delta) a^\dagger_k b_k
 \end{aligned}
 \tag{10}
@@ -234,11 +234,17 @@ Now, if we plug in Eq. 1 to Eq. 3, we get:
 $$
 \begin{align}
 H_{\alpha,\beta} &= \sum_{\vec k, \vec k'} \bra{\psi^{\alpha}_{\vec k}(\vec r)} \hat H \ket{\psi^{\beta}_{\vec k'}(\vec r)}\\
+
 &=\frac{1}{N}  \sum_{\vec k, \vec k'} \sum_{\vec R_{\alpha}} \exp(-i \vec k \vec R_{\alpha}) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \sum_{\vec R_{\beta}} \exp(i \vec k' \vec R_{\beta}) \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
-&=\sum_{\vec k, \vec k'}  \sum_{\vec R_{\alpha}} \frac{1}{N}  \exp(i\vec R_{\alpha} (\vec k' - \vec k)) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
-&= \sum_{\vec k, \vec k'} \delta(\vec k' - \vec k) \sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
-&=  \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
-&= \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) \cdot (-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}) = H_{\alpha, \beta}(\vec k)
+
+&=\sum_{\vec k, \vec k'}  \sum_{\vec R_{\alpha}} \frac{1}{N}  \exp(i\vec R_{\alpha} [\vec k' - \vec k]) \sum_{\vec R_{\beta}} \exp(i \vec k' [\vec R_{\beta}-\vec R_{\alpha}]) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+
+&= \sum_{\vec k, \vec k'} \delta(\vec k' - \vec k) \sum_{\vec R_{\beta}} \exp(i \vec k' [\vec R_{\beta}-\vec R_{0}]) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+
+&=  \sum_{\vec R_{\beta}} \exp(i \vec k [\vec R_{0}- \vec R_{\beta}]) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)} \\
+
+&= \sum_{\vec R_{\beta}} \exp(i \vec k [\vec R_{0}- \vec R_{\beta}]) \cdot (-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}) = H_{\alpha, \beta}(\vec k)
+
 \end{align}
 \tag{20}
 $$
@@ -246,13 +252,13 @@ $$
 here, we've taken advantage of the fact that we are summing over a huge amount of real-space cells ($\vec R_{\alpha}$ and $\vec R_{\beta}$),
 
 $$
-\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{\alpha})) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}
+\sum_{\vec R_{\beta}} \exp(i \vec k' [\vec R_{\beta}-\vec R_{\alpha}]) \bra{\phi^{\alpha}_{\vec R_{\alpha}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}
 $$
 
 can be replaced with:
 
 $$
-\sum_{\vec R_{\beta}} \exp(i \vec k' (\vec R_{\beta}-\vec R_{0})) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}.
+\sum_{\vec R_{\beta}} \exp(i \vec k' [\vec R_{\beta}-\vec R_{0}]) \bra{\phi^{\alpha}_{\vec R_{0}}(\vec r)} \hat H \ket{\phi^{\beta}_{\vec R_{\beta}}(\vec r)}.
 $$
 
 In the last step, since the Hamiltonian is still in real space, we can calculate the integral directly in real space and the resulting energy ($-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta}$) is the so-called hopping energy.
@@ -267,7 +273,7 @@ Now that we have the Hamiltonian elements in reciprocal space, all we need to do
 The Hamiltonian in the rec space can be simply constructed using the following relation:
 
 $$
-H_{\alpha,\beta} (\vec k) = \sum_{\vec R_{\beta}} \exp(i \vec k (\vec R_{0}- \vec R_{\beta})) \cdot (-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta})
+H_{\alpha,\beta} (\vec k) = \sum_{\vec R_{\beta}} \exp(i \vec k [\vec R_{0}- \vec R_{\beta}]) \cdot (-t^{\vec R_{0},\vec R_{\beta}}_{\alpha, \beta})
 \tag{21}
 $$
 
