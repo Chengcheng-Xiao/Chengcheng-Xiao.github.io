@@ -254,7 +254,7 @@ To use this occupation controlled Berryphase method, one has to do two steps:
 1. Calculate the wavefunctions with a special `KPOINTS`.
 2. Read wavefunctions from last step, constrain the occupation, calculate Berryphase related properties.
 
-Note that for both steps, a special `KPOINTS` file is needed. The `LBERRY` module only work with k-points that are arranged such that the fast iterating index belongs so the k direction that are to be calculated. For example, if we need to calculate the polarization along $k_c$ axis, we need to have a `KPOINTS` file that looks like:
+Note that for both steps, a special `KPOINTS` file is needed. The `LBERRY` module only work with k-points that are arranged such that the fast iterating index belongs to the k direction to be calculated. For example, if we need to calculate the polarization along $k_c$ axis, we need to have a `KPOINTS` file that looks like:
 
 ```
 K-POINTS
@@ -325,6 +325,6 @@ Now, not all Wannier functions contribute to the polarization (some of then have
 
 
 ## Example
-I've tried to reproduced the result of [:link: Pankaj Sharma and co-workers](https://www.science.org/doi/10.1126/sciadv.aax5080) and the polarization I got is $ \sim 1.3 μC/cm^2$. I've put all the input files in a zip file for download: [WTe2].
+I've tried to reproduced the result of [:link: Pankaj Sharma and co-workers](https://www.science.org/doi/10.1126/sciadv.aax5080) and the polarization I got is around $1.3 \mathrm{\mu C/cm^2}$.
 
-[:file_folder: WTe2]:{{site.baseurl}}/assets/other/2022-04-18-bp-WTe2.tar.gz
+I've put all the input files in a zip file for download: [:file_folder: WTe2]({{site.baseurl}}/assets/other/2022-04-18-bp-WTe2.tar.gz).
