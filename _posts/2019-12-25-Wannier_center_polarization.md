@@ -90,6 +90,12 @@ Ti         : 3s(2) 3p(6)
 Ba         : 5s(2) 5p(6)
 O          : 2s(2) 3p(6)
 ```
+and the ionic charge of each atom is:
+```
+Ti         : 12
+Ba         : 10
+O          : 6
+```
 <!-- This can also be clearly seen on the projected band structure or projected density of states plot. -->
 
 ### Setting up `Wannier90.win`
@@ -184,12 +190,18 @@ Here, we only care about the polarization at Z axis, so I'll just ignore other a
 My results are as follow (note the minus sign in Ionic part is due to electrons having negative charge):
 
 ```
-Ionic dipolemoment(elect*A):     -72.0767  
-electric dipolemoment(elect*A):   78.9870
-Total dipolemoment(elect*A):      06.9103
+Ionic dipolemoment(elect*A):     -72.0768  
+electric dipolemoment(elect*A):   78.9873
+Total dipolemoment(elect*A):      06.9105
 Volume(A^3):                      64.3586
-Total polarization(C/M^2):       -01.7200
+Total polarization(C/M^2):       -01.7201
 ```
+where the ionic dipolemoment is calculated by:
+
+$$
+-(12\times2.0743+0\times10+6\times3.9306+6\times1.9668+6\times1.9668) = -72.0768
+$$
+
 
 __This value is drastically large than the one we get using Berryphase method so there must be something wrong!__
 
@@ -209,12 +221,18 @@ Yes, this is indeed the case, but our method __cannot__ deal with this, and that
 To solve this, we can simply subtract one lattice parameter Z from the atomic position as well as the corresponding __Wannier Charge Centers__, we get (again, note the minus sign in Ionic part is due to electrons negative charge sign):
 
 ```
-Ionic dipolemoment(elect*A):     -48.8757  
-electric dipolemoment(elect*A):   46.7191
-Total dipolemoment(elect*A):     -01.1567
+Ionic dipolemoment(elect*A):     -47.8758  
+electric dipolemoment(elect*A):   46.7193
+Total dipolemoment(elect*A):     -01.1565
 Volume(A^3):                      64.3586
 Total polarization(C/M^2):        00.2879
 ```
+where the ionic dipolemoment is calculated by:
+
+$$
+-(12\times2.0743+0\times10+6\times(-0.1029)+6\times1.9668+6\times1.9668) = -47.8758
+$$
+
 This way, our polarization calculated via Wannier functions is almost identical to our Berryphase's result.
 
 ### Calculate the polarization __with__ centrosymmetric phases

@@ -21,7 +21,7 @@ $$
 
 and $r$ is the distance to the atomic core, $V$ is the all-electron potential near core region (in the PAW formalism).
 
-For 3d states, the integrated value of $\lambda(r)$ is about 30 meV, comparing to the usual hoppin parameter, this energy is negliable and the SOC term could be treated as perturbation to $H_0$.
+For 3d states, the integrated value of $\lambda(r)$ is about 30 meV, comparing to the usual hopping parameter, this energy is negliable and the SOC term could be treated as perturbation to $H_0$.
 
 Using perturbation theory, the first order energy correction is:
 
@@ -38,15 +38,13 @@ $$
 E_\mathrm{SO}^{(2)} = \sum_{oj} \frac{\braket{o|H_\mathrm{SO}|j}^2}{\epsilon_o-\epsilon_j}
 $$
 
-where $o$ denotes the occupied states and $j$ sums over all states. However, when $j$ is also an occupied state, the two terms arising from the exchange of $o$ and $j$:
+where $o$ denotes the occupied states and $j$ sums over all states. However, when $j$ is also an occupied state, the two terms arising from the exchange of $o$ and $j$ cancels each other:
 
 $$
  \frac{\braket{o|H_\mathrm{SO}|j}^2}{\epsilon_o-\epsilon_j} = - \frac{\braket{j|H_\mathrm{SO}|o}^2}{\epsilon_j-\epsilon_o}
 $$
 
-cancels eache other.
-
-So the interaction can only happen between occupied ($o$) and empty states ($u$):
+Because of this, the interaction can only happen between occupied ($o$) and empty states ($u$):
 
 $$
 \begin{aligned}
@@ -61,8 +59,8 @@ $$
 
 If we also include spin degrees of freedom, we could have two types of coupling:
 
-- The coupling between occupied down/up and unoccupied down/up states: $E_{--}$ and $E_{++}$.
-- The coupling between occupied up and unoccupied down states: $E_{+-}$ and $E_{-+}$.
+- The coupling between occupied down(up) and unoccupied down(up) states: $E_{-\-}$ ($E_{++}$).
+- The coupling between occupied up(down) and unoccupied down(up) states: $E_{+-}$ ($E_{-+}$).
 
 The total SOC energy is approximately (ignoring third order an up terms) equal to the sum of these two contributions:
 
@@ -141,7 +139,7 @@ L_z & 0 \\
 \end{aligned}
 $$
 
-As a result, the energy difference bewteen the spin polarized $E_{--}$ terms with spin aligned along x and z is:
+As a result, the energy difference bewteen the spin polarized $E_{--}$ terms with spin aligned along $x$ and $z$ axes is:
 
 $$
 \mathrm{MAE}_{--} = E_{--}^x - E_{--}^z = \lambda^2 \sum_{o^-,u^-} \frac{|\braket{o^-|L_z|u^-}|^2-|\braket{o^-|L_x|u^-}|^2}{\epsilon_{u^-}-\epsilon_{o^-}}
@@ -163,7 +161,7 @@ $$
 ---
 
 The matrix elements of $L_z$, $L_x$ and $L_y$ can be easily generated using [:link: wanSOC](https://github.com/Chengcheng-Xiao/wanSOC) package.
-For example, the matrix elements of $L_x$ under the basis of $d$ orbitals can be generated using:
+For example, the matrix elements of $L_x$ under the basis of $d$ orbitals can be generated using the following code:
 
 ```python
 from __future__ import print_function
@@ -190,13 +188,13 @@ Lx = (Lp+Lm)/2
 print(np.array_repr(Lx, max_line_width=80, precision=6, suppress_small=True))
 ```
 
-For real systems, each Kohn-Sham orbital can be described using a linear combination of atomic orbitals. Hence, the contribution of these Kohn-Sham wavefunctions to the MAE can be easily decomposed into atomic contributions using projection coefficients. For example:
+For real systems, each Kohn-Sham orbital can be described using a linear combination of atomic orbitals near the core regions. Hence, the contribution of these Kohn-Sham wavefunctions to the MAE can be easily decomposed into the atomic contributions using projection method. For example:
 
 ```
           dz2,    dxz,    dyz,dx2-dz2,    dxy
 |\psi> = [0.0,    0.5,    0.5,    0.0,    0.0] 
 ```
-And $\braket{\psi\vert L\vert\psi}$ can be easily calculated. The MAE can then be decomposed into the contributions from the molecular orbtial.
+And $\braket{\psi\vert L\vert\psi}$ can then be calculated. As a result, the MAE can be decomposed into the contributions from the molecular orbtial.
 
 Using this procedure, I've reproduced Fig. 2(b) of [:link: 10.1038/s42005-018-0078-4](https://www.nature.com/articles/s42005-018-0078-4) which shows the $\braket{L_z}$ and $\braket{L_x}$ of the d-orbital related molecular orbitals of a Ir dimer.
 
@@ -216,7 +214,7 @@ Additional remarks:
 
 - For periodic systems, this method can be generalized by adding k-dependence, and we can have a plot of the MAE contribution of each k-point. The total MAE should be averaged using k-point weight.
 
-- Up to now, we are trating $\lambda$ as a parameter (that, potentially, can be fitted to the MAE once the rest of the information has been obtained). However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which is different for different $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the all-electron partial waves in `relativistic.F`. If we really want to be percise, we can extract the exact values from VASP.
+- Up to now, we are treating $\lambda$ as a parameter (that, potentially, can be fitted if we know the true MAE value). However, in reaility, it needs to be calculated as $\braket{\phi\vert\lambda(r)\vert\phi}$ where $\phi$ is the radial part of the atomic wavefunctions, which also depend on the $l$ quantum numbers. In VASP, this is calculated within the PAW sphere using the all-electron partial waves (for details, see `relativistic.F`). If we really want to be percise, we can extract the exact values from VASP.
 
 
 
