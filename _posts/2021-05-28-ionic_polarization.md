@@ -27,16 +27,16 @@ IF (ABS(ABS(Z)-0.5_q)<TINY/LATT_CUR%ANORM(3)) Z=0
 
 VASP allows has a easy-to-use method (invoked by setting input tag `LCALCPOL` to True) to calculate the macroscopic polarization using the famous Berryphase method. What this routine essentially does is that it runs three sinlge string Berryphase calculations (can also be done manually using `LBERRY` tag) on three lattice directions consecutively.
 
- The output of this `LCALCPOL` method can be found in both `stdout` and `OUTCAR` file:
+The output of this `LCALCPOL` method can be found in both `stdout` and `OUTCAR` file:
 
-- In `stdout`:
+- In `stdout` the following will be printed out after the calculation is converged.
+:
 
  ```
  p_tot=( xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx )
  ```
- will be printed out after the calculation is converged.
 
-- In `OUTCAR`
+- In `OUTCAR`:
 
 ```
 ------------------------ aborting loop because EDIFF is reached ----------------------------------------
@@ -50,11 +50,11 @@ VASP allows has a easy-to-use method (invoked by setting input tag `LCALCPOL` to
 
 ```
 
-The values in `stdout` are simply adding the ionic part to the electric part of the polarization in `OUTCAR` file.
+The value in `stdout` is simply the sum of the ionic and the electric part of the polarization printed in the `OUTCAR` file.
 
-The problem, resides in the Ionic part of the polarization. Specifically, it does not match the values that we can easily calculated by hand.
+The problem, resides in the ionic part of the polarization. Specifically, it does not match the values that we can easily calculated by hand.
 
-Let's take the cubic phase of $\mathrm{BaTiO_3}$ for example. The structure I used is:
+Let's take the cubic phase of BaTiO<sub>3</sub> for example. The `POSCAR` for a prototypical BaTiO<sub>3</sub> that I will be using contains the following:
 
 ```
 Ti   Ba   O
@@ -74,32 +74,31 @@ Direct
 
 ### By hand
 
-If we set the dipole origin at the center of the unit cell ([0.5,0.5,0.5]), the Ionic dipole moment can be calculated by dotting the valency (`ZVAL` value in `POTCAR` file) of each atom to the distance between them and the origin. i.e.:
+If we set the dipole origin at the center of the unit cell ($[0.5,0.5,0.5]$), the Ionic dipole moment can be calculated by dotting the valency (`ZVAL` value in `POTCAR` file) of each atom to the distance between them and the origin. i.e.,
 
 $$
-D_{ion} = Z_{val} \cdot \left(r_{atom} - r_{DIPOL}\right),
+D_\mathrm{ion} = Z_\mathrm{val} \cdot \left(r_\mathrm{atom} - r_\mathrm{DIPOL}\right),
 $$
 
-where $r$ are the position for atoms and dipole center in __Cartesian coordinate__.
+where $r$ are the position for atoms ($r_\mathrm{atom}$) and dipole center ($r_\mathrm{DIPOL}$) in __Cartesian coordinate__.
 
-For example, $Ba$ atom in our BTO system has 10 valence electrons (`ZVAL = 10`), its ionic dipole moment is:
-
+For example, Ti atom in our BaTiO<sub>3</sub> structure has 12 valence electrons (`ZVAL = 12`), so its ionic dipole moment can be calculated as:
 $$
 \begin{aligned}
-D_{Ti} &= 22 \cdot [([0.0,0.0,0.0] - [0.5,0.5,0.5]) \cdot [3.99445, 3.9945, 4.0335]] \\
-&= [-23.9667, -23.967 , -24.201 ] \quad |e| \cdot \text{Angst}
+D_\mathrm{Ti} &= 12 \cdot \{([0.0,0.0,0.0] - [0.5,0.5,0.5]) \cdot [3.99445, 3.9945, 4.0335]\} \\
+&= [-23.9667, -23.967 , -24.201 ] \quad |e| \cdot \text{\AA}
 \end{aligned}
 $$
 
 Doing the same procedure for each atoms and adding them together yields:
 
 $$
-D_{tot} = [-31.9556,	-31.9556,	-32.268] \quad |e| \cdot \text{Angst}
+D_\mathrm{tot} = [-31.9556,	-31.9556,	-32.268] \quad |e| \cdot \text{\AA}
 $$
 
 ### By VASP
 
-As before, I've set `IDIPOL` to [0.5,0.5,0.5]. The input relates to the calculation of macroscopic polarization is:
+As the same in the previous section, here `IDIPOL` is also set to $[0.5,0.5,0.5]$. The input relates to the calculation of macroscopic polarization is:
 
 ```
 DIPOL = 0.5 0.5 0.5
@@ -178,7 +177,7 @@ typ: DO NT=1,T_INFO%NTYP
 
 the code first loops over all element types (`T_INFO%NTYP`), then loops over atoms that belong to that specific type.
 
-Then, it calculates the fractional coordinates of atoms relative to the dipole center (`POSCEN`): +0.5 or -0.5 means the atom is at the boundary of the periodic boundary (now defined by putting `POSCEN` aka `DIPOL` at the center (0.0).
+Then, it calculates the fractional coordinates of atoms relative to the dipole center (`POSCEN`): +0.5 or -0.5 means the atom is at the boundary of the periodic boundary (now defined by putting `POSCEN` -- set by `DIPOL` -- at the center $0.0$).
 
 The next few lines of comments are the culprit of our problem:
 
