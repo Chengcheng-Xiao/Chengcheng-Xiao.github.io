@@ -32,8 +32,10 @@ Hi there! Nice to meet you! <span class="wave">👋 </span>
 
 I am an electron wandering in a computer generated field.
 
-Okay, seriously, my name's Chengcheng Xiao, a Post-doctroal researcher @ Imperial College London.
-I enjoy jotting down stuff that I find ineteresting and this is the place where I share my thoughts with the world ;)
+Okay, seriously, my name's Chengcheng Xiao, a postdoctoral researcher @ Imperial College London.
+I enjoy coding and running smulations on materials (I like them so much that they have become my job) and this is the place where I share stuff that I find ineteresting ;)
+
+Hope you have a good stay in my little den!
 
 ---
 
