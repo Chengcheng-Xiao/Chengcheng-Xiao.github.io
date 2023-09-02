@@ -32,8 +32,8 @@ Hi there! Nice to meet you! <span class="wave">👋 </span>
 
 I am an electron wandering in a computer generated field.
 
-Okay, seriously, my name's Chengcheng Xiao. I'm currently a PhD candidate @ Imperal College London.
-
+Okay, seriously, my name's Chengcheng Xiao, a Post-doctroal researcher @ Imperial College London.
+I enjoy jotting down stuff that I find ineteresting and this is the place where I share my thoughts with the world ;)
 
 ---
 
@@ -49,7 +49,6 @@ My research area include (subject to expand at any moment):
 
 
 <!-- ---
-
 ### Free time activities (if you find this section and want to have some fun with me, drop me an email!)
 
 - 🥾 Hiking
