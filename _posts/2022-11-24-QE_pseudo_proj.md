@@ -169,9 +169,10 @@ python parse.py band.dat.gnu LaRuSi-proj.dat.projwfc_up
 ```
 A series of parsed data files will be generated, their naming convention is:
 ```
-{atomic_number}-{atom_type}-{orbital_label}.dat
+{atomic_number}-{atom_type}-{orbital_label}-{m_quantum_number}.dat
 ```
-The projection coefficients of the hydrogenic orbital at the interstitail site can be found in the `7-H-1S.dat` file.
+The projection coefficients of the hydrogenic orbital at the interstitail site can be found in the `7-H-1S-1.dat` file.
+The definition of the`m_quantum_number` can be found in [:link: here](https://www.quantum-espresso.org/Doc/INPUT_PROJWFC.html)
 
 To plot the band, use `plot.py` as:
 ```
