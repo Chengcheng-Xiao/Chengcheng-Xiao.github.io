@@ -314,9 +314,6 @@ p.readmore {
 }
 
 .authorimage {
-  @media (min-width: $on-laptop+1) {
-    float:left;
-  }
   display:inline-block;
   width: 90px;
   height: 90px;
@@ -325,6 +322,9 @@ p.readmore {
   background-size: cover !important;
   background-position: center center !important;
   margin-right: 10px;
+  @media (min-width: $on-laptop+1) {
+    float:left;
+  }
 }
 
 .authorinfo {
