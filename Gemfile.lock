@@ -220,6 +220,7 @@ DEPENDENCIES
   jekyll-twitter-plugin
   jemoji
   kramdown-math-katex (~> 1.0)
+  kramdown-parser-gfm
 
 BUNDLED WITH
    2.5.16
