@@ -9,27 +9,31 @@ tags: VASP Polarization
 
 ## Background
 
-According to "the Modern theory of polarization", in a continous-k formulation, the polarization of one structure $$\mathbf{P}_{el}$$ is $$ - f e / (2 \pi)^3$$ times the sum of valence-band's Berryphase while the total macroscopic polarization is the polairzation difference between ferroelectric phase and the centrosymmetric phase. Convieniently, Wannier charge centers can be linked to the Berryphase of valence band via a Fourier transformation. Thus, we should be able to calculate the ferroelectric polarization using Wannier centers to be more chemically intuitive.
+According to "the Modern theory of polarization", in a continous-k formulation, the electronic part of the polarization of one structure ($\mathbf{P}_{el}$) is proportional to the sum of valence-band's Berryphase while the total macroscopic polarization is the polairzation difference between ferroelectric phase and the centrosymmetric phase. Convieniently, Wannier charge centers can be linked to the Berryphase of valence band via a Fourier transformation. Thus, we should be able to calculate the ferroelectric polarization using Wannier centers to be more chemically intuitive.
 
-In definition, this calculation seems to be easily achievable, but in pratice, there are many pitfalls in doing such calculations. However, almost all of these pitfalls or problems are due to the so called polairzation quantum which arise from the periodicity of the unitcell (Translation symmetry of crystals). My previous post already demonstrated how easy can one fall in to such trap and get erroneous results and, in essence, this post is still deeply linked with such problems.
+<!-- In definition, this calculation seems to be easily achievable, but in pratice, there are many pitfalls in doing such calculations. However, almost all of these pitfalls or problems are due to the so called polairzation quantum which arise from the periodicity of the unitcell (Translation symmetry of crystals). My previous post already demonstrated how easy can one fall in to such trap and get erroneous results and, in essence, this post is still deeply linked with such problems. -->
+While most ferroelectric materials (especially the "proportional" ones) have centrosymmetric structures that can be easily identified. However, in some cases, the identification of the centrosymmetric phase could be tricky or the centrosymmetric phase is metallic. 
+In this post, I'll try to show a generic way to construct a (hopefully non-metallic) centrosymmetric phase in the calculation of macroscopic polarization a
 
 ## Big questions
-__What is the "correct" way of making the centrosymmetric phase in order to get the correct polarization value?__
+1. __What is the "correct" way of making the centrosymmetric phase in order to get the correct polarization value?__
 
+Options are:
  - NEB calculation to determine the optimum transition structure?
  - Linear transform from one polarized state to another?
 
-__What if there are multiple high-symmetry phases, which one do we choose???__
+2. __What if there are multiple high-symmetry phases, which one do we choose?__
 
-__Since the actual structural change during the polarization shift will almost always not be uniform, how can our result match the one experiementalist get??__
+3. __Since the actual structural change during the polarization shift will almost always not be uniform, how can our result match the experiemental one?__
 
-## TL;DR
-__It doesn't matter which centrosymmetric structure one use, as long as we have a smooth transformation, every centrosymmetric phase will have the same polarization value. Correspondingly, their Berrypahse will always be the same if we are able to avoid band crossing
 
-Also, yes, band crossing does mess up the result. But if we are careful enough to keep track of the continuous band transformation and able to disentangle (eliminate) the effect of the band crossing, we can still get the right answer.__
+{% include admonition.html type="abstract" title="TL;DR" body="
+It doesn't matter which centrosymmetric structure one use, as long as we have a smooth transformation, every centrosymmetric phase will have the same polarization value. Correspondingly, their Berrypahse will always be the same if we are able to avoid band crossing.
+Also, yes, band crossing does mess up the result. But if we are careful enough to keep track of the continuous band transformation and able to disentangle (eliminate) the effect of the band crossing, we can still get the right answer.
+" %}
 
 ## Study case
-I'll try to explain this with a simple BTO structure.
+I'll try to answer these question with a simple (distorted) BTO structure.
 Here, different from the last time, I've constrained my structure to only allow Ti atom to move:
 
 ![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img1.png){:height="70%" width="70%" .center}
@@ -44,9 +48,9 @@ Volume = 64.35864801 A^3
 Total polarization = 0.102912491 C/m^2
 ```
 
-What if, I construct an simple antiferroelectric structure and say that is the centrosymmetric phase I take as referencing structure?
+What if, I construct an simple antiferroelectric structure and say that is the centrosymmetric phase I use as the referencing structure?
 
-![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img2.png){:height="70%" width="70%" .center}
+![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img2.png){:height="44%" width="44%" .center}
 
 Recall there are acatually no more constraints other than our reference structure to be centrosymmetric, so, this actually does not contradict any rules.
 
@@ -59,11 +63,11 @@ Volume = 128.717296 A^3
 
 Total polarization = 0.102912491 C/m^2
 ```
-Interestingly, using AFE structure as the reference phase, I got identical polarization value comparing to the usual cubic phase.
+Interestingly, using AFE structure as the reference phase, identical polarization value are obtained (comparing to the one calculated by using the cubic phase as a reference).
 
 Let's slow down and think about why this is the case. In oue switching route, we can clearly see that from FE to AFE structrue, the Ti atom on the left hand side needs to go down around 0.115A. On the other hand, if we have a supercell with both Ti atoms at the center of their cell, each Ti only needs to go down 0.057A, exactly half of the length in the AFE case. This tells us, in our AFE case, we have one Ti atom doing all the hard work while the other doing nothing. This does not change the fact that eventually all the work done for the polarization switching will always be there.
 
-Now, Lets go one step further...
+Now, Lets go one step further. Imagine we have a much bigger FE structure and we can slowly change the structrue from the positive FE phase to the negative FE phase, going throught an centrosymmetric AFE phase in between.
 
 ![]({{site.baseurl}}/assets/img/post_img/2020-01-17-img3.png){:height="70%" width="70%" .center}
 
