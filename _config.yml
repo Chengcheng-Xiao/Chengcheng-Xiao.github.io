@@ -12,7 +12,7 @@ email: iconxicon@me.com
 description: > # this means to ignore newlines until "baseurl:"
   Quasi-proper student doing semi-rigorous sciency stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
-url:  # the base hostname & protocol for your site
+url: https://chengcheng-xiao.github.io # the base hostname & protocol for your site
 twitter_username: iconxicon
 github_username: Chengcheng-Xiao
 
