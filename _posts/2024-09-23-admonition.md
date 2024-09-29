@@ -23,11 +23,22 @@ your Jekyll blog using html and css based on
 
 Download `admonition.html` and put it in your `_includes` folder. Then, download
 `_admonition.scss` and put it in your `_sass` folder and add the following to
-your `main.scss` (in my case, it is `css/main.scss`):
+your `main.scss`:
 
 ```scss
 @import "_admonition";
 ```
+However, in my case, I have to add the folloiwng to `css/main.scss` instead:
+```scss
+@import
+        "normalize",
+        "base",
+        "layout",
+        "color",
+        "admonition"
+;
+```
+
 
 Finally, download the [icons from the
 repo](https://github.com/sercangezer/jekyll-admonitions-css/tree/main/assets/img/icons)
