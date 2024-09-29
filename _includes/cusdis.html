@@ -1,10 +1,10 @@
-<div class="comments" id="cusdis"
+<div id="cusdis_thread"
   data-host="https://cusdis.com"
   data-app-id="{{ site.cusdis_app_id }}"
   data-page-id="{{ page.relative_path }}"
-  data-page-url="{{ page.url }}"
+  data-page-url="{{site.url}}{{page.url}}"
   data-page-title="{{ page.title }}"
   data-theme="auto"
 ></div>
 
-<script async src="https://cusdis.com/js/cusdis.es.js"></script>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
