@@ -450,18 +450,18 @@ there.
 ——————————————————————————————————————————————————*/
 @media (prefers-color-scheme: dark) {
   html {
-  background-color: #191919;
+  background-color: #1e1e1e;
   }
   // background
-  .page-content {background-color: #191919;}
+  .page-content {background-color: #1e1e1e;}
   // footer
-  .site-footer {background: linear-gradient(#121212, #191919)}//{background-color: #0a0a0a;}
+  .site-footer {background: linear-gradient(#121212, #1e1e1e)}//{background-color: #0a0a0a;}
   // body font color
   body {color: #c7c7cc}
   // link font color
   a {color: #c7c7cc}
   // invert image color
-  img {filter: invert(90%);}
+  img {filter: invert(88%);}
   // set grayscale: https://medium.com/dev-channel/re-colorization-for-dark-mode-19e2e17b584b
   // img {filter: grayscale(50%)}
   // img {filter:  invert(50%) grayscale(80%)}
@@ -492,7 +492,7 @@ there.
   // // also remember to do the same for white mode
   // html {
   //   --scrollbarBG: #787878;
-  //   --thumbBG: #191919;
+  //   --thumbBG: #1e1e1e;
   // }
   // body::-webkit-scrollbar {
   //   width: 5px;
