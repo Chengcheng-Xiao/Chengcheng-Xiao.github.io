@@ -3,7 +3,7 @@
 ---
 @charset "utf-8";
 @use "sass:color";
-@import "_admonition";
+// @import "_admonition";
 
 
 
@@ -67,7 +67,8 @@ $on-laptop:        780px;
         "normalize",
         "base",
         "layout",
-        "color"
+        "color",
+        "admonition"
 //        "syntax-highlighting"
 ;
 
