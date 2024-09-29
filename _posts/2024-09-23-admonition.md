@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Adomonition
+title: Adomonition in Jekyll
 date: 2024-09-29
 categories: jekyll
 description: Adding admonition to your jekyll blog.
