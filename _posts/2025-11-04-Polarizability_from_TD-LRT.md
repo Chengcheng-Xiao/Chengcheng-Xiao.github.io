@@ -7,7 +7,8 @@ description: Calculate Polarizability form time-dependent linear response theory
 tags: DFT, Math
 ---
 
-Previously we have shown how [:link:quantum TD-LRT](./TD_LRT.html) works, now let's put that into work by calculating the polarizability of a quantum system. Unlike Fermi's golden rule which starts at electron-electric field interaction, here we start by considering the dipole-electric field interaction energy
+Previously we have shown how [:link:quantum TD-LRT](./TD_LRT.html) works, now let's put that into work by calculating the polarizability of a quantum system. 
+Here we start by considering the dipole-electric field interaction energy
 
 $$
 \hat{V}(t) = -\mathbf{\hat d} \cdot \mathbf{E}(t) = e\mathbf{\hat r} \cdot \mathbf{E}(t) \tag{1}
