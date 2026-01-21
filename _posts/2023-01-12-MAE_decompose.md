@@ -96,7 +96,7 @@ L_x & 0
 \frac{1}{2} \begin{pmatrix} 1 & -1 \end{pmatrix} 
 \begin{pmatrix} 
 0 & -iL_y \\
--iL_y & 0
+iL_y & 0
 \end{pmatrix}  
 \begin{pmatrix} 1 \\ -1 \end{pmatrix} + 
 \frac{1}{2} \begin{pmatrix} 1 & -1 \end{pmatrix} 
@@ -120,7 +120,7 @@ L_x & 0
 \begin{pmatrix} 0 & 1 \end{pmatrix} 
 \begin{pmatrix} 
 0 & -iL_y \\
--iL_y & 0
+iL_y & 0
 \end{pmatrix}  
 \begin{pmatrix} 0 \\ 1 \end{pmatrix} + 
 \begin{pmatrix} 0 & 1 \end{pmatrix} 
