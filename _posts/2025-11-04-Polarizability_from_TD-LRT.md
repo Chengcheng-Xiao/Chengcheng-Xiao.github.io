@@ -218,20 +218,20 @@ $$
 According to Maxwell's equations, an external field we have
 
 $$
-\mathbf{P} (t) = \frac{\mathbf{d}(t)}{V} = \varepsilon_0 \boldsymbol{\alpha}(\omega) \mathbf{E}(t,\omega)
+\mathbf{P} (t) = \frac{\mathbf{d}(t)}{V} = \frac{1}{V} \boldsymbol{\alpha}(\omega) \mathbf{E}(t,\omega)
 $$
 
 so
 
 $$
-\mathbf{d}(t) = V\varepsilon_0\boldsymbol{\alpha}(\omega)\mathbf{E(t,\omega)} \tag{5.2}
+\mathbf{d}(t) = \boldsymbol{\alpha}(\omega)\mathbf{E(t,\omega)} \tag{5.2}
 $$
 
 Comparing Eq. 5.1 to Eq. 5.2, we see that
 
 $$
 \begin{aligned}
-V\varepsilon_0\boldsymbol{\alpha}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
+\boldsymbol{\alpha}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
 \left( 
 \frac{\braket{0|\mathbf{\hat d}|m} \braket{m|\mathbf{\hat d}|0}}{\omega_{m0}+\omega+i0^+}
 +\frac{\braket{m|\mathbf{\hat d}|0} \braket{0|\mathbf{\hat d}|m}}{\omega_{m0}-\omega-i0^+}
@@ -243,7 +243,7 @@ Now replacing $i0^+$ with phenomenological damping factor $i\Gamma_m/2$ of mode 
 
 $$
 \begin{aligned}
-V\varepsilon_0\boldsymbol{\alpha}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
+\boldsymbol{\alpha}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
 \left( 
 \frac{\braket{0|\mathbf{\hat d}|m} \braket{m|\mathbf{\hat d}|0}}{\omega_{m0}+\omega+\Gamma_m/2}
 +\frac{\braket{m|\mathbf{\hat d}|0} \braket{0|\mathbf{\hat d}|m}}{\omega_{m0}-\omega-i\Gamma_m/2}
@@ -266,7 +266,7 @@ and we can now calculate the polarizability tensor $\boldsymbol{\alpha}$
 
 $$
 \begin{aligned}
-\boldsymbol{\alpha}(\omega) &= \frac{1}{V}\frac{1}{\varepsilon_0}\frac{1}{\hbar} \sum_{m\neq0}
+\boldsymbol{\alpha}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
 \left( 
 \frac{\braket{0|\mathbf{\hat d}|m} \braket{m|\mathbf{\hat d}|0} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega -  \Gamma_m^2/4} +
 \frac{\braket{m|\mathbf{\hat d}|0} \braket{0|\mathbf{\hat d}|m} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega - \Gamma_m^2/4} 
@@ -278,7 +278,7 @@ $$\boldsymbol{\alpha}$$ is a 3 by 3 rank-2 tensor, because $$\braket{m\vert \mat
 
 $$
 \begin{aligned}
-{\alpha}_{ij}(\omega) &= \frac{1}{V}\frac{1}{\varepsilon_0}\frac{1}{\hbar} \sum_{m\neq0}
+{\alpha}_{ij}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
 \left( 
 \frac{\braket{0|\mathbf{\hat d}_i|m} \braket{m|\mathbf{\hat d}_j|0} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega -  \Gamma_m^2/4} +
 \frac{\braket{m|\mathbf{\hat d}_j|0} \braket{0|\mathbf{\hat d}_i|m} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega -  \Gamma_m^2/4} 
@@ -286,11 +286,11 @@ $$
 \end{aligned}
 $$
 
-Using number density $N = 1/V$ which gives the number of this dipole moments in side a unit volume, and ignoring the second order term $- \Gamma_m^2/4$ since dampening is small, we have
+Ignoring the second order term $- \Gamma_m^2/4$ since dampening is small, we have
 
 $$
 \begin{aligned}
-{\alpha}_{ij}(\omega) &= \frac{1}{V}\frac{1}{\varepsilon_0}\frac{1}{\hbar} \sum_{m\neq0}
+{\alpha}_{ij}(\omega) &= \frac{1}{\hbar} \sum_{m\neq0}
 \left( 
 \frac{\braket{0|\mathbf{\hat d}_i|m} \braket{m|\mathbf{\hat d}_j|0} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega } +
 \frac{\braket{m|\mathbf{\hat d}_j|0} \braket{0|\mathbf{\hat d}_i|m} \omega_{m0}}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega } 
@@ -302,21 +302,29 @@ $$
 For a single state transition from $\ket{0}$ to $\ket{m}$ contribution, we have
 
 $$
-{\alpha}_{ij}(\omega) =\frac{N}{\varepsilon_0} \frac{\omega_{m0} }{\hbar} \frac{\braket{0|\mathbf{\hat d}_i|m} \braket{m|\mathbf{\hat d}_j|0} + \braket{0|\mathbf{\hat d}_j|m} \braket{m|\mathbf{\hat d}_i|0} }{\omega_{m0}^2-\omega^2-i\Gamma_m\omega} \tag{6}
+{\alpha}_{ij}(\omega) = \frac{\omega_{m0} }{\hbar} \frac{\braket{0|\mathbf{\hat d}_i|m} \braket{m|\mathbf{\hat d}_j|0} + \braket{0|\mathbf{\hat d}_j|m} \braket{m|\mathbf{\hat d}_i|0} }{\omega_{m0}^2-\omega^2-i\Gamma_m\omega} \tag{6}
 $$ 
 
 Averaging over all three directions, we get
 
 $$
-\bar{\alpha} (\omega)= \sum_{i=x,y,z}\mathbf{\alpha}_{ii}/3 = \frac{N}{\varepsilon_0} \frac{2\omega_{m0} }{3\hbar} 
+\bar{\alpha} (\omega)= \sum_{i=x,y,z}\mathbf{\alpha}_{ii}/3 = \frac{2\omega_{m0} }{3\hbar} 
 \frac{|\braket{0|\mathbf{\hat d}|m}|^2}{\omega_{m0}^2-\omega^2-i\Gamma_m\omega} \tag{7}
 $$
 
 ## Oscillator strength
-Comparing to the result from the Lorentz model
+In Lorentz model, we have
 
 $$
-\alpha(\omega) = \frac{Nq^2}{\varepsilon_0 m} \frac{1}{\omega_0^2-\omega^2-i\omega\Gamma}
+\begin{aligned}
+\epsilon_r(\omega) &= 1 + \frac{N}{\varepsilon_0} \alpha(\omega) \\
+&=1 + \frac{Nq^2}{\varepsilon_0 m} \frac{1}{\omega_0^2-\omega^2-i\omega\Gamma}
+$$
+
+where
+
+$$
+\alpha(\omega) = \frac{q^2}{m} \frac{1}{\omega_0^2-\omega^2-i\omega\Gamma}
 $$
 
 we see that with quantum version (Eq. 7), we need to have
@@ -340,6 +348,6 @@ $$
 and the corresponding modified Lorentz model is
 
 $$
-\alpha_m(\omega) = \frac{Nq^2}{\varepsilon_0 m} \frac{S_m}{\omega_0^2-\omega^2-i\omega\Gamma}
+\alpha_m(\omega) = \frac{q^2}{m} \frac{S_m}{\omega_0^2-\omega^2-i\omega\Gamma}
 $$
 
