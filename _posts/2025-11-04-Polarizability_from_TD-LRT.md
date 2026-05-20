@@ -319,6 +319,7 @@ $$
 \begin{aligned}
 \epsilon_r(\omega) &= 1 + \frac{N}{\varepsilon_0} \alpha(\omega) \\
 &=1 + \frac{Nq^2}{\varepsilon_0 m} \frac{1}{\omega_0^2-\omega^2-i\omega\Gamma}
+\end{aligned}
 $$
 
 where
