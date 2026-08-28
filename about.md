@@ -32,8 +32,11 @@ Hi there! Nice to meet you! <span class="wave">👋 </span>
 
 I am an electron wandering in a computer generated field.
 
-Okay, seriously, my name's Chengcheng Xiao, a postdoctoral researcher @ Imperial College London.
-I enjoy coding and running smulations on materials (I like them so much that they have become my job) and this is the place where I share stuff that I find ineteresting ;)
+Okay, seriously, my name's Chengcheng Xiao,
+<!-- a postdoctoral researcher @ Imperial College London. -->
+I enjoy coding and running smulations on materials,
+<!-- (I like them so much that they have become my job)  -->
+and this is the place where I share stuff that I find ineteresting ;)
 
 You can find my [:page_with_curl:CV here](https://chengcheng-xiao.github.io/cv).
 
@@ -45,9 +48,10 @@ Hope you have a good stay in my little den!
 
 My research area include (subject to expand at any moment):
 
-- 🫧 Electride materials
-- 🧱 2D materials
-- ⚡️ Ferroic materials
+<!-- - 🫧 Electride materials -->
+<!-- - 🧱 2D materials -->
+<!-- - ⚡️ Ferroic materials -->
+- ⚡️ Electronic properties of materials.
 - 💻 Density functional theory methods.
 - 🚂 Building models (both abstract and real).
 
