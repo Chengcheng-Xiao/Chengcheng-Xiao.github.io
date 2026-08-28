@@ -56,6 +56,19 @@ of your blog post:
 ```
 {% endraw %}
 
+or
+{% raw %}
+```
+{% capture body_content %}
+This is information intended to draw attention.
+
+And you can do line break with it!
+{% endcapture %}
+
+{% include admonition.html type="note" title="Info" body=body_content %}
+```
+{% endraw %}
+
 The list of admonitions types that you can use are:
 
 {% include admonition.html type="note" title="note" body="This is information intended to draw attention." %}
