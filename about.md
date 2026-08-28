@@ -77,6 +77,12 @@ My research area include (subject to expand at any moment):
 
 ### Publications
 
+ - [2026] Hot-carrier generation in bimetallic Janus nanoparticles, [**ACS Nano**] [_DOI: 10.1021/acsnano.5c17401_](https://doi.org/10.1021/acsnano.5c17401)
+
+ - [2023] Origin of versatile polarization state in CuInP2S6, [**Physical Review B**] [_DOI: 10.1103/PhysRevB.108.L161406_](https://doi.org/10.1103/PhysRevB.108.L161406)
+
+ - [2023] Role of electron localisation in H adsorption and hydride formation in the Mg basal plane under aqueous corrosion: a first-principles study [**Physical Chemistry Chemical Physics**] [_DOI: 10.1039/d2cp05242c_](https://doi.org/10.1039/d2cp05242c)
+
  - [2022] Rationalizing the Effect of Shape and Size in Nanoparticle-Based Glues [**The Journal of Physical Chemistry C**] [_DOI: 10.1021/acs.jpcc.2c00461_](https://doi.org/10.1021/acs.jpcc.2c00461)
 
  - [2022] Unraveling the Role of Architecture in Polymer-Based Glues for Hydrogels [**ACS Applied Materials & Interfaces**] [_DOI: 10.1021/acsami.1c10785_](https://doi.org/10.1021/acsami.1c10785)
