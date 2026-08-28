@@ -3,9 +3,13 @@
     {% if types contains include.type %}
 <div class="admonition {{ include.type }} rounded">
     <p class="admonition-title">{{ include.title }}</p>
-    <p>
-        {{ include.body }}
-    </p>
+    {% comment %} <p> {% endcomment %}
+    {% comment %}     {{ include.body }} {% endcomment %}
+    {% comment %} </p> {% endcomment %}
+    <!-- ✅ REPLACE the old <p>{{ include.body }}</p> with this: -->
+    <div class="admonition-body">
+        {{ include.body | markdownify }}
+    </div>
 </div>
     {% endif %}
 {% endif %}
