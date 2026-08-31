@@ -13,7 +13,7 @@ tags: Comments
 
 An interesting paper recently poped on arXiv titled ["Potential-Barrier Affinity
 Effect in Solid Systems"](https://arxiv.org/abs/2511.11160) by Qiang Xu, Zhao
-Liu and Yanming Ma, in which the authors relay three interesting points:
+Liu and Yanming Ma, in which the authors bring up three interesting points:
 
 1. They pointed out that the interstitial electronic states in electrides does
    not sit (or peaked) in a Kohn-Sham potential well, instead, they are usually
@@ -135,12 +135,12 @@ eV which is composed of mostly Li's 1s orbitals, and the other half-occupied at
 Interestingly, the probability density of the 1s bonding state
 ($\psi_\mathrm{1s}$) is localised (peaked) on atomic sites.
 
-![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img2.png){:height="50%" width="50%" .center}
+![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img2.png){:height="40%" width="40%" .center}
 
 On the other hand, the 2s (zone centre) + 2p (zone boundary) bonding state
 ($\psi_\mathrm{2s}$) is localised (peaked) on the bond centre.
 
-![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img3.png){:height="50%" width="50%" .center}
+![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img3.png){:height="40%" width="40%" .center}
 
 Now, if we looke at the full Kohn-Sham potential profile along the atomic chain
 (Note that here the atoms sit at 0 Å and 2 Å positions),
@@ -288,20 +288,26 @@ all electride consists of cages that are made with group-I and II species --
 they possess highly dispersive s-orbitals that can form these interstitial
 states more easily, especially under pressure (e.g., high-pressure electride). 
 
-## Comments on The Use of The Word "Unbounded States" in Solid State Systems
+## Comments on the jargon transferable to Solid-State Systems
 
-In Ma et al's paper, the word "bounded" and "unbounded" is extensively used.
-However, I find it could be misleading and requires more careful consideration.
+In Ma et al's paper, the word "unbounded" and "near free electron" is
+extensively used. However, I personally find that they could be misleading thus
+requires more careful consideration.
 
-The word "unbounded" was generally used in the context of isolated systems. As
-an idealised example, if we consider a 1D finite potential well where the
-potential is zero at infinity and $-V$ inside the well, the eigen-energies of
-bound states are quantised and lower than zero (i.e., lower than potential at
-infinity), and the eigen-energies of unbounded states are higher than the
-potential at infinity (zero) and are continous (i.e., not quantised). In this
-case, the definition of an unbounded state is clear: **they are states that have
-eigen-energy higher than the potential at infinity, and their wave functions are
-not localised, but oscillate across the entire space.**
+### "Unbound" in Solid-State Systems
+
+First, let's talk about the word "unbound" state and its relation to
+"localisation".
+
+The word "unbounded" was usually used in the context of isolated systems. For
+example, consider a 1D finite potential well where the potential is zero at
+infinity and $-V$ inside the well, the eigen-energies of bound states are
+quantised and lower than zero (i.e., lower than potential at infinity), and the
+eigen-energies of unbounded states are higher than the potential at infinity
+(zero) and are continous (i.e., not quantised). In this case, the definition of
+unbounded states is clear: **they are states that have eigen-energy higher than
+the potential at infinity, and their wave functions are not localised, but
+oscillate across the entire space.**
 
 Furthermore, for isolated systems, the unbounded states are extended to
 infinity, and the bound states can only appear near the potential well. This
@@ -310,32 +316,27 @@ offers a clear distinction between a localised state and a delocalised state:
 maxium and unbounded states are delocalised nd have higher energy than the
 potential well maximum.**
 
-However, in solid state systems, according to Bloch's theorem, the electronic
-wave functions are completely extended along all directions, regardless of their
-eigen-energies. Hence, we no longer have a clear distinction between a localised
-state and a delocalised state. 
+However, in solid state systems, due to Bloch's theorem, the electronic wave
+functions are extended along all directions, regardless of their eigen-energies.
+Hence, no longer a clear distinction can be drawn between a localised state and
+a delocalised state in solid-state systems.
 
+In solid state systems, "localisation" is usually interpreted in two ways:
 
-In solid state systems, "localisation" is usually interpreted by two
-diffinitions: 
+1. The wavefunctions are peaked at a specific locations. This reflects the
+   spatial distribution of the wave function.
 
-1. The wavefunctions are peaked at a specific locations
+2. The dispersion of the band is small, which means that it has very low group
+   velocity. 
 
-2. The dispersion of the band is small, which means that the kinetic energy of
-   the state is relatively small. 
-
-
-It is worth noting that these two definitions do not contradict each other and
-if they are both satisfied, we have a strict definition of a localised state.
-    For example, semi-core states are strongly peaked on the atomic sites and
-    have very small dispersion. From a tight-binding perspective, these states
-    are strongly localised because the atomic orbitals have very small
-    interaction with each other and are peaked on the atoms. If we take a look
-    at the eigen-energy of these states, we will find that they are more or less
-    the same as the single atom energy level of the corresponding atomic orbital
-    which also verifies that these states are made of atomic orbitals that
-    possess little interaction(hybridisation) with each other.
-
+These two definitions do not contradict each other. If they are both satisfied,
+we have a strict definition of a localised state. For example, semi-core states
+are strongly peaked on the atomic sites and have very small dispersion. From a
+LCAO perspective, these states are strongly localised because the atomic
+orbitals that make them are spatially small, leading to negligible small
+interaction with each other. As a consequence, the eigen-energy of these
+states are more or less the same as the single atom energy level of the
+corresponding atomic orbital.
 
 From a more pratical (and perhaps more chemical) perspective, having peaks at a
 specific locations is a more relaxed definition of localisation that is
@@ -344,29 +345,34 @@ wave function is normalisable and strongly peaked at specific locations, the
 charge density will also be strongly peaked at those locations. I believe this
 is the definition that should be used for the electride community.
 
-## Comments on The Use of The Word "Near-free electron" in Solid State Systems
+From my understanding, Ma et al seem to use be confounded on the "unbounded"
+nature of the interstitial states and them being "delocalised", because the true
+unbounded states in isolated systems are indeed delocalised and they did not
+consider that it is different in solid-state systems.
 
-Ma et al used word such as "near-free electron state" in relation to the
+### "Near-free electron" in Solid-State Systems
+
+Secondly, Ma et al used "near-free electron state" in relation to the
 interstitial states, based on their observation that interstitial states have
-eigen-energies higher than the potential maximum and have parabolic dispersion.
-However, I find this description misleading:
+eigen-energies higher than the potential maximum and **have parabolic
+dispersion**, which I also find misleading.
 
 First of all, the Kronig-Penny model does not have strict unbounded states that
 give a pure continouse energy spectrum, and all states from the Kronig-Penny
 model are normalisable hence are not scattering states -- In reality, all
-electronic states are contrained by the vacuum level as the system cannot be
+electronic states are contained by the vacuum level as the system cannot be
 truly periodic infinitely. 
 
 I find it interesting that the vacuum level in solid state systems is defined as
 the potential in the vacuum region far away from the atoms, but exactly how far
 away is really "far away" is arbitary. As an analogy, consider breaking a bond
 by increasing the distence between two atoms, the potential in the middle of the
-bond will eventually converge to the vacuum level, but at exactly what distance
-is this bond considered broken is not well defined.
+bond will eventually converge towards the vacuum level, but at exactly what
+distance is this bond considered broken is not well defined (similar to my
+previsou "bond-breaking" study using 1D Li chain).
 
-In their paper, Ma et al presented a brand new set of criteria to identify
-electride systems: 
-
+This contradict with Ma et al's new set of criteria to identify electride
+systems: 
 
 1. the Fermi level lies above the maximum of the effective potential barrier; 
 
@@ -375,22 +381,28 @@ electride systems:
 3. an appreciable density of occupied states exists between the Fermi level and
    the barrier maximum. 
 
-Following my vacuum level argument, I find that their central criteria (1), is
+Following my vacuum level argument, I find that **their central criteria (1), is
 not valid to identify electrides as one can easily construct a system that does
-NOT satisfies these criteria but should be considered an electride. For example,
-if we have a block of prototypical electride material, we can always carve out a
-    small portion of the system and replace it with vacuum. The resulting system
-    will have a potential maximum at the vacuum level, which is higher than the
-    Fermi level of the electride, and hence does not satisfy the criteria (1).
+NOT satisfies these criteria but should be considered an electride**. For
+example, if we have a block of prototypical electride material, we can always
+carve out a small portion inside the system and replace it with vacuum. The
+resulting system will have a potential maximum at the vacuum level, which is
+higher than the Fermi level of the electride, and hence does not satisfy the
+criteria (1) which requires the Fermi level to be higher than the global
+potential maximum.
 
-
-Secondly, not all prototypical electrides have parabolic dispersion! YCl system
-(see [ref](https://www.nature.com/articles/s41467-026-69049-0)), for example,
-shows a flat band at the Fermi level, which is a signature of strong correlation
-and is not a near-free electron state. As a matter of fact, the correlation
-interaction is an interesting topic in electrides and is actively being explored
-(see [ref2](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.024413)
+Now regarding the parabolic dispersion, I have alreay stated before that the
+dispersion reflects the group velocity of the state or the interaction strength
+between the atomic orbitals that form the bonding state. As a natural
+consequence, the parabolic dispersion is not a necessary condition for the
+interstitial states and not all prototypical electrides have parabolic
+dispersion. For example, YCl system (see
+[10.1038/s41467-026-69049-0](https://www.nature.com/articles/s41467-026-69049-0)),
+shows a flat band that is composed by the interstitial states at the Fermi
+level, which is a signature of strong correlation and would not be considered a
+"near-free electron" state. As a matter of fact, the correlation interaction is
+an interesting topic in electrides and is actively being explored (see
+[10.1103/PhysRevB.110.024413](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.024413)
 and
-[ref3](https://pubs.acs.org/jpclcd/article/12/50/12020/581019/Electronic-Correlation-Strength-of-Inorganic)).
-
+[10.1021/acs.jpclett.1c03637](https://pubs.acs.org/jpclcd/article/12/50/12020/581019/Electronic-Correlation-Strength-of-Inorganic)).
 
