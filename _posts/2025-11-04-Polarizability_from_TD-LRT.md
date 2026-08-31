@@ -4,7 +4,7 @@ title: Polarizability from quantum TD-LRT
 date: 2025-11-04
 categories: Post
 description: Calculate Polarizability form time-dependent linear response theory.
-tags: DFT, Math
+tags: DFT Math
 ---
 
 Previously we have shown how [:link:quantum TD-LRT](./TD_LRT.html) works, now let's put that into work by calculating the polarizability of a quantum system. 

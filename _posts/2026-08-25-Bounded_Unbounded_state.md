@@ -6,9 +6,7 @@ categories: Post
 description: "A recent paper argues that unbounded states are the true origin of
 the interstitial electrons in electrides, in this blog post I show that it is
 simply an extension of multicentred bonding."
-
 tags: Comments
-
 ---
 
 An interesting paper recently poped on arXiv titled ["Potential-Barrier Affinity

@@ -4,7 +4,7 @@ title: Fermi's Golden Rule
 date: 2025-11-04
 categories: Post
 description: A simple derivation of Fermi's Golden Rule.
-tags: DFT, Math
+tags: DFT Math
 ---
 
 {% include admonition.html type="quote" title="References" body="
