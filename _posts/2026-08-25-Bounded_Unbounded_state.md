@@ -24,12 +24,12 @@ Liu and Yanming Ma, in which the authors relay three interesting points:
    nature of these states. And they further used words such as "near-free
    electron state" in relation to there "unbounded" states.
 
-3. Using a simple 1D Kornig-Penny model, they discoverted that the interstitial
+3. Using a simple 1D Kornig-Penny model, they discovered that the interstitial
    peak of the wave function is rooted in the continuous nature of the wave
    function that was forced between the interstitial region and the atomic
    region. Or as they put it, the "Potential-Barrier Affinity".
 
-I find the paper to be well written and interesting, as it gives novel huristics
+I find the paper an interesting read as it gives novel huristics
 to the origin of interstitial localised electrons in electrides.
 
 In this post, I want to provide an alternative explanation of the origin of this
@@ -64,9 +64,11 @@ maximum.
 <!-- The authors claim that interstitial localisation effect is caused by "unbounded" -->
 <!-- states that has eigen-energies higher than the global potential maximum.  -->
 
-This behaviour can, alternatively, be easily understood via energy
-component analysis of the Kohn-Sham eigen-energy using atomic basis (i.e., of
-linear combination of atomic orbitals method).
+However, I found this behaviour is actually a manifestation of the multicentred
+bonding theory where the interstitial orbitals are considered bonding orbitals
+formed by surrounding atoms' atomic orbtials. Hence can be easily understood via
+energy component analysis of the Kohn-Sham eigen-energy using atomic basis
+(i.e., of linear combination of atomic orbitals method).
 
 Let us start by considering a di-atomic system where each atom has a s-orbital
 and the bonding state is formed by the in-phase combination of these s-orbitals.
@@ -79,7 +81,8 @@ V \approx \int \psi^*_\mathrm{W}(x) V_M
 \psi_\mathrm{W}(x) dx = V_M, 
 $$
 
-and the kinetic energy $T$ is bigger than zero because this is a bonding orbital
+and because this is a bonding orbital, the kinetic energy $T$ is bigger than
+zero 
 
 $$
 T = \int \psi^*_\mathrm{W}(x) \left[ -\frac{1}{2} \nabla^2 \right] \psi_\mathrm{W}(x) dx > 0.
@@ -94,7 +97,8 @@ $$
 
 In other words, this finding tells us that **a bonding state with significant
 portion of its wave function peaked at the bond centre will have higher
-eigen-energy than the potential at the bond centre.** 
+eigen-energy than the potential at the bond centre,** due to its excessive
+kinetic energy.
 
 This simple analysis leads to two important conclusions:
 
@@ -103,37 +107,38 @@ This simple analysis leads to two important conclusions:
    rather a general phenomena that can be expected in any bonding orbital that
    has significant amplitude at the bond centre.**
 
-2. This phenomena depends on the orbital types -- From an LCAO perspective, **it
-   depends on the distance between the atomic orbtials and the shape of the
-   atomic orbitals.**
+2. This phenomena depends on the orbital types -- From a linear combination of
+   atomic orbtials (LCAO) perspective, **it depends on the distance between the
+   atomic orbtials and the shape of the atomic orbitals.**
 
-Next, I'll try to generlise this to more realistic periodic systems and show
-that this behaviour can indeed be controlled by playing around with the bond
+Next, I'll try to generalise this to more realistic periodic systems and show
+that this behaviour can indeed be controlled by manipulating with the bond
 distance.
 
 ### Generalisation to 1D periodic system
 
-To convince ourselves that this exist not just in our simple di-atomic model but
-to more realistic systems, we now proceed to perform a simple DFT calculation on
-a 1D Li chain model. In this system, the bond distance between adjacent Li atoms
-is 2 Å and a vacuum of 10 Å is employed along the other two directions. The
-electronic structure is approximated at the PBE level with a plane-wave cutoff
-of 500 eV and 20x1x1 k-point sampling.
+To convince ourselves that this phenomena exist not just in our simple di-atomic
+model but to more realistic systems, we now proceed to perform simple DFT
+calculations on a 1D Li chain. In this system, the bond distance between
+adjacent Li atoms is 2 Å (along the x-direction) and a vacuum of 10 Å is
+employed along the other two directions. The electronic structure is
+approximated at the PBE level with a plane-wave cutoff of 500 eV and 20x1x1
+k-point sampling.
 
-The result show that there are two bands that are of interest here (both have
-parabolic-shape dispersion). One fully occupied at ~-50 eV which is composed of
-mostly Li's 1s orbitals, and the other half-occupied at ~-3.5 eV which is
-composed of mostly Li's 2s and 2p orbitals:
+As shown below, the band structure suggests that there are two bands that are of
+interest here (both have parabolic-shape dispersion). One fully occupied at ~-50
+eV which is composed of mostly Li's 1s orbitals, and the other half-occupied at
+~-3.5 eV which is composed of mostly Li's 2s and 2p<sub>x</sub> orbitals
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img1.png){:height="50%" width="50%" .center}
 
-Interestingly, if we plot out the probability density of the 1s bonding state
-($\psi_\mathrm{1s}$), we see that is localised(peaked) on atomic sites.
+Interestingly, the probability density of the 1s bonding state
+($\psi_\mathrm{1s}$) is localised (peaked) on atomic sites.
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img2.png){:height="50%" width="50%" .center}
 
 On the other hand, the 2s (zone centre) + 2p (zone boundary) bonding state
-($\psi_\mathrm{2s}$) is localised(peaked) on the bond centre.
+($\psi_\mathrm{2s}$) is localised (peaked) on the bond centre.
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img3.png){:height="50%" width="50%" .center}
 
@@ -146,7 +151,7 @@ we see that it has a maximum $V_M$ of ~20 eV at the bond centre, which is much
 lower than the eigen-energy of the second bonding state $\psi_\mathrm{2s}$ of
 ~-3.5 eV. Combining with the fact that $\psi_\mathrm{2s}$ is also strongly
 peaked at the bond centre, we see that the conclusions of our previous analysis
-hold true in this realistic system as well.
+hold true in this much more realistic setting as well.
 
 
 <!-- It is interesting to note that in this simple 1D system, $V_M$ is also the -->
@@ -171,20 +176,21 @@ eigen-energy of the bonding state $\psi_\mathrm{2s}$ changes relative to the
 potential at the bond centre.
 
 Noticing that we the band structrue of $\psi_\mathrm{2s}$ state always has a
-minimum at the zone centre (Γ point), we can track the occupied states by simply
-tracking the eigen-energy of the bonding state at the Γ point and the Fermi
-energy, and compare them with the potential max at the bond centre.
+minimum at the zone centre (Γ point), we can track the eigen-energies of
+occupied states by simply tracking the two ends: eigen-energy of the bonding
+state at the Γ point and the Fermi energy, and compare them with the potential
+max at the bond centre.
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img5.png){:height="70%"
 width="70%" .center}
 
-As shown above, and focusing on the two limits: At a bond distance of 3 Å, both
-the eigen-energy at Γ point and at the Fermi energy of the bonding state
-$\psi_\mathrm{2s}$ are higher than the potential at the bond centre, meaning all
-states occupied are "unbounded" states. On the other hand, at a bond distance of
-8 Å, both the eigen-energy at Γ point and at the Fermi energy of the bonding
-state $\psi_\mathrm{2s}$ are lower than the potential at the bond centre,
-meaning all states occupied are "bounded" states. 
+Focusing on the two limits: At a bond distance of 3 Å, both the eigen-energy at
+Γ point and the Fermi energy of the bonding state $\psi_\mathrm{2s}$ are higher
+than the potential at the bond centre, meaning all states occupied are
+"unbounded" states. However, at a bond distance of 8 Å, both the eigen-energy at
+Γ point and the Fermi energy of the bonding state $\psi_\mathrm{2s}$ are lower
+than the potential at the bond centre, meaning all occupied states have been
+turned into "bounded" states. 
 
 Now, if we plot the charge density coming from $\psi_\mathrm{2s}$ at these two
 bond distances,
@@ -194,17 +200,17 @@ width="70%" .center}
 
 we see that at 3 Å, the charge density is strongly peaked at the bond centre,
 while at 8 Å, the charge density is strongly peaked on the atomic sites. This
-    means that by simply chaning the bond distance, we can easily tune the
+    means that by simply changing the bond distance, we can easily tune the
     eigen-energy of the bonding state relative to the potential at the bond
     centre.
 
-You might be wonderin: **Is these two states categoritally different?** I
+You might be wondering: **Are these two states fundamentally different?** I
 believe the answer is no -- They both represent the same bonding state! As we
 all know, if we stretch a bond from its equilibrium distance to inifity, the
-"bond breakin" point cannot be strictly determined as their transition is
-continuous and smooth. Here, we see that the same transition between "bounded"
-and "unbounded" states is also smooth, indicating they are a consequence of the
-same "bond breaking" process.
+"bond breaking" point cannot be strictly defined as their transition is
+continuous and smooth. Here, we see that the same smooth transition between
+"bounded" and "unbounded" states because they are a consequence of the same
+"bond breaking" process.
 
 
 Here, I would also like to point out that even though the eigen-energy of the
@@ -233,12 +239,12 @@ atomic orbitals. Give it a read at
 
 Now that I have demonstrated that the same behaivour can be easily understood
 using the LCAO argument, I would like to note that this analysis can also be
-easily generalise to all other types of bonding orbitals including multicentred
-bonding orbitals, which we believe should be the (chemical) definition of the
-existence of interstitial states: **An in-phase combination of atomic orbitals
-form a bonding orbital that has a significant amplitude at the interstitial
-region**. Similarly to our 1D model, this definition naturally leads to an
-eigen-energy higher than the potential at the bond centre (interstitial centre). 
+easily generalised to all other types of bonding orbitals including multicentred
+bonding orbitals, which we believe should be the (chemical) origin of the of
+interstitial states: **An in-phase combination of atomic orbitals form a bonding
+orbital that has a significant amplitude at the interstitial region**. Similarly
+to our 1D model, this would naturally leads to an eigen-energy higher than the
+potential at the bond centre (interstitial centre). 
 
 <!-- There are several consequences of using this definition: -->
 <!--  -->
@@ -257,10 +263,10 @@ eigen-energy higher than the potential at the bond centre (interstitial centre).
 <!-- ### Alternative explanation of the "origin' of interstitial state -->
 
 This also provides an alternative explanation of the origin of interstitial
-states in electrides. From a linear combination of atomic orbtials (LCAO)
-perspective, the existance of interstitial states is a direct consequence of the
-orthogonality of the atomic basis -- low-lying states are localised on the atoms
-so that higher energy states needs to be orthogonal to them. At certain
+states in electrides. From a LCAO perspective, the existance of interstitial
+states is a direct consequence of the orthogonality of the atomic basis --
+low-lying states are localised on the atoms and high energy states needs to be
+orthogonal to them, hence are "pushed" out of the atomic region. At certain
 geometry, the bonding orbitals formed by the in-phase combination of atomic
 orbitals will have their peaks at the interstitial region, causing its
 eigen-energy to be higher than the potential barrier. 
@@ -269,14 +275,15 @@ It is worth noting that this origin is a direct reflection of the Fermionic
 nature of electrons and is consistent with previous argument that the Pauli
 exclusion "forces" electrons to be localised in the interstitial region.
 
-It is also worth noting that people have found that ELF is a good quantitiy to
-identify electrides. ELF fits perfectly to the multicentre bonding theory as it
-probes the Fermi-hole of the system, i.e., tries to find an orbital that
-occupies a certain region of space that is not simultaniously occupied by other
-orbtials (for more details, see this post). ELF is widely used to identify
-covalent bonds, which in this case would be multicentred bonding orbitals.
+It is also worth noting that people have found electron localisation function
+(ELF) to be a useful tool to identify electrides. ELF fits perfectly to the
+multicentre bonding theory because it probes the Fermi-hole of the system, i.e.,
+tries to find an orbital that occupies a certain region of space that is not
+simultaniously occupied by other orbtials (for more details, see [this
+post](../../../2022/01/17/ELF.html)). ELF is widely used to identify covalent
+bonds, which in the case of electrides, would be multicentred bonds.
 
-As another consequence of this multicnetred definition, we now see why almost
+As another consequence of the multicnetred bonding theory, we now see why almost
 all electride consists of cages that are made with group-I and II species --
 they possess highly dispersive s-orbitals that can form these interstitial
 states more easily, especially under pressure (e.g., high-pressure electride). 
@@ -310,9 +317,12 @@ state and a delocalised state.
 
 
 In solid state systems, "localisation" is usually interpreted by two
-diffinitions: (1) The wavefunctions are peaked at a specific locations, and (2)
-The dispersion of the band is small, which means that the kinetic energy of the
-state is relatively small. 
+diffinitions: 
+
+1. The wavefunctions are peaked at a specific locations
+
+2. The dispersion of the band is small, which means that the kinetic energy of
+   the state is relatively small. 
 
 
 It is worth noting that these two definitions do not contradict each other and
@@ -355,18 +365,23 @@ bond will eventually converge to the vacuum level, but at exactly what distance
 is this bond considered broken is not well defined.
 
 In their paper, Ma et al presented a brand new set of criteria to identify
-electride systems: (i) the Fermi level lies above the maximum of the effective
-potential barrier; (ii) the barrier maximum is located in a spatially open
-region far from nuclei; and (iii) an appreciable density of occupied states
-exists between the Fermi level and the barrier maximum. 
+electride systems: 
 
-Following my vacuum level argument, I find that their central criteria (i), is
+
+1. the Fermi level lies above the maximum of the effective potential barrier; 
+
+2. the barrier maximum is located in a spatially open region far from nuclei; 
+
+3. an appreciable density of occupied states exists between the Fermi level and
+   the barrier maximum. 
+
+Following my vacuum level argument, I find that their central criteria (1), is
 not valid to identify electrides as one can easily construct a system that does
 NOT satisfies these criteria but should be considered an electride. For example,
 if we have a block of prototypical electride material, we can always carve out a
     small portion of the system and replace it with vacuum. The resulting system
     will have a potential maximum at the vacuum level, which is higher than the
-    Fermi level of the electride, and hence does not satisfy the criteria (i).
+    Fermi level of the electride, and hence does not satisfy the criteria (1).
 
 
 Secondly, not all prototypical electrides have parabolic dispersion! YCl system
