@@ -135,8 +135,9 @@ Interestingly, the probability density of the 1s bonding state
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img2.png){:height="40%" width="40%" .center}
 
-On the other hand, the 2s (zone centre) + 2p (zone boundary) bonding state
-($\psi_\mathrm{2s}$) is localised (peaked) on the bond centre.
+On the other hand, the 2s (zone centre) + 2p (zone boundary) bonding state (we
+call this state $\psi_\mathrm{2s}$ because mainly the 2s states are occupied) is
+localised (peaked) on the bond centre.
 
 ![]({{site.baseurl}}/assets/img/post_img/2026-08-25-img3.png){:height="40%" width="40%" .center}
 
@@ -203,9 +204,9 @@ while at 8 Å, the charge density is strongly peaked on the atomic sites. This
     centre.
 
 You might be wondering: **Are these two states fundamentally different?** I
-believe the answer is no -- They both represent the same bonding state! As we
-all know, if we stretch a bond from its equilibrium distance to inifity, the
-"bond breaking" point cannot be strictly defined as their transition is
+believe the answer is no -- They both represent the same bonding state, and if
+we stretch a bond from its equilibrium distance to inifity, we cannot pin point
+a specific"bond breaking" point because at the DFT level, the transition is
 continuous and smooth. Here, we see that the same smooth transition between
 "bounded" and "unbounded" states because they are a consequence of the same
 "bond breaking" process.
