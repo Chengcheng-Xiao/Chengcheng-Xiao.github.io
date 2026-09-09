@@ -8,7 +8,7 @@ title: Archive
   <h2>Archive</h2>
 
   <section class="archive_list">
-    {% for category in site.categories %}
+    {% for category in site.categories reversed %}
 
     <div class="category-name">
       <h2>{{ category | first }}</h2>

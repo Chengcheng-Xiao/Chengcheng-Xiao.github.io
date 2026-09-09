@@ -2,7 +2,7 @@
 layout: post
 title: Personal Vim config (update 2022)
 date: 2022-09-12
-categories: Post
+categories: Other
 description: I've moved on from Atom text editor to vim. This post includes a step-by-step walk though of how I configured my vim. 
 tags: Configs 
 ---
