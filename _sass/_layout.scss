@@ -322,6 +322,11 @@ p.readmore {
 
 
 .author {
+  @media (min-width: $on-laptop+1) {
+    display: flex;
+    align-items: center;
+    min-height: 90px;
+  }
   @media (max-width: $on-laptop) {
     display:inline-block;
     text-align:center;
@@ -337,9 +342,6 @@ p.readmore {
   background-size: cover !important;
   background-position: center center !important;
   margin-right: 10px;
-  @media (min-width: $on-laptop+1) {
-    float:left;
-  }
 }
 
 .authorinfo {
