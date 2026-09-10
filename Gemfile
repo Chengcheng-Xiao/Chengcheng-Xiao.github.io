@@ -11,3 +11,5 @@ gem "jekyll-seo-tag"
 
 gem "kramdown-math-katex", "~> 1.0"
 gem "kramdown-parser-gfm"
+
+gem "csv", "~> 3.3"
