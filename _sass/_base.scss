@@ -73,6 +73,9 @@
   .columns:first-child {
     margin-right: 0; }
 
+  .container > .three.columns     { width: 200px; }
+  .container > .nine.columns      { width: calc(100% - 200px - 4%); }
+
   .one.column,
   .one.columns                    { width: 4.66666666667%; }
   .two.columns                    { width: 13.3333333333%; }

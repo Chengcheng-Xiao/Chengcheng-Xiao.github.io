@@ -70,15 +70,17 @@ body {
 }
 
 .logo img {
-  max-width:50%;
+  width:200px;
+  max-width:100%;
   height:auto;
   display:block;
+  margin-left:0;
 }
 
 @media (min-width: 781px) {
   .logo img {
-    width:100%;
     max-width:none;
+    margin-left:auto;
   }
 }
 
