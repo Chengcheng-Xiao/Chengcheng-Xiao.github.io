@@ -36,11 +36,17 @@ layout: default
   {% include share.html %}
 
   <hr/>
+
   {% comment %}
   <!-- Cusdis -->
   {% if site.cusdis_app_id %}{% include cusdis.html %}{% endif %}
   <hr/>
   {% endcomment %}
+
+  <!-- Remark42 -->
+  {% include remark42.html %}
+
+  <hr/>
 
   {% include author.html %}
 

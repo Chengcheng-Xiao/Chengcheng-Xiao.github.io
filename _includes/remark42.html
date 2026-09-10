@@ -1,0 +1,26 @@
+<div id="remark42">Comments loading...</div>
+
+<script>
+  var remark_config = {
+    host: "https://vps-880fb016.vps.ovh.net:8443",
+    site_id: "chengcheng-xiao.github.io",
+    url: window.location.origin + window.location.pathname,
+    components: ["embed"],
+    simple_view: true,
+    no_footer: true
+  };
+</script>
+
+<script>
+  !function(e,n){
+    for(var o=0;o<(remark_config.components||["embed"]).length;o++){
+      var r=n.createElement("script");
+      r.type="module";
+      r.async=true;
+      r.defer=true;
+      r.src=remark_config.host+"/web/"+remark_config.components[o]+".mjs";
+      n.head.appendChild(r);
+    }
+  }(window,document);
+</script>
+
