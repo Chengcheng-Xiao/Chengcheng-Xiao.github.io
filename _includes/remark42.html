@@ -7,7 +7,8 @@
     url: window.location.origin + window.location.pathname,
     components: ["embed"],
     simple_view: true,
-    no_footer: true
+    no_footer: true,
+    theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"
   };
 </script>
 
@@ -22,5 +23,13 @@
       n.head.appendChild(r);
     }
   }(window,document);
+
+  // Listen for system theme changes and update Remark42 in real-time
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const newTheme = event.matches ? "dark" : "light";
+    if (window.REMARK42 && typeof window.REMARK42.changeTheme === 'function') {
+      window.REMARK42.changeTheme(newTheme);
+    }
+  });
 </script>
 
